@@ -57,6 +57,7 @@ html(lang='en')
 													| &nbsp; matt@knoesis.org
 							.bs-callout.bs-callout-success
 								h4 Summary
+								hr
 								p.
 									I'm a graduate student majoring in Computer Science primarily working in the research realm,
 									with a focus (and minor) in Statistics and Statistical Modeling. My research efforts are quite diverse,
@@ -95,13 +96,94 @@ html(lang='en')
 
 							.bs-callout.bs-callout-primary
 								h4 Focused Research Areas
+								hr
 								ul
 									li Density-based Clustering
 									li Non-parametric density estimation
 									li Markov Chain Monte Carlo optimization techniques
 									li Modeling stochastic processes
+							.bs-callout.bs-callout-yellow
+								h4 Research Highlights
+								hr
+								.row
+									.col-xs-12.col-md-12	
+										.media
+											a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
+												img.media-object(src="img/OSU.png", width="200", height="236")
+											.media-body
+												h3.media-heading Geospatial POI Discovery
+												h5
+													| With the rapid development and widespread deployment of information in the form of "Big-Data",
+													| a common exercise in many contexts is the identication of movement, which has enabled the
+													| emergence of macroscopic patterns to manifest in very large data sets representing
+													| "significant" group behavior. Amongst these data sets, geospatial data in particular has become
+													| extremely popular in the past decade. Despite this popularity, current methods of discovering
+													| POIs for the purposes of knowledge discovery--for example, improving Location-Based Service (LBS) applications--vary
+													| significantly in the approach taken and in the inductive bias adopted by the model in question. In this research effort,
+													| I outline a framework for automating this process that is not only flexible in the type of inductive bias
+													| inferred by the model, but is based on recent state of the art advances in non-parametric density estimation
+													| techniques.
+									.col-xs-12.col-sm-12.col-md-12.col-lg-12
+										div(style="font-weight: bold;") Related Rublication:
+											span(style="color: green;") &nbsp; (In development)
+										br
+										i Stay tuned...
+								hr
+								.row
+									.col-xs-12.col-md-12
+										.media
+											a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
+												img.media-object(src="img/hdbscan_pts.gif", width="200", height="236")
+											.media-body
+												h3.media-heading Bridging the gap between Density-Based and Model-based Clustering
+												h6
+													| Density-based clustering techniques have become particularly popular in the past decade. This is
+													| primarily due to the need for algorithms capable of identifying "natural groups" in data; that is,
+													| groups that cannot effectively be captured using a parametric, model-based approach. There are many
+													| situations where data are constrained to be observed in arbitrarily shapes due to environmental
+													| influences. This creates "natural groups" often exhibit non-convex, arbitrarily shaped forms that in the context
+													| of human supervision, can be easily and unanimously distinguished. Despite the effectiveness of
+													| density-based approaches, many are inherently heuristic by design, preventing the capability of
+													| formal statistical inference. A new density-based algorithm has been recently proposed that
+													| may be the first to offer a statistically sound, nonparametric approach to identifying these groups.
+									.col-xs-12.col-sm-12.col-md-12.col-lg-12
+										div(style="font-weight: bold;") Related Rublication:
+											span(style="color: green;") &nbsp; (Under Review)
+										br
+										span Hahsler, Michael, Matthew Piekenbrock, and Derek Doran. "dbscan: Fast Density Based Clustering in R", Journal of Statistical Software.
+								hr
+								.row
+									.col-xs-12.col-md-12
+										.media
+											a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
+												img.media-object(src="img/icp.png", width="200", height="236")
+											.media-body
+												h3.media-heading Massive Parallel Iterative Closest Point
+												h6
+													| The k-Nearest Neighbor (kNN) problem is now a well-studied problem. In the simple k=1 version, a
+													| naive approach may be to simply calculate the distance from every point to every other point in a
+													| given data set, resulting in quadratic complexity. This approach is known as the "brute-force approach."
+													| Several
+													| advanced spatial indexing data structures utilizing various branch-and-bound (B&B) properties
+													| have been proposed as a means of reducing the algorithmic complexity of the kNN problem. While these
+													| structures are certainly useful, they were primarily developed for serial, CPU-based applications. It
+													| is well-known that direct conversion of these spatial indexing structures to their parallel equivalents
+													| is often in fact slower than their simple brute-force implementations due to the suboptimal memory access patterns
+													| and conditional computations these spatial indexing structures often produce. In a recent application-motivated effort,
+													| we propose a new method for exposing the intrinsic parallelism of the kNN problem using augmented indexing data structures,
+													| and we demonstrate the superiority of our method compared to the traditional B&B and brute-force implementations using
+													| the CUDA toolkit. We also show the usefulness of our method in the context of Automated Aerial Refueling, through an
+													| application of the well known Iterative Closest Point algorithm.
+									.col-xs-12.col-sm-12.col-md-12.col-lg-12
+										div(style="font-weight: bold;") Related Publication(s):
+											span(style="color: green;") &nbsp; (Published)
+										br
+										ul
+											li J. Robinson, M. Piekenbrock, L. Burchett, et. al. Parallelized Iterative Closest Point for Autonomous Aerial Refueling. In International Symposium on Visual Computing (pp. 593-602). Springer International Publishing. (2016, December)
+											li L. Burchett, J. Robinson, M. Piekenbrock, et. al. “Automated aerial refueling: Parallelized 3d iterative closest point,” in IEEE NAECON, 2016, pp. 1–5 (2016)
 							.bs-callout.bs-callout-warning
 								h4 Education
+								hr
 								h5 Current GPA: 3.83
 								table.table.table-responsive
 									thead
@@ -124,8 +206,42 @@ html(lang='en')
 												br
 												.small Minor in Statistics
 											td 2015
+								h5 Courses Taken (relevent to field of interest [Data Science])
+								table.table.table-bordered
+									tbody
+										tr
+											td
+												div(style="font-weight: bold;") CEG 7900:
+												| Network Science
+											td
+												div(style="font-weight: bold;") CS 7830:
+												| Machine Learning
+											td
+												div(style="font-weight: bold;") CS 3250:
+												| Computational Tools and Techniques for Data Analysis
+										tr
+											td
+												div(style="font-weight: bold;") STT 7020:
+												| Applied Stochastic Processes
+											td
+												div(style="font-weight: bold;") CS 7230:
+												| Information Theory
+											td
+												div(style="font-weight: bold;") CS 4850:
+												| Foundations of Artificial Intelligence
+										tr
+											td
+												div(style="font-weight: bold;") STT 3600/3610:
+												| Applied Statistics I & II
+											td
+												div(style="font-weight: bold;") STT 4610:
+												| Theoretical Statistics I
+											td
+												div(style="font-weight: bold;") CS 7200:
+												| Algorithm Design and Analysis
 							.bs-callout.bs-callout-danger
 								h4 Experience
+								hr
 								ul.list-group
 									a.list-group-item.inactive-link(href='#')
 										h4.list-group-item-heading Graduate Research Assistant
@@ -207,6 +323,7 @@ html(lang='en')
 											XML Schema and XML Technologies [Xlink, XPath, etc.]
 							.bs-callout.bs-callout-black
 								h4 Project Reports / Code Samples / Package Contributions
+								hr
 								ul.list-group
 									li.list-group-item
 										a(href="https://github.com/mhahsler/dbscan") dbscan R Package
@@ -238,42 +355,9 @@ html(lang='en')
 										a.pull-right(href="resources/stochastic_project.pdf") (PDF)&nbsp;
 									li.list-group-item Exploratory Research on Bayesian Network Training Basics
 										a.pull-right(href="resources/bayesian_net_intro.pdf") (PDF)
-						.bs-callout.bs-callout-info
-							h4 Courses Taken (relevent to field of interest [Data Science])
-							table.table.table-bordered
-								tbody
-									tr
-										td
-											div(style="font-weight: bold;") CEG 7900:
-											| Network Science
-										td
-											div(style="font-weight: bold;") CS 7830:
-											| Machine Learning
-										td
-											div(style="font-weight: bold;") CS 3250:
-											| Computational Tools and Techniques for Data Analysis
-									tr
-										td
-											div(style="font-weight: bold;") STT 7020:
-											| Applied Stochastic Processes
-										td
-											div(style="font-weight: bold;") CS 7230:
-											| Information Theory
-										td
-											div(style="font-weight: bold;") CS 4850:
-											| Foundations of Artificial Intelligence
-									tr
-										td
-											div(style="font-weight: bold;") STT 3600/3610:
-											| Applied Statistics I & II
-										td
-											div(style="font-weight: bold;") STT 4610:
-											| Theoretical Statistics I
-										td
-											div(style="font-weight: bold;") CS 7200:
-											| Algorithm Design and Analysis
 						.bs-callout.bs-callout-default
 							h4 Extra Curricular / Miscellaneous.
+							hr
 							ul.list-group
 								li.list-group-item
 									| Developer and Maintainer of:
