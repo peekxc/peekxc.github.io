@@ -1,0 +1,277 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		title Matthew Piekenbrock - Curriculum Vitae
+		link(rel="stylesheet", href="css/font-awesome.min.css")
+		link(rel="stylesheet", href="css/bootstrap.min.css")
+		link(rel="stylesheet", href="css/custom.css")
+	body
+		.container
+			.resume
+				header.page-header
+					h1.page-title Curriculum Vitae of Matthew Piekenbrock
+					small
+						i.fa.fa-clock-o
+						|  Last Updated on:
+						time &nbsp; Monday, February 06, 2017
+				.row
+					.col-xs-12.col-sm-12.col-md-offset-1.col-md-10.col-lg-offset-2.col-lg-8
+						.panel.panel-default
+							.panel-heading.resume-heading
+								.row
+									.col-lg-12
+										.col-xs-12.col-sm-4
+											figure
+												img.img-responsive(alt='', src='img/profile_pic2.jpeg')
+											.row
+												.col-xs-12.btn-group.btn-group-justified(style="text-align:center;")
+													a.btn.btn-social.btn-block.btn-google(href='https://plus.google.com/u/0/105423690091112436740')
+														i.fa.fa-google
+													a.btn.btn-social.btn-block.btn-facebook(href='https://www.facebook.com/matt.piekenbrock')
+														i.fa.fa-facebook
+													a.btn.btn-social.btn-block.btn-linkedin(href='https://www.linkedin.com/in/matthew-piekenbrock-1469777a/')
+														i.fa.fa-linkedin
+													a.btn.btn-social.btn-block.btn-github(href='https://github.com/peekxc')
+														i.fa.fa-github
+										.col-xs-12.col-sm-8
+											ul.list-group
+												li.list-group-item Matt Piekenbrock
+												li.list-group-item Title: Student Researcher
+												li.list-group-item Occupation: Graduate Student
+												li.list-group-item
+													i.fa.fa-phone
+													|  937-269-8582
+												li.list-group-item
+													i.fa.fa-envelope
+													| &nbsp; matt.piekenbrock@gmail.com
+													br
+													i.fa.fa-envelope
+													| &nbsp; piekenbrock.5@wright.edu
+													br
+													i.fa.fa-envelope
+													| &nbsp; matt@knoesis.org
+							.bs-callout.bs-callout-success
+								h4 Summary
+								p.
+									I'm a graduate student majoring in Computer Science primarily working in the research realm,
+									with a focus (and minor) in Statistics and Statistical Modeling. My research efforts are quite diverse,
+									I think I could get into nearly anything relating to scientific computing, but I'm particularly
+									interested in data science. I have supplemental research interests in the fields of Statistical Learning,
+									Clustering, Network Science, Model-based Machine Learning, Bayesian Statistics, Computer Vision,
+									and High Performance Parallel Computing.
+								p.
+									I've worked part time doing research at the #[a(href="https://www.afit.edu/") Air Force Institute of Technology]
+									in the Low Orbitals Radar and Electromagnetism research group since 2013 doing either 1) research for
+									an independent project the group received under supervision of #[a(href="https://www.afit.edu/BIOS/bio.cfm?facID=224") Dr. Andrew Terzuoli]
+									or 2) supporting the graduate students' research efforts in the group.
+								p.
+									In 2015, I started working for the #[a(href="http://knoesis.org/people/derek/wacs/") Web and Complex Systems Lab]
+									as an undergraduate research assistant shortly after being introduced to Data Science in an elective class I took,
+									CS 3250: Computational Tools and Techniques for Data Analysis taught by #[a(href="http://knoesis.org/people/derek/") Derek Doran].
+									I received a graduate research assistant position in the same lab shortly after, beginning my graduate degree working towards
+									a M.S. in Computer Science.
+
+							.bs-callout.bs-callout-primary
+								h4 Focused Research Areas
+								ul
+									li Density-based Clustering
+									li Non-parametric density estimation
+									li Markov Chain Monte Carlo optimization techniques
+									li Modeling stochastic processes
+							.bs-callout.bs-callout-warning
+								h4 Education
+								h5 Current GPA: 3.83
+								table.table.table-responsive
+									thead
+										tr
+											th School
+											th Degree
+											th Graduation Year
+									tbody
+										tr
+											td Wright State University
+											td Masters of Science in Computer Science
+											td (In Progress) Expected Fall 2017 or Spring 2018
+										tr
+											td Wright State University
+											td Bachelor of Science in Computer Science (Minor in Statistics)
+											td 2015
+							.bs-callout.bs-callout-danger
+								h4 Experience
+								ul.list-group
+									a.list-group-item.inactive-link(href='#')
+										h4.list-group-item-heading Graduate Research Assistant
+											small.pull-right
+												| Wright State University
+										h5 Web and Complex Systems Lab, Kno.e.sis
+											small.pull-right January 2016 - Present
+										div(style="font-weight: bold;") Worked on:
+										p.list-group-item-text
+											ul
+												li Density-based clustering (R/Rcpp)
+												li Nonparametric Geospatial Point of Interest detection (R/C++)
+												li Spatio-temporal Social Network Model of spatial data (R)
+										div(style="font-weight: bold;") Studied:
+										p.
+											Density-based clustering algorithms, Discrete and Continous-time Markov Chains, Poisson Process
+											Modeling, Brownian Motion, Adaptive Markov Chain Monte Carlo (MCMC) optimization techniques,
+											[Dynamic] Bayesian Network modeling, Bayesian inference, parameter estimation techniques (EM/MAP),
+											Random Graph Modeling (ERGMs, ER Model, etc.), Bayesian Linear and Logistic Regression, (simple) Artificial
+											Neural Networks, internal cluster validation measures, non-parametric density
+											estimation techniques, information theory
+									a.list-group-item.inactive-link(href='#')
+										h4.list-group-item-heading Civilian Research Associate
+											small.pull-right
+												| Oakland Ridge Institute for Science and Education
+										h5 Air Force Institute of Technology, WPAFB
+											small.pull-right June 2014 - Present
+										div(style="font-weight: bold;") Worked on:
+										p.list-group-item-text
+											ul
+												li Computer Vision Project involving a parallelized Iterative Closest Point (ICP) algorithm (C++/CUDA)
+												li Parallelization of existing atmospheric absorption routines (MATLAB MEX/OpenCL)
+												li Modeling web navigation patterns using hierarchical Markov Models (R/MATLAB)
+												li Web interface to viewing 3D models (WebGL/JavaScript [+ HTML/CSS])
+										div(style="font-weight: bold;") Studied:
+										p.
+											Branch-and-bound spatial indexing data structures (kd-trees, cover trees, locality sensitive hashing), the k-nearest neighbor problem, finite mixture modeling, general parameter estimation techniques (Expectation Maximization/ MAP estimates), Dirichlet Process Modeling
+										div(style="font-weight: bold;") Published:
+										ul
+											li J. Robinson, M. Piekenbrock, L. Burchett, et. al. Parallelized Iterative Closest Point for Autonomous Aerial Refueling. In International Symposium on Visual Computing (pp. 593-602). Springer International Publishing. (2016, December)
+											li L. Burchett, J. Robinson, M. Piekenbrock, et. al. “Automated aerial refueling: Parallelized 3d iterative closest point,” in IEEE NAECON, 2016, pp. 1–5 (2016)
+									a.list-group-item.inactive-link(href='#')
+										h4.list-group-item-heading Undergraduate Research Assistant
+											small.pull-right
+												| Wright State University
+										h5 Web and Complex Systems Lab, Kno.e.sis
+											small.pull-right August 2015 - December 2015
+										div(style="font-weight: bold;") Worked on:
+										p.list-group-item-text
+											ul
+												li Dynamic Geospatial analysis of wide-area motion imagery (R/Python/Java)
+										div(style="font-weight: bold;") Studied:
+										p.
+											Various random graph models such as Erdős–Rényi models and Exponential Random Graph Models (ERGMs),
+											entropy measures over networks, density-based clustering techniques (DBSCAN and OPTICS), non-parametric
+											models (ARMA + ARIMA models)
+										div(style="font-weight: bold;") Published:
+										ul
+											li Maurice, Matthew, Matthew Piekenbrock, and Derek Doran. "WAMINet: An Open Source Library for Dynamic Geospace Analysis Using WAMI." Multimedia (ISM), 2015 IEEE International Symposium on. IEEE, 2015.
+									a.list-group-item.inactive-link(href='#')
+										h4.list-group-item-heading Civilian Research Assistant
+											small.pull-right
+												| Southwestern Ohio Council For Higher Education
+										h5 Air Force Institute of Technology, WPAFB
+											small.pull-right December 2013 - June 2014
+										div(style="font-weight: bold;") Worked on:
+										p.list-group-item-text
+											ul
+												li Conversion of Nonlinear Optimization algorithm to C89 implementation (MATLAB/C)
+												li Search engine/web application for the Ozone Widget Framework (JavaScript/PHP)
+												li Implementation of unsplittable flow approximation algorithm (C++/Python)
+												li Conversion tool from Oracle’s Abstract Data Type to XMLType in Oracle’s Enterprise DBMS
+										div(style="font-weight: bold;") Studied:
+										p.
+											Gauss–Newton Method, approximation algorithms for unsplittable flow problems, graph theory (by extension),
+											relational (Oracle/PostGreSQL/SQLite) and document-based database interaction (MongoDB),
+											Natural language processing  techniques for SEO (PageRank), asynchronous vs. synchronous
+											client-server communication strategies with AJAX and NodeJS/PHP servers,
+											XML Schema and XML Technologies [Xlink, XPath, etc.]
+							.bs-callout.bs-callout-black
+								h4 Project Reports / Code Samples / Package Contributions
+								ul.list-group
+									li.list-group-item
+										a(href="https://github.com/mhahsler/dbscan") dbscan R Package
+										p.pull-right
+											a(href="https://cran.r-project.org/package=dbscan")
+												img(src="http://www.r-pkg.org/badges/version/dbscan" alt="CRAN version")
+											a(href='https://travis-ci.org/mhahsler/dbscan')
+												img(src='https://travis-ci.org/mhahsler/dbscan.svg?branch=master', alt='Travis-CI Build Status')
+											a(href="https://travis-ci.org/mhahsler/dbscan.svg?branch=master")
+												img(src="https://img.shields.io/badge/development-GitHub-orange.svg" alt="Development version on GitHub" title="Development version on GitHub")
+											a(href="https://cran.r-project.org/package=dbscan")
+												img(src="http://cranlogs.r-pkg.org/badges/dbscan" alt="CRAN RStudio mirror downloads")
+									li.list-group-item  Clustering Presentation
+										a.pull-right(href="resources/animations.zip") (GIF Animations)
+										a.pull-right(href="resources/DSSC_Clustering.pdf") (PDF)&nbsp;
+										div.small
+											| Presentation I gave to the
+											a(href="http://dssc.cs.wright.edu/") &nbsp;Data Science and Security Cluster Group
+											| &nbsp;and the
+											a(href="http://knoesis.org/") &nbsp;Kno.e.sis research group
+									li.list-group-item
+										| Machine Learning Project:
+										a(href="https://en.wikipedia.org/wiki/Bayesian_linear_regression")  Bayesian Linear Regression
+										a.pull-right(href="https://github.com/peekxc/BayesianML/blob/master/make-wright-choice/make-wright-choice.pdf") (PDF)
+									li.list-group-item  Artificial Neural Network Code (made from scratch)
+										a.pull-right(href="code_samples/nnet.R") (R Code)
+									li.list-group-item  Applied Stochastic Processes Exploratory Project
+										a.pull-right(href="resources/stochastic_presentation.pdf") (Presentation)
+										a.pull-right(href="resources/stochastic_project.pdf") (PDF)&nbsp;
+									li.list-group-item Exploratory Paper on Bayesian Network Training Basics
+										a.pull-right(href="resources/bayesian_net_intro.pdf") (PDF)
+						.bs-callout.bs-callout-info
+							h4 Courses Taken (relevent to field of interest [Data Science])
+							table.table.table-bordered
+								tbody
+									tr
+										td
+											div(style="font-weight: bold;") CEG 7900:
+											| Network Science
+										td
+											div(style="font-weight: bold;") CS 7830:
+											| Machine Learning
+										td
+											div(style="font-weight: bold;") CS 3250:
+											| Computational Tools and Techniques for Data Analysis
+									tr
+										td
+											div(style="font-weight: bold;") STT 7020:
+											| Applied Stochastic Processes
+										td
+											div(style="font-weight: bold;") CS 7230:
+											| Information Theory
+										td
+											div(style="font-weight: bold;") CS 4850:
+											| Foundations of Artificial Intelligence
+									tr
+										td
+											div(style="font-weight: bold;") STT 3600/3610:
+											| Applied Statistics I & II
+										td
+											div(style="font-weight: bold;") STT 4610:
+											| Theoretical Statistics I
+										td
+											div(style="font-weight: bold;") CS 7200:
+											| Algorithm Design and Analysis
+						.bs-callout.bs-callout-default
+							h4 Extra Curricular / Miscellaneous.
+							ul.list-group
+								li.list-group-item
+									| Developer and Maintainer of:
+									a(href="http://www.daymunc.org/").pull-right daymunc.org
+								li.list-group-item
+									| Staff Position: Chair of Simulated Security Council
+									a(href="http://www.daymunc.org/").small.pull-right Regional Model United Nations Annual Conference (2017)
+								li.list-group-item
+									| Staff Position: Chair of United Nation Childrens Fund
+									a(href="http://www.daymunc.org/").small.pull-right Regional Model United Nations Annual Conference (2016)
+								li.list-group-item
+									| Outstanding Position Paper Award
+									a(href="http://www.nmun.org/").small.pull-right National Model United Nations Annual Conference (2014)
+								li.list-group-item
+									| Honorable Mention Award
+									a(href="http://www.daymunc.org/").small.pull-right Regional Model United Nations Annual Conference (2014)
+								li.list-group-item
+									| Outstanding Delegation Award
+									a(href="http://www.nmun.org/").small.pull-right National Model United Nations Annual Conference (2013)
+								li.list-group-item
+									| Honorable Mention Award
+									a(href="http://www.nmun.org/").small.pull-right Regional Model United Nations Annual Conference (2013)
+	script(src="js/jquery-3.1.1.min.js")
+	script(src="js/bootstrap.min.js")
