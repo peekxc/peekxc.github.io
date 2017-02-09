@@ -22,7 +22,7 @@ html(lang='en')
 			.row
 				.col-xs-12.col-sm-12.col-md-offset-1.col-md-10.col-lg-offset-2.col-lg-8
 					.alert.alert-success(role="alert", style="font-weight: bold;").text-center
-						| Single Page Résumé available #[a(href="resources/Resume18.pdf") here]
+						| Single Page Résumé available #[a(href="resources/Resume19.pdf") here]
 			.row
 				.col-xs-12.col-sm-12.col-md-offset-1.col-md-10.col-lg-offset-2.col-lg-8
 					.panel.panel-default
@@ -117,18 +117,20 @@ html(lang='en')
 										a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
 											img.media-object(src="img/OSU.png", width="200", height="236")
 										.media-body
-											h3.media-heading Geospatial POI Discovery
+											h3.media-heading Automating Point of Interest Discovery in Geospatial Contexts
 											h5
 												| With the rapid development and widespread deployment of information in the form of "Big-Data",
-												| a common exercise in many contexts is the identication of movement, which has enabled the
+												| a common exercise in many contexts is the identification of movement, which has enabled the
 												| emergence of macroscopic patterns to manifest in very large data sets representing
-												| "significant" group behavior. Amongst these data sets, geospatial data in particular has become
-												| extremely popular in the past decade. Despite this popularity, current methods of discovering
+												| "significant" group behavior. Amongst these data sets, geospatial data in particular has entered
+												| into the mainstream of spatial analysis. Despite this popularity, current methods of discovering
 												| POIs for the purposes of knowledge discovery--for example, improving Location-Based Service (LBS) applications--vary
-												| significantly in the approach taken and in the inductive bias adopted by the model in question. In this research effort,
-												| I outline a framework for automating this process that is not only flexible in the type of inductive bias
-												| inferred by the model, but is based on recent state of the art advances in non-parametric density estimation
-												| techniques.
+												| significantly in the approach taken. Perhaps due to the unsupervised nature of the problem, although many of these
+												| state-of-the-art approaches yield useful results, they are largely heuristic in nature, resulting in the inductive
+												| bias inherently adopted by the model often unstated or simply unknown. In this research effort,
+												| I outline a framework for automated point of interest discovery that not only allows for rigorous
+												| adaptation to different types of inductive bias, but is based on recent state of the art advances in
+												| finite-sample, non parametric density estimation research.
 								.col-xs-12.col-sm-12.col-md-12.col-lg-12
 									div(style="font-weight: bold;") Related Publication:
 										span(style="color: green;") &nbsp; (In development)
@@ -141,17 +143,30 @@ html(lang='en')
 										a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
 											img.media-object(src="img/hdbscan_pts.gif", width="200", height="236")
 										.media-body
-											h3.media-heading Bridging the gap between Density-Based and Model-based Clustering
+											h3.media-heading Bringing High Performance Density-based Clustering to R
 											h6
-												| Density-based clustering techniques have become particularly popular in the past decade. This is
+												| Density-based clustering techniques have become extremely popular in the past decade. This is
 												| primarily due to the need for algorithms capable of identifying "natural groups" in data; that is,
 												| groups that cannot effectively be captured using a parametric, model-based approach. There are many
-												| situations where data are constrained to be observed in arbitrarily shapes due to environmental
-												| influences. This creates "natural groups" often exhibit non-convex, arbitrarily shaped forms that in the context
-												| of human supervision, can be easily and unanimously distinguished. Despite the effectiveness of
-												| density-based approaches, many are inherently heuristic by design, preventing the capability of
-												| formal statistical inference. A new density-based algorithm has been recently proposed that
-												| may be the first to offer a statistically sound, nonparametric approach to identifying these groups.
+												| situations where data are constrained to manifest in arbitrarily shapes due to environmental
+												| influences not accounted for in the model. These "natural groups" often exhibit non-convex
+												| shapes that, in the context of human supervision, can be easily and unanimously distinguished.
+												| As the era of "Big Data" continues to rise in popularity, having access to scalable, easy-to-use,
+												| and #[i correct] implementations of these density-based methods is paramount. In this research
+												| effort, I contributed fast, scalable, and correct density-based algorithms to a very popular open-source package in R
+												| using Rcpp, helping to bring make some of the most popular density-based clustering accessible
+												| to people with large, computationally difficult problems.
+											//h3.media-heading Bridging the gap between Density-Based and Model-based Clustering
+											//h6
+											//	| Density-based clustering techniques have become particularly popular in the past decade. This is
+											//	| primarily due to the need for algorithms capable of identifying "natural groups" in data; that is,
+											//	| groups that cannot effectively be captured using a parametric, model-based approach. There are many
+											//	| situations where data are constrained to be observed in arbitrarily shapes due to environmental
+											//	| influences. This creates "natural groups" often exhibit non-convex, arbitrarily shaped forms that in the context
+											//	| of human supervision, can be easily and unanimously distinguished. Despite the effectiveness of
+											//	| density-based approaches, many are inherently heuristic by design, preventing the capability of
+											//	| formal statistical inference. A new density-based algorithm has been recently proposed that
+											//	| may be the first to offer a statistically sound, nonparametric approach to identifying these groups.
 								.col-xs-12.col-sm-12.col-md-12.col-lg-12
 									div(style="font-weight: bold;") Related Publication:
 										span(style="color: green;") &nbsp; (Under Review)
@@ -166,20 +181,22 @@ html(lang='en')
 										.media-body
 											h3.media-heading Massive Parallel Iterative Closest Point
 											h6
-												| The k-Nearest Neighbor (kNN) problem is now a well-studied problem. In the simple k=1 version, a
-												| naive approach may be to simply calculate the distance from every point to every other point in a
-												| given data set, resulting in quadratic complexity. This approach is known as the "brute-force approach."
-												| Several
-												| advanced spatial indexing data structures utilizing various branch-and-bound (B&B) properties
+												| The k-Nearest Neighbor (kNN) problem is now a well-studied problem. In the simple k=1 version, given a or set of points
+												| sometimes called the query set),
+												| the goal is to find the point in a given set (sometimes called the reference set) that is closest. When the query and reference sets are disjoint,
+												| a naïve approach may be to simply calculate the pairwise distance from every point in the query set to every point in the reference set,
+												| resulting in quadratic runtime complexity. This approach is known as the "brute-force approach."
+												| Several advanced spatial indexing data structures utilizing various branch-and-bound (B&B) properties
 												| have been proposed as a means of reducing the algorithmic complexity of the kNN problem. While these
-												| structures are certainly useful, they were primarily developed for serial, CPU-based applications. It
-												| is well-known that direct conversion of these spatial indexing structures to their parallel equivalents
-												| is often in fact slower than their simple brute-force implementations due to the suboptimal memory access patterns
+												| structures are certainly useful, many were primarily developed for serial applications. It
+												| is well known that direct conversion of these spatial indexing structures to their parallel equivalents
+												| can often result in #[i slower] runtime performance than the naïve brute-force approaches, generally
+												| due to the suboptimal memory access patterns
 												| and conditional computations these spatial indexing structures often produce. In a recent application-motivated effort,
-												| we propose a new method for exposing the intrinsic parallelism of the kNN problem using augmented indexing data structures,
-												| and we demonstrate the superiority of our method compared to the traditional B&B and brute-force implementations using
-												| the CUDA toolkit. We also show the usefulness of our method in the context of Automated Aerial Refueling, through an
-												| application of the well known Iterative Closest Point algorithm.
+												| we propose a novel two-step method for exposing the intrinsic parallelism of the kNN problem. We demonstrate the
+												| superiority of our method compared to the traditional B&B and brute-force implementations using
+												| a variety of different data sets. We also show the usefulness of our method in the context of
+												| Automated Aerial Refueling by improving the runtime of the well known Iterative Closest Point algorithm.
 								.col-xs-12.col-sm-12.col-md-12.col-lg-12
 									div(style="font-weight: bold;") Related Publication(s):
 										span(style="color: green;") &nbsp; (Published)
@@ -344,6 +361,7 @@ html(lang='en')
 											img(src="http://cranlogs.r-pkg.org/badges/dbscan" alt="CRAN RStudio mirror downloads")
 								li.list-group-item.clearfix  Clustering Presentation
 									a.pull-right(href="resources/animations.zip") (GIF Animations)
+									a.pull-right(href='#videoModal', data-toggle='modal')#dssc_link (Video)&nbsp;
 									a.pull-right(href="resources/DSSC_Clustering.pdf") (PDF)&nbsp;
 									div.small
 										| Presentation I gave to the
@@ -353,7 +371,7 @@ html(lang='en')
 								li.list-group-item.clearfix
 									| Machine Learning Project:
 									a(href="https://en.wikipedia.org/wiki/Bayesian_linear_regression")  Bayesian Linear Regression
-									a.pull-right(href="https://github.com/peekxc/BayesianML/blob/master/make-wright-choice/make-wright-choice.pdf") (PDF)
+									a.pull-right(href="resources/make-wright-choice.pdf") (PDF)
 								li.list-group-item.clearfix  Artificial Neural Network Code (made from scratch)
 									a.pull-right(href="code_samples/nnet.R") (R Code)
 								li.list-group-item.clearfix Exploratory Research on Markov Chain Monte Carlo Basics
@@ -386,8 +404,6 @@ html(lang='en')
 							li.list-group-item.clearfix
 								| Honorable Mention Award
 								a(href="http://www.nmun.org/").small.pull-right Regional Model United Nations Annual Conference (2013)
-<<<<<<< HEAD
-=======
 	.bs-example
 		// Modal HTML
 		#videoModal.modal.fade
@@ -399,6 +415,5 @@ html(lang='en')
 					.modal-body
 						video#dssc_video(width='560', height='315', controls)
 							source(src='http://distance.cecs.wright.edu/assets/protected/MTA4MT/', type="video/mp4")
->>>>>>> 9df0814... Jace found an error in my math
 	script(src="js/jquery-3.1.1.min.js")
 	script(src="js/bootstrap.min.js")
