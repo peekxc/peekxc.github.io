@@ -1,0 +1,26 @@
+{
+  "name": "peekxc.github.io",
+  "version": "1.0.0",
+  "description": "Website resources for mattpiekenbrock.com",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-pug": "^3.2.0",
+    "gulp-stylus": "^2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peekxc/peekxc.github.io.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peekxc/peekxc.github.io/issues"
+  },
+  "homepage": "https://github.com/peekxc/peekxc.github.io#readme"
+}
