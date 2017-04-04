@@ -18,7 +18,7 @@ html(lang='en')
 					small
 						i.fa.fa-clock-o
 						|  Last Updated on:
-						time &nbsp; Monday, February 06, 2017
+						time(datetime="2017-04-04") &nbsp; April 04, 2017
 			.row
 				.col-xs-12.col-sm-12.col-md-offset-1.col-md-10.col-lg-offset-2.col-lg-8
 					.alert.alert-success(role="alert", style="font-weight: bold;").text-center
@@ -43,22 +43,48 @@ html(lang='en')
 												a.btn.btn-social.btn-block.btn-github(href='https://github.com/peekxc')
 													i.fa.fa-github
 									.col-xs-12.col-sm-8
+										style(type="text/css")
+											span.codedirection { unicode-bidi:bidi-override; direction: rtl; }
 										ul.list-group
 											li.list-group-item Matt Piekenbrock
 											li.list-group-item Title: Student Researcher
 											li.list-group-item Occupation: Graduate Student
 											li.list-group-item
 												i.fa.fa-phone
-												|  937-269-8582
+												| &nbsp;
+												script(type='text/javascript').
+													var a = new Array('&#40;','&#57;','&#51;','&#55;','&#41;','&#45;','&#50;','&#54;','&#57;','&#45;','&#56;','&#53;','&#56;','&#50;');
+													document.write("<span class='codedirection'>" + a.join("") + "</span>");
 											li.list-group-item
 												i.fa.fa-envelope
-												| &nbsp; matt.piekenbrock@gmail.com
+												| &nbsp;
+												span.codedirection
+													script(type='text/javascript').
+														var a = new Array('&#109;','&#97;','&#116;','&#116;','&#46;','&#112;','&#105;','&#101;','&#107;','&#101;','&#110;','&#98;','&#114;','&#111;','&#99;','&#107;','&#32;','&#40;','&#97;','&#116;','&#41;');
+														var b = new Array('&#32;','&#103;','&#109;','&#97;','&#105;','&#108;','&#46;','&#99;','&#111;','&#109;')
+														document.write("<span class='codedirection'>"+a.join("")+"</span>");
+														document.write("<span class='displaynone'></span>");
+														document.write("<span class='codedirection'>" + b.join("") + "</span>");
 												br
 												i.fa.fa-envelope
-												| &nbsp; piekenbrock.5@wright.edu
+												| &nbsp;
+												span.codedirection
+													script(type='text/javascript').
+														var a = new Array('&#112;','&#105;','&#101;','&#107;','&#101;','&#110;','&#98;','&#114;','&#111;','&#99;','&#107;','&#46;','&#53;','&#32;','&#40;','&#97;','&#116;','&#41;');
+														var b = new Array('&#32;','&#119;','&#114;','&#105;','&#103;','&#104;','&#116;','&#46;','&#101;','&#100;','&#117;');
+														document.write("<span class='codedirection'>" + a.join("") + "</span>");
+														document.write("<span class='displaynone'></span>");
+														document.write("<span class='codedirection'>" + b.join("") + "</span>");
 												br
 												i.fa.fa-envelope
-												| &nbsp; matt@knoesis.org
+												| &nbsp;
+												span.codedirection
+													script(type='text/javascript').
+														var a = new Array('&#109;', '&#97;', '&#116;', '&#116;', '&#32;', '&#40;', '&#97;', '&#116;', '&#41;');
+														var b = new Array('&#32;', '&#107;', '&#110;', '&#111;', '&#101;', '&#115;', '&#105;', '&#115;', '&#46;', '&#111;', '&#114;', '&#103;');
+														document.write("<span class='codedirection'>" + a.join("") + "</span>");
+														document.write("<span class='displaynone'></span>");
+														document.write("<span class='codedirection'>" + b.join("") + "</span>");
 						.bs-callout.bs-callout-success
 							h4 Summary
 							hr
@@ -70,10 +96,10 @@ html(lang='en')
 								Clustering, Network Science, Model-based Machine Learning, Bayesian Statistics, Computer Vision,
 								and High Performance Parallel Computing.
 							p.
-								I've worked part time doing research at the #[a(href="https://www.afit.edu/") Air Force Institute of Technology]
-								in the Low Orbitals Radar and Electromagnetism research group since 2013 doing either 1) research for
+								I previously worked part time doing research at the #[a(href="https://www.afit.edu/") Air Force Institute of Technology]
+								in the Low Orbitals Radar and Electromagnetism research group (starting 2013) doing either 1) research for
 								an independent project the group received under supervision of #[a(href="https://www.afit.edu/BIOS/bio.cfm?facID=224") Dr. Andrew Terzuoli]
-								or 2) supporting the graduate students' research efforts in the group.
+								or 2) supporting the graduate students' research efforts in the group. I worked with the group until Spring 2017.
 							p.
 								In 2015, I started working for the #[a(href="http://knoesis.org/people/derek/wacs/") Web and Complex Systems Lab]
 								as an undergraduate research assistant shortly after being introduced to Data Science in an elective class I took,
@@ -81,7 +107,11 @@ html(lang='en')
 								I received a graduate research assistant position in the same lab shortly after, beginning my graduate degree working towards
 								a M.S. in Computer Science.
 							p.
-								The specific research I've done, along with several of the projects and presentations I've given, are listed down below.
+								I'm interested in the broad field of Data Science and Statistical Learning, and I've spent time learning about
+								many different aspects and techniques of both fields. In short, I've spent anywhere from a few weeks to multiple months studying:
+								Bayesian Networks, Neural Networks, Nonparametric density estimation, Clustering techniques, Social Network Models, Information Theory,
+								Bayesian inference techniques, and Markov Chain Monte Carlo (MCMC) methods. The specific research I've done, along with several of the
+								(either class or personal) projects and presentations I've given, are listed down further below.
 							p.
 								The majority of the programming I've done in my life has been with #[a(href="https://en.wikipedia.org/wiki/C%2B%2B") C++]
 								(primarily C++11), although in recent years I've been using the
@@ -99,7 +129,6 @@ html(lang='en')
 								#[a(href="http://php.net/") PHP], and
 								#[a(href="https://www.perl.org/") Perl], but my general interest in scientific computing keeps me busy within the
 								realm of R and C++, and occasionally Python.
-
 						.bs-callout.bs-callout-primary
 							h4 Focused Research Areas
 							hr
@@ -115,7 +144,7 @@ html(lang='en')
 								.col-xs-12.col-md-12
 									.media
 										a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
-											img.media-object(src="img/OSU.png", width="200", height="236")
+											img.media-object(src="img/OSU.png", width="200", height="236", alt="OSU Point of Interest")
 										.media-body
 											h3.media-heading Automating Point of Interest Discovery in Geospatial Contexts
 											h5
@@ -142,7 +171,7 @@ html(lang='en')
 								.col-xs-12.col-md-12
 									.media
 										a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
-											img.media-object(src="img/hdbscan_pts.gif", width="200", height="236")
+											img.media-object(src="img/hdbscan_pts.gif", width="200", height="236", alt="hdbscan animation")
 										.media-body
 											h3.media-heading Bringing High Performance Density-based Clustering to R
 											h6
@@ -178,7 +207,7 @@ html(lang='en')
 								.col-xs-12.col-md-12
 									.media
 										a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
-											img.media-object(src="img/icp.png", width="200", height="236")
+											img.media-object(src="img/icp.png", width="200", height="236", alt="Iterative Closest Point example")
 										.media-body
 											h3.media-heading Massive Parallel Iterative Closest Point
 											h6
@@ -267,7 +296,7 @@ html(lang='en')
 							h4 Experience
 							hr
 							ul.list-group
-								a.list-group-item.inactive-link(href='#')
+								.list-group-item
 									h4.list-group-item-heading Graduate Research Assistant
 										small.pull-right
 											| Wright State University
@@ -278,7 +307,7 @@ html(lang='en')
 										ul
 											li Density-based clustering (R/Rcpp)
 											li Nonparametric Geospatial Point of Interest detection (R/C++)
-											li Spatio-temporal Social Network Model of spatial data (R)
+											li Spatio-temporal Social Network Model for spatial data (R)
 									div(style="font-weight: bold;") Studied:
 									p.
 										Density-based clustering algorithms, Discrete and Continous-time Markov Chains, Poisson Process
@@ -287,7 +316,7 @@ html(lang='en')
 										Random Graph Modeling (ERGMs, ER Model, etc.), Bayesian Linear and Logistic Regression, (simple) Artificial
 										Neural Networks, internal cluster validation measures, non-parametric density
 										estimation techniques, information theory
-								a.list-group-item.inactive-link(href='#')
+								.list-group-item
 									h4.list-group-item-heading Civilian Research Associate
 										small.pull-right
 											| Oakland Ridge Institute for Science and Education
@@ -307,7 +336,7 @@ html(lang='en')
 									ul
 										li J. Robinson, M. Piekenbrock, L. Burchett, et. al. Parallelized Iterative Closest Point for Autonomous Aerial Refueling. In International Symposium on Visual Computing (pp. 593-602). Springer International Publishing. (2016, December)
 										li L. Burchett, J. Robinson, M. Piekenbrock, et. al. “Automated aerial refueling: Parallelized 3d iterative closest point,” in IEEE NAECON, 2016, pp. 1–5 (2016)
-								a.list-group-item.inactive-link(href='#')
+								.list-group-item
 									h4.list-group-item-heading Undergraduate Research Assistant
 										small.pull-right
 											| Wright State University
@@ -325,7 +354,7 @@ html(lang='en')
 									div(style="font-weight: bold;") Published:
 									ul
 										li Maurice, Matthew, Matthew Piekenbrock, and Derek Doran. "WAMINet: An Open Source Library for Dynamic Geospace Analysis Using WAMI." Multimedia (ISM), 2015 IEEE International Symposium on. IEEE, 2015.
-								a.list-group-item.inactive-link(href='#')
+								.list-group-item
 									h4.list-group-item-heading Civilian Research Assistant
 										small.pull-right
 											| Southwestern Ohio Council For Higher Education
@@ -373,7 +402,7 @@ html(lang='en')
 									| Machine Learning Project:
 									a(href="https://en.wikipedia.org/wiki/Bayesian_linear_regression")  Bayesian Linear Regression
 									a.pull-right(href="resources/make-wright-choice.pdf") (PDF)
-								li.list-group-item.clearfix  Artificial Neural Network Code (made from scratch)
+								li.list-group-item.clearfix Simple Artificial Neural Network R Code (made from scratch)
 									a.pull-right(href="code_samples/nnet.R") (R Code)
 								li.list-group-item.clearfix Exploratory Research on Markov Chain Monte Carlo Basics
 									a.pull-right(href="resources/stochastic_presentation.pdf") (Presentation)
