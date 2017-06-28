@@ -49,13 +49,14 @@ html(lang='en')
 											li.list-group-item Matt Piekenbrock
 											li.list-group-item Title: Student Researcher
 											li.list-group-item Occupation: Graduate Student
+											//li.list-group-item
+											//	i.fa.fa-phone
+											//	| &nbsp;
+											//	script(type='text/javascript').
+											//		var a = new Array('&#40;','&#57;','&#51;','&#55;','&#41;','&#45;','&#50;','&#54;','&#57;','&#45;','&#56;','&#53;','&#56;','&#50;');
+											//		document.write("<span class='codedirection'>" + a.join("") + "</span>");
 											li.list-group-item
-												i.fa.fa-phone
-												| &nbsp;
-												script(type='text/javascript').
-													var a = new Array('&#40;','&#57;','&#51;','&#55;','&#41;','&#45;','&#50;','&#54;','&#57;','&#45;','&#56;','&#53;','&#56;','&#50;');
-													document.write("<span class='codedirection'>" + a.join("") + "</span>");
-											li.list-group-item
+												p(style="font-weight:bold") Contact
 												i.fa.fa-envelope
 												| &nbsp;
 												span.codedirection
@@ -402,7 +403,7 @@ html(lang='en')
 										a(href="http://knoesis.org/") &nbsp;Kno.e.sis research group
 								li.list-group-item.clearfix
 									| Machine Learning Project:
-									a(href="https://en.wikipedia.org/wiki/Bayesian_linear_regression")  Bayesian Linear Regression
+									a(href="https://en.wikipedia.org/wiki/Bayesian_linear_regression") Bayesian Linear Regression
 									a.pull-right(href="resources/make-wright-choice.pdf") (PDF)
 								li.list-group-item.clearfix Simple Artificial Neural Network R Code (made from scratch)
 									a.pull-right(href="code_samples/nnet.R") (R Code)
