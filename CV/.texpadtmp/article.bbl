@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{hahslerdbscan}
+{\textit{(Under Review)}}~Michael Hahsler, {\textbf{Piekenbrock, Matt}}, and
+  Derek Doran.
+\newblock dbscan: Fast density-based clustering with \uppercase{R}.
+\newblock {\em Journal of Statistical Software}.
+
+\bibitem{piekenbrock2016automated}
+{\textbf{Piekenbrock, Matt}}, Jace Robinson, Lee Burchett, Scott Nykl, Brian
+  Woolley, and Andrew Terzuoli.
+\newblock Automated aerial refueling: Parallelized 3d iterative closest point:
+  Subject area: Guidance and control.
+\newblock In {\em Aerospace and Electronics Conference (NAECON) and Ohio
+  Innovation Summit (OIS), 2016 IEEE National}, pages 188--192. IEEE, 2016.
+
+\bibitem{robinson2016parallelized}
+Jace Robinson, {\textbf{Piekenbrock, Matt}}, Lee Burchett, Scott Nykl, Brian
+  Woolley, and Andrew Terzuoli.
+\newblock Parallelized iterative closest point for autonomous aerial refueling.
+\newblock In {\em International Symposium on Visual Computing}, pages 593--602.
+  Springer International Publishing, 2016.
+
+\bibitem{mapperext}
+{\textit{(In Development)}}:~{{\textbf{Piekenbrock, Matt}} and Doran, Derek}.
+\newblock Cover parameterization and simplicial complex generation for mapper.
+\newblock {\em SIAM Journal on Applied Algebra and Geometry}.
+
+\bibitem{poi_paper}
+{\textit{(In Development)}}:~{{\textbf{Piekenbrock, Matt}} and Doran, Derek}.
+\newblock Intrinsic point of interest discovery from trajectory data.
+\newblock {\em TBD}.
+
+\end{thebibliography}

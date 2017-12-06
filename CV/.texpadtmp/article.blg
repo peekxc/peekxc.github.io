@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: /Users/mpiekenbrock/peekxc.github.io/CV/.texpadtmp/article.aux
+The style file: plain.bst
+Database file #1: ../my_bib.bib.bib
+I was expecting a `,' or a `}'---line 24 of file ../my_bib.bib.bib
+ :   
+ :   year={2018}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 31 of file ../my_bib.bib.bib
+ :   
+ :   year={2018}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 40 of file ../my_bib.bib.bib
+ :   
+ :   year={2016}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty year in hahslerdbscan
+Warning--empty year in mapperext
+Warning--empty year in poi_paper
+You've used 5 entries,
+            2118 wiz_defined-function locations,
+            521 strings with 5219 characters,
+and the built_in function-call counts, 1880 in all, are:
+= -- 182
+> -- 98
+< -- 2
++ -- 39
+- -- 34
+* -- 125
+:= -- 311
+add.period$ -- 17
+call.type$ -- 5
+change.case$ -- 32
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 76
+empty$ -- 134
+format.name$ -- 34
+if$ -- 395
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 5
+newline$ -- 28
+num.names$ -- 10
+pop$ -- 44
+preamble$ -- 1
+purify$ -- 27
+quote$ -- 0
+skip$ -- 54
+stack$ -- 0
+substring$ -- 89
+swap$ -- 25
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 20
+warning$ -- 3
+while$ -- 16
+width$ -- 6
+write$ -- 53
+(There were 3 error messages)

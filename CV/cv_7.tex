@@ -1,0 +1,272 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.3 (29/10/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvstyle{banking} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{black} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[scale=0.75]{geometry} % Reduce document margins
+\usepackage[inline]{enumitem} % Listing courses
+\usepackage{amsmath}
+\usepackage{tabularx} % in the preamble
+\usepackage{footmisc}
+
+\usepackage{multibib}
+
+\newcites{article}{Journals and Full Research Papers}
+\newcites{short}{Abstracts\text{,} Workshop Papers\text{,} and Posters}
+%\newcites{papers}{Journals and Full Papers}
+%\newcites{shorts}{Abstracts and Workshop Papers}
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Matthew} % Your first name
+\familyname{Piekenbrock} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+\title{\\ Curriculum Vitae}
+%\address{123 Broadway}{City, State 12345}
+\mobile{(937) 269 8582}
+%\phone{(000) 111 1112}
+%\fax{(000) 111 1113}
+\email{matt.piekenbrock@gmail.com}
+\homepage{wright.edu/~piekenbrock.5}{wright.edu/$\sim$piekenbrock.5} % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
+% \extrainfo{additional information}
+% \photo[70pt][0.4pt]{pictures/picture} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+% \quote{"My basic interest in clustering is not to produce algorithms, but rather because I think that classification is necessary as a foundation to probability." - John Hartigan}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	COVER LETTER
+%----------------------------------------------------------------------------------------
+
+% To remove the cover letter, comment out this entire block
+
+%\clearpage
+%
+%\recipient{HR Department}{Corporation\\123 Pleasant Lane\\12345 City, State} % Letter recipient
+%\date{\today} % Letter date
+%\opening{Dear Sir or Madam,} % Opening greeting
+%\closing{Sincerely yours,} % Closing phrase
+%\enclosure[Attached]{curriculum vit\ae{}} % List of enclosed documents
+%
+%\makelettertitle % Print letter title
+%
+%\lipsum[1-2] % Dummy text
+%\lipsum[4] % Dummy text
+%
+%\makeletterclosing % Print letter signature
+%
+%\newpage
+
+%----------------------------------------------------------------------------------------
+%	CURRICULUM VITAE
+%----------------------------------------------------------------------------------------
+
+\makecvtitle % Print the CV title
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education  \hfill \normalsize GPA: 3.8 Overall, 4.0 In-Major}
+\cventry{Spring, 2018}{Masters of Science in Computer Science (In Progress)}{Wright State University}{Dayton, OH}{}{} 
+\cventry{Fall, 2015}{Bachelor of Science in Computer Science}{Wright State University}{Dayton, OH}{\textit{Minor in Statistics}}{}
+
+\subsection{Relevant Courses Taken}
+\begin{center}
+\begin{tabularx}{\linewidth}{ X X X }
+ $\bullet$ Network Science &  $\bullet$ Machine Learning & $\bullet$ Information Theory  \\ 
+ $\bullet$ Applied Stochastic Processes & $\bullet$ Applied Statistics I \& II  & $\bullet$ Algorithm Design and Analysis  \\
+ $\bullet$ Computational Tools and \; \mbox{Techniques} for Data Analysis &  $\bullet$ Theoretical Statistics & $\bullet$ Foundations of Artificial \; \mbox{Intelligence} 
+\end{tabularx}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%	SUBSECTION: MASTERS THESIS 
+%----------------------------------------------------------------------------------------
+
+%\section{Masters Thesis \hfill }
+%
+%\cvitem{Title}{\emph{Money Is The Root Of All Evil -- Or Is It?}}
+%\cvitem{Supervisors}{Professor James Smith \& Associate Professor Jane Smith}
+%\cvitem{Description}{This thesis explored the idea that money has been the cause of untold anguish and suffering in the world. I found that it has, in fact, not.}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+
+\cventry{Web and Complex Systems Lab}
+			 {Wright State University}
+			 {Graduate Research Assistant}
+			 {2015 - 2017}{}
+{  \vspace{3pt}
+I'm currently pursuing a M.S. in Computer Science as a Graduate Research Assistant. My research interests are in the development of novel approaches to understand data that lie at the intersection of statistical learning theory and practical machine learning techniques. The topic areas I've focused on include: 
+	\begin{itemize}
+		\item Density-based clustering techniques and theory 
+		\item Dynamic or Temporal Network Models
+		\item Trajectory mining and modeling
+	\end{itemize}
+	My research is supported by the Center for Surveillance Research, a National Science Foundation I/UCRC.
+}
+
+%------------------------------------------------
+
+\cventry{R Project for Statistical Computing / Google}
+			 {Google Summer of Code 2017}
+			 {Student Participant}
+			 {Summer 2017}{}{\vspace{3pt} % Begin summary 
+			 I submitted a successful funding proposal under the Google Summer of Code (GSOC) Initiative to the R Project for Statistical Computing to explore, develop, and unify recent developments related the theory of density-based clustering. For more details, see the project page\footnotemark. 
+			 } 
+\footnotetext{\url{https://summerofcode.withgoogle.com/archive/2017/projects/5919718795902976/}}
+%------------------------------------------------
+
+\cventry{Oakland Ridge Institute for Science and Education}
+			 {Air Force Research Laboratory}
+			 {Student Research Associate}
+			 {2017}{}{\vspace{3pt}
+			 In a collaborative effort to foster new research frontiers in the area of Topology Data Analysis (TDA) between WSU and AFRL, I worked in a research group studying how to combine techniques from  the field of topology and machine learning for the purpose of both supervised and unsupervised analysis. Primarily, I researched theoretical extensions to the \textit{Mapper} framework, an often used modality for performing TDA. My work lead to the development of a closed-form solution to compute all distinct simplicial complexes, under certain conditions, usable within the \textit{Mapper} framework. A journal article demonstrating the utility of this solution is currently in development~\cite{mapperext}. 
+}
+
+%------------------------------------------------
+\cventry{Oakland Ridge Institute for Science and Education}
+			 {Air Force Institute of Technology}
+			 {Undergraduate Research Assistant}
+			 {2014 - 2016}{}{\vspace{3pt}
+I worked closely on the development of a new Iterative Closest Point algorithm amenable to massive parallelization, implemented in C++/CUDA, for the purposes of enabling real-time tracking of aircraft in the context of Autonomous Aerial Refueling. The effort lead to a few publications, see either of~\cite{piekenbrock2016automated, robinson2016parallelized}.
+ Although my efforts in other projects were either not published or publicly available, I also worked on:
+\begin{itemize}
+	\item Parallelizing existing atmospheric absorption routines with OpenCL through MATLABs MEX interface
+	\item A model for predicting web navigation patterns using Hierarchical Markov Models
+	\item A prototypical UI to to enhance searching and viewing of 3D models using ThreeJS
+\end{itemize}
+}
+
+%------------------------------------------------
+\cventry{Southwestern Ohio Council for Higher Education}
+			 {Air Force Institute of Technology}
+			 {Undergraduate Research Assistant}
+			 {2013 - 2014}{}{\vspace{3pt}
+As my first part-time position in academia, I worked as an undergraduate research assistant on a diverse set of projects, often assisting graduate or doctoral students working in the research area with primarily programmatic or educational tasks. This involved: 
+\begin{itemize}
+	\item Codifying a novel nonlinear optimization algorithm in ANSI-C
+	\item Implementing an unsplittable flow approximation algorithm in C++ and Python
+	\item Building prototypical UI to to enhance searching and viewing of 3D models using ThreeJS
+	\item Creating a conversion tool that allowed for converting back and forth between Oracle's Abstract Data Type specification to its equivalent representation as an XMLType 
+\end{itemize}	
+}
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS SECTION
+%----------------------------------------------------------------------------------------
+\section{Publications}
+\nocitearticle{robinson2016parallelized, piekenbrock2016automated, hahslerdbscan, mapperext, poi_paper}
+\nociteshort{sunbelt, maurice2015waminet}
+
+\bibliographystylearticle{plain}
+\bibliographyarticle{my_bib.bib}
+
+\bibliographystyleshort{plain}
+\bibliographyshort{my_bib.bib}
+
+
+%----------------------------------------------------------------------------------------
+%	AWARDS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Extra Curricular}
+
+%\cvitem{2017}{Google Summer of Code - Funding }
+\cvitem{Regional Model United Nations Annual Conference}{\hfill Served in Volunteer Staff  (2016 - 2017)}
+\cvitem{Outstanding Position Paper Award}{\hfill National Model United Nations Annual Conference (2014)}
+\cvitem{Outstanding Delegation Award}{\hfill National Model United Nations Annual Conference (2013)}
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Computer skills}
+%
+%\cvitem{Basic}{\textsc{java}, Adobe Illustrator}
+%\cvitem{Intermediate}{\textsc{python}, \textsc{html}, \LaTeX, OpenOffice, Linux, Microsoft Windows}
+%\cvitem{Advanced}{Computer Hardware and Support}
+
+%----------------------------------------------------------------------------------------
+%	COMMUNICATION SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Communication Skills}
+%
+%\cvitem{2010}{Oral Presentation at the California Business Conference}
+%\cvitem{2009}{Poster at the Annual Business Conference in Oregon}
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Languages}
+%
+%\cvitemwithcomment{English}{Mothertongue}{}
+%\cvitemwithcomment{Spanish}{Intermediate}{Conversationally fluent}
+%\cvitemwithcomment{Dutch}{Basic}{Basic words and phrases only}
+
+%----------------------------------------------------------------------------------------
+%	Awards SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Interests}
+%
+%\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+%
+%\cvlistdoubleitem{Piano}{Chess}
+%\cvlistdoubleitem{Cooking}{Dancing}
+%\cvlistitem{Running}
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Interests}
+%
+%\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+%
+%\cvlistdoubleitem{Piano}{Chess}
+%\cvlistdoubleitem{Cooking}{Dancing}
+%\cvlistitem{Running}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
