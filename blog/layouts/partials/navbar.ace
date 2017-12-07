@@ -1,0 +1,14 @@
+nav.nav.nav-tabs role=navigation
+  a#nav-home-tab.nav-item.nav-link.active data-toggle=tab href=#nav-home role=tab aria-controls=nav-home aria-selected=true
+    | Home
+  a#nav-about-tab.nav-item.nav-link data-toggle=tab href=#nav-about role=tab aria-controls=nav-about aria-selected=false
+    | About
+  a#nav-articles-tab.nav-item.nav-link data-toggle=tab href=#nav-articles role=tab aria-controls=nav-articles aria-selected=false
+    | Recent Posts
+.tab-content
+  #nav-home.tab-pane.fade.show.active role=tabpanel aria-labelledby=nav-home-tab
+    | I'm at home
+  #nav-about.tab-pane.fade role=tabpanel aria-labelledby=nav-about-tab
+    | I'm at about
+  #nav-articles.tab-pane.fade role=tabpanel aria-labelledby=nav-articles-tab
+    | I'm at recent posts

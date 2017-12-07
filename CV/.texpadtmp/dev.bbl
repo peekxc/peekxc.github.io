@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{mapperext}
+{\textit{(In Development)}}:~{\textbf{M. Piekenbrock}} and Derek Doran.
+\newblock Cover parameterization and simplicial complex generation for mapper.
+\newblock {\em SIAM Journal on Applied Algebra and Geometry}, 2018.
+
+\bibitem{poi_paper}
+{\textit{(Preprint Available)}}:~{\textbf{M. Piekenbrock}} and Derek Doran.
+\newblock Intrinsic point of interest discovery from trajectory data.
+\newblock {\em TBD}, 2018.
+
+\end{thebibliography}

@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: /Users/mpiekenbrock/peekxc.github.io/CV/.texpadtmp/proceeding.aux
+The style file: ../plainyr-rev.bst
+Database file #1: ../my_bib.bib.bib
+I was expecting a `,' or a `}'---line 69 of file ../my_bib.bib.bib
+ :   
+ :   year={2016}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You've used 4 entries,
+            2525 wiz_defined-function locations,
+            603 strings with 5541 characters,
+and the built_in function-call counts, 3039 in all, are:
+= -- 402
+> -- 97
+< -- 4
++ -- 74
+- -- 126
+* -- 153
+:= -- 459
+add.period$ -- 16
+call.type$ -- 4
+change.case$ -- 25
+chr.to.int$ -- 16
+cite$ -- 8
+duplicate$ -- 148
+empty$ -- 169
+format.name$ -- 34
+if$ -- 670
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 4
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 45
+preamble$ -- 1
+purify$ -- 21
+quote$ -- 0
+skip$ -- 117
+stack$ -- 0
+substring$ -- 260
+swap$ -- 44
+text.length$ -- 8
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 40
+width$ -- 5
+write$ -- 50
+(There was 1 error message)

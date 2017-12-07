@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{{ $baseUrl := .Site.BaseURL }}
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ .Title }}</title>
+	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+	{{ .Hugo.Generator }}
+	{{ if .Site.Params.opengraph }}{{ template "_internal/opengraph.html" . }}{{ end }}
+
+	<!-- Font includes -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ "css/font-awesome.min.css" | relURL }}" type="text/css" media="all" />
+	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+	{{ if .RSSLink }}<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} Feed" href="{{ .RSSLink }}">{{ end }}
+	{{ partial "head_highlightjs" . }}
+
+	<!-- CSS includes  -->
+	<link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ "css/bootie-docs.css" | relURL }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}" type="text/css" media="all" />
+
+	<!-- Source includes -->
+	<script type="text/javascript" src="{{ "js/jquery.min.js" | relURL }}"></script>
+	<script type="text/javascript" src="{{ "js/bootstrap.min.js" | relURL }}"></script>
+	<script type="text/javascript" src="{{ "js/elasticlunr.min.js" | relURL }}"></script>
+	<script type="text/javascript" src="{{ "js/scripts.js" | relURL }}"></script>
+	<script type="text/javascript" src="{{ "js/custom.js" | relURL }}"></script>	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}">
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			{{ partial "banner.html" .}}
+			{{ partial "menu2.html" . }}
+		</header>
+		<div class="wrapper clearfix">

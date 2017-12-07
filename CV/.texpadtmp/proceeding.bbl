@@ -1,0 +1,31 @@
+\begin{thebibliography}{1}
+
+\bibitem{robinson2017seasonality}
+Jace Robinson and Derek Doran.
+\newblock Seasonality in dynamic stochastic block models.
+\newblock In {\em Proceedings of the International Conference on Web
+  Intelligence}, pages 976--979. ACM, 2017.
+
+\bibitem{piekenbrock2016automated}
+{\textbf{M. Piekenbrock}}, Jace Robinson, Lee Burchett, Scott Nykl, Brian
+  Woolley, and Andrew Terzuoli.
+\newblock Automated aerial refueling: Parallelized 3d iterative closest point:
+  Subject area: Guidance and control.
+\newblock In {\em Aerospace and Electronics Conference (NAECON) and Ohio
+  Innovation Summit (OIS), 2016 IEEE National}, pages 188--192. IEEE, 2016.
+
+\bibitem{robinson2016parallelized}
+Jace Robinson, {\textbf{M. Piekenbrock}}, Lee Burchett, Scott Nykl, Brian
+  Woolley, and Andrew Terzuoli.
+\newblock Parallelized iterative closest point for autonomous aerial refueling.
+\newblock In {\em International Symposium on Visual Computing}, pages 593--602.
+  Springer International Publishing, 2016.
+
+\bibitem{maurice2015waminet}
+Matthew Maurice, {\textbf{M. Piekenbrock}}, and Derek Doran.
+\newblock Waminet: An open source library for dynamic geospace analysis using
+  wami.
+\newblock In {\em Multimedia (ISM), 2015 IEEE International Symposium on},
+  pages 445--448. IEEE, 2015.
+
+\end{thebibliography}

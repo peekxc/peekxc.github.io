@@ -1,0 +1,50 @@
+= doctype html
+html lang="en-us"
+  head
+    {{ $site := .Site }}
+    title {{ .Site.Title }}
+    link rel="stylesheet" href={{ "css/bootstrap.min.css" | relURL }}
+    // link rel="stylesheet" href="css/overrides.css"
+  body
+    .container-fluid.px-5.pt-1
+      header
+        div role="banner"
+          a href="{{ "" | relLangURL }}" title="{{ .Site.Title }}" rel="home"
+            h1 {{ .Site.Title }}
+            {{ with .Site.Params.subtitle }}
+              h2 {{ . }}
+            {{ end }}
+      nav.navbar.navbar-expand-md.navbar-light.bg-light.border
+        button.navbar-toggler type=button data-toggle=collapse data-target=#navbarMenu aria-controls=navbarMenu aria-expanded=false aria-label="Toggle navigation"
+          span.navbar-toggler-icon
+        #navbarMenu.collapse.navbar-collapse
+          ul#pills-tab.nav.nav-pills.mr-auto role=tablist
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+              {{ $isActive := or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
+                li.nav-item
+                  a.nav-link id=pills-{{.Identifier}}-tab class="{{ if $isActive }}active{{ end }}" data-toggle=pill role=tab href=#pills-{{.Identifier}} aria-controls=pills-{{.Identifier}} aria-selected="{{ if $isActive }}true{{ else }}false{{ end }}"
+                    | {{ .Name }}
+            {{ end }}
+          form.form-inline.my-2.my-lg-0
+            input.form-control.mr-sm-2 type="search" placeholder="Search" aria-label="Search"
+    .container-fluid.px-5
+      .row
+        .col-md-8.border
+          .card.rounded-0.border-top-0
+            .card-body
+              #pills-tabContent.tab-content
+                #pills-home.tab-pane.fade.active.show activerole="tabpanel" aria-labelledby="pills-home-tab"
+                  {{ range (where .Data.Pages "Section" "post").ByLastmod }}
+                    {{ .Render "summary"}}
+                  {{ end }}
+                #pills-about.tab-pane activerole="tabpanel" aria-labelledby="pills-about-tab"
+                  = yield main
+              = yield single
+        .col-md-4
+          p Sidebar
+
+    script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"
+    script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"
+footer

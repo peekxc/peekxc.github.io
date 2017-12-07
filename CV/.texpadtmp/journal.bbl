@@ -1,0 +1,9 @@
+\begin{thebibliography}{1}
+
+\bibitem{hahslerdbscan}
+{\textit{(Under Review)}}~Michael Hahsler, {\textbf{M. Piekenbrock}}, and Derek
+  Doran.
+\newblock dbscan: Fast density-based clustering with \uppercase{R}.
+\newblock {\em Journal of Statistical Software}.
+
+\end{thebibliography}

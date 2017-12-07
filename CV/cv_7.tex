@@ -35,11 +35,14 @@
 \usepackage{amsmath}
 \usepackage{tabularx} % in the preamble
 \usepackage{footmisc}
-
 \usepackage{multibib}
 
-\newcites{article}{Journals and Full Research Papers}
-\newcites{short}{Abstracts\text{,} Workshop Papers\text{,} and Posters}
+\newcites{article}{Refereed Publications}
+\newcites{journal}{Journals}
+\newcites{proceeding}{Conference Papers}
+\newcites{abstract}{Abstracts}
+
+\newcites{dev}{Under Development}
 %\newcites{papers}{Journals and Full Papers}
 %\newcites{shorts}{Abstracts and Workshop Papers}
 %\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
@@ -128,20 +131,25 @@
 %	WORK EXPERIENCE SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Experience}
+\section{Research Experience}
+\textbf{Research Interests: } My research interests are in statistical learning theory, unsupervised learning, and building software for the purpose of scientific computing and reproducible research.  
+\newline 
+
+%------------------------------------------------
 
 \cventry{Web and Complex Systems Lab}
 			 {Wright State University}
 			 {Graduate Research Assistant}
 			 {2015 - 2017}{}
 {  \vspace{3pt}
-I'm currently pursuing a M.S. in Computer Science as a Graduate Research Assistant. My research interests are in the development of novel approaches to understand data that lie at the intersection of statistical learning theory and practical machine learning techniques. The topic areas I've focused on include: 
+I'm currently pursuing a M.S. in Computer Science as a Graduate Research Assistant. The topic areas I've focused on include: 
 	\begin{itemize}
 		\item Density-based clustering techniques and theory 
 		\item Dynamic or Temporal Network Models
 		\item Trajectory mining and modeling
 	\end{itemize}
-	My research is supported by the Center for Surveillance Research, a National Science Foundation I/UCRC.
+Much of my work has focused on augmenting the cluster tree, a shape characteristic of an estimated density function, with semi-supervised information for purpose of point of interest (POI) discovery in geospatial contexts~\cite{poi_paper}. These POIs are then used in a new type of dynamic random graph model, a separate part of the research project I'm indirectly a part of~\cite{robinson2017seasonality}. 
+I'm also researching the utility of Generative Adversarial Networks (GANs) and their potential for generating certain types of spatiotemporal data, e.g. trajectory data which is characteristically indistinguishable from a given set of trajectory data. My research is supported by the Center for Surveillance Research, a National Science Foundation I/UCRC.
 }
 
 %------------------------------------------------
@@ -150,25 +158,24 @@ I'm currently pursuing a M.S. in Computer Science as a Graduate Research Assista
 			 {Google Summer of Code 2017}
 			 {Student Participant}
 			 {Summer 2017}{}{\vspace{3pt} % Begin summary 
-			 I submitted a successful funding proposal under the Google Summer of Code (GSOC) Initiative to the R Project for Statistical Computing to explore, develop, and unify recent developments related the theory of density-based clustering. For more details, see the project page\footnotemark. 
+			 I submitted a successful funding proposal under the Google Summer of Code (GSOC) Initiative to the R Project for Statistical Computing to explore, develop, and unify developments related the theory of density-based clustering, namely the recent developments related to the cluster tree. This involved a mixture of code development which culminated in the form of an R package, as well as deep research to further understand the theory and utility of the cluster tree. For more details, see the project page\footnotemark. 
 			 } 
 \footnotetext{\url{https://summerofcode.withgoogle.com/archive/2017/projects/5919718795902976/}}
 %------------------------------------------------
 
-\cventry{Oakland Ridge Institute for Science and Education}
+\cventry{Oak Ridge Institute for Science and Education}
 			 {Air Force Research Laboratory}
 			 {Student Research Associate}
 			 {2017}{}{\vspace{3pt}
-			 In a collaborative effort to foster new research frontiers in the area of Topology Data Analysis (TDA) between WSU and AFRL, I worked in a research group studying how to combine techniques from  the field of topology and machine learning for the purpose of both supervised and unsupervised analysis. Primarily, I researched theoretical extensions to the \textit{Mapper} framework, an often used modality for performing TDA. My work lead to the development of a closed-form solution to compute all distinct simplicial complexes, under certain conditions, usable within the \textit{Mapper} framework. A journal article demonstrating the utility of this solution is currently in development~\cite{mapperext}. 
+			 In a collaborative effort to foster new research frontiers in the area of Topology Data Analysis (TDA) between WSU and AFRL, I worked in a research group studying how to combine techniques from  the field of topology and machine learning for the purpose of both supervised and unsupervised analysis. I researched theoretical extensions to the \textit{Mapper} framework, an often used modality for performing TDA. My work lead to the development of a closed-form solution to compute all distinct simplicial complexes, under certain conditions, usable within the \textit{Mapper} framework. A journal article demonstrating the utility of this solution is currently in development~\cite{mapperext}. 
 }
 
 %------------------------------------------------
-\cventry{Oakland Ridge Institute for Science and Education}
+\cventry{Oak Ridge Institute for Science and Education}
 			 {Air Force Institute of Technology}
 			 {Undergraduate Research Assistant}
 			 {2014 - 2016}{}{\vspace{3pt}
-I worked closely on the development of a new Iterative Closest Point algorithm amenable to massive parallelization, implemented in C++/CUDA, for the purposes of enabling real-time tracking of aircraft in the context of Autonomous Aerial Refueling. The effort lead to a few publications, see either of~\cite{piekenbrock2016automated, robinson2016parallelized}.
- Although my efforts in other projects were either not published or publicly available, I also worked on:
+I worked on the development of a novel Iterative Closest Point algorithm amenable to massive parallelization, implemented in C++/CUDA, for the purposes of enabling real-time tracking of aircraft in the context of Autonomous Aerial Refueling. The effort lead to multiple publications~\cite{piekenbrock2016automated, robinson2016parallelized}. I also worked on:
 \begin{itemize}
 	\item Parallelizing existing atmospheric absorption routines with OpenCL through MATLABs MEX interface
 	\item A model for predicting web navigation patterns using Hierarchical Markov Models
@@ -181,11 +188,10 @@ I worked closely on the development of a new Iterative Closest Point algorithm a
 			 {Air Force Institute of Technology}
 			 {Undergraduate Research Assistant}
 			 {2013 - 2014}{}{\vspace{3pt}
-As my first part-time position in academia, I worked as an undergraduate research assistant on a diverse set of projects, often assisting graduate or doctoral students working in the research area with primarily programmatic or educational tasks. This involved: 
+As my first part-time position in academia, I worked on a diverse set of projects, often assisting graduate or doctoral students working in the research area with primarily programmatic or educational tasks. This involved: 
 \begin{itemize}
 	\item Codifying a novel nonlinear optimization algorithm in ANSI-C
 	\item Implementing an unsplittable flow approximation algorithm in C++ and Python
-	\item Building prototypical UI to to enhance searching and viewing of 3D models using ThreeJS
 	\item Creating a conversion tool that allowed for converting back and forth between Oracle's Abstract Data Type specification to its equivalent representation as an XMLType 
 \end{itemize}	
 }
@@ -193,14 +199,32 @@ As my first part-time position in academia, I worked as an undergraduate researc
 %	PUBLICATIONS SECTION
 %----------------------------------------------------------------------------------------
 \section{Publications}
-\nocitearticle{robinson2016parallelized, piekenbrock2016automated, hahslerdbscan, mapperext, poi_paper}
-\nociteshort{sunbelt, maurice2015waminet}
 
-\bibliographystylearticle{plain}
-\bibliographyarticle{my_bib.bib}
+%% Refereed Publications
+\subsection{\Large Refereed Publications}
 
-\bibliographystyleshort{plain}
-\bibliographyshort{my_bib.bib}
+%% Journals 
+\nocitejournal{hahslerdbscan}
+\bibliographystylejournal{plainyr-rev}
+\bibliographyjournal{my_bib.bib}
+
+%% Conference Papers 
+\nociteproceeding{robinson2016parallelized} 
+\nociteproceeding{piekenbrock2016automated}
+\nociteproceeding{robinson2017seasonality}
+\nociteproceeding{maurice2015waminet}
+\bibliographystyleproceeding{plainyr-rev}
+\bibliographyproceeding{my_bib.bib}
+
+%% Abstracts 
+\nociteabstract{sunbelt}
+\bibliographystyleabstract{plainyr}
+\bibliographyabstract{my_bib.bib}
+
+%% Stuff under development 
+\nocitedev{poi_paper, mapperext}
+\bibliographystyledev{plainyr-rev}
+\bibliographydev{my_bib.bib}
 
 
 %----------------------------------------------------------------------------------------
