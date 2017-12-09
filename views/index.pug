@@ -110,7 +110,7 @@ html(lang='en')
 							a M.S. in Computer Science.
 						p.
 							I'm interested in the intersection between Machine Learning and Statistical Learning Theory. Broadly, the topics I've studied include:
-							Bayesian Networks, Deep Learning, Nonparametric density estimation, Clustering techniques, Social Network Models, Information Theory,
+							Bayesian Networks, Unsupervised types Deep Learning (e.g. SOMs and GANs), Nonparametric density estimation, Clustering techniques, Social Network Models, Information Theory,
 							Bayesian inference techniques, and Markov Chain Monte Carlo (MCMC) methods. The specific research I've done, along with several of the
 							(either class or personal) projects and presentations I've given, are detailed further down below.
 						p.
@@ -130,8 +130,8 @@ html(lang='en')
 						ul
 							li Density-based Clustering
 							li Statistical Learning Theory
-							li Random Graph Models
-							li Modeling stochastic processes
+							li Unsupervised and Semi-supervised Learning
+							li Topology Theory in relation to "The Manifold Hypothesis"
 					.bs-callout.bs-callout-yellow
 						h4 Research Highlights
 						hr
@@ -216,14 +216,13 @@ html(lang='en')
 											| have been proposed as a means of reducing the algorithmic complexity of the kNN problem. While these
 											| structures are certainly useful, many were primarily developed for serial applications. It
 											| is well known that direct conversion of these spatial indexing structures to their parallel equivalents
-											| can often result in #[i slower] runtime performance than the naïve brute-force approaches, generally
+											| can often result in #[i slower] runtime performance than naïve brute-force approaches, generally
 											| due to the suboptimal memory access patterns
-											| and conditional computations these spatial indexing structures often produce. In a recent application-motivated effort,
+											| and conditional computations these spatial indexing structures often produce. In an application-motivated effort,
 											| we propose a novel two-step method which exposes the intrinsic parallelism of the kNN problem. Our solution involves an O(log n) approximate search,
-											| followed by fast vectorized triangulation traversal we call the Delaunay Traversal, which we show empirically converges in O(k) time, where k << n.
-											| We demonstrate the
-											| superiority of our method compared to the traditional B&B and brute-force implementations using
-											| a variety of different data sets. We also show the usefulness of our method in the context of
+											| followed by fast vectorized search we call the Delaunay Traversal, which we show empirically finishes in O(k) time on average, where k << n.
+											| We demonstrate the superiority of our method compared to the traditional B&B and brute-force implementations using
+											| a variety of heterogeneous, benchmark data sets. We also show the usefulness of our method in the context of
 											| Automated Aerial Refueling by improving the runtime of the well known Iterative Closest Point algorithm.
 							.col-xs-12.col-sm-12.col-md-12.col-lg-12
 								div(style="font-weight: bold;") Related Publication(s):
@@ -327,6 +326,7 @@ html(lang='en')
 									I submitted a successful funding proposal under the #[a(href="https://developers.google.com/open-source/gsoc/") Google Summer of Code] (GSOC) Initiative to the R Project for Statistical Computing
 									to explore, develop, and unify recent developments related the theory of density-based clustering. This involved a mixture of code
 									development which culminated in the form of an R package, as well as deep research to further understand the theory and utility of the cluster tree.
+									There was also a #[a(href="https://webapp2.wright.edu/web1/newsroom/2017/05/22/statistical-standout-2/") WSU newsroom piece] that describes the proposal in a non-technical way.
 								a(style="font-weight: bold;" href="https://summerofcode.withgoogle.com/archive/2017/projects/5919718795902976/") Project Link
 
 							// AFRL ORAU graduate/topology item
