@@ -4,16 +4,19 @@ html lang="en-us"
     {{ $site := .Site }}
     title {{ .Site.Title }}
     link rel="stylesheet" href={{ "css/bootstrap.min.css" | relURL }}
+    link rel="stylesheet" href={{ "css/font-awesome.min.css" | relURL }}
     // link rel="stylesheet" href="css/overrides.css"
   body
     .container-fluid.px-5.pt-1
-      header
-        div role="banner"
-          a href="{{ "" | relLangURL }}" title="{{ .Site.Title }}" rel="home"
-            h1 {{ .Site.Title }}
-            {{ with .Site.Params.subtitle }}
-              h2 {{ . }}
-            {{ end }}
+      {{ if .IsHome }}
+        header
+          div role="banner"
+            a href="{{ "" | relLangURL }}" title="{{ .Site.Title }}" rel="home"
+              h1 {{ .Site.Title }}
+              {{ with .Site.Params.subtitle }}
+                h2 {{ . }}
+              {{ end }}
+      {{ end }}
       nav.navbar.navbar-expand-md.navbar-light.bg-light.border
         button.navbar-toggler type=button data-toggle=collapse data-target=#navbarMenu aria-controls=navbarMenu aria-expanded=false aria-label="Toggle navigation"
           span.navbar-toggler-icon
@@ -27,10 +30,10 @@ html lang="en-us"
                     | {{ .Name }}
             {{ end }}
           form.form-inline.my-2.my-lg-0
-            input.form-control.mr-sm-2 type="search" placeholder="Search" aria-label="Search"
+            input#search_box.form-control.mr-sm-2 type="search" placeholder="Search" aria-label="Search"
     .container-fluid.px-5
-      .row
-        .col-md-8.border
+      .row.m-0
+        .col-md-8.border-0.p-0
           .card.rounded-0.border-top-0
             .card-body
               #pills-tabContent.tab-content
@@ -41,10 +44,66 @@ html lang="en-us"
                 #pills-about.tab-pane activerole="tabpanel" aria-labelledby="pills-about-tab"
                   = yield main
               = yield single
-        .col-md-4
+        .col-md-4.p-0
           p Sidebar
-
-    script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
+          div#search-results
+    .container-fluid.px-5
+      p Copyright Matt Piekenbrock
+    script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"
+    // script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
     script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"
+    script src="/js/search_index.js"
+    script src="/js/elasticlunr.min.js"
+    = javascript
+      elastic_lunr_index = searchIndex();
+      console.log(elastic_lunr_index);
+      $.getJSON('/search_index.json', function(data) {
+        $.each(data, function(index, element) {
+          console.log(element);
+          elastic_lunr_index.addDoc(element);
+        });
+      });
+
+      $( "#search_box" ).keyup(function() {
+        console.log( "Handler for .keyup() called." );
+        var searchstring = $('#search_box');
+        searchstring.focus();
+        // console.log(searchstring.val());
+        var res = elastic_lunr_index.search(searchstring.val());
+        console.log(res);
+      });
+
+
+      // loadIndexJson(
+      //  addToSearchIndex(
+      //    searchIndex(),
+      //    registerSearchHandler(
+      //      document.getElementById('search_box'),
+      //      search(
+      //        renderSearchResults(
+      //          document.getElementById('search-results')
+      // )))));
+    // = javascript
+    //  var index = elasticlunr(function () {
+    //    this.addField('title');
+    //    this.addField('tags');
+    //    this.setRef('ref');
+    //  });
+    //
+    //  var doc1 = {
+    //  "id": 1,
+    //  "title": "Oracle released its latest database Oracle 12g",
+    //  "body": "Yestaday Oracle has released its new database Oracle 12g, this would make more money for this company and lead to a nice profit report of annual year."
+    //  }
+    //
+    //  var doc2 = {
+    //  "id": 2,
+    //  "title": "Oracle released its profit report of 2015",
+    //  "body": "As expected, Oracle released its profit report of 2015, during the good sales of database and hardware, Oracle's profit of 2015 reached 12.5 Billion."
+    //  }
+    //
+    //  index.addDoc(doc1);
+    //  index.addDoc(doc2);
+
 footer

@@ -1,3 +1,5 @@
+// Based on https://www.josephearl.co.uk/post/static-sites-search-hugo/
+// Last modified by Matt Piekenbrock 2017
 
 // Create the lunr search index
 function searchIndex() {
@@ -31,13 +33,13 @@ function addToSearchIndex(lunrIndex, indexLoadedFunction) {
         index.forEach(function(item) {
             //console.log(item);
             lunrIndex.add(item);
-            // The lunr results only contain ref and score 
-            // so we have to keep track of any other values 
+            // The lunr results only contain ref and score
+            // so we have to keep track of any other values
             // we want to display ourselves
             titles[item.ref] = item.title;
         });
         indexLoadedFunction(lunrIndex, titles);
-    } 
+    }
 };
 
 function search(renderFactoryFunction) {

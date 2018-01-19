@@ -138,6 +138,36 @@ html(lang='en')
 						.row
 							.col-xs-12.col-md-12
 								.media
+									h3.media-heading Extending Mapper: Cover Parameterization and Simplicial Complex Generation
+									a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
+										img.media-object(src="img/mapper_ex.jpeg", width="200", height="236", alt="OSU Point of Interest")
+									.media-body
+										h5(style="margin-top: 0;")
+											| The primary result of the Mapper framework is the geometric realization of a simplicial complex,
+											| depicting topological relationships and
+											| structures usable for comparing, visualizing, and analyzing high dimensional data. As an
+											| unsupervised tool that may be used for exploring or modeling heterogeneous types of data,
+											| Mapper naturally relies on a number of parameters which explicitly control the quality of the
+											| resulting construction; one such critical parameter controls the entire relational component of the
+											| output construction. In practice, there is little guidance or intuition on what values may provide "better" or more
+											| "stable" sets of simplexes.
+											| In this effort, we provide a closed-form solution that allows the efficient computation of all possible
+											| complex realizations that result from changes to this crucial parameter, enabling new types of analysis relating
+											| persistence and stability. We also discuss further extensions and theoretical advancements
+											| that may be made as a result of this solution.
+							br
+							.col-xs-12.col-sm-12.col-md-12.col-lg-12
+								div(style="font-weight: bold;") Related Publication(s):
+									span(style="color: green;") &nbsp; (ongoing research effort)
+								br
+								ul
+									li (Under development) M. Piekenbrock and D. Doran. Efficient Cover Parameterization and Simplicial Complex Generation for Mapper. SIAM Journal on Applied Algebra and Geometry, 2018 (intending).
+										a(href="resources/SIAGA_Mapper.pdf") &nbsp; [Link]
+									li(style="color: red;") NOTE: This is paper is still in its very early stages. As incomplete work not yet suitable for arxiv, this rough draft is only available from this website.
+						hr
+						.row
+							.col-xs-12.col-md-12
+								.media
 									h3.media-heading Automating Point of Interest Discovery in Geospatial Contexts
 									a.pull-left(href='#', style="vertical-align: middle; display: inline-block;")
 										img.media-object(src="img/OSU.png", width="200", height="236", alt="OSU Point of Interest")
@@ -313,7 +343,7 @@ html(lang='en')
 									[Dynamic] Bayesian Network modeling, Bayesian inference, parameter estimation techniques (EM/MAP),
 									Random Graph Modeling (ERGMs, ER Model, etc.), Bayesian Linear and Logistic Regression, (simple) Artificial
 									Neural Networks, internal cluster validation measures, non-parametric density
-									estimation techniques, information theory
+									estimation techniques, information theory`
 							// GSOC item
 							.list-group-item
 								h4.list-group-item-heading Student Participant

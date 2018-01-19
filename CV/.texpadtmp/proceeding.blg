@@ -3,7 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/mpiekenbrock/peekxc.github.io/CV/.texpadtmp/proceeding.aux
 The style file: ../plainyr-rev.bst
 Database file #1: ../my_bib.bib.bib
-I was expecting a `,' or a `}'---line 69 of file ../my_bib.bib.bib
+I was expecting a `,' or a `}'---line 70 of file ../my_bib.bib.bib
  :   
  :   year={2016}
 (Error may have been on previous line)

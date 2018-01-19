@@ -1,12 +1,14 @@
 article.card
   .row
-    .col-md-4
-      img.card-img-bottom style="background: url(200x200.png) center no-repeat; background-size: cover;"
+    .col-md-4.p-1
+      img.card-img-top src="post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png" style="object-fit: contain; display: block;"
     .col-md-8.card-body
       h4.card-title
         a href={{ .Permalink }} {{ .Title }}
-      h6.card-subtitle.mb-2.text-muted {{ dateFormat "Jan 2, 2006" .Date }} - {{ .FuzzyWordCount }} Words
+      h6.card-subtitle.mb-2.text-muted
+        span.fa.fa-clock-o
+        span &nbsp; {{ dateFormat "Jan 2, 2006" .Date }} ~ {{ .FuzzyWordCount }} Words
       p.card-text {{ .Summary }}
-      footer
-        a href={{ .Permalink }}
-          nobr Read more
+      // footer.pull-right
+      //  a.btn.btn-primary.btn-sm href={{ .Permalink }}
+      //    | Read more
