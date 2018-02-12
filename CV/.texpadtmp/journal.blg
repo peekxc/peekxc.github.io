@@ -12,7 +12,7 @@ Warning--missing year in hahslerdbscan, using 9999 for sorting
 Warning--empty year in hahslerdbscan
 You've used 1 entry,
             2525 wiz_defined-function locations,
-            581 strings with 4674 characters,
+            581 strings with 4676 characters,
 and the built_in function-call counts, 764 in all, are:
 = -- 125
 > -- 18

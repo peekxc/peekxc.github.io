@@ -10,7 +10,7 @@ I was expecting a `,' or a `}'---line 70 of file ../my_bib.bib.bib
 I'm skipping whatever remains of this entry
 You've used 1 entry,
             2146 wiz_defined-function locations,
-            510 strings with 4475 characters,
+            510 strings with 4477 characters,
 and the built_in function-call counts, 368 in all, are:
 = -- 35
 > -- 16
