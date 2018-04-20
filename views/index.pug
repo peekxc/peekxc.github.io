@@ -14,11 +14,11 @@ html(lang='en')
 		.container
 			.resume
 				header.page-header
-					h1.page-title Curriculum Vitae of Matthew Piekenbrock
-					small
+					h1.page-title.align-content-center.text-center.center-block Curriculum Vitae of Matthew Piekenbrock
+					small.align-content-center.text-center.center-block
 						i.fa.fa-clock-o
 						|  Last Updated on:
-						time(datetime="2017-12-05") &nbsp; Dec. 05, 2017
+						time(datetime="2018-04-20") &nbsp; April 20, 2018
 			.row
 				.col-xs-12.col-sm-12.col-md-offset-1.col-md-10.col-lg-offset-2.col-lg-8
 					.alert.alert-success(role="alert", style="font-weight: bold;").text-center
@@ -91,11 +91,12 @@ html(lang='en')
 						hr
 						p.
 							I'm a graduate Research Assistant (GRA) majoring in Computer Science, with a focus (and minor) in Statistics and Statistical Modeling.
-							I'm interested in Machine Learning (ML) and Artificial Intelligence (AI). My research interests are in statistical learning theory,
-							unsupervised learning, and building software for the purpose of scientific computing and reproducible research.
+							I'm interested in Machine Learning (ML) and Artificial Intelligence (AI). My research interests are in
+							unsupervised learning, statistical learning theory, and in building software for the
+							purpose of scientific computing and reproducible research.
 							Topics that interest me include Clustering, Manifold Learning, Topology Theory and Topological Data Analysis,
 							approaches to Density Estimation, Reinforcement Learning (such as Generative Adversarial learning!), etc.
-							I have supplemental research interests in the fields of Network Science, Bayesian Statistics, Computational Geometry,
+							I have supplemental research interests in the fields of Network Science, Bayesian Statistics,
 							Computational Geometry, and Parallel Computing.
 						p.
 							I previously worked part time doing research at the #[a(href="https://www.afit.edu/") Air Force Institute of Technology]
@@ -110,13 +111,13 @@ html(lang='en')
 							a M.S. in Computer Science.
 						p.
 							I'm interested in the intersection between Machine Learning and Statistical Learning Theory. Broadly, the topics I've studied include:
-							Bayesian Networks, Unsupervised types Deep Learning (e.g. SOMs and GANs), Nonparametric density estimation, Clustering techniques, Social Network Models, Information Theory,
+							Bayesian Networks, Unsupervised types of Deep Learning (e.g. SOMs and GANs), nonparametric density estimation, Clustering techniques, Social Network Models, Information Theory,
 							Bayesian inference techniques, and Markov Chain Monte Carlo (MCMC) methods. The specific research I've done, along with several of the
 							(either class or personal) projects and presentations I've given, are detailed further down below.
 						p.
-							My computational experience varies with what I'm doing. I use the #[a(href="https://www.r-project.org/") R Project for Statistical Computing]
-							for nearly everything I do in ML. In my undergraduate years, I extensively used #[a(href="https://en.wikipedia.org/wiki/C%2B%2B") C++] (primarily C++11),
-							for scientific computing projects, a few of which are listed below. Some of the projects actually required using regular
+							My computational experience is diverse. I prefer to use the #[a(href="https://www.r-project.org/") R Project for Statistical Computing]
+							for everything I do nowadays in research. In my undergraduate years, I extensively used #[a(href="https://en.wikipedia.org/wiki/C%2B%2B") C++] (primarily C++11),
+							for scientific computing projects, a few of which are listed below. Some of the earlier projects I was involved with required using regular
 							#[a(href="https://en.wikipedia.org/wiki/ANSI_C") ANSI-C89/C90]. I spent about two years doing research into computational geometry
 							and parallel computing with the
 							#[a(href="https://developer.nvidia.com/cuda-toolkit") Compute Unified Device Architecture (CUDA)]
@@ -131,7 +132,8 @@ html(lang='en')
 							li Density-based Clustering
 							li Statistical Learning Theory
 							li Unsupervised and Semi-supervised Learning
-							li Topology Theory in relation to "The Manifold Hypothesis"
+							li Topological Data Analysis (TDA) techniques, specifically Mapper
+							li Manifold Learning
 					.bs-callout.bs-callout-yellow
 						h4 Research Highlights
 						hr
@@ -454,7 +456,7 @@ html(lang='en')
 										img(src="https://img.shields.io/badge/development-GitHub-orange.svg" alt="Development version on GitHub" title="Development version on GitHub")
 									a(href="https://cran.r-project.org/package=dbscan")
 										img(src="http://cranlogs.r-pkg.org/badges/dbscan" alt="CRAN RStudio mirror downloads")
-							li.list-group-item.clearfix  Clustering Presentation
+							li.list-group-item.clearfix Clustering Presentation
 								a.pull-right(href="resources/animations.zip") (GIF Animations)
 								a.pull-right(href='#videoModal', data-toggle='modal')#dssc_link (Video)&nbsp;
 								a.pull-right(href="resources/DSSC_Clustering.pdf") (PDF)&nbsp;
@@ -463,6 +465,11 @@ html(lang='en')
 									a(href="http://dssc.cs.wright.edu/") &nbsp;Data Science and Security Cluster Group
 									| &nbsp;and the
 									a(href="http://knoesis.org/") &nbsp;Kno.e.sis research group
+							li.list-group-item.clearfix TDA + Manifold Learning Presentation
+								a.pull-right(href="resources/DSSC_TDA_selected_slides.pdf") (PDF)&nbsp;
+								div.small
+									| Presentation I gave to the
+									a(href="http://dssc.cs.wright.edu/") &nbsp;Data Science and Security Cluster Group
 							li.list-group-item.clearfix
 								| Machine Learning Project:
 								a(href="https://en.wikipedia.org/wiki/Bayesian_linear_regression") &nbsp; Bayesian Linear Regression
@@ -475,12 +482,12 @@ html(lang='en')
 							li.list-group-item.clearfix Introduction to Bayesian Network Training Basics
 								a.pull-right(href="resources/bayesian_net_intro.pdf") (PDF)
 					.bs-callout.bs-callout-default
-						h4 Extra Curricular / Miscellaneous.
+						h4 Awards
 						hr
 						ul.list-group
 							li.list-group-item.clearfix
-								| Staff Position
-								a(href="http://www.daymunc.org/").small.pull-right Regional Model United Nations Annual Conference ('16 and '17)
+								| Outstanding Masters student Award (Computer Science)
+								a(href="https://engineering-computer-science.wright.edu/computer-science-and-engineering").small.pull-right Wright State College of Engineering and Computer Science
 							li.list-group-item.clearfix
 								| Outstanding Position Paper Award
 								a(href="http://www.nmun.org/").small.pull-right National Model United Nations Annual Conference ('14)
@@ -490,6 +497,20 @@ html(lang='en')
 							li.list-group-item.clearfix
 								| Honorable Mention Award
 								a(href="http://www.daymunc.org/").small.pull-right Regional Model United Nations Annual Conference ('13 and '14)
+
+					.bs-callout.bs-callout-default
+						h4 Outreach, Volunteer Work, Extra Curricular
+						hr
+						ul.list-group
+							li.list-group-item.clearfix
+								a.pull-right(href="resources/CJ_STEMM_talk.pdf") (PDF)&nbsp;
+								| Invited Speaker (local High School outreach)
+								div.small
+									| Presentation I gave as part of the
+									a(href="https://www.cjeagles.org/community-updates/stemm-idol-matt-piekenbrock-10").small &nbsp;CJ STEMM Idol Series
+							li.list-group-item.clearfix
+								| Staff Position
+								a(href="http://www.daymunc.org/").small.pull-right Regional Model United Nations Annual Conference ('16 and '17)
 							li.list-group-item.clearfix
 								| Developer and Maintainer of:
 								a(href="http://www.daymunc.org/").pull-right daymunc.org
