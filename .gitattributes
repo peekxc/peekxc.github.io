@@ -1,2 +1,5 @@
 *.mp4 filter=lfs diff=lfs merge=lfs -text
+<<<<<<< HEAD
 *.key filter=lfs diff=lfs merge=lfs -text
+=======
+>>>>>>> 3f0c617f012d7232a76ec9e1744335c60fd71df4
