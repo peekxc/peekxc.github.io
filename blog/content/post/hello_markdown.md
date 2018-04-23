@@ -1,6 +1,8 @@
 ---
 title: "A Plain Markdown Post"
 date: "2017-03-01"
+categories: "markdown"
+tags: ["test", "test_tag2"]
 slug: "a-plain-markdown-post"
 ---
 

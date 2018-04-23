@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en-us"><head><title>Pondering Centrist Blog</title><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><!-- link rel="stylesheet" href="css/overrides.css" --></head><body><div class="container-fluid px-5 pt-1"><nav class="navbar navbar-expand-md navbar-light bg-light border"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div id="navbarMenu" class="collapse navbar-collapse"><ul id="pills-tab" class="nav nav-pills mr-auto" role="tablist"><li class="nav-item"><a id="pills-home-tab" class="nav-link " data-toggle="pill" role="tab" href="#pills-home" aria-controls="pills-home" aria-selected="false">Home</a></li><li class="nav-item"><a id="pills-about-tab" class="nav-link " data-toggle="pill" role="tab" href="#pills-about" aria-controls="pills-about" aria-selected="false">About</a></li></ul><form class="form-inline my-2 my-lg-0"><input id="search_box" class="form-control mr-sm-2" type="search" placeholder="Type to start searching..." aria-label="Search"></form></div></nav></div><div class="container-fluid px-5"><div class="row m-0"><div class="col-md-8 border-0 p-0"><div class="card rounded-0 border-top-0"><div class="card-body"><div id="pills-tabContent" class="tab-content"><div id="pills-home" class="tab-pane fade active show" activerole="tabpanel" aria-labelledby="pills-home-tab"></div><div id="pills-about" class="tab-pane" activerole="tabpanel" aria-labelledby="pills-about-tab"></div></div><p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore <em>magna aliqua</em>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>asldajsbdaijsd</p>
+</div></div></div><div class="col-md-4 p-0"><p>Sidebar</p><div id="search-results"></div></div></div></div><div class="container-fluid px-5"><p>Copyright Matt Piekenbrock</p></div><script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script><!-- script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" --><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script><script src="/js/search_index.js"></script><script src="/js/elasticlunr.min.js"></script><script src="/js/templates.js"></script><script type="text/javascript">
+$(document).ready(function(){
+  console.time('Loading index');
+  var elastic_lunr_index, doc_keys;
+  $.getJSON('/cached_index.json', function(data) {
+    elastic_lunr_index = elasticlunr.Index.load(data);
+    doc_keys = Object.keys(elastic_lunr_index.documentStore.docs);
+    console.log(elastic_lunr_index);
+  });
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  $( "#search_box" ).keyup(function() {
+    
+    var searchstring = $('#search_box');
+    searchstring.focus();
+    if (searchstring.val().trim() == ""){
+      console.log("Empty search");
+      console.log();
+      doc_keys.slice(0, 10).forEach(function(key){
+        var doc = elastic_lunr_index.documentStore.docs[key];
+        var post_summary = window.summary_template(doc);
+        $("#pills-home").append(post_summary);
+      });
+
+    } else {
+      var res = elastic_lunr_index.search(searchstring.val());
+      console.log(res);
+      renderResults(res);
+    }
+  });
+
+  function renderResults(results) {
+    console.log("Results: ");
+    console.log(results);
+    $("#pills-home").empty();
+    if (!results.length) { return; }
+    var search_results = $("#search-results");
+
+    
+    results.slice(0, 10).forEach(function(doc_ref) {
+      
+      var post_summary = window.summary_template(doc_ref.doc);
+      console.log(post_summary);
+      $("#pills-home").append(post_summary);
+      
+      
+      
+      
+      
+      
+      
+      
+    });
+
+
+
+  }
+}); 
+
+
+
+
+
+
+
+
+
+
+
+
+</script><!-- = javascript --><!--  var index = elasticlunr(function () { --><!--    this.addField('title'); --><!--    this.addField('tags'); --><!--    this.setRef('ref'); --><!--  }); --><!-- --><!--  var doc1 = { --><!--  "id": 1, --><!--  "title": "Oracle released its latest database Oracle 12g", --><!--  "body": "Yestaday Oracle has released its new database Oracle 12g, this would make more money for this company and lead to a nice profit report of annual year." --><!--  } --><!-- --><!--  var doc2 = { --><!--  "id": 2, --><!--  "title": "Oracle released its profit report of 2015", --><!--  "body": "As expected, Oracle released its profit report of 2015, during the good sales of database and hardware, Oracle's profit of 2015 reached 12.5 Billion." --><!--  } --><!-- --><!--  index.addDoc(doc1); --><!--  index.addDoc(doc2);
+
+--></body></html><footer></footer>

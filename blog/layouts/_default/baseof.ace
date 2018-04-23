@@ -30,7 +30,7 @@ html lang="en-us"
                     | {{ .Name }}
             {{ end }}
           form.form-inline.my-2.my-lg-0
-            input#search_box.form-control.mr-sm-2 type="search" placeholder="Search" aria-label="Search"
+            input#search_box.form-control.mr-sm-2 type="search" placeholder="Type to start searching..." aria-label="Search"
     .container-fluid.px-5
       .row.m-0
         .col-md-8.border-0.p-0
@@ -55,24 +55,74 @@ html lang="en-us"
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"
     script src="/js/search_index.js"
     script src="/js/elasticlunr.min.js"
+    script src="/js/templates.js"
     = javascript
-      elastic_lunr_index = searchIndex();
-      console.log(elastic_lunr_index);
-      $.getJSON('/search_index.json', function(data) {
-        $.each(data, function(index, element) {
-          console.log(element);
-          elastic_lunr_index.addDoc(element);
+      $(document).ready(function(){
+        console.time('Loading index');
+        var elastic_lunr_index, doc_keys;
+        $.getJSON('/cached_index.json', function(data) {
+          elastic_lunr_index = elasticlunr.Index.load(data);
+          doc_keys = Object.keys(elastic_lunr_index.documentStore.docs);
+          console.log(elastic_lunr_index);
         });
-      });
 
-      $( "#search_box" ).keyup(function() {
-        console.log( "Handler for .keyup() called." );
-        var searchstring = $('#search_box');
-        searchstring.focus();
-        // console.log(searchstring.val());
-        var res = elastic_lunr_index.search(searchstring.val());
-        console.log(res);
-      });
+        //elastic_lunr_index = searchIndex();
+        //console.log(elastic_lunr_index);
+        //$.getJSON('/search_index.json', function(data) {
+        //  $.each(data, function(index, element) {
+        //    // console.log(element);
+        //    elastic_lunr_index.addDoc(element);
+        //  });
+        //});
+
+        $( "#search_box" ).keyup(function() {
+          // console.log( "Handler for .keyup() called." );
+          var searchstring = $('#search_box');
+          searchstring.focus();
+          if (searchstring.val().trim() == ""){
+            console.log("Empty search");
+            console.log();
+            doc_keys.slice(0, 10).forEach(function(key){
+              var doc = elastic_lunr_index.documentStore.docs[key];
+              var post_summary = window.summary_template(doc);
+              $("#pills-home").append(post_summary);
+            });
+
+          } else {
+            var res = elastic_lunr_index.search(searchstring.val());
+            console.log(res);
+            renderResults(res);
+          }
+        });
+
+        function renderResults(results) {
+          console.log("Results: ");
+          console.log(results);
+          $("#pills-home").empty();
+          if (!results.length) { return; }
+          var search_results = $("#search-results");
+
+          // Only show the ten first results
+          results.slice(0, 10).forEach(function(doc_ref) {
+            // Add to summary panel
+            var post_summary = window.summary_template(doc_ref.doc);
+            console.log(post_summary);
+            $("#pills-home").append(post_summary);
+            //console.log("Document Reference: ");
+            //console.log(doc_ref);
+            //var $result = $("<li>");
+            //$result.append($("<a>", {
+            //  href: doc_ref.doc.ref,
+            //  text: "» " + doc_ref.doc.title
+            //}));
+            //search_results.append($result);
+          });
+
+
+
+        }
+      }); // document ready
+
 
 
       // loadIndexJson(
