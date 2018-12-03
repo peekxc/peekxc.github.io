@@ -21,13 +21,12 @@ html(lang='en')
 						i.fa.fa-clock-o
 						|  Last annual update:
 						time(datetime="2018-12-01") &nbsp; December 01, 2018
-			// Paper CV element
-			.flex-row.flex-fill.m-0
-				.alert.alert-success(role="alert", style="font-weight: bold;").text-center
-					| Traditional paper CV available #[a(href="CV/cv_7.pdf") here]
+
 			// Photo element
 			.flex-row(style="max-width: 80%;").justify-content-center.align-self-center
-				.card.m-1.border-1
+				.alert.alert-success(role="alert", style="font-weight: bold;").text-center.m-0.rounded-0
+					| Traditional paper CV available #[a(href="CV/cv_7.pdf") here]
+				.card.m-0.border-1.rounded-0
 					.d-flex.flex-row
 						.d-flex.flex-column(style="flex: 1 0 10em;")
 							.card-header.border-0.p-0(style="max-width:100%;")
