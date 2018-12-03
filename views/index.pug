@@ -22,14 +22,14 @@ html(lang='en')
 						|  Last annual update:
 						time(datetime="2018-12-01") &nbsp; December 01, 2018
 			// Paper CV element
-			.flex-row.flex-fill
+			.flex-row.flex-fill.m-0
 				.alert.alert-success(role="alert", style="font-weight: bold;").text-center
 					| Traditional paper CV available #[a(href="CV/cv_7.pdf") here]
 			// Photo element
-			.p-2.flex-fill
-				.card
+			.flex-row(style="max-width: 80%;").justify-content-center.align-self-center
+				.card.m-1.border-1
 					.d-flex.flex-row
-						.d-flex.flex-column(style="flex: 1 0 10em;").border-0
+						.d-flex.flex-column(style="flex: 1 0 10em;")
 							.card-header.border-0.p-0(style="max-width:100%;")
 								img.img-fluid.img-thumbnail(src='img/profile_pic2.jpeg', alt='')
 							.d-flex.btn-group(style="text-align:center;").rounded-0.m-0.justify-content-center.align-items-stretch.align-self-stretch.flex-fill
@@ -44,11 +44,12 @@ html(lang='en')
 						ul.list-group.card-text.d-flex.flex-column.align-items-stretch(style="flex: 2 0 30em;")
 							style(type="text/css")
 								span.codedirection { unicode-bidi:bidi-override; direction: rtl; }
-							li.list-group-item.flex-fill.text-center.h-100.d-flex.justify-content-center.flex-column.border-right-0
+							li.list-group-item.flex-fill.text-center.h-100.d-flex.justify-content-center.flex-column
 								h4.card-title.m-0 Matt Piekenbrock
-							li.list-group-item.flex-fill.text-center.h-100.d-flex.justify-content-center.flex-column.border-right-0  Graduate Research Assistant
-							li.list-group-item.flex-fill.text-center.h-100.d-flex.justify-content-center.flex-column.border-right-0.border-bottom-0 M.S. in Computer Science (PhD intending)
-					.w-100
+							li.list-group-item.flex-fill.text-center.h-100.d-flex.justify-content-center.flex-column  Graduate Research Assistant
+							li.list-group-item.flex-fill.text-center.h-100.d-flex.justify-content-center.flex-column M.S. in Computer Science 2018 (PhD intending)
+							li.list-group-item.flex-fill.text-center.h-100.d-flex.justify-content-center.flex-column
+								| B.S. in Computer Science 2015 (minor in statistics)
 			// Summary element
 			.card.bs-callout.bs-callout-success
 				h4 Summary - Research Interests
