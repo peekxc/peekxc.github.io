@@ -13,9 +13,8 @@ paginate = "10" # Number of posts per page
     avatar = "img/avatar.png"
 
 [Params]
-    subtitle = "Pondering the Universe one topic at a time..." # Subtitle of your site. Used in site header
+    subtitle = "Pondering the Universe one topic at a time."
     description = "Matt Piekenbrock's Personal blog about everything"
-
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
     highlightjsCDN = "//cdn.bootcss.com"

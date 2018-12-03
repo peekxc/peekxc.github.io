@@ -3,14 +3,9 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/mpiekenbrock/peekxc.github.io/CV/.texpadtmp/abstract.aux
 The style file: plainyr.bst
 Database file #1: ../my_bib.bib.bib
-I was expecting a `,' or a `}'---line 70 of file ../my_bib.bib.bib
- :   
- :   year={2016}
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 You've used 1 entry,
             2146 wiz_defined-function locations,
-            510 strings with 4477 characters,
+            510 strings with 4476 characters,
 and the built_in function-call counts, 368 in all, are:
 = -- 35
 > -- 16
@@ -49,4 +44,3 @@ warning$ -- 0
 while$ -- 4
 width$ -- 2
 write$ -- 13
-(There was 1 error message)

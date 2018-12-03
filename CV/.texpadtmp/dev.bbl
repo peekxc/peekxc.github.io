@@ -1,11 +1,12 @@
 \begin{thebibliography}{1}
 
 \bibitem{mapperext}
-{\textit{(In Development)}}:~{\textbf{Matt Piekenbrock}} and Derek Doran.
-\newblock Cover parameterization and simplicial complex generation for mapper.
+{\textit{(In Development)}}:~{\textbf{Matt Piekenbrock}}, Derek Doran, and Ryan
+  Kramer.
+\newblock Efficient multi-scale simplicial complex generation for mapper.
 \newblock {\em SIAM Journal on Applied Algebra and Geometry}, 2018.
 \newblock Draft version available after:
-  \url{http://mattpiekenbrock.com/resources/SIAGA_Mapper.pdf}.
+  \url{http://mattpiekenbrock.com/resources/indexed_mapper.pdf}.
 
 \bibitem{poi_paper}
 \textbf{Matt Piekenbrock} and Derek Doran.

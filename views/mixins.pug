@@ -1,0 +1,18 @@
+mixin research_highlight(title, summary, img_src, ongoing)
+  .card.m-1.border-1.p-1
+    .d-flex.flex-row
+      .card-header.w-100
+        h3=title
+        span(style="color: green;")=ongoing
+    .d-flex.flex-row.align-items-center
+      .card-title.m-0(style="flex: 1 0 1em;")
+        img.img-thumbnail.border-0.m-1(src=img_src, alt="", style="object-fit:fill;")
+      .card-body(style="flex: 2 0 10em")
+        p.card-text
+          = summary
+    .d-flex.flex-row
+      .card-footer.bg-white
+        if block
+          block
+        else
+          div

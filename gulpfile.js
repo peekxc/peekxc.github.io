@@ -11,6 +11,10 @@ var fs = require('fs');
 gulp.task('pug', function() {
 	return gulp.src('views/index.pug') // Get source files with gulp.src
 		.pipe(pug()) // Sends it through a gulp plugin
+		.on('error', function (err) {
+			console.log(err.toString());
+			this.emit('end');
+		})
 		.pipe(gulp.dest('./')) // Outputs the file in the destination folder
 		.pipe(livereload());
 	//.pipe(browserSync.reload({ stream: true }));
@@ -30,6 +34,7 @@ gulp.task('watch', function() {
 	gulp.watch('stylesheets/*.styl', ['stylus']);
 	gulp.watch('views/*.pug', ['pug']);
 });
+
 
 gulp.task('default', ['stylus', 'pug'], function() {
 	gulp.run('watch');

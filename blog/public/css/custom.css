@@ -1,3 +1,5 @@
 .summary-text {
 
 }
+.card-img-left { height: 100%; }
+.card-horizontal { flex-direction: row; }

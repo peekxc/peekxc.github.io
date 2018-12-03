@@ -106,15 +106,17 @@
 %----------------------------------------------------------------------------------------
 
 \section{Education  \hfill \normalsize GPA: 3.8 Overall, 4.0 In-Major}
-\cventry{Spring, 2018}{Masters of Science in Computer Science (In Progress)}{Wright State University}{Dayton, OH}{}{} 
-\cventry{Fall, 2015}{Bachelor of Science in Computer Science}{Wright State University}{Dayton, OH}{\textit{Minor in Statistics}}{}
+\cventry{2018}{Masters of Science in Computer Science}{Wright State University}{Dayton, OH}{}{} 
+\cventry{2015}{Bachelor of Science in Computer Science}{Wright State University}{Dayton, OH}{\textit{Minor in Statistics}}{}
 
 \subsection{Relevant Courses Taken}
 \begin{center}
 \begin{tabularx}{\linewidth}{ X X X }
  $\bullet$ Network Science &  $\bullet$ Machine Learning & $\bullet$ Information Theory  \\ 
  $\bullet$ Applied Stochastic Processes & $\bullet$ Applied Statistics I \& II  & $\bullet$ Algorithm Design and Analysis  \\
- $\bullet$ Computational Tools and \; \mbox{Techniques} for Data Analysis &  $\bullet$ Theoretical Statistics & $\bullet$ Foundations of Artificial \; \mbox{Intelligence} 
+  $\bullet$ Empirical Analysis & $\bullet$ Optimization Techniques & $\bullet$ Foundations of AI  \\  
+ $\bullet$ Computational Tools and \; \mbox{Techniques} for Data Analysis &  $\bullet$ Theoretical Statistics & $\bullet$ Advanced Programming Languages
+
 \end{tabularx}
 \end{center}
 
@@ -133,24 +135,49 @@
 %----------------------------------------------------------------------------------------
 
 \section{Research Experience}
-\textbf{Research Interests: } My research interests are in statistical learning theory, unsupervised learning, and building software for the purpose of scientific computing and reproducible research.  
+\textbf{Research Interests: } My research interests are in unsupervised learning, statistical learning theory, computational geometry, and building software for the purpose of scientific computing and reproducible research.  
 \newline 
+
+%------------------------------------------------
+\cventry{Oak Ridge Institute for Science and Education}
+			 {Air Force Research Laboratory}
+			 {Research Associate}
+			 {Fall 2018-Present, Fall 2017}{}{\vspace{3pt}
+			 In a collaborative effort to foster new research frontiers in the area of Topology Data Analysis (TDA) between WSU and AFRL, I worked in a research group studying how to combine techniques from  the field of topology and machine learning in both supervised and unsupervised settings. I primarily researched theoretical extensions to the \textit{Mapper} framework, an often used modality for performing TDA. 
+			 My work lead to the development of an algorithmic solution which greatly reduces the complexity of the \textit{Mapper} framework and enables a more tractable analysis of {\em mapper} constructions in the context of Persistent Homology. A journal article demonstrating the utility of this solution is currently in development, but available as a draft, see~\cite{mapperext}. 
+}
+
+%------------------------------------------------
+\cventry{National Aeronautics and Space Administration }
+			 {John H. Glenn Research Center at Lewis Field}
+			 {LERCIP Intern}
+			 {Summer 2018}{}{\vspace{3pt}
+I was hired by Dr. Steven Arnold in the Multiscale Modeling Materials and Structures Division for a 10-week internship at NASA to use Machine Learning to explore the possibility automatically capturing process-property-structure (PSP) relationships through the use of a ML-based surrogate model trained on data generated from the Generalized Method of Cells.
+An additional requirement of the project (per NASAs Vision 2040 guidelines) was to incorporate experimental design methodology for interpreting the results.  
+The project involved:
+\begin{itemize}
+	\item Learning basic mechanics and lamination theory
+	\item Architecting a feed-forward neural network (the surrogate model) to model laminate stress-response data 
+	\item Modifying an optimization procedure (approximate coordinate exchange) to minimize a different loss function (conditional mutual information) to generate optimal designs
+\end{itemize}	
+A technical report and subsequent journal is planned for the future. Presentation material, code, and a draft of the technical report is available upon request for U.S. citizens only. 
+}
 
 %------------------------------------------------
 
 \cventry{Web and Complex Systems Lab}
 			 {Wright State University}
 			 {Graduate Research Assistant}
-			 {2015 - 2017}{}
+			 {2015 - 2018}{}
 {  \vspace{3pt}
-I'm currently pursuing a M.S. in Computer Science as a Graduate Research Assistant. The topic areas I've focused on include: 
+While at the WaCS lab, the topic areas I've focused on include: 
 	\begin{itemize}
 		\item Density-based clustering techniques and theory 
 		\item Dynamic or Temporal Network Models
 		\item Trajectory mining and modeling
 	\end{itemize}
-My work has been focused theory-first approaches to practical density-based clustering. Specifically, my work has focused on augmenting the cluster tree, a shape characteristic of an estimated density function, with semi-supervised information for purpose of point of interest (POI) discovery in geospatial contexts~\cite{poi_paper}. These POIs are then used in a new type of dynamic random graph model, a separate part of the research project~\cite{robinson2017seasonality}. 
-Additional research on the utility of Generative Adversarial Networks (GANs) and their potential for generating certain types of spatiotemporal data, e.g. trajectory data which is characteristically indistinguishable from a given set of trajectory data, is ongoing. 
+The research project I was assigned aimed to modeling real-world traffic networks at a macroscopic scale. The goal of the project is to turn raw positioning/track information into a dynamic network representation, and then model that representation. 
+Much of my work in the project involved researching viable theory-first approaches to large-scale density-based clustering. Specifically, my work has focused on augmenting the cluster tree, a shape characteristic of an estimated density function, with semi-supervised information for purpose of point of interest (POI) discovery in geospatial contexts~\cite{poi_paper}, to be used as the `vertices' in the dynamic network representation. 
 My research is supported by the Center for Surveillance Research, a National Science Foundation I/UCRC.
 }
 
@@ -166,17 +193,8 @@ My research is supported by the Center for Surveillance Research, a National Sci
 %------------------------------------------------
 
 \cventry{Oak Ridge Institute for Science and Education}
-			 {Air Force Research Laboratory}
-			 {Student Research Associate}
-			 {2017}{}{\vspace{3pt}
-			 In a collaborative effort to foster new research frontiers in the area of Topology Data Analysis (TDA) between WSU and AFRL, I worked in a research group studying how to combine techniques from  the field of topology and machine learning for the purpose of both supervised and unsupervised analysis. I researched theoretical extensions to the \textit{Mapper} framework, an often used modality for performing TDA. 
-			 My work lead to the development of a closed-form solution which greatly reduces the parametrized complexity \textit{Mapper} framework, but enables more tractable analysis of the \textit{Mapper} construction in the context of Persistent Homology. A journal article demonstrating the utility of this solution is currently in development~\cite{mapperext}. 
-}
-
-%------------------------------------------------
-\cventry{Oak Ridge Institute for Science and Education}
 			 {Air Force Institute of Technology}
-			 {Undergraduate Research Assistant}
+			 {Student Research Associate}
 			 {2014 - 2016}{}{\vspace{3pt}
 I worked on the development of a novel Iterative Closest Point algorithm amenable to massive parallelization, implemented in C++/CUDA, for the purposes of enabling real-time tracking of aircraft in the context of Autonomous Aerial Refueling. The effort lead to multiple publications~\cite{piekenbrock2016automated, robinson2016parallelized}. I also worked on:
 \begin{itemize}
@@ -204,7 +222,11 @@ As my first part-time position in academia, I worked on a diverse set of project
 \section{Publications}
 
 %% Refereed Publications
-\subsection{\Large Refereed Publications}
+% \subsection{\Large Refereed Publications}
+%% Stuff under development 
+\nocitedev{poi_paper, mapperext}
+\bibliographystyledev{plainyr-rev}
+\bibliographydev{my_bib.bib}
 
 %% Journals 
 \nocitejournal{hahslerdbscan}
@@ -212,10 +234,11 @@ As my first part-time position in academia, I worked on a diverse set of project
 \bibliographyjournal{my_bib.bib}
 
 %% Conference Papers 
-\nociteproceeding{robinson2016parallelized} 
+% \nociteproceeding{robinson2016parallelized} 
 \nociteproceeding{piekenbrock2016automated}
 \nociteproceeding{robinson2017seasonality}
 \nociteproceeding{maurice2015waminet}
+\nociteproceeding{robinson2016parallelized}
 \bibliographystyleproceeding{plainyr-rev}
 \bibliographyproceeding{my_bib.bib}
 
@@ -224,25 +247,28 @@ As my first part-time position in academia, I worked on a diverse set of project
 \bibliographystyleabstract{plainyr}
 \bibliographyabstract{my_bib.bib}
 
-%% Stuff under development 
-\nocitedev{poi_paper, mapperext}
-\bibliographystyledev{plainyr-rev}
-\bibliographydev{my_bib.bib}
 
 %----------------------------------------------------------------------------------------
 %	PACKAGES SECTION
 %----------------------------------------------------------------------------------------
 \section{Open Source Contributions}
-
+{\bfseries dbscan (R package)}\footnote{\url{https://github.com/mhahsler/dbscan}} \hfill Coauthor \\
+{\bfseries clustertree (R package)}\footnote{\url{https://github.com/peekxc/clustertree}} \hfill Author \\ 
+{\bfseries Mapper (R package)}\footnote{\url{https://github.com/peekxc/mapper}} \hfill Author 
+%\cvitem{DBSCAN R package}{\hfill Coauthor}
+%\cvitem{clustertree R package}{\hfill Author}
+%\cvitem{Mapper R package}{\hfill Author}
 
 
 %----------------------------------------------------------------------------------------
 %	AWARDS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Extra Curricular}
+\section{Awards, Extra Curricular, Misc.}
 
 %\cvitem{2017}{Google Summer of Code - Funding }
+\cvitem{Outstanding Masters Student Award (Computer Science)}{\hfill WSU 2017-2018 academic year}
+\cvitem{Student participant and presenter}{\hfill NSF TRIPODS TGDA Summer School and Workshop}
 \cvitem{Regional Model United Nations Annual Conference}{\hfill Served in Volunteer Staff  (2016 - 2017)}
 \cvitem{Outstanding Position Paper Award}{\hfill National Model United Nations Annual Conference (2014)}
 \cvitem{Outstanding Delegation Award}{\hfill National Model United Nations Annual Conference (2013)}

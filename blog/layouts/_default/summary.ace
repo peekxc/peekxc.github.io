@@ -1,14 +1,16 @@
 article.card
-  .row
-    .col-md-4.p-1
-      img.card-img-top src="post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png" style="object-fit: contain; display: block;"
-    .col-md-8.card-body
-      h4.card-title
-        a href={{ .Permalink }} {{ .Title }}
-      h6.card-subtitle.mb-2.text-muted
-        span.fa.fa-clock-o
-        span &nbsp; {{ dateFormat "Jan 2, 2006" .Date }} ~ {{ .FuzzyWordCount }} Words
-      p.card-text {{ .Summary }}
-      // footer.pull-right
-      //  a.btn.btn-primary.btn-sm href={{ .Permalink }}
-      //    | Read more
+  .d-flex.flex-row
+    .flex-column.pr-0.align-self-center.h-100
+      // img.card-img-bottom-left.p-1 src="post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png" style="object-fit: contain;"
+      //
+    .flex-column
+      .card-body.d-flex.flex-column.p-0
+        h4.card-title
+          a href={{ .Permalink }} {{ .Title }}
+        h6.card-subtitle.mb-2.text-muted
+          span.fa.fa-clock-o
+          span &nbsp; {{ dateFormat "Jan 2, 2006" .Date }} ~ {{ .FuzzyWordCount }} Words
+        p.card-text {{ .Summary }}
+        .flex-row.align-self-end
+          a.btn.btn-primary.align-self-center.mr-auto href={{ .Permalink }}
+            | Read more

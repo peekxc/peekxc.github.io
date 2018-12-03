@@ -3,41 +3,36 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/mpiekenbrock/peekxc.github.io/CV/.texpadtmp/dev.aux
 The style file: ../plainyr-rev.bst
 Database file #1: ../my_bib.bib.bib
-I was expecting a `,' or a `}'---line 70 of file ../my_bib.bib.bib
- :   
- :   year={2016}
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 You've used 2 entries,
             2525 wiz_defined-function locations,
-            588 strings with 4908 characters,
-and the built_in function-call counts, 982 in all, are:
-= -- 145
-> -- 26
+            588 strings with 4919 characters,
+and the built_in function-call counts, 1013 in all, are:
+= -- 147
+> -- 31
 < -- 0
-+ -- 31
-- -- 57
-* -- 32
-:= -- 177
++ -- 33
+- -- 59
+* -- 37
+:= -- 183
 add.period$ -- 7
 call.type$ -- 2
-change.case$ -- 8
+change.case$ -- 9
 chr.to.int$ -- 8
 cite$ -- 4
 duplicate$ -- 51
 empty$ -- 37
-format.name$ -- 8
-if$ -- 198
+format.name$ -- 10
+if$ -- 203
 int.to.chr$ -- 0
 int.to.str$ -- 4
 missing$ -- 2
 newline$ -- 14
 num.names$ -- 4
-pop$ -- 11
+pop$ -- 12
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 7
 quote$ -- 0
-skip$ -- 38
+skip$ -- 37
 stack$ -- 0
 substring$ -- 66
 swap$ -- 2
@@ -49,4 +44,3 @@ warning$ -- 0
 while$ -- 14
 width$ -- 3
 write$ -- 24
-(There was 1 error message)

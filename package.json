@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "grunt": "^1.0.1",
+    "gulp-server-livereload": "^1.9.2",
     "string": "^3.3.3",
     "toml": "^2.3.3"
   },
@@ -27,5 +28,5 @@
   "bugs": {
     "url": "https://github.com/peekxc/peekxc.github.io/issues"
   },
-  "homepage": "https://github.com/peekxc/peekxc.github.io#readme",
+  "homepage": "https://github.com/peekxc/peekxc.github.io#readme"
 }

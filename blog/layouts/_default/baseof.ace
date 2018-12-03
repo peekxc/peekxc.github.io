@@ -1,61 +1,91 @@
 = doctype html
 html lang="en-us"
   head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
     {{ $site := .Site }}
     title {{ .Site.Title }}
     link rel="stylesheet" href={{ "css/bootstrap.min.css" | relURL }}
     link rel="stylesheet" href={{ "css/font-awesome.min.css" | relURL }}
+    link rel="stylesheet" href={{ "css/postboot.min.css" | relURL }}
     // link rel="stylesheet" href="css/overrides.css"
   body
-    .container-fluid.px-5.pt-1
-      {{ if .IsHome }}
-        header
-          div role="banner"
-            a href="{{ "" | relLangURL }}" title="{{ .Site.Title }}" rel="home"
-              h1 {{ .Site.Title }}
-              {{ with .Site.Params.subtitle }}
-                h2 {{ . }}
-              {{ end }}
-      {{ end }}
-      nav.navbar.navbar-expand-md.navbar-light.bg-light.border
-        button.navbar-toggler type=button data-toggle=collapse data-target=#navbarMenu aria-controls=navbarMenu aria-expanded=false aria-label="Toggle navigation"
-          span.navbar-toggler-icon
-        #navbarMenu.collapse.navbar-collapse
-          ul#pills-tab.nav.nav-pills.mr-auto role=tablist
-            {{ $currentPage := . }}
-            {{ range .Site.Menus.main }}
-              {{ $isActive := or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
-                li.nav-item
-                  a.nav-link id=pills-{{.Identifier}}-tab class="{{ if $isActive }}active{{ end }}" data-toggle=pill role=tab href=#pills-{{.Identifier}} aria-controls=pills-{{.Identifier}} aria-selected="{{ if $isActive }}true{{ else }}false{{ end }}"
-                    | {{ .Name }}
-            {{ end }}
-          form.form-inline.my-2.my-lg-0
-            input#search_box.form-control.mr-sm-2 type="search" placeholder="Type to start searching..." aria-label="Search"
-    .container-fluid.px-5
+    nav.navbar.navbar-expand-md.navbar-light.border style="background-color: #e3f2fd;"
+      button.navbar-toggler type=button data-toggle=collapse data-target=#navbarMenu aria-controls=navbarMenu aria-expanded=false aria-label="Toggle navigation"
+        span.navbar-toggler-icon
+      #navbarMenu.collapse.navbar-collapse
+        ul.nav.mr-auto role=tablist
+          {{ $currentPage := . }}
+          {{ range .Site.Menus.main }}
+            {{ $isActive := or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
+            li.nav-item class="{{ if $isActive }}active{{ end }}"
+              a.nav-link href="#"
+                | {{ .Name }}
+          {{ end }}
+        form.form-inline.my-2.my-lg-0
+          input#search_box.form-control.mr-sm-2 type="search" placeholder="Type to start searching..." aria-label="Search"
+    .container-fluid.px-0
       .row.m-0
-        .col-md-8.border-0.p-0
-          .card.rounded-0.border-top-0
-            .card-body
-              #pills-tabContent.tab-content
-                #pills-home.tab-pane.fade.active.show activerole="tabpanel" aria-labelledby="pills-home-tab"
-                  {{ range (where .Data.Pages "Section" "post").ByLastmod }}
-                    {{ .Render "summary"}}
-                  {{ end }}
-                #pills-about.tab-pane activerole="tabpanel" aria-labelledby="pills-about-tab"
-                  = yield main
-              = yield single
+        .d-flex.flex-column.col-md-8.border-0.p-0
+          {{ range (where .Data.Pages "Section" "post").ByLastmod }}
+            {{ .Render "summary"}}
+          {{ end }}
+          = yield single
         .col-md-4.p-0
           p Sidebar
           div#search-results
-    .container-fluid.px-5
-      p Copyright Matt Piekenbrock
+    footer.fixed-bottom
+      .card.card-body.bg-light.py-1.rounded-0.border-right-0.border-left-0.border-bottom-0.text-center
+        // {{ partial "footer.html" . }}
+        {{ HTML "<div> &copy;&nbsp;Copyright Matt Piekenbrock 2018. Proudly powered by <a href='https://cran.r-project.org/web/packages/blogdown/index.html'>blogdown</a> and <a href='https://gohugo.io/'>Hugo</a>.</div>" }}
+    script src="/js/postboot.min.js"
     script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"
     // script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
     script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"
-    script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"
+    script src="/js/bootstrap-v4.min.js"
     script src="/js/search_index.js"
     script src="/js/elasticlunr.min.js"
     script src="/js/templates.js"
+    = javascript
+      (function() {
+
+      // Create the ViewPort detector
+      var viewDetector = document.createElement('div');
+      document.getElementsByTagName('body')[0].insertBefore(viewDetector, null).id = 'viewport-detector';
+
+      // Load and Resize events
+      window.onresize = dynamicResizer;
+      window.onload = dynamicResizer;
+
+      function dynamicResizer() {
+        var docWidth = window.innerWidth,
+            docHeight = window.innerHeight;
+        spanDimensions.innerHTML = docWidth + " x " + docHeight;
+      }
+
+      // Create <span class="dimensions"> and append
+      var spanDimensions = document.createElement('span');
+      spanDimensions.className = 'dimensions';
+      document.getElementById('viewport-detector').appendChild(spanDimensions);
+
+      // Create <span class="retina"> and append
+      var spanRetina = document.createElement('span');
+      spanRetina.className = 'retina';
+      document.getElementById('viewport-detector').appendChild(spanRetina);
+
+      // Create <span class="pixel-ratio"> and append
+      var spanPixels = document.createElement('span');
+      spanPixels.className = 'pixel-ratio';
+      document.getElementById('viewport-detector').appendChild(spanPixels);
+      spanPixels.innerHTML = 'Pixel Ratio: ' + window.devicePixelRatio;
+
+      // Retina detect
+      if(window.devicePixelRatio >= 2) {
+        spanRetina.innerHTML = 'Retina Device';
+      } else {
+      spanRetina.innerHTML = 'No Retina Device';
+      }
+      })();
     = javascript
       $(document).ready(function(){
         console.time('Loading index');
@@ -117,9 +147,6 @@ html lang="en-us"
             //}));
             //search_results.append($result);
           });
-
-
-
         }
       }); // document ready
 
@@ -155,5 +182,3 @@ html lang="en-us"
     //
     //  index.addDoc(doc1);
     //  index.addDoc(doc2);
-
-footer
