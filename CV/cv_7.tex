@@ -135,7 +135,7 @@
 %----------------------------------------------------------------------------------------
 
 \section{Research Experience}
-\textbf{Research Interests: } My research interests are in unsupervised learning, statistical learning theory, computational geometry, and building software for the purpose of scientific computing and reproducible research.  
+\textbf{Research Interests: } My research interests are in unsupervised learning, statistical learning theory, topological data analysis, computational geometry, and building software for scientific computing and reproducible research.  
 \newline 
 
 %------------------------------------------------
@@ -144,7 +144,7 @@
 			 {Research Associate}
 			 {Fall 2018-Present, Fall 2017}{}{\vspace{3pt}
 			 In a collaborative effort to foster new research frontiers in the area of Topology Data Analysis (TDA) between WSU and AFRL, I worked in a research group studying how to combine techniques from  the field of topology and machine learning in both supervised and unsupervised settings. I primarily researched theoretical extensions to the \textit{Mapper} framework, an often used modality for performing TDA. 
-			 My work lead to the development of an algorithmic solution which greatly reduces the complexity of the \textit{Mapper} framework and enables a more tractable analysis of {\em mapper} constructions in the context of Persistent Homology. A journal article demonstrating the utility of this solution is currently in development, but available as a draft, see~\cite{mapperext}. 
+			 My work lead to the development of an algorithmic solution which greatly reduces the complexity of the \textit{Mapper} framework and enables a more tractable analysis of {\em mapper} constructions in both the exploratory setting and in the context of Persistent Homology. A journal article demonstrating the utility of this solution is in development, available as a draft~\cite{mapperext}. 
 }
 
 %------------------------------------------------
@@ -152,13 +152,13 @@
 			 {John H. Glenn Research Center at Lewis Field}
 			 {LERCIP Intern}
 			 {Summer 2018}{}{\vspace{3pt}
-I was hired by Dr. Steven Arnold in the Multiscale Modeling Materials and Structures Division for a 10-week internship at NASA to use Machine Learning to explore the possibility automatically capturing process-property-structure (PSP) relationships through the use of a ML-based surrogate model trained on data generated from the Generalized Method of Cells.
+I was hired by Dr. Steven Arnold in the Multiscale Modeling Materials and Structures Division for a 10-week internship at NASA to use Machine Learning to explore the possibility automatically capturing process-property-structure (PSP) relationships through the use of a ML-based surrogate model trained on stress-response data simulated via the Generalized Method of Cells.
 An additional requirement of the project (per NASAs Vision 2040 guidelines) was to incorporate experimental design methodology for interpreting the results.  
 The project involved:
 \begin{itemize}
-	\item Learning basic mechanics and lamination theory
+	\item Learning basic micromechanics and lamination theory
 	\item Architecting a feed-forward neural network (the surrogate model) to model laminate stress-response data 
-	\item Modifying an optimization procedure (approximate coordinate exchange) to minimize a different loss function (conditional mutual information) to generate optimal designs
+	\item Modifying an optimization procedure (approximate coordinate exchange) to minimize a different loss function (conditional mutual information) towards generating optimal designs
 \end{itemize}	
 A technical report and subsequent journal is planned for the future. Presentation material, code, and a draft of the technical report is available upon request for U.S. citizens only. 
 }
@@ -170,15 +170,14 @@ A technical report and subsequent journal is planned for the future. Presentatio
 			 {Graduate Research Assistant}
 			 {2015 - 2018}{}
 {  \vspace{3pt}
-While at the WaCS lab, the topic areas I've focused on include: 
+I joined the Web and Complex Systems (WaCS) lab in 2015 initially as part of an independent study, which in turn lead to a graduate research assistantship. I was assigned to a research project aimed at modeling macroscopic aspects of real-world traffic networks via a dynamic network model (i.e. a modified stochastic block model). The topic areas I focused on for the project include: 
 	\begin{itemize}
 		\item Density-based clustering techniques and theory 
-		\item Dynamic or Temporal Network Models
+		\item Dynamic/Temporal Network Models
 		\item Trajectory mining and modeling
 	\end{itemize}
-The research project I was assigned aimed to modeling real-world traffic networks at a macroscopic scale. The goal of the project is to turn raw positioning/track information into a dynamic network representation, and then model that representation. 
-Much of my work in the project involved researching viable theory-first approaches to large-scale density-based clustering. Specifically, my work has focused on augmenting the cluster tree, a shape characteristic of an estimated density function, with semi-supervised information for purpose of point of interest (POI) discovery in geospatial contexts~\cite{poi_paper}, to be used as the `vertices' in the dynamic network representation. 
-My research is supported by the Center for Surveillance Research, a National Science Foundation I/UCRC.
+Prior to using the stochastic block model, the project requiring first converting raw positioning/track information into a dynamic network representation. 
+Much of my work involved researching scalable, theory-first approaches to identifying the `nodes' in the network, which corresponded to clusters of movement. My approach involved augmenting the {\em cluster tree}, a level-set shape characteristic of an estimated density function, with semi-supervised information. This research was supported by the Center for Surveillance Research, a National Science Foundation I/UCRC.
 }
 
 %------------------------------------------------
@@ -187,7 +186,7 @@ My research is supported by the Center for Surveillance Research, a National Sci
 			 {Google Summer of Code 2017}
 			 {Student Participant}
 			 {Summer 2017}{}{\vspace{3pt} % Begin summary 
-			 I submitted a successful funding proposal under the Google Summer of Code (GSOC) Initiative to the R Project for Statistical Computing to explore, develop, and unify developments related the theory of density-based clustering, namely the recent developments related to the cluster tree. This involved a mixture of code development which culminated in the form of an R package, as well as deep research to further understand the theory and utility of the cluster tree. For more details, see the project page\footnotemark. 
+			 I submitted a successful funding proposal under the Google Summer of Code (GSOC) Initiative to the R Project for Statistical Computing to explore, develop, and unify developments related the theory of density-based clustering, namely the recent developments related to the cluster tree. This involved a variety of code development which culminated in the form of an R package, as well as research to further understand the theory and utility of the cluster tree. For more details, see the project page.\footnotemark 
 			 } 
 \footnotetext{\url{https://summerofcode.withgoogle.com/archive/2017/projects/5919718795902976/}}
 %------------------------------------------------
@@ -196,11 +195,12 @@ My research is supported by the Center for Surveillance Research, a National Sci
 			 {Air Force Institute of Technology}
 			 {Student Research Associate}
 			 {2014 - 2016}{}{\vspace{3pt}
-I worked on the development of a novel Iterative Closest Point algorithm amenable to massive parallelization, implemented in C++/CUDA, for the purposes of enabling real-time tracking of aircraft in the context of Autonomous Aerial Refueling. The effort lead to multiple publications~\cite{piekenbrock2016automated, robinson2016parallelized}. I also worked on:
+Towards the end of my undergraduate degree, my contract at AFIT was extended under a new subcontractor, where I continued working with the same research group. 
+During this time I primarily worked on the development of a novel Iterative Closest Point algorithm amenable to massive parallelization, implemented in C++/CUDA, for the purposes of enabling real-time tracking of aircraft in the context of Autonomous Aerial Refueling. The effort lead to multiple publications~\cite{piekenbrock2016automated, robinson2016parallelized}. I also worked on:
 \begin{itemize}
-	\item Parallelizing existing atmospheric absorption routines with OpenCL through MATLABs MEX interface
-	\item A model for predicting web navigation patterns using Hierarchical Markov Models
-	\item A prototypical UI to to enhance searching and viewing of 3D models using ThreeJS
+	\item A hierarchical markov model for predicting web navigation patterns 
+	\item Parallelizing existing atmospheric absorption routines with OpenCL 
+	\item Coding a (new) nonlinear optimization algorithm in ANSI-C, and making it callable from MATLAB
 \end{itemize}
 }
 
@@ -209,11 +209,11 @@ I worked on the development of a novel Iterative Closest Point algorithm amenabl
 			 {Air Force Institute of Technology}
 			 {Undergraduate Research Assistant}
 			 {2013 - 2014}{}{\vspace{3pt}
-As my first part-time position in academia, I worked on a diverse set of projects, often assisting graduate or doctoral students working in the research area with primarily programmatic or educational tasks. This involved: 
+As an undergraduate student, I was hired at the Air Force Institute of Technology (AFIT) to do research in a heavily multi-disciplinary team called the Low Orbitals Radar and Electromagnetism group, where I worked on a diverse set of projects involving computational, statistical, or physics-based requirements. Being my first research-oriented experience, I either assisted graduate students with primarily programmatic or educational tasks or worked on very computationally-oriented tasks. This involved: 
 \begin{itemize}
-	\item Codifying a novel nonlinear optimization algorithm in ANSI-C
 	\item Implementing an unsplittable flow approximation algorithm in C++ and Python
-	\item Creating a conversion tool that allowed for converting back and forth between Oracle's Abstract Data Type specification to its equivalent representation as an XMLType 
+	\item Creating a conversion tool between Oracle's Abstract Data Type and XMLType
+	\item A prototypical UI to to enhance searching and viewing of 2-or-3D models using JavaScript
 \end{itemize}	
 }
 %----------------------------------------------------------------------------------------
