@@ -1,7 +1,6 @@
 baseurl = "/"   # https://peekxc.github.io/
 languageCode = "en-us"
-title = "Pondering Centrist Blog"
-theme = ""
+title = "Pondering Probabilist"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
@@ -28,6 +27,10 @@ paginate = "10" # Number of posts per page
     categories = true # Enable "Categories" widget
     tags = true # Enable "Tags" widget
     tags_counter = false # Enable counter for each tag in "Tags" widget (disabled by default)
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
 
 [permalinks]
     post = "/:year-:month-:slug/"

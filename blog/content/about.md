@@ -2,6 +2,7 @@
 title: "About"
 date: "2016-05-05T21:48:51-07:00"
 slug: "rmarkdown"
+tags: ["Development", "Go", "fast", "Blogging"]
 menu:
     main:
         name: "About"
@@ -11,4 +12,4 @@ menu:
         identifier: "about"
 ---
 
-This is  the about page for the example website for the [**blogdown**](https://github.com/rstudio/blogdown) package.
+This is the about page for the example website for the [**blogdown**](https://github.com/rstudio/blogdown) package.
