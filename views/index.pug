@@ -54,14 +54,14 @@ html(lang='en')
 				h4 Summary - Research Interests
 				hr
 				p.text-justify.
-					I'm currently a graduate research assistant majoring in Computer Science, with a focus (and minor) in Statistics and Statistical Modeling.
-					My graduate research focus is in Machine Learning (ML) and Artificial Intelligence (AI), and my interests are
+					I'm currently a research associate with a M.S. in Computer Science, with a focus (and minor) in Statistics and Statistical Modeling.
+					My graduate research focused on Machine Learning (ML) and Artificial Intelligence (AI); my interests are
 					in exploring the intersections between unsupervised learning, statistical learning theory, and empirical analysis.
-					I also enjoy building software in the realm of scientific computing and for reproducible research.
-					Topic areas that interest me include e.g. clustering, dimensionality reduction, topology theory,
+					I also enjoy building and contributing software in the realm of scientific computing, and for reproducible research purposes.
+					Topic areas that interest me include e.g. clustering, dimensionality reduction, topology theory, manifold learning,
 					density estimation, etc.
 					I have supplemental research interests, background knowledge, or experience in random graph modeling, bayesian statistics,
-					computational geometry, reinforcement Learning (such as adversarial learning!) and high performance computing.
+					computational geometry, reinforcement learning (such as adversarial learning!) and high performance computing.
 					A few selected research projects are listed below.
 			// Bio element
 			.card.bs-callout.bs-callout-primary
@@ -71,10 +71,9 @@ html(lang='en')
 				ul
 					li Unsupervised and Semi-supervised Learning
 					li Density-based clustering
-					li Techniques for Topological Data Analysis
+					li Topological Data Analysis
 					li Manifold Learning
 					li Statistical Learning Theory
-				h5
 				hr
 				p.
 					I first started doing research part time at the #[a(href="https://www.afit.edu/") Air Force Institute of Technology]
@@ -123,22 +122,20 @@ html(lang='en')
 									| output complex. In practice, there is little guidance on what values may provide "better" or more
 									| "stable" sets of simplices.
 									| In this effort, we provide a new algorithm that enables efficient computation of successive
-									| mapper realizations with respect to this crucial parameter. Our results not only enhance the exploratory/confirmatory
+									| mapper realizations with respect to this crucial parameter. Our results not only enhances the exploratory/confirmatory
 									| aspect of Mapper, but also give tractability to recent theoretical extensions to Mapper related
-									| as persistence and stability.
+									| to persistence and stability.
 						.d-flex.flex-row
 							.card-footer.bg-white
 								div(style="font-weight: bold; font-size: 1.2em;") Related Publication(s):
 								ul
 									li
 										span M. Piekenbrock and D. Doran. Enabling Multi-Scale Simplical Complex Generation for Mapper. SIAM Journal on Applied Algebra and Geometry, 2018 (intending).
-										a(href="resources/indexed_mapper.pdf") &nbsp; [Preliminary draft available]
-										p(style="color: red;").
-											NOTE: This is paper is still developing, and is made available in spirit of transparent research.
-											Some equations may be incorrect and there may be notational errors.
+										p 
+											Send me an email to request a draft. This is paper is still developing.
 								div(style="font-weight: bold; font-size: 1.2em;") Related Material(s):
 								ul(style="font-size: 1.1em;")
-									li.m-2 #[a(href="https://github.com/peekxc/IndexedMapper") Source code for experiments in the paper]
+									// li.m-2 #[a(href="https://github.com/peekxc/IndexedMapper") Source code for experiments in the paper]
 									li.m-2 Associated package #[a(href="https://github.com/peekxc/mapper") code] and #[a(href="https://peekxc.github.io/Mapper/") documentation]
 					hr
 					.card.m-1.border-1.p-1
@@ -151,16 +148,16 @@ html(lang='en')
 								img.img-thumbnail.border-0.m-1(src="img/OSU.png", alt="", style="object-fit:fill;")
 							.card-body(style="flex: 2 0 1em")
 								p.card-text
-									| With the rapid development and widespread deployment sensor dedicated to location-acquisition,
+									| With the rapid development and widespread deployment of sensors dedicated to location-acquisition,
 									| new types of models have emerged to predict macroscopic patterns that manifest in large data sets representing
 									| "significant" group behavior. Partially due to the immense scale of geospatial data, current approaches to
 									| discover these macroscopic patterns are primarily driven
-									| inherently heuristic detection methods. Although useful in practice, the inductive bias
-									| adopted by the detection scheme is generally unstated or simply unknown.
-									| In this research effort, we describe a semi-supervised framework for automated point of interest discovery
-									| inspired by recent theoretical advances in efficient non-parametric density level set estimation techniques. We outline
-									| the flexibility and utility of the approach through numerous examples, and give a systematic framework for
-									| incorporating semisupervised information while retaining finite-sample guarantees.
+									| by inherently heuristic detection methods. Although useful in practice, the inductive bias
+									| adopted by such mainstream detection schemes is often unstated or simply unknown.
+									| Inspired by recent theoretical advances in efficient non-parametric density level set estimation techniques,
+									| in this research effort we describe a semi-supervised framework for automating point of interest discovery in geospatial contexts.
+									| We outline the flexibility and utility of our approach through numerous examples, and give a systematic framework for
+									| incorporating semisupervised information while retaining finite-sample estimation guarantees.
 						.d-flex.flex-row
 							.card-footer.bg-white
 								div(style="font-weight: bold; font-size: 1.2em;") Related Publication(s):
@@ -216,28 +213,27 @@ html(lang='en')
 					.card.m-1.border-1.p-1
 						.d-flex.flex-row
 							.card-header.w-100
-								h3 Massive Parallel Iterative Closest Point
+								h3 Towards Autonomous Aerial Refueling: Massive Parallel Iterative Closest Point
 						.d-flex.flex-row.align-items-center
 							.card-title.m-0(style="flex: 1 0 1em;")
 								img.img-thumbnail.border-0.m-1(src="img/icp.png", alt="", style="object-fit:fill;")
 							.card-body(style="flex: 2 0 1em")
 								p.card-text(style="font-size: 0.9em")
 									| The Iterative Closest Point (ICP) problem is now a well-studied problem that seeks to align a given query point cloud
-									| to a fixed, reference point cloud a pairwise distance minimization. Intuitively, the "brute-force approach" approach
-									| is to calculate the pairwise distance from every point in the query set to every point in the reference set, resulting in
-									| quadratic runtime complexity.
-									| Alternatively, many spatial indexing data structures utilizing branch-and-bound (B&B) properties
-									| have been proposed as a means of reducing the algorithmic complexity of the ICP problem.
-									| While these structures are certainly useful, many were primarily developed for serial applications:
-									| is well known that direct conversion to their parallel equivalents often results in #[i slower] runtime performance than
-									| GPU-employed brute-force approaches due to the frequent suboptimal memory access patterns and conditional computations these
-									| spatial indexing structures often produce.
-									| In this application-motivated effort,
-									| we propose a novel two-step method which exposes the intrinsic parallelism of the ICP problem. Our solution involves an O(log n) approximate search,
-									| followed by fast vectorized search we call the Delaunay Traversal, which we show empirically finishes in O(k) time on average, where k << n.
+									| to a fixed reference point cloud. The ICP problem computationally is dominated by the first phase, a pairwise distance minimization.
+									| The "brute-force" approach, an embarrassingly parallel problem amenable to GPU-acceleration,
+									| involves calculating the pairwise distance from every point in the query set to every point in the reference set.
+									| This however still requires linear runtime complexity per thread, rendering the trivial solution unsuitable for e.g. real-time applications.
+									| Alternative spatial indexing data structures utilizing branch-and-bound (B&B) properties
+									| have been proposed as a means of reducing the algorithmic complexity of the ICP problem, however they were originally
+									| developed for serial applications: it is well known that direct conversion to their parallel equivalents often results
+									| in #[i slower] runtime performance than GPU-employed brute-force approaches due to frequent suboptimal memory access patterns and conditional computations.
+									| In this application-motivated effort, we propose a novel two-step method which exposes the intrinsic parallelism of the ICP problem, yet retains
+									| a number of the B&B properties. Our solution involves an O(log n) approximate search,
+									| followed by fast vectorized search we call the Delaunay Traversal, which we show empirically finishes in O(k) time on average, where k << n,
+									| and is demonstrated to generally exhibit extremely small growth factors on average.
 									| We demonstrate the superiority of our method compared to the traditional B&B and brute-force implementations using
-									| a variety of heterogeneous, benchmark data sets. We also show the usefulness of our method in the context of
-									| Automated Aerial Refueling by improving the runtime of the well known ICP algorithm.
+									| a variety of benchmark data sets, and demonstrate its usefulness in the context of Autonomous Aerial Refueling.
 						.d-flex.flex-row
 							.card-footer.bg-white
 								div(style="font-weight: bold; font-size: 1.2em;") Related Publication(s):
@@ -247,7 +243,7 @@ html(lang='en')
 			.card.bs-callout.bs-callout-warning
 				h4 Education
 				hr
-				h5 GPA: 3.83
+				h5 GPA: 3.88
 				.table-responsive
 					table.table.table-sm
 						thead
@@ -352,10 +348,11 @@ html(lang='en')
 							small.pull-right Summer 2018
 						div(style="font-weight: bold;") Studied:
 						p.
-							I was hired by Dr. Steven Arnold under NASAs LERCIP program to apply Machine Learning to a specific Material Science problem. The
-							research project involving creating a surrogate model for the generalized method of cells (GMC) technique using
-							Deep Learning, and then interpreting various aspects of the data produced under the model using a non-parameteric Optimal
-							Experimental Design-motivated optimization procedure recently made possible by the Approximate Coordinate Exchange algorithm.
+							I was hired by Dr. Steven Arnold under NASAs 10-week LERCIP program to apply Machine Learning to a specific Material Science problem. The
+							first phase of the research project involving training a fairly trivial feed-forward Artificial Neural Network (ANN) to act a surrogate model
+							for the Generalized Method of Cells (GMC) technique. The second (non-trivial) phase of the project involved creating a systematic procedure
+							for interpreting various aspects of the data produced by the surrogate model using a non-parameteric Optimal Experimental Design (OED)-motivated
+							optimization procedure, recently made possible by the Approximate Coordinate Exchange algorithm.
 						div(style="font-weight: bold;") Related Materials:
 						ul
 							li [Presentation material available on request]
@@ -483,8 +480,7 @@ html(lang='en')
 								li Conversion tool from Oracle’s Abstract Data Type to XMLType in Oracle’s Enterprise DBMS
 						div(style="font-weight: bold;") Studied:
 						p.
-							Gauss–Newton Method, approximation algorithms for unsplittable flow problems, graph theory (by extension),
-							relational (Oracle/PostGreSQL/SQLite) and document-based database interaction (MongoDB),
+							Gauss–Newton Method, approximation algorithms for unsplittable flow problems + basic graph theory (by extension),
 							Natural language processing  techniques for SEO (PageRank), asynchronous vs. synchronous
 							client-server communication strategies with AJAX and NodeJS/PHP servers,
 							XML Schema and XML Technologies [Xlink, XPath, etc.]

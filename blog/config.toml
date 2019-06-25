@@ -1,4 +1,4 @@
-baseurl = "/"   # https://peekxc.github.io/
+baseurl = "/"   # https://peekxc.github.io/blog
 languageCode = "en-us"
 title = "Pondering Probabilist"
 googleAnalytics = ""
@@ -23,7 +23,7 @@ paginate = "10" # Number of posts per page
 [Params.widgets]
     search = true # Enable "Search" widget
     recent_articles = true # Enable "Recent articles" widget
-    recent_articles_num = 5 # Set the number of articles in the "Recent articles" widget
+    recent_articles_num = 10 # Set the number of articles in the "Recent articles" widget
     categories = true # Enable "Categories" widget
     tags = true # Enable "Tags" widget
     tags_counter = false # Enable counter for each tag in "Tags" widget (disabled by default)

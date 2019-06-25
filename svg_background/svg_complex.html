@@ -1,0 +1,34 @@
+<html>
+<head>
+		<script src="snap.svg-min.js"></script>
+		<script text="javascript">
+			window.onload = function () {
+				var s = Snap("#svg_complex");
+				// Lets create big circle in the middle:
+				var circle = s.circle(150, 150, 100);
+				// By default its black, lets change its attributes
+				circle.attr({
+						fill: "#bada55",
+						stroke: "#fff",
+						strokeWidth: 2, 
+						opacity: 0.2
+				});
+				function addBlur() {
+					this.attr({opacity: "r()#fff-#000"});
+					// Snap.animate( 0, 10, function( value ) { filterChild.attributes[0].value = value + ',' + value;  }, 1000 );	
+				};
+				var gradientRadial = SNPsvg.gradient("r(0.5, 0.5, 0.5)#000-#fff");
+				s.hover(
+
+				)
+				circle.hover(addBlur);
+				// circle.attr({fill: "r()#fff-#000"});
+			}
+		</script>
+</head>
+<body>
+	<p> hello 2 </p>
+	<svg id="svg_complex" width="100%" height="100%"></svg>
+</body>
+</html>
+

@@ -10,7 +10,7 @@ html lang="en-us"
     link rel="stylesheet" href={{ "css/font-awesome.min.css" | relURL }}
     link rel="stylesheet" href={{ "css/postboot.min.css" | relURL }}
     link rel="stylesheet" href={{ "css/custom.css" | relURL }}
-    // link rel="stylesheet" href="css/overrides.css"
+    link rel="stylesheet" href={{ "css/overrides.css" | relURL }}
   body data-spy="scroll" data-target="#page_toc"
     nav.navbar.navbar-expand-md.navbar-light.border style="background-color: #e3f2fd;"
       button.navbar-toggler type=button data-toggle=collapse data-target=#navbarMenu aria-controls=navbarMenu aria-expanded=false aria-label="Toggle navigation"
@@ -38,27 +38,57 @@ html lang="en-us"
         .col-md-4.p-1
           p
             // {{ printf "%#v" $.Site }}
-            // {{ printf "%#v" . }}
-          div.m-1.list-group.list-group-flush
-            h3 Categories
-            hr.m-1.border-1
-            {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-            {{ $category_content := (printf "collapse_%s" $name) }}
-            {{ $category_header := (printf "%s_category" $name) }}
-            .card.border-1.rounded-0.m-0
-              .card-header.py-1.list-group-item.list-group-item-action.list-group-item-light.border-bottom-1 id="{{ $category_header }}" data-toggle="collapse" data-target="#{{$category_content}}" aria-expanded="true" aria-controls="{{ $category_content }}" style="cursor: context-menu;"
-                {{ upper $name }}
-                {{ $category_link := (printf "/categories/%s" $name) }}
-                span.float-right
-                  a.fa.fa-list.category_link href="{{ $category_link }}" style="color: black;"
-
-              div.collapse.border-top-1 id="{{ $category_content }}" aria-labelledby="{{ $category_header }}"
-                ul.list-group.list-group-flush
-                  {{ range $taxonomy.Pages }}
-                  li.list-group-item.py-0 hugo-nav="{{ .RelPermalink}}"
-                    a href="{{ .Permalink }}" {{ .LinkTitle }}
-                  {{ end }}
+          {{ if .IsPage }}
+            {{ $page_link := urls.Parse .Permalink }}
+            // {{ printf "%#v" $page_link.Path }}
+            div.m-1.list-group.list-group-flush.list-group-single
+              h3 Categories
+              hr.m-1.border-1
+              {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+              {{ $category_content := (printf "collapse_%s" $name) }}
+              {{ $category_header := (printf "%s_category" $name) }}
+              .card.border-1.rounded-0.m-0
+                .card-header.py-1.list-group-item.list-group-item-action.list-group-item-light.border-bottom-1 id="{{ $category_header }}" data-toggle="collapse" data-target="#{{$category_content}}" aria-expanded="true" aria-controls="{{ $category_content }}" style="cursor: context-menu;"
+                  {{ upper $name }}
+                  {{ $category_link := (printf "/categories/%s" $name) }}
+                  span.float-right
+                    a.fa.fa-list.category_link href="{{ $category_link }}" style="color: black;"
+                // {{ printf "%#v" .Pages }}
+                div.collapse.border-top-1 id="{{ $category_content }}" aria-labelledby="{{ $category_header }}" aria-expanded="true"
+                  ul.list-group.list-group-flush
+                    {{ range $taxonomy.Pages }}
+                      {{ $local_link := urls.Parse .RelPermalink }}
+                      // {{ printf "%#v" $local_link.Path }}
+                      {{ if eq $page_link.Path $local_link.Path }}
+                        li.list-group-item.py-0.active hugo-nav="{{ .RelPermalink }}"
+                          a href="{{ .Permalink }}" {{ .LinkTitle }}
+                      {{ else }}
+                        li.list-group-item.py-0 hugo-nav="{{ .RelPermalink }}"
+                          a href="{{ .Permalink }}" {{ .LinkTitle }}
+                      {{ end }}
+                    {{ end }}
+              {{ end }}
+          {{ else }}
+            div.m-1.list-group.list-group-flush
+              h3 Categories
+              hr.m-1.border-1
+              {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+              {{ $category_content := (printf "collapse_%s" $name) }}
+              {{ $category_header := (printf "%s_category" $name) }}
+              .card.border-1.rounded-0.m-0
+                .card-header.py-1.list-group-item.list-group-item-action.list-group-item-light.border-bottom-1 id="{{ $category_header }}" data-toggle="collapse" data-target="#{{$category_content}}" aria-expanded="true" aria-controls="{{ $category_content }}" style="cursor: context-menu;"
+                  {{ upper $name }}
+                  {{ $category_link := (printf "/categories/%s" $name) }}
+                  span.float-right
+                    a.fa.fa-list.category_link href="{{ $category_link }}" style="color: black;"
+                div.collapse.border-top-1 id="{{ $category_content }}" aria-labelledby="{{ $category_header }}"
+                  ul.list-group.list-group-flush
+                    {{ range $taxonomy.Pages }}
+                    li.list-group-item.py-0 hugo-nav="{{ .RelPermalink}}"
+                      a href="{{ .Permalink }}" {{ .LinkTitle }}
+                    {{ end }}
             {{ end }}
+          {{ end }}
           br
           h3 Tags
           .d-flex.flex-row.justify-content-start.align-items-center#all-tags style="flex-shrink: 0; flex-flow: row wrap;"

@@ -40,3 +40,11 @@ body {
     color: #563d7c !important;
     font-weight: 800 !important;
 }
+
+.list-group-single .active {
+    z-index: 2;
+    color: #fff;
+    background-color: #F61515 !important;
+    border-color: #F61515 !important;
+    text-decoration-color: white !important;
+}
