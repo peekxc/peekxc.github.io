@@ -10,7 +10,7 @@
     "gulp-stylus": "^2.7.0"
   },
   "devDependencies": {
-    "grunt": "^1.0.4",
+    "grunt": "^1.5.3",
     "gulp-server-livereload": "^1.9.2",
     "string": "^3.3.3",
     "toml": "^2.3.6"
