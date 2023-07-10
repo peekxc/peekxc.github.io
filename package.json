@@ -4,7 +4,7 @@
   "description": "Website resources for mattpiekenbrock.com",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-livereload": "^3.8.1",
     "gulp-pug": "^3.3.0",
     "gulp-stylus": "^2.7.0"
