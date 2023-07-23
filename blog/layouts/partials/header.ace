@@ -1,0 +1,11 @@
+meta charset="utf-8"
+  meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  meta http-equiv="X-UA-Compatible" content="IE=Edge"
+  {{ $site := .Site }}
+  title {{ .Site.Title }}
+  link rel="stylesheet" href={{ "css/bootstrap.min.css" | relURL }}
+  link rel="stylesheet" href={{ "css/font-awesome.min.css" | relURL }}
+  link rel="stylesheet" href={{ "css/postboot.min.css" | relURL }}
+  link rel="stylesheet" href={{ "css/tomorrow.css" | relURL }} id="theme-stylesheet"
+  link rel="stylesheet" href={{ "css/custom.css" | relURL }}
+  link rel="stylesheet" href={{ "css/overrides.css" | relURL }}

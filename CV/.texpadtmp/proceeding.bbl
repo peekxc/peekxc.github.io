@@ -1,10 +1,29 @@
 \begin{thebibliography}{1}
 
-\bibitem{robinson2017seasonality}
-Jace Robinson and Derek Doran.
-\newblock Seasonality in dynamic stochastic block models.
-\newblock In {\em Proceedings of the International Conference on Web
-  Intelligence}, pages 976--979. ACM, 2017.
+\bibitem{piekenbrock2021move}
+{\textbf{Matt Piekenbrock}} and Jose~A. Perea.
+\newblock Move schedules: Fast persistence computations in coarse dynamic
+  settings.
+\newblock {\em arXiv preprint arXiv:2104.12285}, 2021.
+
+\bibitem{stuckner2021optimal}
+Joshua Stuckner, {\textbf{Piekenbrock, Matthew}}, Steven~M Arnold, and
+  Trenton~M Ricks.
+\newblock Optimal experimental design with fast neural network surrogate
+  models.
+\newblock {\em Computational Materials Science}, 200:110747, 2021.
+
+\bibitem{arnold2020multiscale}
+Steven~M Arnold, {\textbf{Piekenbrock, Matthew}}, Trenton~M Ricks, and Joshua
+  Stuckner.
+\newblock Multiscale analysis of composites using surrogate modeling and
+  information optimal designs.
+\newblock In {\em AIAA Scitech 2020 Forum}, page 1863, 2020.
+
+\bibitem{poi_paper}
+\textbf{Matt Piekenbrock} and Derek Doran.
+\newblock Intrinsic point of interest discovery from trajectory data.
+\newblock {\em arXiv preprint arXiv:1712.05247}, 2017.
 
 \bibitem{piekenbrock2016automated}
 {\textbf{Matt Piekenbrock}}, Jace Robinson, Lee Burchett, Scott Nykl, Brian

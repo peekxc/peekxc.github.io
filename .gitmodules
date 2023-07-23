@@ -1,0 +1,3 @@
+[submodule "blog/themes/hugo-pacman-theme"]
+	path = blog/themes/hugo-pacman-theme
+	url = https://github.com/coderzh/hugo-pacman-theme

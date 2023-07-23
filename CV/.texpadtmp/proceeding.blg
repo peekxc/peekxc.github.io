@@ -1,46 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: /Users/mpiekenbrock/peekxc.github.io/CV/.texpadtmp/proceeding.aux
 The style file: ../plainyr-rev.bst
-Database file #1: ../my_bib.bib.bib
-You've used 4 entries,
+Database file #1: ../my_bib.bib
+You've used 7 entries,
             2525 wiz_defined-function locations,
-            603 strings with 5529 characters,
-and the built_in function-call counts, 3008 in all, are:
-= -- 400
-> -- 92
+            619 strings with 6132 characters,
+and the built_in function-call counts, 4342 in all, are:
+= -- 561
+> -- 151
 < -- 4
-+ -- 72
-- -- 124
-* -- 149
-:= -- 453
-add.period$ -- 16
-call.type$ -- 4
-change.case$ -- 24
-chr.to.int$ -- 16
-cite$ -- 8
-duplicate$ -- 148
-empty$ -- 169
-format.name$ -- 32
-if$ -- 665
++ -- 109
+- -- 200
+* -- 212
+:= -- 687
+add.period$ -- 24
+call.type$ -- 7
+change.case$ -- 40
+chr.to.int$ -- 28
+cite$ -- 14
+duplicate$ -- 208
+empty$ -- 223
+format.name$ -- 52
+if$ -- 918
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 4
-newline$ -- 23
-num.names$ -- 8
-pop$ -- 44
+int.to.str$ -- 14
+missing$ -- 7
+newline$ -- 38
+num.names$ -- 14
+pop$ -- 65
 preamble$ -- 1
-purify$ -- 20
+purify$ -- 33
 quote$ -- 0
-skip$ -- 117
+skip$ -- 173
 stack$ -- 0
-substring$ -- 260
-swap$ -- 44
-text.length$ -- 8
+substring$ -- 353
+swap$ -- 47
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 40
-width$ -- 5
-write$ -- 50
+while$ -- 60
+width$ -- 8
+write$ -- 80

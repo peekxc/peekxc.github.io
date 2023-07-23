@@ -1,20 +1,12 @@
-var gulp = require('gulp');
+const { task } = require('gulp');
 var fs = require('fs');
 var glob = require('glob');
 const yaml = require('js-yaml');
 var S = require('string');
-var file = require('gulp-file');
-var pug = require('pug');
-
-
-gulp.task("build-templates", function(){
-	var jsFunctionString = pug.compileFileClient('layouts/templates/summary.pug', {name: "summary_template"});
-	fs.writeFileSync("static/js/templates.js", jsFunctionString);
-});
-
+var elasticlunr = require("elasticlunr");
 
 var path = {
-  'content' : './content/**/*.+(md|Rmd)'
+  'content' : './content/**/*.+(md)'
 };
 
 var processMDFile = function() {
@@ -27,53 +19,47 @@ var processMDFile = function() {
         var content = fs.readFileSync(file, 'utf8');
         content = content.split('---');
         var frontMatter = yaml.safeLoad(content[1].trim());
-        // console.log(frontMatter);
-
-        // you might have different definition of permalink then change this
-        var href = frontMatter.slug;
-        if(frontMatter.type != null && frontMatter.type == 'post' ){
-          href = '/post/' + href;
-        }
+				// console.log(frontMatter);
+				//console.log(content);
 
         var summary = content[2].replace(/(([^\s]+\s\s*){70})(.*)/,"$1…");
 
         // Build lunr index
         var index = {
+					slug: frontMatter.slug,
           title: frontMatter.title,
 					author: frontMatter.author,
 					date: frontMatter.date,
-          href: href,
-					summary: summary,
-          content: S(content[2]).trim().stripTags().stripPunctuation().s,
 					categories: frontMatter.categories,
-					tags: frontMatter.tags
+					tags: frontMatter.tags,
+					summary: summary,
+          content: S(content[2]).trim().stripTags().stripPunctuation().s
         };
-        //console.log(index);
+        // console.log(index);
         indexFiles.push(index);
       });
     }
-    //console.log(indexFiles);
-    file('search_index.json', JSON.stringify(indexFiles), {src: true}).pipe(gulp.dest('./static/'));
+		//console.log(JSON.stringify(indexFiles));
+		fs.writeFileSync('./static/search_index.json', JSON.stringify(indexFiles));
+    // file('search_index.json', JSON.stringify(indexFiles), {src: true}).pipe(dest('./static/'));
   });
 };
 
-var elasticlunr = require("elasticlunr");
 
-gulp.task("save_index", function(){
+const generateLunarIndex = function(){
 	var elastic_lunr_index = elasticlunr(function () {
+		this.setRef('slug');
 		this.addField('title');
 		this.addField('author');
 		this.addField('date');
-		this.addField('href');
-		this.addField('summary');
-		this.addField('content');
 		this.addField('categories');
 		this.addField('tags');
-		this.setRef('ref');
+		this.addField('summary');
+		this.addField('content');
 	});
 
 	// Add the document in the json file to the search index
-	fs.readFile('public/search_index.json', function (err, data) {
+	fs.readFile('static/search_index.json', function (err, data) {
 		if (err) throw err;
 
 		// Put each item into the index
@@ -81,25 +67,23 @@ gulp.task("save_index", function(){
 
 		var docs = raw.map(function (doc) {
 			return {
-				ref: doc.ref,
-				href: doc.href,
+				slug: doc.slug, 
 				title: doc.title,
-				image: doc.image,
 				author: doc.author,
-				publish_date: doc.publish_date,
-				wordcount: doc.wordcount,
 				date: doc.date,
-				tags: doc.tags,
 				categories: doc.categories,
-				keywords: doc.keywords,
+				tags: doc.tags,
 				summary: doc.summary,
 				content: doc.content
 			}
 		});
 
+		// console.log(docs);
 		docs.forEach(function(doc){
 			elastic_lunr_index.addDoc(doc);
 		});
+		// console.log(elastic_lunr_index);
+		// console.log(elastic_lunr_index.search("markdown"));
 
 		// Write the index to a file
 		fs.writeFile('static/cached_index.json', JSON.stringify(elastic_lunr_index), function (err) {
@@ -108,9 +92,23 @@ gulp.task("save_index", function(){
 		});
 	});
 
+}
+
+task("index", async function(done){
+	generateLunarIndex()
+	done()
+});
+
+task('process', async function(done) {
+	processMDFile()
+  done();
 });
 
 
+// exports.default = processMDFile
+// exports.process = 
 
-
-gulp.task("lunr-index", processMDFile());
+// gulp.task("build-templates", function(){
+// 	var jsFunctionString = pug.compileFileClient('layouts/templates/summary.pug', {name: "summary_template"});
+// 	fs.writeFileSync("static/js/templates.js", jsFunctionString);
+// });

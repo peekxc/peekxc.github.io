@@ -1,4 +1,17 @@
 = content main
-  .container.py-3
-    article
-      {{ .Content }}
+  // {{ printf "%#v" . }}
+  h3 style="font-style: italic;" {{ title .Title }}
+  {{ range .Pages }}
+    h5 {{ .Title }} 
+    {{ range .Pages }}
+      h6 {{ .Title }}
+    {{ end }}
+  {{ end }}
+
+
+= content sidebar 
+  #categories.d-flex.flex-column
+    {{ partial "list_categories" . }}
+  br 
+  #tags.d-flex.flex-column
+    {{ partial "tags" . }}

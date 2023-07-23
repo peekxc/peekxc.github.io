@@ -1,16 +1,13 @@
 \begin{thebibliography}{1}
 
-\bibitem{mapperext}
-{\textit{(In Development)}}:~{\textbf{Matt Piekenbrock}}, Derek Doran, and Ryan
-  Kramer.
-\newblock Efficient multi-scale simplicial complex generation for mapper.
-\newblock {\em SIAM Journal on Applied Algebra and Geometry}, 2018.
-\newblock Draft version available after:
-  \url{http://mattpiekenbrock.com/resources/indexed_mapper.pdf}.
+\bibitem{tallem2021}
+{\textbf{Matt Piekenbrock}}~Joshua~Mike and Jose~A. Perea.
+\newblock Tallem: Topological assembly of locally euclidean models.
+\newblock {\em Available upon request}, 2022.
 
-\bibitem{poi_paper}
-\textbf{Matt Piekenbrock} and Derek Doran.
-\newblock Intrinsic point of interest discovery from trajectory data.
-\newblock {\em arXiv preprint arXiv:1712.05247}, 2017.
+\bibitem{pbopt2022}
+{\textbf{Matt Piekenbrock}} and Jose~A. Perea.
+\newblock Persistent betti computations in dynamic metric settings.
+\newblock {\em Available upon request}, 2022.
 
 \end{thebibliography}

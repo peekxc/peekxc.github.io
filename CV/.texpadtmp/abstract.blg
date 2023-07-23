@@ -1,8 +1,8 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: /Users/mpiekenbrock/peekxc.github.io/CV/.texpadtmp/abstract.aux
 The style file: plainyr.bst
-Database file #1: ../my_bib.bib.bib
+Database file #1: ../my_bib.bib
 You've used 1 entry,
             2146 wiz_defined-function locations,
             510 strings with 4476 characters,
