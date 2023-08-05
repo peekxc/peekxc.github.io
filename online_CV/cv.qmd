@@ -1,0 +1,88 @@
+---
+title: Online CV 
+author: Matt Piekenbrock
+listing:
+  sort-ui: true
+  filter-ui: true
+  id: project-listing
+  contents: /projects
+  type: default
+  sort: date
+  fields: [title, author]
+  page-size: 10
+---
+
+::: {#project-listing}
+ testing 
+:::
+
+<!-- ```{=mdx}
+export const Highlight = ({children, color}) => (
+  <span style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+    {children}
+  </span>
+);
+``` -->
+
+
+
+<!-- .card.m-1.border-1.p-1
+  .d-flex.flex-row
+    .card-header.w-100
+      h3 Automating Point of Interest Discovery in Geospatial Contexts
+      span(style="color: green;") &nbsp; (ongoing research effort)
+  .d-flex.flex-row.align-items-center
+    .card-title.m-0(style="flex: 1 0 1em;")
+      img.img-thumbnail.border-0.m-1(src="img/OSU.png", alt="", style="object-fit:fill;")
+    .card-body(style="flex: 2 0 1em")
+      p.card-text
+        | With the rapid development and widespread deployment of sensors dedicated to location-acquisition,
+        | new types of models have emerged to predict macroscopic patterns that manifest in large data sets representing
+        | "significant" group behavior. Partially due to the immense scale of geospatial data, current approaches to
+        | discover these macroscopic patterns are primarily driven
+        | by inherently heuristic detection methods. Although useful in practice, the inductive bias
+        | adopted by such mainstream detection schemes is often unstated or simply unknown.
+        | Inspired by recent theoretical advances in efficient non-parametric density level set estimation techniques,
+        | in this research effort we describe a semi-supervised framework for automating point of interest discovery in geospatial contexts.
+        | We outline the flexibility and utility of our approach through numerous examples, and give a systematic framework for
+        | incorporating semisupervised information while retaining finite-sample estimation guarantees.
+  .d-flex.flex-row
+    .card-footer.bg-white
+      div(style="font-weight: bold; font-size: 1.2em;") Related Publication(s):
+      ul
+        li Piekenbrock, Matthew, and Derek Doran. "Intrinsic Point of Interest Discovery from Trajectory Data." arXiv preprint arXiv:1712.05247 (2017).
+          a(href="https://arxiv.org/abs/1712.05247") &nbsp;[Preprint available]
+        li Robinson, Jace, and Derek Doran. "Seasonality in dynamic stochastic block models." arXiv preprint arXiv:1706.07895 (2017).
+        li Maurice, M., Piekenbrock, M., & Doran, D. (2015, December). WAMINet: An Open Source Library for Dynamic Geospace Analysis Using WAMI. In Multimedia (ISM), 2015 IEEE International Symposium on (pp. 445-448). IEEE. -->
+
+<!-- 
+<Highlight color="#25c2a0">Docusaurus GREEN</Highlight> and <Highlight color="#1877F2">Rams blue</Highlight> are my favorite colors.
+
+Curriculum Vitae of Matthew Piekenbrock Last annual update: December 01, 2018 Traditional paper CV available here
+
+Matt Piekenbrock Graduate Research Assistant M.S. in Computer Science 2018 (PhD intending) B.S. in Computer Science 2015 (minor in statistics)
+
+### Summary - Research Interests
+
+I'm currently a research associate with a M.S. in Computer Science, with a focus (and minor) in Statistics and Statistical Modeling. My graduate research focused on Machine Learning (ML) and Artificial Intelligence (AI); my interests are in exploring the intersections between unsupervised learning, statistical learning theory, and empirical analysis. I also enjoy building and contributing software in the realm of scientific computing, and for reproducible research purposes. Topic areas that interest me include e.g. clustering, dimensionality reduction, topology theory, manifold learning, density estimation, etc. I have supplemental research interests, background knowledge, or experience in random graph modeling, bayesian statistics, computational geometry, reinforcement learning (such as adversarial learning!) and high performance computing. A few selected research projects are listed below.
+
+### Experience
+
+::: {.card .m-1 .border-1 .p-1}
+  Towards Autonomous Aerial Refueling: Massive Parallel Iterative Closest Point
+:::
+
+Research Associate | Oak Ridge Institute for Science and Education | Air Force Research Laboratory, WPAFB
+
+I worked at the Air Force Institute of Technology within the [Low Orbitals Radar and Electromagnetism]() (LORE) group in 2013 doing research with a heavily multidisciplinary team called under supervision of [Dr. Andrew Terzuoli](). I worked actively with the group until 2016, after which I maintained an advisory-role until early 2017.
+
+In 2015, I started working for the Machine Learning and Complex Systems Lab as part of a research-based independent study shortly after taking an introductory ML/data analysis course taught by Derek Doran. I received a graduate research assistant position in the same lab shortly after, working towards an M.S. in Computer Science.
+
+Since late 2016, I've been involved in a small group associated with the Air Force Research Laboratory that does applied topological data analysis (TDA) with the Mapper framework. I originally worked for the group under a very part-time status, but since Fall 2018 began doing research there full time.
+
+My computational experience is diverse. Since 2015, I started using the R Project for Statistical Computing for statistical modeling, and I continue to prefer R for research. In my undergraduate years, I used both C++ (primarily C++11) and ANSI-C89/C90 extensively for a myriad of projects (see below). Part of my undergraduate research delved into project involving computational geometry which required a final implementation written in Compute Unified Device Architecture (CUDA) and OpenCL. -->

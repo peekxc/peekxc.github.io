@@ -1,7 +1,6 @@
-# Created by .ignore support plugin (hsz.mobi)
-.DS_STORE
-**/.DS_STORE
-.idea/
-node_modules/
-.Rproj.user
-.texpadtmp
+/.quarto/
+.idea
+**/.idea/**
+**/node_modules/**
+_site
+**/**/.idea

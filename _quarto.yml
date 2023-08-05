@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: docs
+  resources: 
+    - "/lib" # do not use lib-dir option
+
+website:
+  repo-url: https://github.com/peekxc/peekxc.github.io
+  navbar:
+    background: secondary
+    title: Home
+    search: true
+    left:
+      - href: about.qmd
+        text: Bio
+      - href: https://peekxc.github.io/blog/
+        text: Blog
+      - href: publications.qmd
+        text: Publications
+      - href: online_CV/cv.qmd
+        text: CV
+    right:
+      - icon: github
+        href: https://github.com/peekxc/
+        aria-label: GitHub
+
+format:
+  html:
+    theme: yeti
+    linkcolor: rgb(240 94 35)
+    mainfont: serif
+    css: styles.css
+    toc: true
+    embed-resources: false
+    self-contained-math: false
