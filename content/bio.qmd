@@ -1,15 +1,20 @@
 ---
-title: "Matt Piekenbrock"
-about:
-  template: solana
-  image: online_CV/resources/profile_pic.jpeg
-  links:    
-    - icon: github
-      text: Github
-      href: https://github.com/peekxc
-    - icon: file-person
-      text: CV
-      href: https://github.com/peekxc
+format: hugo-md
+layout: single_md.pug
+# jupyter: python3
+# about:
+#   template: solana
+#   image: online_CV/resources/profile_pic.jpeg
+#   links:    
+#     - icon: github
+#       text: Github
+#       href: https://github.com/peekxc
+#     - icon: file-person
+#       text: CV
+#       href: https://github.com/peekxc
+# format: 
+#   gfm:
+#     html-math-method: katex
 ---
 
 :::{#hero-heading}

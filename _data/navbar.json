@@ -1,0 +1,10 @@
+{
+ "about": {
+    "url": "/bio",
+    "title": "Bio"
+ },
+ "news": {
+    "url": "/news",
+    "title": "News"
+  }
+}

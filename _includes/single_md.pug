@@ -1,0 +1,16 @@
+extends ./baseof.pug
+
+block main 
+	.container.mx-auto.px-64.items-center.max-w-screen-xl.prose.prose-pre_p-2.prose-pre_border-2
+		h1.my-4 #{ title }
+		#page_content.w-full 
+		!= content 
+		br
+
+block sidebar
+	//- {{ $page_content := ( printf "%s/%s.html" .File.Dir .File.BaseFileName ) | relURL }}
+	//- {{ with .Site.GetPage (printf "%s" $page_content) }}
+	//-   p {{ .TableOfContents }}
+	//-   {{ partial "scrollspy" . }}
+	//- {{ end }}
+	//- TODO: implement auotmated scrollspy https://github.com/jake-low/remark-sectionize/blob/master/index.js
