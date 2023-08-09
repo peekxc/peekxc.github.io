@@ -1,0 +1,70 @@
+//- extends ./baseof.pug
+//- block main 
+//- .container.w-full.px-16.py-2
+.card.shadow-xs.bg-white.rounded-md.border-1.leading-5.max-w-3xl
+  .grid.grid-cols-2.gap-y-1.content-between.px-4.py-2.bg-gray-200.accordion-header.cursor-pointer.bg-cover.bg-clip-border.bg-no-repeat.bg-right.bg-blend-overlay(style="background-image: url(" + filters.url(""+job.background_image+"); background-size: 50%;"))
+    h4.font-bold #{ job.job_title } 
+    h4.font-bold.justify-self-end #{ job.job_org }
+    h4.font-medium #{ job.job_loc }
+    h4.font-medium.justify-self-end #{ job.job_date }
+    hr.col-span-full
+    p.col-span-full.text-ellipsis.overflow-hidden.pr-2.italic(class="truncate ...") #{ job.abstract }
+  //- .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100 h4.font-bold More Details  
+  .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
+    .card-body.p-2.overflow-auto.px-4.py-2.space-y-1
+      .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100
+        h4.font-bold Job Description
+      .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
+        p.text-gray-700 #{ job.abstract }
+      .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100
+        h4.font-bold Publications
+      .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
+        ul.list-disc.ml-6 
+          li Pub 2 
+          li Pub 2 
+      .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100
+        h4.font-bold Software
+      .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
+        ul.list-disc.ml-6 
+          li Software link 
+
+
+  //- .card.bs-callout.bs-callout-danger
+  //-   h4 Experience
+  //-   hr
+  //-   ul.list-group
+  //-     // AFIT ORAU undergraduate/graduate item
+  //-     .list-group-item
+  //-       h4.list-group-item-heading Research Associate
+  //-         small.pull-right
+  //-           | Oak Ridge Institute for Science and Education
+  //-       h5 Air Force Research Laboratory, WPAFB
+  //-         small.pull-right Fall 2018 - Present (also Fall 2017)
+  //-       div(style="font-weight: bold;") Studied:
+  //-       p.
+  //-         As I read more into theoretical foundations of density-based clustering, my research began to intersect Topology Theory and Manifold Learning.
+  //-         In 2017, I began to research these connections in a minor capacity with a local research group studying the intersection of TDA and machine learning.
+  //-         The research primarily involved understanding the basic foundations of Topology towards extending the Mapper framework, a popular and very general method which has
+  //-         been used successfully for data analysis.
+  //-       p.
+  //-         Starting Fall 2018 I was hired full-time to begin enhancing/extending Mapper, and to assist the team in using Mapper on real-world applications. My
+  //-         primary research towards this end has been two-fold: (1) to enable efficient construction of mappers in a multiscale setting, (2) understand
+  //-         the full range of use-cases for the Mapper framework. For more details, see below.
+  //-       div(style="font-weight: bold;") Published:
+  //-       ul
+  //-         li M. Piekenbrock and D. Doran. Enabling Multi-Scale Simplical Complex Generation for Mapper. SIAM Journal on Applied Algebra and Geometry, 2018 (intending).
+  //-           a(href="resources/indexed_mapper.pdf") &nbsp; [Preliminary draft available]
+  //-         p(style="color: red;").
+  //-           NOTE: This is paper is still developing, and is made available in spirit of transparent research.
+  //-           Some equations may be incorrect and there may be notational errors.
+  //-       div(style="font-weight: bold;") Related Materials:
+  //-         ul
+  //-           li.m-2
+  //-             a(href="https://github.com/peekxc/Mapper") Mapper R Package
+  //-             p.pull-right
+  //-               a(href="")
+  //-                 img(src="https://img.shields.io/badge/development-GitHub-orange.svg" alt="Development version on GitHub" title="Development version on GitHub")
+  //-               a(href='https://travis-ci.com/peekxc/Mapper.svg?branch=master')
+  //-                 img(src='https://travis-ci.com/peekxc/Mapper.svg?branch=master', alt='Travis-CI Build Status')
+  //-               a(href="https://peekxc.github.io/Mapper/")
+  //-                 img(src="https://readthedocs.org/projects/pip/badge/?version=latest&style=flat")

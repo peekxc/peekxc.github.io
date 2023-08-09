@@ -61,10 +61,10 @@ module.exports = function(eleventyConfig) {
   //   ui: false,
   //   ghostMode: false
   // })
+	eleventyConfig.addPassthroughCopy("resources");
 
-  // "liquid"
 	return {
-		templateFormats: [ "md", "pug", "html" ], 
+		templateFormats: [ "md", "pug", "html" ], // "liquid"
 		dir: {
 			input: "content",
 			includes: "../_includes", 

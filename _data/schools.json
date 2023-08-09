@@ -1,0 +1,23 @@
+{
+  "wsu": {
+    "school_name": "Wright State University",
+    "school_acronym": "WSU",
+    "courses": ["STT"],
+    "gpa": 3.8,
+    "background_image": "resources/nasa.png"
+  },
+  "msu": {
+    "school_name": "Wright State University",
+    "school_acronym": "WSU",
+    "courses": ["STT"],
+    "gpa": 3.8,
+    "background_image": "resources/nasa.png"
+  },
+  "neu": {
+    "school_name": "Northeastern University",
+    "school_acronym": "NEU",
+    "courses": ["STT"],
+    "gpa": 3.8,
+    "background_image": "resources/nasa.png"
+  }
+}

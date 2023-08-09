@@ -1,7 +1,7 @@
 ---
 title: "Matt Piekenbrock"
 format: hugo-md
-layout: callout.pug
+layout: list.pug
 ---
 
 ## Experience

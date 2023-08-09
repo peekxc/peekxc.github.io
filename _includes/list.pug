@@ -1,0 +1,16 @@
+extends ./baseof.pug
+
+block main 
+	.container.w-full.py-2.mx-auto.px-6
+		.flex.flex-col.space-y-2.px-6.border-sm.m-4.p-2
+			h2.font-bold.text-orange.text-xl Employment
+			each job in jobs
+				//- li=job.job_title
+				include partials/job_card
+		
+		.flex.flex-col.space-y-2.px-6.border-sm.m-4.p-2
+			h2.font-bold.text-orange.text-xl Education
+			each uni in schools
+				//- li=job.job_title
+				include partials/edu_card
+
