@@ -1,0 +1,31 @@
+.max-h-40
+  .grid.grid-cols.gap-y-1.content-between.px-4.py-2.bg-gray-100
+    h3.font-bold.text-lg #{ project.title } 
+    h4.font-bold.text-md.justify-self-end #{ project.subtitle }
+  .grid.grid-cols-12.bg-white-100
+    .col-span-5.m-2
+      img.object-cover.h-full.w-full(src=project.image)
+    .col-span-7.flex.flex-col.m-2
+      p.overflow-auto #{project.abstract }
+    p.col-span-full.text-ellipsis.overflow-hidden.pr-2.italic(class="truncate ...").accordion-header.cursor-pointer Publications, code, and related materials
+
+//- .shadow-xs.bg-white.leading-5.max-w-3xl.border-3.border-transparent(class="hover:border-yellow-400")
+
+  //- .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100 h4.font-bold More Details  
+  //- .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
+  //-   .card-body.p-2.overflow-auto.px-4.py-2.space-y-1
+  //-     .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100
+  //-       h4.font-bold Job Description
+  //-     .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
+  //-       p.text-gray-700 #{ project.abstract }
+  //-     .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100
+  //-       h4.font-bold Publications
+  //-     .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
+  //-       ul.list-disc.ml-6 
+  //-         li Pub 2 
+  //-         li Pub 2 
+  //-     .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100
+  //-       h4.font-bold Software
+  //-     .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
+  //-       ul.list-disc.ml-6 
+  //-         li Software link 

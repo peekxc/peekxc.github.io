@@ -1,23 +1,46 @@
 {
-  "wsu": {
-    "school_name": "Wright State University",
-    "school_acronym": "WSU",
-    "courses": ["STT"],
-    "gpa": 3.8,
-    "background_image": "resources/nasa.png"
-  },
-  "msu": {
-    "school_name": "Wright State University",
-    "school_acronym": "WSU",
-    "courses": ["STT"],
-    "gpa": 3.8,
-    "background_image": "resources/nasa.png"
-  },
   "neu": {
     "school_name": "Northeastern University",
     "school_acronym": "NEU",
+    "school_department": "Khoury College of Computer Sciences",
+    "degree_title": "Computer Science", 
+    "degree_subtitle": "Doctorate (Pursuing)",
     "courses": ["STT"],
     "gpa": 3.8,
-    "background_image": "resources/nasa.png"
+    "background_image": "resources/nasa_logo.png"
+  },
+  "msu": {
+    "school_name": "Michigan State University",
+    "school_acronym": "MSU",
+    "school_department": "Computational Mathematics, Science and Engineering",
+    "degree_title": "Computational Mathematics, Science and Engineering", 
+    "degree_subtitle": "Doctorate (Transferred)",
+    "courses": ["STT"],
+    "gpa": 3.8,
+    "background_image": "resources/nasa_logo.png"
+  }, 
+  "wsu_grad": {
+    "school_name": "Wright State University",
+    "school_acronym": "WSU",
+    "school_department": "College of Engineering and Computer Science",
+    "courses": [
+      ["STT 3600/3610", "Applied Statistics I & II"]
+    ],
+    "degree_title": "Computer Science", 
+    "degree_subtitle": "Master of Science",
+    "gpa": 3.8,
+    "background_image": "resources/nasa_logo.png"
+  },
+  "wsu_ug": {
+    "school_name": "Wright State University",
+    "school_acronym": "WSU",
+    "school_department": "College of Engineering and Computer Science", 
+    "courses": [
+      ["STT 3600/3610", "Applied Statistics I & II"]
+    ],
+    "degree_title": "Computer Science (+ Minor in Statistics)", 
+    "degree_subtitle": "Bachelor of Science",
+    "gpa": 3.8,
+    "background_image": "resources/nasa_logo.png"
   }
 }

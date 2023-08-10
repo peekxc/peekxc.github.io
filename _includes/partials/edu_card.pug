@@ -2,11 +2,13 @@
 //- block main 
 //- .container.w-full.px-16.py-2
 .card.shadow-xs.bg-white.rounded-md.border-1.leading-5.max-w-3xl
-  .grid.grid-cols-2.gap-y-1.content-between.px-4.py-2.bg-gray-200.accordion-header.cursor-pointer.bg-cover.bg-clip-border.bg-no-repeat.bg-right.bg-blend-overlay(style="background-image: url(" + filters.url(""+uni.background_image+"); background-size: 50%;"))
-    h4.font-bold #{ uni.school_name } 
-    h4.font-bold.justify-self-end #{ (uni.school_acronym) }
+  .grid.grid-cols-8.gap-y-1.content-between.px-4.py-2.bg-gray-200.accordion-header.cursor-pointer.bg-cover.bg-clip-border.bg-no-repeat.bg-right.bg-blend-overlay(style="background-image: url(" + filters.url(""+uni.background_image+"); background-size: 50%;"))
+    h4.font-bold.col-span-3 #{ uni.school_name } 
+    h4.font-bold.col-span-5.justify-self-end #{ uni.school_department }
+    h4.font-normal.col-span-3 #{ uni.degree_subtitle } 
+    h4.font-normal.col-span-5.justify-self-end #{ (uni.degree) }
     hr.col-span-full
-    p.col-span-full.text-ellipsis.overflow-hidden.pr-2.italic(class="truncate ...") #{ uni.gpa }
+    span.col-span-full.text-ellipsis.overflow-hidden.pr-2.italic(class="truncate ...") GPA: #{ uni.gpa }, Coursework: ...
 
 
   //- .card.bs-callout.bs-callout-danger

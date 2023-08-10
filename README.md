@@ -42,3 +42,7 @@ To develop actively, use:
 > quarto render & eleventy --config eleventy.config.js --watch --serve
 
 Should probably switch to gulp
+
+To preprocess the CSS styles from tailwind, use: 
+
+> npx tailwindcss --output lib/css/tw_styles.css

@@ -1,12 +1,12 @@
 //- extends ./baseof.pug
 //- block main 
 //- .container.w-full.px-16.py-2
-.card.shadow-xs.bg-white.rounded-md.border-1.leading-5.max-w-3xl
-  .grid.grid-cols-2.gap-y-1.content-between.px-4.py-2.bg-gray-200.accordion-header.cursor-pointer.bg-cover.bg-clip-border.bg-no-repeat.bg-right.bg-blend-overlay(style="background-image: url(" + filters.url(""+job.background_image+"); background-size: 50%;"))
-    h4.font-bold #{ job.job_title } 
-    h4.font-bold.justify-self-end #{ job.job_org }
-    h4.font-medium #{ job.job_loc }
-    h4.font-medium.justify-self-end #{ job.job_date }
+.card.shadow-xs.bg-white.leading-5.max-w-3xl.border-3.border-transparent(class="hover:border-red-400")
+  .grid.grid-cols-8.gap-y-1.content-between.px-4.py-2.bg-gray-200.accordion-header.cursor-pointer.bg-cover.bg-clip-border.bg-no-repeat.bg-right.bg-blend-overlay(style="background-image: url(" + filters.url(""+job.background_image+"); background-size: 50% !important;"))
+    h4.font-bold.col-span-3 #{ job.job_title } 
+    h4.font-bold.col-span-5.justify-self-end #{ job.job_org }
+    h4.font-medium.col-span-3 #{ job.job_date }
+    h4.font-medium.col-span-5.justify-self-end #{ job.job_loc }
     hr.col-span-full
     p.col-span-full.text-ellipsis.overflow-hidden.pr-2.italic(class="truncate ...") #{ job.abstract }
   //- .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100 h4.font-bold More Details  

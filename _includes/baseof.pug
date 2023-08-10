@@ -3,13 +3,14 @@ html.h-100(lang="en-US")
 	include partials/head.pug	
 	header 
 		include partials/navbar.pug
-	body.w-full.h-full
+	body.flex.flex-col.min-h-screen
 		block main 
 		block sidebar	
 		//- include ./partials/js_includes.pug
 		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js" integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4=" crossorigin="anonymous")
 		//- script(src="/js/highlight.min.js")
 		//- script hljs.initHighlightingOnLoad()		
+		include partials/footer.pug
 		script. 
 			//- Reset zoom
 			var scale = 'scale(1)';
@@ -31,7 +32,7 @@ html.h-100(lang="en-US")
 					$(this).closest(".grid").find("p.text-ellipsis:last-child").toggleClass("hidden");
 				});
 			})
-	include partials/footer.pug
+
 //- // = console.log(page.fileSlug)
 //- // block main 
 //- // = console.log(collections)

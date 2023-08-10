@@ -1,16 +1,29 @@
 extends ./baseof.pug
 
 block main 
-	.container.w-full.py-2.mx-auto.px-6
-		.flex.flex-col.space-y-2.px-6.border-sm.m-4.p-2
-			h2.font-bold.text-orange.text-xl Employment
-			each job in jobs
-				//- li=job.job_title
-				include partials/job_card
-		
-		.flex.flex-col.space-y-2.px-6.border-sm.m-4.p-2
-			h2.font-bold.text-orange.text-xl Education
-			each uni in schools
-				//- li=job.job_title
-				include partials/edu_card
+	.container.flex.flex-col.mx-auto.space-y-4.py-2.px-40.border-2
+		//- #page_content.w-full 
+		//- != content 
 
+		.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
+			h2.font-bold.text-yellow-400.text-xl Projects
+			each project in projects
+				include partials/project_card
+
+		.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
+			h2.font-bold.text-red.text-xl Employment
+			ol.relative.ml-3.border-l.border-red-400
+				each job in jobs
+					.flex-start.flex.items-center.pt-1
+						.absolute.w-4.h-4.bg-red-400.rounded-full.border.border-white(class='-left-2') 
+						li.ml-3.w-full
+							include partials/job_card
+		
+		.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
+			h2.font-bold.text-orange.text-xl Education
+			ol.relative.ml-3.border-l.border-orange-400
+				each uni in schools
+					.flex-start.flex.items-center.pt-2
+						.absolute.w-4.h-4.bg-orange-400.rounded-full.border.border-white(class='-left-2')
+						li.ml-3.w-full
+							include partials/edu_card

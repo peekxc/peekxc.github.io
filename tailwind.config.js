@@ -9,6 +9,7 @@ module.exports = {
 		colors: {
 			transparent: 'transparent',
 			orange: '#f05e23', 
+			red: '#ff0000',
 			white: '#ffffff', 
 			lightgray: '#cecece', 
 			black: '#000000',
@@ -23,8 +24,7 @@ module.exports = {
 				'700': '#616161',
 				'800': '#424242',
 				'900': '#212121',
-			}, 
-			red: '#ff0000'
+			}
 		}
   },
   variants: {
@@ -56,3 +56,4 @@ module.exports = {
 		preflight: false
 	}
 }
+// npx tailwindcss --output lib/css/tw_styles.css

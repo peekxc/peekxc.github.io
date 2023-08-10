@@ -5,3 +5,13 @@ layout: list.pug
 ---
 
 ## Experience
+
+## Timeline
+
+I first started doing research part time at the Air Force Institute of Technology with a heavily multidisciplinary team called the Low Orbitals Radar and Electromagnetism (LORE) group in 2013 doing either 1) research for an independent project under supervision of [Dr. Andrew Terzuoli]() or 2) supporting graduate students' research efforts in the group. I worked actively with the group until 2016, after which I maintained an advisory-role until early 2017.
+
+In 2015, I started working for the Machine Learning and Complex Systems Lab as part of a research-based independent study shortly after taking an introductory ML/data analysis course taught by Derek Doran. I received a graduate research assistant position in the same lab shortly after, working towards an M.S. in Computer Science.
+
+Since late 2016, I've been involved in a small group associated with the Air Force Research Laboratory that does applied topological data analysis (TDA) with the Mapper framework. I originally worked for the group under a very part-time status, but since Fall 2018 began doing research there full time.
+
+My computational experience is diverse. Since 2015, I started using the R Project for Statistical Computing for statistical modeling, and I continue to prefer R for research. In my undergraduate years, I used both C++ (primarily C++11) and ANSI-C89/C90 extensively for a myriad of projects (see below). Part of my undergraduate research delved into project involving computational geometry which required a final implementation written in Compute Unified Device Architecture (CUDA) and OpenCL. Of course, I'm proficient in both Python and Java.
