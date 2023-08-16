@@ -3,7 +3,8 @@ project:
   execute-dir: project
   # output-dir: content
   render:
-    - content
+    - "content"
+    # - "!content/jobs"
 
 format:
   hugo-md: 

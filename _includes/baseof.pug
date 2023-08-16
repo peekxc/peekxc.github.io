@@ -3,7 +3,7 @@ html.h-100(lang="en-US")
 	include partials/head.pug	
 	header 
 		include partials/navbar.pug
-	body.flex.flex-col.min-h-screen
+	body.flex.flex-col.min-h-screen(data-te-spy='scroll' data-te-target='#scrollspy-cv' data-te-offset='200')
 		block main 
 		block sidebar	
 		//- include ./partials/js_includes.pug
@@ -18,34 +18,35 @@ html.h-100(lang="en-US")
 			document.body.style.msTransform = scale;
 			document.body.style.transform = scale;
 		script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+		script(src=filters.url("/lib/js/tw-elements.umd.min.js"))
 		script.
 			$(document).ready(function() {
-				$(".accordion-header").click(function() {
-					$(this).toggleClass("active");
-					$(this).next(".accordion-body").toggleClass("hidden");
 
-					// Toggle child accordions when parent accordion is clicked
-					$(this).next(".accordion-body").find(".accordion-header").toggleClass("active");
-					$(this).next(".accordion-body").find(".accordion-body").toggleClass("hidden");
-					
-					// Toggle visibility of the last p element with .text-ellipsis class
-					$(this).closest(".grid").find("p.text-ellipsis:last-child").toggleClass("hidden");
+				// Toggle close accordions with data indices
+				//- var project_cards = $('#projects').find('.card')
+				var cards = $(document).find('.card')
+				$(cards).on('click', function() {
+					//- console.log("Clicked project card " + $(this).attr("id"))
+					$(this).find(".accordion-header").toggleClass("active")
+					$(this).find(".accordion-body").toggleClass("hidden")
+					$(this).find(".cursor-pointer .text-ellipsis").toggleClass("hidden");
+					$(this).find('svg').toggleClass("hidden");
 				});
-			})
 
-//- // = console.log(page.fileSlug)
-//- // block main 
-//- // = console.log(collections)
-//- // div !{ content }
-//- - collections.all.forEach(cc => {
-//- -		// console.log(cc.fileSlug + " type: " + cc.title);
-//- - 	// console.log(Object.keys(cc.data))
-//- -   // console.log(cc.data.tags)
-//- -   if ("post" in cc.data.tags){
-//- -  	  console.log(cc.fileSlug)
-//- 			block main 
-//- -   }
-//- - });
-//- //- - for (cc in collections.all){
-//- //- - 	console.log(cc)	
-//- //- - }
+				//- $(".accordion-header").click(function() {
+				//- 	$(this).toggleClass("active");
+				//- 	//- $(this).next(".accordion-body").toggleClass("hidden");
+
+				//- 	// Toggle child accordions when parent accordion is clicked
+				//- 	//- $(this).next(".accordion-body").find(".accordion-header").toggleClass("active");
+				//- 	//- $(this).next(".accordion-body").find(".accordion-body").toggleClass("hidden");
+				
+				//- 	// Toggle close accordions with data indices
+				//- 	const index = $(this).data('index');
+				//- 	$('.accordion-body[data-index=' + index + ']').toggleClass("hidden");
+				//- 	$('.accordion-body[data-index!=' + index + ']').addClass('hidden');
+
+				//- 	// Toggle visibility of the last p element with .text-ellipsis class
+				//- 	//- $(this).closest(".grid").find("p.text-ellipsis:last-child").toggleClass("hidden");
+				//- });
+			})

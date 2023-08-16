@@ -5,9 +5,18 @@
     "school_department": "Khoury College of Computer Sciences",
     "degree_title": "Computer Science", 
     "degree_subtitle": "Doctorate (Pursuing)",
-    "courses": ["STT"],
-    "gpa": 3.8,
-    "background_image": "resources/nasa_logo.png"
+    "courses": ["Formal Verification, Modeling, & Synthesis", "Network Visualization"],
+    "gpa": 3.83,
+    "degree_date": "2021-Present",
+    "background_image": "resources/nasa_logo.png",
+    "advisor": "Jose Perea", 
+    "expandables": {
+      "Teaching": [
+        "Graduate teaching assistant - Data Mining Techniques (CS 6220 / DS 5230), Summer 2023",
+        "Graduate teaching assistant - Machine Learning (CS 6140/4420), Spring 2023",
+        "Graduate teaching assistant - Unsupervised Learning (CS 6220 / DS 5230), Fall 2022"
+      ]
+    }
   },
   "msu": {
     "school_name": "Michigan State University",
@@ -15,8 +24,15 @@
     "school_department": "Computational Mathematics, Science and Engineering",
     "degree_title": "Computational Mathematics, Science and Engineering", 
     "degree_subtitle": "Doctorate (Transferred)",
-    "courses": ["STT"],
-    "gpa": 3.8,
+    "courses": [
+      "Numerical Linear Algebra", "Foundations of Data Science", "Parallel Computing", 
+      "Geometry and Topology II", "Num. Differential Equations", "Top. Methods for Data Analysis"
+    ],
+    "Teaching": [
+      "Graduate teaching assistant - Computational Modeling CMSE, Fall 2020"
+    ],
+    "degree_date": "2019-2021",
+    "gpa": 3.5,
     "background_image": "resources/nasa_logo.png"
   }, 
   "wsu_grad": {
@@ -24,11 +40,13 @@
     "school_acronym": "WSU",
     "school_department": "College of Engineering and Computer Science",
     "courses": [
-      ["STT 3600/3610", "Applied Statistics I & II"]
+      ["Network Science ", "Machine Learning", "Information Theory", "Applied Stochastic Processes", "Algorithm Design and Analysis", "Empirical Analysis", 
+      "Advanced Programming Languages", "Distributed Computing"]
     ],
+    "degree_date": "2015-2018",
     "degree_title": "Computer Science", 
     "degree_subtitle": "Master of Science",
-    "gpa": 3.8,
+    "gpa": 3.83,
     "background_image": "resources/nasa_logo.png"
   },
   "wsu_ug": {
@@ -36,11 +54,12 @@
     "school_acronym": "WSU",
     "school_department": "College of Engineering and Computer Science", 
     "courses": [
-      ["STT 3600/3610", "Applied Statistics I & II"]
+      ["Applied Statistics I & II", "Optimization Techniques", "Foundations of AI", "Computational Tools for Data Analysis", "Theoretical Statistics", "Linear Algebra"]
     ],
+    "degree_date": "2010-2015",
     "degree_title": "Computer Science (+ Minor in Statistics)", 
     "degree_subtitle": "Bachelor of Science",
-    "gpa": 3.8,
+    "gpa": "3.42 (in-major)",
     "background_image": "resources/nasa_logo.png"
   }
 }

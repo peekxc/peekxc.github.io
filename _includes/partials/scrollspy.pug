@@ -1,0 +1,69 @@
+.grid.grid-cols-3
+	.col-span-2
+		.relative.h-48.overflow-auto(data-te-spy='scroll' data-te-target='#scrollspy2' data-te-offset='200')
+			section#example-1
+				h3.pb-3.pt-5.text-xl.font-semibold Section 1
+				p
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati et reiciendis quaerat accusamus numquam.
+				p
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati et reiciendis quaerat accusamus numquam.
+				p
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati et reiciendis quaerat accusamus numquam.
+			section#example-2
+				h3.pb-3.pt-5.text-xl.font-semibold Section 2
+				p
+				| Testing
+				p
+				| Testing
+			section#example-3
+				h3.pb-3.pt-5.text-xl.font-semibold Section 3
+				p
+				| Testing
+				p
+				| Testing
+				section#example-sub-A
+					h3.pb-3.pt-5.text-xl.font-semibold Subsection A
+					p
+					| Testing
+					p
+					| Testing
+				section#example-sub-B
+					h3.pb-3.pt-5.text-xl.font-semibold Subsection B
+					p
+						| Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						| Labore earum natus vel minima quod error maxime, molestias ut.
+						| Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+						| et reiciendis quaerat accusamus numquam.
+					p
+						| Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						| Labore earum natus vel minima quod error maxime, molestias ut.
+						| Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+						| et reiciendis quaerat accusamus numquam.
+			section#example-4
+				h3.pb-3.pt-5.text-xl.font-semibold Section 4
+				p
+					| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+					| earum natus vel minima quod error maxime, molestias ut. Fuga
+					| dignissimos nisi nemo necessitatibus quisquam obcaecati et
+					| reiciendis quaerat accusamus numquam.
+				p
+					| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+					| earum natus vel minima quod error maxime, molestias ut. Fuga
+					| dignissimos nisi nemo necessitatibus quisquam obcaecati et
+					| reiciendis quaerat accusamus numquam.
+	div
+		#scrollspy2.sticky-top.pl-3.text-sm
+			ul(data-te-nav-list-ref='')
+				li.py-1
+					a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' data-te-nav-link-active='' class='px-[5px] dark:text-neutral-200' href='#example-1') Section 1
+				li.py-1
+					a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#example-2') Section 2
+				li.py-1
+					a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#example-3') Section 3
+					ul.pl-3(data-te-nav-list-ref='')
+						li.py-1
+							a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#example-sub-A') Subsection A
+						li
+							a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#example-sub-B') Subsection B
+				li.py-1
+					a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#example-4') Section 4

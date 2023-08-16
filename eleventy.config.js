@@ -49,7 +49,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setServerOptions({
     domDiff: false, // this seems slower but better 
     port: 8080,
-    watch: ["_includes/*.pug", "_includes/**/*.pug", "content/**/*.md", "content/*.md"]
+    watch: ["_includes/*.pug", "_includes/**/*.pug", "content/*.md", "content/**/*.md"] 
   })
 
   // Use regular browser sync
@@ -63,9 +63,9 @@ module.exports = function(eleventyConfig) {
   //   ghostMode: false
   // })
 	eleventyConfig.addPassthroughCopy("resources");
-
+	// eleventyConfig.ignores.add("content/_jobs/*");
 	return {
-		templateFormats: [ "md", "pug", "html" ], // "liquid"
+		templateFormats: [ "md", "pug", "html" ], // - "liquid"
 		dir: {
 			input: "content",
 			includes: "../_includes", 

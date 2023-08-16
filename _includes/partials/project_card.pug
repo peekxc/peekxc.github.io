@@ -1,31 +1,39 @@
-.max-h-40
-  .grid.grid-cols.gap-y-1.content-between.px-4.py-2.bg-gray-100
-    h3.font-bold.text-lg #{ project.title } 
-    h4.font-bold.text-md.justify-self-end #{ project.subtitle }
-  .grid.grid-cols-12.bg-white-100
-    .col-span-5.m-2
-      img.object-cover.h-full.w-full(src=project.image)
-    .col-span-7.flex.flex-col.m-2
-      p.overflow-auto #{project.abstract }
-    p.col-span-full.text-ellipsis.overflow-hidden.pr-2.italic(class="truncate ...").accordion-header.cursor-pointer Publications, code, and related materials
+.card.shadow-xs.bg-white.leading-5.max-w-4xl.border-3.border-transparent(style="hover:border-red-400")
+	.cursor-pointer.px-4.py-2.bg-gray-200
+		.bg-gray-200.bg-cover.bg-clip-border.bg-no-repeat.bg-right.bg-blend-overlay(style="background-image: url('" + filters.url(background_image) + "'); background-size: 50% !important;")
+			.accordion-header.grid.grid-cols-8.gap-y-1.content-between
+				h4.font-bold.col-span-full!= card_title
+				h5.font-medium.col-span-full.italic #{ card_subtitle }
+				hr.col-span-full
+			.flex.justify-between
+				.flex
+					each t in card_tags
+						span.bg-gray-300.text-black.text-xs.py-1.px-1.rounded-xs.mr-1.min-w-0(style="white-space: nowrap") #{ t }
+				.self-end
+					svg.stroke-3.h-4.w-4.mr-1.align-middle.justify-self-end(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="col-span-"+(12-card_tags.length))
+						path(stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z")
+					svg.stroke-3.h-4.w-4.mr-1.hidden(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor")
+						path(stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z")
+		p.w-full.text-ellipsis.bg-gray-200.overflow-hidden.pr-2.pt-1.italic(class="line-clamp-2") #{ abstract }
+	.accordion-body.card-body.border-x-2.border-b-2.hidden(data-index=index)
+		- console.log(page)
+		.grid.grid-cols-12.bg-white-100.justify-center.items-center.my-2.mx-2
+			.col-span-5.px-3.overflow-hidden.mx-auto
+				img.rounded-sm.object-cover.max-h-64(src=image)
+			.col-span-7.flex.flex-col.px-3.overflow-y-scroll.text-center
+				summary.prose-sm.leading-4.text-justify.max-h-64.inline #{ abstract_full }
+		.p-2.overflow-auto.px-4.py-2.space-y-1
+			!= content
 
-//- .shadow-xs.bg-white.leading-5.max-w-3xl.border-3.border-transparent(class="hover:border-yellow-400")
-
-  //- .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100 h4.font-bold More Details  
-  //- .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
-  //-   .card-body.p-2.overflow-auto.px-4.py-2.space-y-1
-  //-     .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100
-  //-       h4.font-bold Job Description
-  //-     .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
-  //-       p.text-gray-700 #{ project.abstract }
-  //-     .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100
-  //-       h4.font-bold Publications
-  //-     .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
-  //-       ul.list-disc.ml-6 
-  //-         li Pub 2 
-  //-         li Pub 2 
-  //-     .accordion-header.flex.items-center.cursor-pointer.px-2.py-1.bg-gray-100
-  //-       h4.font-bold Software
-  //-     .accordion-body.p-2.overflow-auto.px-4.py-2.hidden
-  //-       ul.list-disc.ml-6 
-  //-         li Software link 
+//- .accordion-header.grid.grid-cols-12.gap-y-1.content-between.px-4.py-2.bg-gray-100.cursor-pointer(data-index=index id="project-"+index)
+//- 	h3.col-span-11.font-bold.text-md #{ card_title } 
+//- 	.flex.justify-between
+//- 		.flex
+//- 			each t in card_tags
+//- 				span.bg-gray-300.text-black.text-xs.py-1.px-1.rounded-xs.mr-1.min-w-0(style="white-space: nowrap") #{ t }
+//- 		.self-end
+//- 			svg.stroke-3.h-4.w-4.mr-1.align-middle.justify-self-end(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="col-span-"+(12-card_tags.length))
+//- 				path(stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z")
+//- 			svg.stroke-3.h-4.w-4.mr-1.hidden(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor")
+//- 				path(stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z")
+//- 	p.w-full.text-ellipsis.bg-gray-200.overflow-hidden.pr-2.pt-1.italic(class="truncate ...") #{ abstract }

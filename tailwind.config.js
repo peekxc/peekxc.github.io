@@ -3,7 +3,8 @@ module.exports = {
 	important: true,
 	separator: '_', // For better looking pug code! => classes are .text_center, hover_*, etc.
 	plugins: [
-		require('@tailwindcss/typography')
+		require('@tailwindcss/typography'), 
+		require("tw-elements/dist/plugin.cjs") // for TailWind elements JS 
 	],
 	theme: {
 		colors: {
