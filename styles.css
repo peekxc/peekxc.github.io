@@ -2,8 +2,12 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@layer components {
+/* @layer components {
   .btn-primary{
     @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
   }
-}
+
+  .link_color{
+    color: #0000EE;
+  }
+} */

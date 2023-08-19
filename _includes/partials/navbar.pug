@@ -1,13 +1,13 @@
 nav.navbar.top-0.left-0.w-full.shadow-sm.bg-white
-	.flex.container.p-1.items-center
+	.flex.container.p-3.items-center
 		.flex.align-middle
 			a.text-lg.font-semibold.mr-4(href="/") Home
 		.flex.align-middle.space-x-4
 			each nb_el in navbar
 				a.text-lg.text-gray-600(href=nb_el.url, class="hover:text-gray-600")
 					= nb_el.title
-		form.flex.items-center.ml-auto
-			input.border.rounded-sm.py-1.px-2.text-gray-600(type="text" placeholder="Search" class="focus:outline-none focus:ring focus:border-gray-300")
+		//- form.flex.items-center.ml-auto
+		//- 	input.border.rounded-sm.py-1.px-2.text-gray-600(type="text" placeholder="Search" class="focus:outline-none focus:ring focus:border-gray-300")
 		
 	//- .hidden.md.bg-white.mt-4.py-2
 	//- 	.container

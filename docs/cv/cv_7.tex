@@ -1,0 +1,399 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.3 (29/10/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvstyle{banking} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{black} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[scale=0.75, margin=1in]{geometry} % Reduce document margins
+\usepackage[inline]{enumitem} % Listing courses
+\usepackage{amsmath}
+\usepackage{tabularx} % in the preamble
+\usepackage{footmisc}
+\usepackage{multibib}
+\usepackage{url}
+
+\newcites{article}{Refereed Publications}
+\newcites{journal}{Journals}
+\newcites{proceeding}{Conference Papers}
+\newcites{abstract}{Abstracts}
+
+\newcites{dev}{Under Development}
+%\newcites{papers}{Journals and Full Papers}
+%\newcites{shorts}{Abstracts and Workshop Papers}
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Matthew} % Your first name
+\familyname{Piekenbrock} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+\title{Curriculum Vitae}
+%\address{123 Broadway}{City, State 12345}
+\mobile{(937) 269 8582}
+%\phone{(000) 111 1112}
+%\fax{(000) 111 1113}
+\email{matt.piekenbrock@gmail.com}
+% \homepage{wright.edu/~piekenbrock.5}{wright.edu/$\sim$piekenbrock.5} 
+\homepage{mattpiekenbrock.com}{mattpiekenbrock.com} 
+% The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
+% \extrainfo{additional information}
+% \photo[70pt][0.4pt]{pictures/picture} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+% \quote{"My basic interest in clustering is not to produce algorithms, but rather because I think that classification is necessary as a foundation to probability." - John Hartigan}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	COVER LETTER
+%----------------------------------------------------------------------------------------
+
+% To remove the cover letter, comment out this entire block
+
+%\clearpage
+%
+%\recipient{HR Department}{Corporation\\123 Pleasant Lane\\12345 City, State} % Letter recipient
+%\date{\today} % Letter date
+%\opening{Dear Sir or Madam,} % Opening greeting
+%\closing{Sincerely yours,} % Closing phrase
+%\enclosure[Attached]{curriculum vit\ae{}} % List of enclosed documents
+%
+%\makelettertitle % Print letter title
+%
+%\lipsum[1-2] % Dummy text
+%\lipsum[4] % Dummy text
+%
+%\makeletterclosing % Print letter signature
+%
+%\newpage
+
+%----------------------------------------------------------------------------------------
+%	CURRICULUM VITAE
+%----------------------------------------------------------------------------------------
+
+\makecvtitle % Print the CV title
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+My interests are in unsupervised learning, statistical learning theory, topological data analysis, computational geometry, and building software for scientific computing and reproducible research.  
+\section{Education}
+\cventry{2021-Present}{(Pursuing) PhD of Computer Science \normalsize GPA: 3.83}{Northeastern University}{Boston, MA}{}{} 
+\cventry{2019-2021}{(Transferred) PhD of Comp. Mathematics, Science, and Engineering, \normalsize GPA: 3.50}{Michigan State University}{East Lansing, MI}{}{} 
+\cventry{2015-2018}{Masters of Science in Computer Science \hfill \normalsize GPA: 3.83}{Wright State University}{Dayton, OH}{}{} 
+\cventry{2010-2015}{Bachelor of Science in Computer Science \hfill \normalsize GPA: 3.42 In-Major}{Wright State University}{Dayton, OH}{\textit{Minor in Statistics}}{}
+
+\subsection{Teaching Experience}
+Graduate teaching assistant: 
+\begin{itemize}
+\setlength\itemsep{-0.5em}	
+\item Northeastern University - Data Mining Techniques (CS 6220 / DS 5230), Summer 2023
+\item Northeastern University - Supervised Machine Learning (CS 6140/4420), Spring 2023 
+\item Northeastern University - Unsupervised Learning (DS 5230), Fall 2022
+\item Michigan State University - Computational Modeling \& Data Analysis (CMSE 201), Fall 2020
+\end{itemize}
+ 
+\subsection{Relevant Coursework}
+\begin{center}
+\begin{tabularx}{\linewidth}{ X X X }
+ $\bullet$ Network Science &  $\bullet$ Machine Learning & $\bullet$ Information Theory  \\ 
+  $\bullet$ Numerical Linear Algebra &  $\bullet$ Foundations of Data Science & $\bullet$ Parallel Computing  \\
+   $\bullet$ Geometry and Topology II  &  $\bullet$ Num. Differential Equations & $\bullet$  Top. Methods for Data Analysis \\
+ $\bullet$ Applied Stochastic Processes & $\bullet$ Applied Statistics I \& II  & $\bullet$ Algorithm Design and Analysis  \\
+  $\bullet$ Empirical Analysis & $\bullet$ Optimization Techniques & $\bullet$ Foundations of AI  \\  
+ $\bullet$ Comp.Tools for Data Analysis &  $\bullet$ Theoretical Statistics & $\bullet$ Advanced Prog. Languages\\
+$\bullet$ Formal Verific. \& Synthesis & $\bullet$ Distributed Computing & $\bullet$ Network Visualization
+\end{tabularx}
+\end{center}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	SUBSECTION: MASTERS THESIS 
+%----------------------------------------------------------------------------------------
+
+%\section{Masters Thesis \hfill }
+%
+%\cvitem{Title}{\emph{Money Is The Root Of All Evil -- Or Is It?}}
+%\cvitem{Supervisors}{Professor James Smith \& Associate Professor Jane Smith}
+%\cvitem{Description}{This thesis explored the idea that money has been the cause of untold anguish and suffering in the world. I found that it has, in fact, not.}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+
+\cventry{Graduate Student}
+			 {Northeastern University}
+			 {Graduate Research Assistant}
+			 {Fall 2021-Present}{}{\vspace{3pt}
+			 My advisor at MSU, Jose Perea, accepted a joint appointment offer transferring to Northeastern University in Boston, MA starting in the Fall of 2021. I transferred with him, continuing my research as a 3rd year graduate student in the Khoury College of Computer Science. During this time I focused primarily on topological dimensionality reduction (see \textbf{tallem} in the \textbf{Open Source} section) using fiber bundle theory and on spectral-relaxations of the persistent rank invariant.
+			}
+\vspace{0.75em}
+
+\cventry{National Aeronautics and Space Administration }
+			 {John H. Glenn Research Center at Lewis Field}
+			 {LERCIP Intern}
+			 {Summer 2022}{}{\vspace{3pt}
+I was re-hired back at NASA as part of the Space Communications and Navigation (SCaN) program to expand the algorithmic theory necessary to have effective satellite communications in space environments. My research focused on incorporating additional geometric assumptions into routing models built for of delay- and disruption-tolerant networks, particularly in the low Earth orbit regime.
+%\begin{itemize}
+%	\item testing
+%\end{itemize}	
+%A technical report and subsequent journal publication can be found~\cite{arnold2020multiscale} and~\cite{stuckner2021optimal}. Presentation material, code, and all other material is available upon request for U.S. citizens only. 
+}
+\vspace{0.75em}
+
+%------------------------------------------------
+\cventry{Graduate Student}
+			 {Michigan State University}
+			 {Graduate Research Assistant}
+			 {Fall 2019-Summer 2021}{}{\vspace{3pt}
+			 I started a PhD program at MSU in Fall 2019, where I spent two years passing qualifying exams and learning the background material necessary to do research in Persistent Homology (PH).
+			 My research during this time focused on developing computationally tractable extensions of PH in dynamic and multi-parameter settings, and in showing viable applications of these extensions. 
+			This work culminated in an extension to PH that significantly improved the efficiency of the standard reduction algorithm in coarse dynamic settings~\cite{piekenbrock2021move}.
+%			In a related project, we developed a smooth-relaxation of the persistent Betti number computation amenable to first-order optimization techniques in dynamic metric space contexts. A paper describing this project is available upon request. 
+			 }
+\vspace{0.75em}
+
+%------------------------------------------------
+\cventry{Oak Ridge Institute for Science and Education}
+			 {Air Force Research Laboratory}
+			 {Research Associate}
+			 {Fall 2018-Fall 2019, Fall 2017}{}{\vspace{3pt}
+			 In a collaborative effort to foster new research frontiers in the area of Topology Data Analysis (TDA) between WSU and AFRL, I worked in a research group studying how to combine techniques from  the field of topology and machine learning in both supervised and unsupervised settings. I primarily researched multi-scale extensions to the \textit{Mapper} framework, an often used modality for performing TDA. 
+%			 Specifically, I implemented a multi-scale extension of Mapper which filters the \emph{mapper} construction using a tower of cover refinements to produce a filtration of complexes. This filtration was used to measure the persistent homology and stability properties of various \emph{mapper} graphs. 
+The effort required developing a number of custom open source packages, such as the \textbf{Mapper} and \textbf{simplextree} packages (see the \textbf{Open Source} section).  
+			 % My work lead to the development of an algorithmic solution which greatly reduces the complexity of the \textit{Mapper} framework and enables a more tractable analysis of {\em mapper} constructions in both the exploratory setting and in the context of Persistent Homology. A journal article demonstrating the utility of this solution is in development, available as a draft~\cite{mapperext}. 
+}
+\vspace{0.75em}
+%------------------------------------------------
+\cventry{National Aeronautics and Space Administration }
+			 {John H. Glenn Research Center at Lewis Field}
+			 {LERCIP Intern}
+			 {Summer 2018}{}{\vspace{3pt}
+Towards accelerating materials discovery and design, I was hired by Dr. Steven Arnold (via the Multiscale Modeling Materials and Structures Division) to spend an extended internship at NASA using ML to infer multiscale structural properties from material stress-response data.  
+The project involved deducing process-structure-property (PSP) relationships from a surrogate model trained on laminate stress-strain curve data generated via the Generalized Method of Cells via experimental design theory.
+My time was primarily spent:
+\begin{itemize}
+	\item Learning basic micromechanics and lamination theory
+	\item Architecting a feed-forward neural network (the surrogate model) to model laminate stress-response data 
+	\item Implementing a non-parametric information-theoretic estimator efficiently, proving its convergence rates, and modifying an MCMC-like optimization procedure (approximate coordinate exchange) to minimize it 
+%	\item Implementing a non-parametric CMI estimator efficiently and proving its convergence rates
+\end{itemize}	
+%Per NASAs Vision 2040 guidelines, the project incorporated experimental design theory to interpret and make use of the models PSP predictions.  
+A technical report and subsequent journal publication can be found~\cite{arnold2020multiscale} and~\cite{stuckner2021optimal}. Presentation material, code, and all other material is available upon request for U.S. citizens only. 
+}
+\vspace{0.75em}
+%------------------------------------------------
+
+\cventry{Machine Learning and Complex Systems Lab}
+			 {Wright State University}
+			 {Graduate Research Assistant}
+			 {2015 - 2018}{}
+{  \vspace{3pt}
+After a brief independent study, I began a graduate research assistantship (GRA) with the Machine Learning and Complex Systems lab studying the use of generative models for modeling macroscopic patterns of real-world traffic networks inferred from raw trajectory (e.g. GPS) data.
+%raw positioning/track information into a dynamic network representation. 
+Topic areas the project focused on included: 
+	\begin{itemize}
+		\item Density-based clustering theory and techniques
+		\item Temporal network models (e.g. stochastic block models) 
+		\item Trajectory mining and modeling
+	\end{itemize}
+Much of my research focused on ensuring the data-inferred networks were representative of the underlying movement data. Our solution involved using the {\em cluster tree}---a level-set shape characteristic of an estimated [non-parametric] density function---to infer significant clusters of movement~\cite{poi_paper}. This research was supported by the Center for Surveillance Research, a National Science Foundation I/UCRC.
+}
+\vspace{0.75em}
+%------------------------------------------------
+
+\cventry{R Project for Statistical Computing / Google}
+			 {Google Summer of Code 2017}
+			 {Student Participant}
+			 {Summer 2017}{}{\vspace{3pt} % Begin summary 
+			 I submitted a successful funding proposal under the Google Summer of Code (GSOC) Initiative to the R Project for Statistical Computing to explore, develop, and unify developments related the theory of density-based clustering, namely the recent developments related to the cluster tree. This involved a variety of code development which culminated in the form of an R package, as well as research to further understand the theory and utility of the cluster tree. For more details, see the project page.\footnotemark 
+			 } 
+\footnotetext{\url{https://summerofcode.withgoogle.com/archive/2017/projects/5919718795902976/}}
+\vspace{0.75em}
+%------------------------------------------------
+
+\cventry{Oak Ridge Institute for Science and Education}
+			 {Air Force Institute of Technology}
+			 {Student Research Associate}
+			 {2014 - 2016}{}{\vspace{3pt}
+Towards the end of my undergraduate degree, my contract at AFIT was extended under ORISE, where I continued working with the same research group. 
+During this time I primarily worked on the development of a novel Iterative Closest Point algorithm amenable to massive parallelization, implemented in C++/CUDA, for the purposes of enabling real-time tracking of aircraft in the context of Autonomous Aerial Refueling. Our solution involved pairing a cache-oblivious KD-tree search with a novel ``Jump-and-Walk'' closest-point search on a preprocessed Delaunay triangulation. The effort lead to multiple publications~\cite{piekenbrock2016automated, robinson2016parallelized}. I also worked on:
+\begin{itemize}
+	\item Researching hierarchical markov model for predicting web navigation patterns 
+	\item Parallelizing existing atmospheric absorption routines with OpenCL 
+	\item Coding a nonlinear optimization algorithm in ANSI-C, and making it callable from MATLAB via MEX
+\end{itemize}
+}
+\vspace{0.75em}
+%------------------------------------------------
+\cventry{Southwestern Ohio Council for Higher Education}
+			 {Air Force Institute of Technology}
+			 {Undergraduate Research Assistant}
+			 {2013 - 2014}{}{\vspace{3pt}
+I was hired at the Air Force Institute of Technology (AFIT) as an undergraduate student to do research in a multi-disciplinary team called the Low Orbitals Radar and Electromagnetism group, where I worked on a diverse set of projects involving computational, statistical, or physics-based requirements. Being my first research-oriented experience, I either assisted graduate students with primarily programmatic or educational tasks or worked on very computationally-oriented tasks. Some example projects involved: 
+\begin{itemize}
+	\item Implementing an unsplittable flow approximation algorithm in C++ and Python
+	\item Creating a conversion tool between Oracle's Abstract Data Type and XMLType
+	\item A prototypical UI to to enhance searching and viewing of 2-or-3D models using JavaScript
+\end{itemize}	
+}
+%\cventry{}{}{Other Jobs}{Pre-2013}{}{\vspace{-14pt}
+%			 Dairy Queen ('05), Kroger ('06-'08), Kniess and Associates ('10), Cold Stone ('11), Adapted Recreation ('11-'14), Chipotle ('12), the Mens Wearhouse ('12-'13)
+%}
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS SECTION
+%----------------------------------------------------------------------------------------
+\section{Publications}
+
+%% Refereed Publications
+% \subsection{\Large Refereed Publications}
+%% Stuff under development 
+\nocitedev{pbopt2022}
+\nocitedev{tallem2021}
+
+\bibliographystyledev{plainyr-rev}
+\bibliographydev{my_bib.bib}
+
+%% Journals 
+\nocitejournal{hahslerdbscan}
+\bibliographystylejournal{plainyr-rev}
+\bibliographyjournal{my_bib.bib}
+
+%% Conference Papers 
+% \nociteproceeding{robinson2016parallelized} 
+\nociteproceeding{stuckner2021optimal}
+\nociteproceeding{arnold2020multiscale}
+\nociteproceeding{piekenbrock2021move}
+\nociteproceeding{poi_paper}
+\nociteproceeding{piekenbrock2016automated}
+% \nociteproceeding{robinson2017seasonality}
+\nociteproceeding{maurice2015waminet}
+\nociteproceeding{robinson2016parallelized}
+
+
+\bibliographystyleproceeding{plainyr-rev}
+\bibliographyproceeding{my_bib.bib}
+
+%% Abstracts 
+\nociteabstract{sunbelt}
+\bibliographystyleabstract{plainyr}
+\bibliographyabstract{my_bib.bib}
+
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES SECTION
+%----------------------------------------------------------------------------------------
+\section{Open Source Contributions}\label{sec:opensrc}
+{\bfseries dbscan (R package)}\footnote{\url{https://github.com/mhahsler/dbscan}} \hfill Coauthor \\
+{\bfseries clustertree (R package)}\footnote{\url{https://github.com/peekxc/clustertree}} \hfill Author \\ 
+{\bfseries Mapper (R package)}\footnote{\url{https://github.com/peekxc/mapper}} \hfill Author  \\
+{\bfseries simplextree (R package)}\footnote{\url{https://github.com/peekxc/simplextree}} \hfill Author \\
+{\bfseries tallem (python package)}\footnote{\url{https://github.com/peekxc/tallem}} \hfill Author 
+%\cvitem{DBSCAN R package}{\hfill Coauthor}
+%\cvitem{clustertree R package}{\hfill Author}
+%\cvitem{Mapper R package}{\hfill Author}
+
+
+%----------------------------------------------------------------------------------------
+%	AWARDS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Awards, Extra Curricular, Misc.}
+
+%\cvitem{2017}{Google Summer of Code - Funding }
+\cvitem{Outstanding Masters Student Award (Computer Science)}{\hfill WSU 2017-2018 academic year}
+\cvitem{Student participant and presenter}{\hfill NSF TRIPODS TGDA Summer School and Workshop}
+\cvitem{Regional Model United Nations Annual Conference}{\hfill Served in Volunteer Staff  (2016 - 2017)}
+\cvitem{Outstanding Position Paper Award}{\hfill National Model United Nations Annual Conference (2014)}
+\cvitem{Outstanding Delegation Award}{\hfill National Model United Nations Annual Conference (2013)}
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Computer skills}
+%
+%\cvitem{Basic}{\textsc{java}, Adobe Illustrator}
+%\cvitem{Intermediate}{\textsc{python}, \textsc{html}, \LaTeX, OpenOffice, Linux, Microsoft Windows}
+%\cvitem{Advanced}{Computer Hardware and Support}
+
+%----------------------------------------------------------------------------------------
+%	COMMUNICATION SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Communication Skills}
+%
+%\cvitem{2010}{Oral Presentation at the California Business Conference}
+%\cvitem{2009}{Poster at the Annual Business Conference in Oregon}
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Languages}
+%
+%\cvitemwithcomment{English}{Mothertongue}{}
+%\cvitemwithcomment{Spanish}{Intermediate}{Conversationally fluent}
+%\cvitemwithcomment{Dutch}{Basic}{Basic words and phrases only}
+
+%----------------------------------------------------------------------------------------
+%	Awards SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Interests}
+%
+%\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+%
+%\cvlistdoubleitem{Piano}{Chess}
+%\cvlistdoubleitem{Cooking}{Dancing}
+%\cvlistitem{Running}
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Interests}
+%
+%\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+%
+%\cvlistdoubleitem{Piano}{Chess}
+%\cvlistdoubleitem{Cooking}{Dancing}
+%\cvlistitem{Running}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

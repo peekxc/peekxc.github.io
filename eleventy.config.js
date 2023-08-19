@@ -19,6 +19,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("lib/css")//{ "css": "css" });
 	eleventyConfig.addPassthroughCopy("lib/js");
 	eleventyConfig.addPassthroughCopy("lib/fonts");
+	// eleventyConfig.addPassthroughCopy("CV");
 	// eleventyConfig.addPassthroughCopy({ "data": "data" });
 	// eleventyConfig.addPassthroughCopy({ "images": "images" });
 	

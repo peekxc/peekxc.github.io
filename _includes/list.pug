@@ -4,6 +4,11 @@ block main
 	.container.grid.grid-cols-12.mx-auto.py-2.px-32.border-2
 		.col-span-10.relative.overflow-auto.space-y-2
 			
+			section#alert
+				.bg-gray-100.border.border-gray-400.px-4.py-3.rounded.relative.text-center(role="alert")
+					| Traditional paper CV 
+					a(href="/resources/cv_7.pdf" class="cursor-pointer underline" style='color: #0000EE;') available here
+
 			section#statement.flex.flex-col.space-y-1.border-sm.p-2
 				h2.font-bold.text-green-400.text-xl Statement
 				p.prose-md I'm currently a research associate with a M.S. in Computer Science, with a focus (and minor) in Statistics and Statistical Modeling. My graduate research focused on Machine Learning (ML) and Artificial Intelligence (AI); my interests are in exploring the intersections between unsupervised learning, statistical learning theory, and empirical analysis. I also enjoy building and contributing software in the realm of scientific computing, and for reproducible research purposes. Topic areas that interest me include e.g. clustering, dimensionality reduction, topology theory, manifold learning, density estimation, etc. I have supplemental research interests, background knowledge, or experience in random graph modeling, bayesian statistics, computational geometry, reinforcement learning (such as adversarial learning!) and high performance computing. A few selected research projects are listed below.
@@ -22,11 +27,11 @@ block main
 							.absolute.w-4.h-4.bg-red-400.rounded-full.border.border-white(class='-left-2') 
 							li.ml-3.w-full!= job.data.content
 							
-			section#education.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
+			section#education.flex.flex-col.border-sm.p-2.mx-auto.w-full
 				h2.font-bold.text-orange.text-xl Education
 				ol.relative.ml-3.border-l.border-orange-400
 					each uni in [...collections.schools].reverse()
-						.flex-start.flex.items-center.pt-2
+						.flex-start.flex.items-center.pt-1
 							.absolute.w-4.h-4.bg-orange-400.rounded-full.border.border-white(class='-left-2')
 							li.ml-3.w-full
 								!= uni.data.content
@@ -38,7 +43,7 @@ block main
 				| My computational experience is diverse. Since 2015, I started using the R Project for Statistical Computing for statistical modeling, and I continue to prefer R for research. In my undergraduate years, I used both C++ (primarily C++11) and ANSI-C89/C90 extensively for a myriad of projects (see below). Part of my undergraduate research delved into project involving computational geometry which required a final implementation written in Compute Unified Device Architecture (CUDA) and OpenCL. Of course, I'm proficient in both Python and Java.
 
 		.col-span-2
-			#scrollspy-cv.sticky-top.pl-2.text-md
+			#scrollspy-cv.sticky.top-0.pl-2.text-md
 				ul(data-te-nav-list-ref='')
 					li.py-1
 						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' data-te-nav-link-active='' class='px-[5px] dark:text-neutral-200' href='#statement') Statement
