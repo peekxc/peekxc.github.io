@@ -1,5 +1,20 @@
-/* html {
-  font-size: 1em !important;
-  color: #000 !important;
-  font-family: Arial !important;
-} */
+.arrow_up_circle {
+  display: inline-block;
+  background-image: url(/lib/fonts/arrow_up_circle.svg);
+}
+.github_logo {
+  display: inline-block;
+  background-image: url(/lib/fonts/github_logo.svg);
+}
+.linkedin_logo {
+  display: inline-block;
+  background-image: url(/lib/fonts/linkedin_logo.svg);
+}
+.scholar_logo {
+  display: inline-block;
+  background-image: url(/lib/fonts/scholar_logo.svg);
+}
+
+.link_color{
+  color: #0000EE;
+}

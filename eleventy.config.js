@@ -8,7 +8,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const browsersync = require("@11ty/eleventy-server-browsersync")
 
 const katex = require("katex");
-const markdownItKatex = require("markdown-it-katex");
+const markdownItKatex = require("@iktakahiro/markdown-it-katex");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.setUseGitIgnore(true);
@@ -16,9 +16,9 @@ module.exports = function(eleventyConfig) {
 	// eleventyConfig.addPlugin(require('eleventy-plugin-heroicons'));
 	
 	// Copy folders `x/` to `_site/x/`
-	eleventyConfig.addPassthroughCopy("lib/css")//{ "css": "css" });
-	eleventyConfig.addPassthroughCopy("lib/js");
-	eleventyConfig.addPassthroughCopy("lib/fonts");
+	eleventyConfig.addPassthroughCopy({ "lib/css": "css" })
+	eleventyConfig.addPassthroughCopy({ "lib/js" : "js" });
+	eleventyConfig.addPassthroughCopy({ "lib/fonts" : "fonts"}); // katex expects top-level fonts, see: https://katex.org/docs/font
 	// eleventyConfig.addPassthroughCopy("CV");
 	// eleventyConfig.addPassthroughCopy({ "data": "data" });
 	// eleventyConfig.addPassthroughCopy({ "images": "images" });

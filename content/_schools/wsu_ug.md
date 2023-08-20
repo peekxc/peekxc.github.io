@@ -5,7 +5,7 @@ card_title: Bachelor of Science in CS (+STT)
 card_subtitle: College of Engineering and Computer Science
 card_date: Wright State University, 2010-2015
 card_extra: ""
-background_image: resources/nasa_logo.png
+background_image: /resources/wsu_banner.png
 # card_tags: []
 card_desc: "Click for teaching experience, coursework taken, and other details..." 
 date: 2015-01-01

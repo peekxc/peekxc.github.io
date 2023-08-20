@@ -10,10 +10,22 @@ image: /resources/mapper_ex.jpeg
 card_tags: ["Clustering", "R Package", "High performance computing"]
 ---
 
-- Hahsler, Michael, Matthew Piekenbrock, and Derek Doran. "dbscan: Fast Density Based Clustering in R", Journal of Statistical Software, 2018.
+<!-- <div class="flex items-center px-2 py-1 bg-gray-100">
+  <h4 class="font-bold bg-gray-100"> Publications </h4>
+</div>
+<div class="p-2 overflow-auto px-4 py-2 bg-white-100">  
+  <ul class="lisc-desc text-sm space-y-2">
+    <li> Hahsler, Michael, Matthew Piekenbrock, and Derek Doran. "dbscan: Fast Density Based Clustering in R", Journal of Statistical Software, 2018. </li> 
+  </ul>
+</div> -->
 
-#### Related Materials(s)
-
-dbscan R PackageDevelopment version on GitHubTravis-CI Build Status
-clustertree R PackageDevelopment version on GitHubTravis-CI Build Status
-Vignette on using HDBSCAN
+<div class="flex items-center px-2 py-1 bg-gray-100">
+  <h4 class="font-bold bg-gray-100"> Software </h4>
+</div>
+<div class="p-2 overflow-auto px-4 py-2 bg-white-100">  
+  <ul class="lisc-desc text-sm space-y-2">
+    <li> Mapper R Package </li> 
+    <li> simplextree R Package </li>
+    <li> Vignette on using mapper  </li>
+  </ul>
+</div>

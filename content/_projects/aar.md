@@ -3,7 +3,7 @@ tags: ["projects"]
 layout: partials/project_card.pug
 card_title: "Towards Autonomous Aerial Refueling: Massive Parallel Iterative Closest Point"
 card_subtitle: "Funding: Oak Ridge Institute for Science and Education"
-background_image: /resources/orise.png
+background_image: /resources/aircraft.png
 abstract: "The Iterative Closest Point (ICP) problem is now a well-studied problem that seeks to align a given query point cloud to a fixed reference point cloud.
 The ICP problem computationally is dominated by the first phase, a pairwise distance minimization. The ''brute-force'' approach, an embarrassingly parallel problem amenable to GPU-acceleration.."
 abstract_full: "The Iterative Closest Point (ICP) problem is now a well-studied problem that seeks to align a given query point cloud to a fixed reference point cloud.

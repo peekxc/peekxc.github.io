@@ -18,7 +18,8 @@ html.h-100(lang="en-US")
 			document.body.style.msTransform = scale;
 			document.body.style.transform = scale;
 		script(src="https://code.jquery.com/jquery-3.6.0.min.js")
-		script(src=filters.url("/lib/js/tw-elements.umd.min.js"))
+		script(href=filters.url("/js/katex.min.js")) 
+		script(src=filters.url("/js/tw-elements.umd.min.js"))
 		script.
 			$(document).ready(function() {
 
