@@ -6,7 +6,6 @@ const _ = require("lodash");
 var markdownIt = require('markdown-it');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const browsersync = require("@11ty/eleventy-server-browsersync")
-
 const katex = require("katex");
 const markdownItKatex = require("@iktakahiro/markdown-it-katex");
 
@@ -64,6 +63,9 @@ module.exports = function(eleventyConfig) {
   //   ghostMode: false
   // })
 	eleventyConfig.addPassthroughCopy("resources");
+	eleventyConfig.addPassthroughCopy("content/**/*.jpg");
+  eleventyConfig.addPassthroughCopy("content/**/*.png");
+	eleventyConfig.addPassthroughCopy("content/**/*.gif");
 	// eleventyConfig.ignores.add("content/_jobs/*");
 	return {
 		templateFormats: [ "md", "pug", "html" ], // - "liquid"

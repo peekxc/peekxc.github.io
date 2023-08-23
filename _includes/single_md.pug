@@ -1,11 +1,12 @@
 extends ./baseof.pug
 
 block main 
-	.container.mx-auto.px-64.items-center.max-w-screen-xl.prose.prose-pre_p-2.prose-pre_border-2
-		h1.my-4 #{ title }
-		#page_content.w-full 
-		!= content 
-		br
+	.container.mx-auto.px-48.items-center.max-w-screen-xl
+		article.prose.prose-sm.lead-3.prose-blockquote.max-w-none
+			h1.my-4 #{ title }
+			#page_content.w-full
+			!= content 
+			br
 
 block sidebar
 	//- {{ $page_content := ( printf "%s/%s.html" .File.Dir .File.BaseFileName ) | relURL }}
