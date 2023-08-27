@@ -11,18 +11,16 @@ card_desc: "Click for teaching experience, coursework taken, and other details..
 date: 2019-01-01
 ---
 
-Coursework (GPA: 3.83):
-Network Science
-Machine Learning
-Information Theory
-Applied Stochastic Processes
-Algorithm Design and Analysis
-Empirical Analysis
-Advanced Programming Languages
-Distributed Computing
+<div class="flex items-center px-2 py-1 bg-gray-100">
+  <h4 class="font-bold bg-gray-100"> Coursework (GPA: 3.83): </h4>
+</div>
+<div class="p-2 overflow-auto px-4 py-2 bg-white-100">  
+  <ul class="lisc-desc text-sm space-y-2">
+    <li> Network Science </li> 
+    <li> Network Science </li> 
+    <li> Network Science </li> 
+    <li> Network Science </li> 
+    <li> Network Science </li> 
+  </ul>
+</div>
 
-Projects: 
-- Towards
-
-Funding: 
-- Center for Survelliance Research

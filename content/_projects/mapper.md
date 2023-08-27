@@ -8,6 +8,7 @@ abstract: "The primary result of the Mapper framework is the geometric realizati
 abstract_full: "The primary result of the Mapper framework is the geometric realization of a simplicial complex, depicting topological relationships and structures suitable for visualizing, analyzing, and comparing high dimensional data. As an unsupervised tool that may be used for exploring or modeling heterogeneous types of data, Mapper naturally relies on a number of parameters which explicitly control the quality of the resulting construction; one such critical parameter controls the entire relational component of the output complex. In practice, there is little guidance on what values may provide 'better' or more 'stable' sets of simplices. In this effort, we provide a new algorithm that enables efficient computation of successive mapper realizations with respect to this crucial parameter. Our results not only enhances the exploratory/confirmatory aspect of Mapper, but also give tractability to recent theoretical extensions to Mapper related to persistence and stability."
 image: /resources/mapper_ex.jpeg
 card_tags: ["Clustering", "R Package", "High performance computing"]
+date: 2018-01-01
 ---
 
 <!-- <div class="flex items-center px-2 py-1 bg-gray-100">

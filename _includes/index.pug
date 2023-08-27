@@ -1,0 +1,9 @@
+extends ./baseof.pug
+
+block main 
+	.container.mx-auto.px-48.items-center.max-w-screen-xl
+		article.prose.prose-sm.lead-3.prose-blockquote.max-w-none
+			h1.my-4 #{ title }
+			#page_content.w-full
+			!= content 
+			br

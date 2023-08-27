@@ -8,6 +8,7 @@ card_extra: John H. Glenn Research Center at Lewis Field, OH
 card_date: Summer 2022
 card_tags: ["Space networking", "Graph Theory", "Flow algorithms"]
 abstract: Towards enabling delay-tolerant satellite communications in uncertain space environments, I was re-hired back at NASA as part of the Space Communications and Navigation (SCaN) program to expand the algorithmic theory on time-dependent routing.
+date: 2022-01-01
 ---
 
 <div class="flex items-center px-2 py-1 bg-gray-100">

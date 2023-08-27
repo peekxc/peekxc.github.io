@@ -8,6 +8,7 @@ card_date: Summer 2018
 abstract: Towards accelerating the design and discovery materials for use in extreme environments
 background_image: /resources/nasa_logo.png
 card_tags: ["Experimental design", "Machine learning", "Material science"]
+date: 2018-02-01
 ---
 
 I was hired by Dr. Steven Arnold under NASAs 10-week LERCIP program to apply

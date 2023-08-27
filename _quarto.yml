@@ -9,9 +9,10 @@ project:
 format:
   hugo-md: 
     html-math-method: katex
-  # gfm: 
-  #   keep-yaml: true 
-  #   html-math-method: katex
+  gfm: 
+    keep-yaml: true 
+    html-math-method: katex
+    variant: +yaml_metadata_block
 
 # project:
 #   type: website

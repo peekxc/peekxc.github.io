@@ -1,30 +1,13 @@
 extends ./baseof.pug
 
 block main 
-	.container.grid.grid-cols-12.mx-auto.py-2.px-32.border-2
+	.container.grid.grid-cols-12.mx-auto.py-2.border-2(class="lg:px-32")
 		.col-span-10.relative.overflow-auto.space-y-2
 			//- div.svg_up_arrow.w-32.h-32
 
-			section#statement.flex.flex-col
+			section#statement.flex.flex-col(class="lg:hidden")
 				//- h2.font-bold.text-green-400.text-xl Statement
-				.flex.bg-gray-100.bg-gray-200.rounded-lg.border.border-gray-400.mx-16
-					.p-2.mx-auto
-						img.object-cover.rounded-t-md(src="/resources/profile_pic2.jpeg" style="max-width: 12rem;")
-						.flex.justify-between.items-stretch
-							a.flex.grow.items-center.rounded-bl-sm(style="white-space: nowrap; background-color: #5087ed;" class="py-1.5" href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en")
-								span.align-middle.scholar_logo.bg-no-repeat.bg-center.h-4.w-4.mx-auto
-							a.flex.grow.items-center.bg-black(style="white-space: nowrap" class="py-1" href="https://github.com/peekxc")
-								span.align-middle.github_logo.bg-no-repeat.bg-center.h-4.w-4.mx-auto
-							a.flex.grow.items-center.rounded-br-sm(style="white-space: nowrap; background-color: #2a66bc;" class="py-1" href="https://www.linkedin.com/in/matthew-piekenbrock-1469777a/")
-								span.place-self-center.linkedin_logo.bg-no-repeat.bg-center.h-4.w-4.mx-auto
-					.flex.flex-col.justify-between.px-3.overflow-y-scroll.text-left.py-2.flex-1
-						h4.font-bold.text-2xl.antialiased Matt Piekenbrock
-						summary.prose-md.leading-5.inline.m-auto.
-							I'm a computer scientist with broad interests in geometric and topological data analysis, unsupervised learning, algorithm design, and open source software development.
-							<br/><br/>
-							I'm currently a graduate student at NEU's Khoury College of Computer Sciences, advised by Jose Perea. 
-							<br/><br/>
-							A more traditional paper CV is #[a(href="/resources/cv_7.pdf" class="cursor-pointer underline" style='color: #0000EE;') available here]
+				include partials/bio_card
 						//- <a href="/resources/cv_7.pdf" class="cursor-pointer underline" style='color: #0000EE;'>available here</a>
 						//- .bg-yellow-200.border.border-gray-400.px-1.py-1.rounded.relative.text-center.w-full
 						//- | Traditional paper CV 
@@ -32,11 +15,14 @@ block main
 			
 			section#compute_experience.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
 				h2.font-bold.text-blue-400.text-xl Programming Experience
-				p.prose-md.
-					My computational experience is diverse. I used primarily C++ and ANSI-C89/C90 extensively for the the Air Force projects in my undergraduate years, occasionally mixing 
-					in calls to high level scripts written in Python or Matlab.
-					From 2015-2019, I used the R Project for Statistical Computing extensively for the majority of the projects I was involved in. 
-					Since 2020, Python (+ PyBind11) has been my language of choice for development.
+				//- - var x = collections.snippets
+				//- - console.log(x)
+				p.prose-md.text-justify.
+					My computational experience is diverse. My #[a(href='#education') university coursework] was mostly a mix of Java, C++, and Matlab. 
+					I used C++ and ANSI-C extensively for the #[a(href='#education') Air Force Institute] in my #[a(href='#wsu_ug') undergraduate years], occasionally writing high level scripts in Python or Matlab.
+					Post undergraduate, I used the #[a(href="https://www.r-project.org/" style='color: #0000EE;') R project] or Python from 2015-2019 for the majority of the projects I was involved in. 
+					Since 2020, interfacing Python with C++ #[a(href="https://en.wikipedia.org/wiki/Foreign_function_interface" style='color: #0000EE;') FFIs] 
+					(e.g. #[a(href="https://pybind11.readthedocs.io/en/stable/index.html" style='color: #0000EE;') pybind11]) has been my preferred development workflow.
 
 			section#projects.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
 				h2.font-bold.text-yellow-400.text-2xl Projects
@@ -55,16 +41,18 @@ block main
 			section#education.flex.flex-col.border-sm.p-2.mx-auto.w-full
 				h2.font-bold.text-orange.text-2xl Education
 				ol.relative.ml-3.border-l.border-orange-400
-					each uni in [...collections.schools].reverse()
+					each uni  in [...collections.schools].reverse()
 						.flex-start.flex.items-center.pt-1
 							.absolute.w-4.h-4.bg-orange-400.rounded-full.border.border-white(class='-left-2')
-							li.ml-3.w-full
+							li.ml-3.w-full(id=uni.page.fileSlug)
 								!= uni.data.content
 								//- include partials/edu_card
 
 		.col-span-2
 			#scrollspy-cv.sticky.top-0.pl-2.text-md
 				ul(data-te-nav-list-ref='')
+					li.py-1
+						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#compute_experience') Compute Bio
 					li.py-1
 						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' data-te-nav-link-active='' class='px-[5px] dark:text-neutral-200' href='#statement') Statement
 					li.py-1
@@ -73,9 +61,6 @@ block main
 						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#employment') Employment
 					li.py-1
 						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#education') Education
-					li.py-1
-						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#compute_experience') 
-							| Compute Bio
 			//- //- For debugging 
 			//- each job,index in collections.jobs
 			//- 		p!= job.data.content

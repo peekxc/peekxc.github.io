@@ -1,8 +1,4 @@
 {
- "about": {
-    "url": "/bio",
-    "title": "Bio"
- },
  "CV": {
     "url": "/cv",
     "title": "CV"
