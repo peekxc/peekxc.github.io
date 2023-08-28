@@ -1,29 +1,18 @@
 extends ./baseof.pug
 
 block main 
-	.container.grid.grid-cols-12.mx-auto.py-2.border-2(class="lg:px-32")
-		.col-span-10.relative.overflow-auto.space-y-2
-			//- div.svg_up_arrow.w-32.h-32
-
-			section#statement.flex.flex-col(class="lg:hidden")
+	.container.grid.grid-cols-12.py-2.border-x(class="sm:mx-0 md:mx-16 lg:mx-32")
+		.col-span-10.overflow-auto.space-y-2
+			section#statement.collapse(class="md:block md:visible")
 				//- h2.font-bold.text-green-400.text-xl Statement
 				include partials/bio_card
 						//- <a href="/resources/cv_7.pdf" class="cursor-pointer underline" style='color: #0000EE;'>available here</a>
 						//- .bg-yellow-200.border.border-gray-400.px-1.py-1.rounded.relative.text-center.w-full
 						//- | Traditional paper CV 
 						//- a(href="/resources/cv_7.pdf" class="cursor-pointer underline" style='color: #0000EE;') available here
+		
+			!= content
 			
-			section#compute_experience.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
-				h2.font-bold.text-blue-400.text-xl Programming Experience
-				//- - var x = collections.snippets
-				//- - console.log(x)
-				p.prose-md.text-justify.
-					My computational experience is diverse. My #[a(href='#education') university coursework] was mostly a mix of Java, C++, and Matlab. 
-					I used C++ and ANSI-C extensively for the #[a(href='#education') Air Force Institute] in my #[a(href='#wsu_ug') undergraduate years], occasionally writing high level scripts in Python or Matlab.
-					Post undergraduate, I used the #[a(href="https://www.r-project.org/" style='color: #0000EE;') R project] or Python from 2015-2019 for the majority of the projects I was involved in. 
-					Since 2020, interfacing Python with C++ #[a(href="https://en.wikipedia.org/wiki/Foreign_function_interface" style='color: #0000EE;') FFIs] 
-					(e.g. #[a(href="https://pybind11.readthedocs.io/en/stable/index.html" style='color: #0000EE;') pybind11]) has been my preferred development workflow.
-
 			section#projects.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
 				h2.font-bold.text-yellow-400.text-2xl Projects
 					//- - console.log(collections.projects)
@@ -52,9 +41,9 @@ block main
 			#scrollspy-cv.sticky.top-0.pl-2.text-md
 				ul(data-te-nav-list-ref='')
 					li.py-1
-						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#compute_experience') Compute Bio
+						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#statement') Bio card 
 					li.py-1
-						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' data-te-nav-link-active='' class='px-[5px] dark:text-neutral-200' href='#statement') Statement
+						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' data-te-nav-link-active='' class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
 					li.py-1
 						a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#projects') Projects
 					li.py-1

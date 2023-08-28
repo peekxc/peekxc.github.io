@@ -1,14 +1,29 @@
 ---
-title: "Matt Piekenbrock"
-format: hugo-md
 layout: list.pug
-# permalink: "/cv/index.html"
+format: gfm
 ---
 
-## Computational Experience
+<div id="compute_experience"
+class="flex flex-col space-y-1 border-sm p-2 mx-auto w-full">
 
-<article class="card">
+<h2 class="font-bold text-blue-400 text-xl">
+Programming Experience
+</h2>
 
-My computational experience is diverse. Since 2015, I started using the R Project for Statistical Computing for statistical modeling, and I continue to prefer R for research. In my undergraduate years, I used both C++ (primarily C++11) and ANSI-C89/C90 extensively for a myriad of projects (see below). Part of my undergraduate research delved into project involving computational geometry which required a final implementation written in Compute Unified Device Architecture (CUDA) and OpenCL. Of course, I'm proficient in both Python and Java.
+<div class="prose-md text-justify leading-5">
 
-</article>
+My computational experience is diverse. My [university
+coursework](#education) was mostly a mix of Java, C++, and Matlab. From
+2013-2015, I used C++ and ANSI-C extensively for the [Air Force
+Institute](#education), occasionally writing high level scripts in
+Python or Matlab. Throughout 2015-2019, I used the [R
+project](https://www.r-project.org/)/[Rcpp](https://cran.r-project.org/web/packages/Rcpp/index.html)
+or Python for the majority of the projects I was involved in. Since
+2020, interfacing Python with modern C++
+[FFIs](https://en.wikipedia.org/wiki/Foreign_function_interface)
+(e.g. [pybind11](https://pybind11.readthedocs.io/en/stable/index.html))
+has been my preferred development workflow.
+
+</div>
+
+</div>
