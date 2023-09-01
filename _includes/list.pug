@@ -1,7 +1,7 @@
 extends ./baseof.pug
 
 block main 
-	.w-screen.grid.grid-cols-12.border-x.mx-auto.px-4.py-2(class="sm:mx-4 md:mx-16 lg:mx-32 sm:px-4 md:px-8 lg:px-12 sm:shrink-0 max-w-4xl" style="min-width: 640px;")
+	.w-screen.grid.grid-cols-12.border-x.mx-auto.px-4.py-2(class="sm:mx-4 md:mx-16 lg:mx-32 sm:px-4 md:px-8 lg:px-12 sm:shrink-0 max-w-5xl" style="min-width: 640px;")
 		.space-y-2(class="col-span-12 md:col-start-1 md:col-span-10").show-col-10-lg
 			section#statement(class="md:flex md:visible").hidden.show-on-md-screen
 				include partials/bio_card
@@ -20,17 +20,17 @@ block main
 				h2.font-bold.text-red.text-2xl Employment
 				ol.relative.ml-3.border-l.border-red-400
 					each job in [...collections.jobs].reverse()
-						.flex.flex-start.items-center.pt-1.mx-auto
+						li.flex.flex-start.items-center.pt-1.mx-auto
 							.absolute.w-4.h-4.bg-red-400.rounded-full.border.border-white(class='-left-2') 
-							li.ml-3.w-full!= job.data.content
+							.ml-3.w-full!= job.data.content
 							
 			section#education.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.overflow-clip
 				h2.font-bold.text-orange.text-2xl Education
 				ol.relative.ml-3.border-l.border-orange-400
 					each uni  in [...collections.schools].reverse()
-						.flex-start.flex.items-center.pt-1.mx-auto
+						li.flex-start.flex.items-center.pt-1.mx-auto
 							.absolute.w-4.h-4.bg-orange-400.rounded-full.border.border-white(class='-left-2')
-							li.ml-3.w-full(id=uni.page.fileSlug)!= uni.data.content
+							.ml-3.w-full(id=uni.page.fileSlug)!= uni.data.content
 
 		div(class="md:block md:visible").hidden.show-col-2-lg
 			#scrollspy-cv.sticky.top-0.pl-2.text-md

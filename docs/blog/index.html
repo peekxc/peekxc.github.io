@@ -2,8 +2,18 @@
 var scale = 'scale(1)';
 document.body.style.webkitTransform = scale;   
 document.body.style.msTransform = scale;
-document.body.style.transform = scale;</script><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><script href="/js/katex.min.js"> </script><script src="/js/tw-elements.umd.min.js"></script><script>$(document).ready(function() {
-
+document.body.style.transform = scale;</script><script src="/js/jquery-3.2.1.min.js"></script><script href="/js/katex.min.js"> </script><script src="/js/tw-elements.umd.min.js"></script><script>//- document.addEventListener("DOMContentLoaded", function() {
+//- 	var cards = document.querySelectorAll('.card');
+//- 	cards.forEach.call(document.querySelectorAll(".accordion-header"), function(el){
+//- 		el.addEventListener("click", )
+//- 	});
+//- 		document.querySelectorAll(".accordion-header").toggleClass("active");
+//- 		document.querySelectorAll(".accordion-body").toggleClass("hidden");
+//- 		document.querySelectorAll(".text-ellipsis").toggleClass("hidden");
+//- 		document.querySelectorAll('svg').toggleClass("hidden");
+//- 	});
+//- })
+$(document).ready(function() {
 	// Toggle close accordions with data indices
 	//- var project_cards = $('#projects').find('.card')
 	var cards = $(document).find('.card')
@@ -14,21 +24,4 @@ document.body.style.transform = scale;</script><script src="https://code.jquery.
 		$(this).find(".text-ellipsis").toggleClass("hidden");
 		$(this).find('svg').toggleClass("hidden");
 	});
-
-	//- $(".accordion-header").click(function() {
-	//- 	$(this).toggleClass("active");
-	//- 	//- $(this).next(".accordion-body").toggleClass("hidden");
-
-	//- 	// Toggle child accordions when parent accordion is clicked
-	//- 	//- $(this).next(".accordion-body").find(".accordion-header").toggleClass("active");
-	//- 	//- $(this).next(".accordion-body").find(".accordion-body").toggleClass("hidden");
-	
-	//- 	// Toggle close accordions with data indices
-	//- 	const index = $(this).data('index');
-	//- 	$('.accordion-body[data-index=' + index + ']').toggleClass("hidden");
-	//- 	$('.accordion-body[data-index!=' + index + ']').addClass('hidden');
-
-	//- 	// Toggle visibility of the last p element with .text-ellipsis class
-	//- 	//- $(this).closest(".grid").find("p.text-ellipsis:last-child").toggleClass("hidden");
-	//- });
 })</script></body></html>

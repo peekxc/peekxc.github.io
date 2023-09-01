@@ -11,20 +11,38 @@ The ICP problem computationally is dominated by the first phase, a pairwise dist
 image: "/resources/icp.png"
 card_tags: ["Geometry", "Point registration", "High performance computing"]
 date: 2014-01-01
+format: gfm # quarto-specific 
 ---
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
-  <h4 class="font-bold bg-gray-100"> Publications </h4>
+
+<h4 class="font-bold bg-gray-100">
+Publications
+</h4>
+
 </div>
-<div class="p-2 overflow-auto px-4 py-2 bg-white-100">  
-  <ul class="lisc-desc text-sm space-y-2">
-    <li> J. Robinson, M. Piekenbrock, L. Burchett, et. al. Parallelized Iterative Closest
-  Point for Autonomous Aerial Refueling. In International Symposium on Visual
-  Computing (pp. 593-602). Springer International Publishing. (2016, December) </li> 
-    <li> Piekenbrock, M., Robinson, J., Burchett, L., Nykl, S., Woolley, B., & Terzuoli,
-  A. (2016, July). Automated aerial refueling: Parallelized 3D iterative closest
-  point: Subject area: Guidance and control. In Aerospace and Electronics Conference
-  (NAECON) and Ohio Innovation Summit (OIS), 2016 IEEE National (pp. 188-192).
-  IEEE. </li> 
-  </ul>
+
+<div class="p-2 overflow-auto px-4 py-2 bg-white-100">
+
+<div class="lisc-desc text-sm space-y-2">
+
+- J. Robinson, M. Piekenbrock, L. Burchett, et. al. Parallelized
+  Iterative Closest Point for Autonomous Aerial Refueling. In
+  International Symposium on Visual Computing (pp. 593-602). Springer
+  International Publishing. (2016, December)
+- Piekenbrock, M., Robinson, J., Burchett, L., Nykl, S., Woolley, B., &
+  Terzuoli, A. (2016, July). Automated aerial refueling: Parallelized 3D
+  iterative closest point: Subject area: Guidance and control. In
+  Aerospace and Electronics Conference (NAECON) and Ohio Innovation
+  Summit (OIS), 2016 IEEE National (pp. 188-192). IEEE.
+
 </div>
+
+</div>
+
+<!-- :::{.flex .items-center .px-2 .py-1 .bg-gray-100}
+<h4 class="font-bold bg-gray-100"> Software </h4>
+:::
+&#10;:::{.p-2 .overflow-auto .px-4 .py-2 .bg-white-100 .text-sm}
+&#10;The software is not publically available, however the 
+&#10;::: -->

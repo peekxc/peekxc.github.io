@@ -9,24 +9,27 @@ abstract_full: Density-based clustering techniques have become extremely popular
 image: /resources/hdbscan_pts.gif
 card_tags: ["Clustering", "R Package", "High performance computing"]
 date: 2016-01-01
+format: gfm # quarto-specific 
 ---
 
 
-<div class="flex items-center px-2 py-1 bg-gray-100">
+:::{.flex .items-center .px-2 .py-1 .bg-gray-100}
   <h4 class="font-bold bg-gray-100"> Publications </h4>
-</div>
-<div class="p-2 overflow-auto px-4 py-2 bg-white-100">  
-  <ul class="lisc-desc text-sm space-y-2">
-    <li> Hahsler, Michael, Matthew Piekenbrock, and Derek Doran. "dbscan: Fast Density Based Clustering in R", Journal of Statistical Software, 2018. </li> 
-  </ul>
-</div>
+:::
 
-<div class="flex items-center px-2 py-1 bg-gray-100">
+:::{.p-2 .overflow-auto .px-4 .py-2 .bg-white-100}
+:::{.lisc-desc .text-sm .space-y-2}
+  - Hahsler, Michael, Matthew Piekenbrock, and Derek Doran. "dbscan: Fast Density Based Clustering in R", Journal of Statistical Software, 2018.
+:::
+:::
+
+:::{.flex .items-center .px-2 .py-1 .bg-gray-100}
   <h4 class="font-bold bg-gray-100"> Software </h4>
-</div>
-<div class="p-2 overflow-auto px-4 py-2 bg-white-100">  
-  <ul class="lisc-desc text-sm space-y-2">
-    <li> dbscan R Package </li> 
-    <li> Vignette on using HDBSCAN </li>
-  </ul>
-</div>
+:::
+
+:::{.p-2 .overflow-auto .px-4 .py-2 .bg-white-100}
+:::{.lisc-desc .text-sm .space-y-2}
+  - dbscan R Package 
+  - Vignette on using HDBSCAN
+:::
+:::
