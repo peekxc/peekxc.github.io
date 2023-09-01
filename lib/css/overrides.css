@@ -24,6 +24,19 @@
     display: block !important;
   }
 }
+
+@media (min-width: 1024px) {
+  .show-col-10-lg {
+    grid-column: span 10 / span 10 !important;
+    display: block !important;
+  }
+  .show-col-2-lg {
+    grid-column: span 2 / span 2 !important;
+    display: block !important;
+  }
+}
+
+
 /* article ul li {
   list-style-type: circle;
 }

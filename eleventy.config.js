@@ -49,7 +49,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setServerOptions({
     domDiff: false, // this seems slower but better 
     port: 8080,
-    watch: ["_includes/*.pug", "_includes/**/*.pug", "content/*.md", "content/**/*.md"] 
+    watch: ["_includes/*.pug", "_includes/**/*.pug", "content/*.md", "content/**/*.md", "lib/css/*.css"] 
   })
 
   // Use regular browser sync

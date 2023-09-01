@@ -2,8 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@layer base {
+/* @layer base {
   a {
     @apply text-blue-900;
   }
-}
+} */

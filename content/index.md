@@ -15,7 +15,7 @@ layout: index.pug
 
 <!-- :::{.flex .justify-between .mx-auto} -->
 
-<div class="pl-6" style="float: right;">
+<div style="float: right; margin-left: 1.5rem;">
 
 <img src="../resources/profile_pic2.jpeg"
 class="rounded-lg object-cover md:visible hidden show-on-md-screen"
@@ -23,16 +23,22 @@ style="max-width: 16rem;" alt="Profile picture" />
 
 </div>
 
-<h1 class="mb-1">
+<h1 class="mb-0">
 Matt Piekenbrock
 </h1>
 
-<div class="my-1">
+<div class="my-0">
 
+<a href="https://github.com/peekxc"
+class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
+style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Github</a>
+<a
+href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&amp;hl=en"
+class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
+style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Scholar</a>
 <span class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
-style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Github</span>
-<span class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
-style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Github</span>
+style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Email:
+matt (dot) piekenbrock (at) gmail</span>
 
 </div>
 

@@ -45,4 +45,4 @@ Should probably switch to gulp
 
 To preprocess the CSS styles from tailwind, use: 
 
-> npx tailwindcss --output lib/css/tw_styles.css
+> npx tailwindcss -i styles.css --output lib/css/tw_styles.css
