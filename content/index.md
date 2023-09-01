@@ -1,6 +1,6 @@
 ---
 format: gfm
-layout: single_md.pug
+layout: index.pug
 # about:
 #   template: jolla
 #   image: /resources/profile_pic2.jpg
@@ -18,8 +18,8 @@ layout: single_md.pug
 <div class="pl-6" style="float: right;">
 
 <img src="../resources/profile_pic2.jpeg"
-class="rounded-lg object-cover" style="max-width: 16rem;"
-alt="Profile picture" />
+class="rounded-lg object-cover md:visible hidden show-on-md-screen"
+style="max-width: 16rem;" alt="Profile picture" />
 
 </div>
 

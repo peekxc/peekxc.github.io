@@ -13,9 +13,7 @@ date: 2019-01-01
 ---
 
 :::{.flex .items-center .px-2 .py-1 .bg-gray-100}
-
 <h4 class="font-bold"> Coursework (GPA: 3.83): </h4>
-
 :::
 
 :::{.p-2 .bg-white-100 .lisc-desc .text-sm .space-y-2 }

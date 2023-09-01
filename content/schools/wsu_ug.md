@@ -12,9 +12,15 @@ card_desc: "Click for teaching experience, coursework taken, and other details..
 date: 2015-01-01
 ---
 
-## GPA: 3.42 (in-major)
+<div class="flex items-center px-2 py-1 bg-gray-100">
 
-#### Coursework
+<h4 class="font-bold">
+Coursework (GPA: 3.42, in-major):
+</h4>
+
+</div>
+
+<div class="lisc-desc p-2 bg-white-100 text-sm space-y-2">
 
 - Applied Statistics I & II
 - Optimization Techniques
@@ -22,3 +28,5 @@ date: 2015-01-01
 - Computational Tools for Data Analysis
 - Theoretical Statistics
 - Linear Algebra
+
+</div>

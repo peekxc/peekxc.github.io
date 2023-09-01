@@ -18,6 +18,12 @@
 .link_color{
   color: #0000EE;
 }
+
+@media (min-width: 640px) {
+  .show-on-md-screen {
+    display: block !important;
+  }
+}
 /* article ul li {
   list-style-type: circle;
 }
