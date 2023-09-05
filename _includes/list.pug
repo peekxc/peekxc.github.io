@@ -16,7 +16,7 @@ block main
 				each project, index in [...collections.projects].reverse()
 					div!= project.data.content
 
-			section#employment.flex.flex-col.space-y-1.p-2.border-sm.mx-auto.overflow-clip
+			section#employment.flex.flex-col.space-y-1.p-2.border-sm.mx-auto
 				h2.font-bold.text-red.text-2xl Employment
 				ol.relative.ml-3.border-l.border-red-400
 					each job in [...collections.jobs].reverse()
@@ -24,7 +24,7 @@ block main
 							.absolute.w-4.h-4.bg-red-400.rounded-full.border.border-white(class='-left-2') 
 							.ml-3.w-full!= job.data.content
 							
-			section#education.flex.flex-col.space-y-1.border-sm.p-2.mx-auto.overflow-clip
+			section#education.flex.flex-col.space-y-1.border-sm.p-2.mx-auto
 				h2.font-bold.text-orange.text-2xl Education
 				ol.relative.ml-3.border-l.border-orange-400
 					each uni  in [...collections.schools].reverse()

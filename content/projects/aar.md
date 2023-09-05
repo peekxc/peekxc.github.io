@@ -24,7 +24,7 @@ Publications
 
 <div class="p-2 overflow-auto px-4 py-2 bg-white-100">
 
-<div class="lisc-desc text-sm space-y-2">
+<div class="prose-md lisc-desc text-sm space-y-2">
 
 - J. Robinson, M. Piekenbrock, L. Burchett, et. al. Parallelized
   Iterative Closest Point for Autonomous Aerial Refueling. In

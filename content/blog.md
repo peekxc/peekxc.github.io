@@ -1,4 +1,4 @@
 ---
-format: hugo-md
-layout: single_md.pug
+format: gfm
+layout: blog.pug
 ---

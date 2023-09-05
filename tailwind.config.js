@@ -1,5 +1,5 @@
 module.exports = { 
-	content: ['./_includes/*.pug', './_includes/**/*.pug'],
+	content: ['./_includes/*.pug', './_includes/**/*.pug', './docs/**/*.html'],
 	important: true,
 	separator: '_', // For better looking pug code! => classes are .text_center, hover_*, etc.
 	plugins: [

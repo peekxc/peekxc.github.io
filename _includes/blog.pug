@@ -1,8 +1,12 @@
 extends ./baseof.pug
 
 block main 
-	.container.grid.grid-cols-12.mx-auto.py-2.px-32.border-2
-		.col-span-10.relative.overflow-auto.space-y-2.prose-lg 
-			h2 Coming Soon! 
-			
-			
+	.container.flex.flex-col.mx-auto.py-2.px-32.border-2
+		ul.list-desc.relative.overflow-auto.space-y-2.prose-lg 
+		- console.log(collections.posts[1].page)		
+		each post in collections.posts
+			li 
+				a(href=post.url)= post.data.title
+		//- each post in collections.posts 
+		//- 	!= post.content
+	

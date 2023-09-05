@@ -38,25 +38,17 @@ My research has been supported by various sources, including the [NSF](https://w
 
 :::
 
-
-<!-- ::: -->
-
-
-:::{.prose-md}
-
-
-
 <!-- I enjoy learning about open-ended areas of learning theory and data analysis, including topics such as unsupervised learning, clustering, dimensionality reduction, estimation theory, and so on. I'm also a [modern C++](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#abstract) enthusiast, and believer in [functional programming](https://en.wikipedia.org/wiki/Functional_programming), and a fervent supporter of open source software.  -->
-
-:::
 
 ## News 
 
-:::{.list-disc}
+:::{.list-disc .overflow-y-scroll }
 
-- I've attended...
-- I've been invited to give a talk at...
-- I attended the AMS Special session 
-- Package 'xx' has been released
+- I've been invited to give a contributed talk AIM-AMS special session on Applied Topology Beyond Persistence Diagrams
+- Short paper accepted at [Computational Persistence 2023](https://www.cs.purdue.edu/ComPerWorkshop/index.html). I am scheduled to give a 30-minute contributed talk on my research on spectral rank relaxations around September 25th\
+- I've been invited to chair and give a contributed talk at the [Third Graduate Student Conference: Geometry and Topology meet Data Analysis and Machine Learning](https://gtdaml.wixsite.com/2023)
+- I've been invited to give a contributed talk to the AMS Spring special session on Topological Persistence: Theory, Algorithms, and Applications (IV) @ Georgia Tech, Atlanta (03/19/2023) 
+- I'll be attending the Jount Mathematics Meetings (JMM) in in Boston, Massachusetts (01/05/2023) 
+- I'll be attending the 2022 AMS Mathematical Research Communities (MRC) retreat on Data Science at the crossroads of Analysis, Geometry, and Topology
 
 :::
