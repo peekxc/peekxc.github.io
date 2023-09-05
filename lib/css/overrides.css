@@ -1,0 +1,53 @@
+.arrow_up_circle {
+  display: inline-block;
+  background-image: url(/lib/fonts/arrow_up_circle.svg);
+}
+.github_logo {
+  display: inline-block;
+  background-image: url(/lib/fonts/github_logo.svg);
+}
+.linkedin_logo {
+  display: inline-block;
+  background-image: url(/lib/fonts/linkedin_logo.svg);
+}
+.scholar_logo {
+  display: inline-block;
+  background-image: url(/lib/fonts/scholar_logo.svg);
+}
+
+.link_color{
+  color: #0000EE;
+}
+
+@media (min-width: 640px) {
+  .show-on-md-screen {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .show-col-10-lg {
+    grid-column: span 10 / span 10 !important;
+    display: block !important;
+  }
+  .show-col-2-lg {
+    grid-column: span 2 / span 2 !important;
+    display: block !important;
+  }
+}
+
+
+/* article ul li {
+  list-style-type: circle;
+}
+
+article ol li {
+  list-style-type: 1;
+}
+
+article blockquote {
+  background-color: rgb(226 232 240);
+  font-style: italic;
+  padding: 0.25rem;
+  margin: 0 !important;
+} */

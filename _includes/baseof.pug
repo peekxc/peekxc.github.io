@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+html.h-100(lang="en-US")
+	include partials/head.pug	
+	header 
+		include partials/navbar.pug
+	body.flex.flex-col.min-h-screen(data-te-spy='scroll' data-te-target='#scrollspy-cv' data-te-offset='200')
+		block main 
+		block sidebar	
+		//- include ./partials/js_includes.pug
+		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js" integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4=" crossorigin="anonymous")
+		//- script(src="/js/highlight.min.js")
+		//- script hljs.initHighlightingOnLoad()		
+		include partials/footer.pug
+		script. 
+			//- Reset zoom
+			var scale = 'scale(1)';
+			document.body.style.webkitTransform = scale;   
+			document.body.style.msTransform = scale;
+			document.body.style.transform = scale;
+		script(src=filters.url("/js/jquery-3.2.1.min.js"))
+		script(href=filters.url("/js/katex.min.js")) 
+		script(src=filters.url("/js/tw-elements.umd.min.js"))
+		script.
+			//- document.addEventListener("DOMContentLoaded", function() {
+			//- 	var cards = document.querySelectorAll('.card');
+			//- 	cards.forEach.call(document.querySelectorAll(".accordion-header"), function(el){
+			//- 		el.addEventListener("click", )
+			//- 	});
+			//- 		document.querySelectorAll(".accordion-header").toggleClass("active");
+			//- 		document.querySelectorAll(".accordion-body").toggleClass("hidden");
+			//- 		document.querySelectorAll(".text-ellipsis").toggleClass("hidden");
+			//- 		document.querySelectorAll('svg').toggleClass("hidden");
+			//- 	});
+			//- })
+			$(document).ready(function() {
+				// Toggle close accordions with data indices
+				//- var project_cards = $('#projects').find('.card')
+				var cards = $(document).find('.card')
+				$(cards).on('click', function() {
+					//- console.log("Clicked project card " + $(this).attr("id"))
+					$(this).find(".accordion-header").toggleClass("active")
+					$(this).find(".accordion-body").toggleClass("hidden")
+					$(this).find(".text-ellipsis").toggleClass("hidden");
+					$(this).find('svg').toggleClass("hidden");
+				});
+			})

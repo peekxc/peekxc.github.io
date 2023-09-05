@@ -1,0 +1,10 @@
+{
+ "CV": {
+    "url": "/cv",
+    "title": "CV"
+  },
+  "Blog": {
+    "url": "/blog",
+    "title": "Blog"
+  }
+}

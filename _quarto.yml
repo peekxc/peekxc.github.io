@@ -1,0 +1,55 @@
+project: 
+  type: default
+  execute-dir: project
+  # output-dir: content
+  render:
+    - "content/**/*.qmd"
+    # - "!content/jobs"
+
+format:
+  hugo-md: 
+    keep-yaml: true 
+    html-math-method: katex
+    variant: +yaml_metadata_block
+  gfm: 
+    keep-yaml: true 
+    html-math-method: katex
+    variant: +yaml_metadata_block
+
+# project:
+#   type: website
+#   output-dir: docs
+#   resources: 
+#     - "/lib" # do not use lib-dir option
+#   render: 
+#     - "_website/"
+    
+# website:
+#   repo-url: https://github.com/peekxc/peekxc.github.io
+#   navbar:
+#     background: secondary
+#     title: Home
+#     search: true
+#     left:
+#       - href: about.qmd
+#         text: Bio
+#       - href: https://peekxc.github.io/blog/
+#         text: Blog
+#       - href: publications.qmd
+#         text: Publications
+#       - href: online_CV/cv.qmd
+#         text: CV
+#     right:
+#       - icon: github
+#         href: https://github.com/peekxc/
+#         aria-label: GitHub
+
+# format:
+  # html:
+  #   theme: yeti
+  #   linkcolor: rgb(240 94 35)
+  #   mainfont: serif
+  #   css: styles.css
+  #   toc: true
+  #   embed-resources: false
+  #   self-contained-math: false

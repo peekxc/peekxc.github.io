@@ -1,7 +1,0 @@
-{{- $.Scratch.Add "index" slice -}}
-{{- range where .Site.Pages "Type" "not in"  (slice "page" "search-index") -}}
-    {{ $image_header := $.Param "header_image" }}
-    {{ $author := $.Param "author" }}
-    {{- $.Scratch.Add "index" (dict "ref" .Permalink "href" .URL "title" .Title "image" $image_header "author" $author "publish_date" .PublishDate "wordcount" .FuzzyWordCount "tags" .Params.tags "categories" .Params.categories "keywords" .Keywords "summary" .Summary "content" .Plain) -}}
-{{- end -}}
-{{- $.Scratch.Get "index" | jsonify -}}

@@ -1,0 +1,53 @@
+nav.navbar.top-0.left-0.w-full.shadow-sm.bg-white.border-b
+	.flex.container.p-3.items-center
+		.flex.align-middle
+			a.text-lg.font-semibold.mr-4(href="/") Home
+		.flex.align-middle.space-x-4
+			each nb_el in navbar
+				a.text-lg.text-gray-600(href=nb_el.url, class="hover:text-gray-600")
+					= nb_el.title
+		//- form.flex.items-center.ml-auto
+		//- 	input.border.rounded-sm.py-1.px-2.text-gray-600(type="text" placeholder="Search" class="focus:outline-none focus:ring focus:border-gray-300")
+		
+	//- .hidden.md.bg-white.mt-4.py-2
+	//- 	.container
+	//- 		a(href="#", class="block px-4 py-2 text-gray-800 hover:bg-gray-100") Home
+	//- 		a(href="#", class="block px-4 py-2 text-gray-800 hover:bg-gray-100") About
+	//- 		a(href="#", class="block px-4 py-2 text-gray-800 hover:bg-gray-100") Projects
+	//- 		a(href="#", class="block px-4 py-2 text-gray-800 hover:bg-gray-100") Blog
+//- nav.bg-slate-50.inset-10.float-left
+//- 	.container-fluid
+//- 		a.navbar-brand(href="#")
+//- 		ul.navbar-nav
+//- 			each val in navbar
+//- 				li= val
+//- nav.bg-slate-50
+//-   .mx-auto.max-w-7xl.px-2(class='sm:px-6 lg:px-8')
+//-     .relative.flex.h-16.items-center.justify-between
+//-       .flex.flex-1.items-center.justify-center(class='sm:items-stretch sm:justify-start')
+//-         .hidden(class='sm:ml-6 sm:block')
+//-           .flex.space-x-4
+//-             // Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white"
+//-             a.bg-gray-900.text-white.px-3.py-2.text-sm.font-medium(href='#' aria-current='page') Dashboard
+//-             a.text-gray-300.px-3.py-2.text-sm.font-medium(href='#' class='hover:bg-gray-700 hover:text-white') Team
+//-             a.text-gray-300.px-3.py-2.text-sm.font-medium(href='#' class='hover:bg-gray-700 hover:text-white') Projects
+//-             //- a.text-gray-300.rounded-md.px-3.py-2.text-sm.font-medium(href='#' class='hover:bg-gray-700 hover:text-white') Calendar
+//-       .absolute.inset-y-0.left-0.flex.items-center(class='sm:hidden')
+//-         // Mobile menu button
+//-         button.relative.inline-flex.items-center.justify-center.rounded-md.p-2.text-gray-400(type='button' class='hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white' aria-controls='mobile-menu' aria-expanded='false')
+//-           span.absolute(class='-inset-0.5')
+//-           span.sr-only Open main menu
+//-           svg.block.h-6.w-6(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor' aria-hidden='true')
+//-             path(stroke-linecap='round' stroke-linejoin='round' d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5')
+//-           //
+//-             Icon when menu is open.
+//-             Menu open: "block", Menu closed: "hidden"
+//-           svg.hidden.h-6.w-6(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor' aria-hidden='true')
+//-             path(stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12')
+//-   #mobile-menu(class='sm:hidden')
+//-     .space-y-1.px-2.pb-3.pt-2
+//-       // Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white"
+//-       a.bg-gray-900.text-white.block.rounded-md.px-3.py-2.text-base.font-medium(href='#' aria-current='page') Dashboard
+//-       a.text-gray-300.block.rounded-md.px-3.py-2.text-base.font-medium(href='#' class='hover:bg-gray-700 hover:text-white') Team
+//-       a.text-gray-300.block.rounded-md.px-3.py-2.text-base.font-medium(href='#' class='hover:bg-gray-700 hover:text-white') Projects
+//-       a.text-gray-300.block.rounded-md.px-3.py-2.text-base.font-medium(href='#' class='hover:bg-gray-700 hover:text-white') Calendar
