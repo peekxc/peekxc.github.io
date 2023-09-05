@@ -1,11 +1,16 @@
+const plugin = require('tailwindcss/plugin')
+
 module.exports = { 
-	content: ['./_includes/*.pug', './_includes/**/*.pug', './docs/**/*.html'],
-	important: true,
-	separator: '_', // For better looking pug code! => classes are .text_center, hover_*, etc.
+	content: ['./_includes/*.pug', './_includes/partials/*.pug', './_includes/**/*.pug', './docs/**/*.html'],
+	important: false,
+	// separator: '_', // DON'T: THIS BREAKS HOVER -- For better looking pug code! => classes are .text_center, hover_*, etc.
 	plugins: [
 		require('@tailwindcss/typography'), 
 		require("tw-elements/dist/plugin.cjs") // for TailWind elements JS 
 	], 
+	extend: {
+		border: ['hover']
+	},
 	// screens: {
 	// 	'2xl': {'max': '1535px'},
 	// 	'xl': {'max': '1279px'},
@@ -60,6 +65,7 @@ module.exports = {
 	// 	extrabold: '800',
 	// 	black: '900',
 	// }, 
+	// For what preflight does, see: https://v2.tailwindcss.com/docs/preflight
 	corePlugins: {
 		preflight: true // turning this to false destroys the styles
 	}

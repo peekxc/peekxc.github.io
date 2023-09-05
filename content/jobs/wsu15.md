@@ -9,6 +9,8 @@ abstract: 'Motivated by my previous work on the foundations of density-based clu
 background_image: /resources/wsu_biplane.png
 card_tags: ["Clustering", "Network analysis", "Machine Learning"]
 date: 2018-01-01
+end_date: 2018-01-01
+start_date: 2015-01-01
 ---
 
 

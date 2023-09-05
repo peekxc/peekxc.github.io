@@ -22,8 +22,14 @@ Coursework (GPA: 3.83):
 
 <div class="p-2 bg-white-100 lisc-desc text-sm space-y-2">
 
-- Numerical Differential Equations
-- Numerical Linear Algebra
+- Numerical Linear Algebra (CMSE 823)
+- Numerical Differential Equations (CMSE 821)
+- Math Foundations of Data Science (CMSE 890)
+- Topological Methods for the Analysis of Data (CMSE 890)
+- Parallel Computing (CMSE 822)
+- Geometry and Topology II (MTH 869)
+- Mathematical foundations of analysis (CMSE 890)
+- Algebra I (MTH 818)
 
 </div>
 

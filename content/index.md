@@ -46,17 +46,18 @@ matt (dot) piekenbrock (at) gmail</span>
 
 I’m a computer scientist with research interests in geometric and
 topological data analysis, unsupervised learning, algorithm design, and
-scientific computing. My background can be found on my [online
-CV](https://mattpiekenbrock.com/cv) and most my software projects are
-listed on my [Github](https://github.com/peekxc).
+scientific computing. More information about my background and
+experience can be found on my [online
+CV](https://mattpiekenbrock.com/cv) and my [Github
+profile](https://github.com/peekxc).
 
-I’m currently a PhD student at [Khoury College of Computer
+I’m currently a (transferred) PhD student at [Khoury College of Computer
 Sciences](https://www.khoury.northeastern.edu/), Northeastern University
-(NEU). I hold both B.S. and M.S. degrees in C.S. from [Wright State
-University](https://www.wright.edu/). Prior to transferring to NEU, I
-completed 2 years of graduate coursework in [Computational Mathematics,
-Science, and Engineering Department](https://cmse.msu.edu/) (CMSE) at
-Michigan State University.
+(NEU); prior to transferring, I completed 2 years of graduate coursework
+from the [Computational Mathematics, Science, and Engineering
+Department](https://cmse.msu.edu/) (CMSE) at Michigan State University.
+I hold both B.S. and M.S. degrees in C.S. from [Wright State
+University](https://www.wright.edu/).
 
 My research has been supported by various sources, including the
 [NSF](https://www.nsf.gov/), [NASA](https://www.nasa.gov/),
@@ -69,10 +70,12 @@ among others.
 </div>
 
 <!-- I enjoy learning about open-ended areas of learning theory and data analysis, including topics such as unsupervised learning, clustering, dimensionality reduction, estimation theory, and so on. I'm also a [modern C++](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#abstract) enthusiast, and believer in [functional programming](https://en.wikipedia.org/wiki/Functional_programming), and a fervent supporter of open source software.  -->
+<h2 class="text-2xl pb-0 mb-0 mt-1">
+News
+</h2>
+<hr style="margin: 0.20rem !important;"/>
 
-## News
-
-<div class="list-disc overflow-y-scroll">
+<div class="list-disc overflow-y-scroll mt-0">
 
 - I’ve been invited to give a contributed talk AIM-AMS special session
   on Applied Topology Beyond Persistence Diagrams
