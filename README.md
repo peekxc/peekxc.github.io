@@ -1,39 +1,29 @@
 # peekxc.github.io source code
 This repository exists to keep track and act as a host to for the mattpiekenbrock.com
 
-## Structure 
+## Layout format 
 
-- blog 
-- CV
+This site uses [Quarto](https://quarto.org/) and [Eleventy](https://www.11ty.dev/) (11ty) as its primary two tools for site generation.
 
-## Compiling 
+The following workflow ([inspired from here](https://quarto.org/docs/output-formats/docusaurus#workflow)), for any given source file, is as follows: 
 
-Online CV: 
-> pug online_CV/views/index.pug --out .
+**source.qmd** => *quarto* =>  **source.md**  => *eleventy* =>  **source.html**
 
-Blog (on a [separate repo](https://github.com/peekxc/blog))
-> eleventy .
+Canonically, the cascade 
+1. Author content files are stored as quarto, ipynb, or markdown documents in `/content`
+2. Render *.ipynb / *.qmd / *.md to Github flavored markdown (GFM) *.md files using quarto's `render` 
+3. Use template files for site generation in folders prefixed with underscores, e.g. `/_includes` and `/_data`
+4. Call eleventy to merge the content from (2) with the templates from (3), generating the final html site in `/docs`
 
-Website: 
+Using quarto as an intermediate step prior to eleventy is similar to the [page bundles](https://gohugo.io/content-management/page-bundles/) idea, wherein a "page" constitutes a directory with markdown text storing the content alongside additional folders holding the rendered images, videos, resources, code outputs, JS includes, etc.
 
-Unclear. Either use quarto fully, or use render as pre-processing with quarto and then render + serve with eleventy. 
+## Workflow 
 
-Ideally should incorporate tailwind, pug, bootstrap, and maybe even minimizers...
+From the root directory, to render `/content/**.qmd` => `/content/**.md`
 
-Probably try to figure out how to use quarto to render, then eleventy to collect + serve 
+> quarto render 
 
-## Format: 
-
-The site has the following [workflow](https://quarto.org/docs/output-formats/docusaurus#workflow): 
-
-**news.qmd**   quarto =>   **news.md**   eleventy =>   **news.html**
-
-- Template files and data used for site generation go in folder prefixed with underscores, e.g. "/_includes" and "/_data"
-- Content files are stored as quarto, ipynb, or markdown documents in /content
-- Quarto `render`'s *.ipynb and *.qmd to markdown [page bundles](https://gohugo.io/content-management/page-bundles/), i.e. markdown text + folders with images, videos, resources, etc.
-- Eleventy uses the *.md to generates the final output files in /docs
-
-From the root directory, to render `/content` => `/docs`
+From the root directory, to render `/content/**.md` => `/docs/**.html`
 
 > eleventy --config eleventy.config.js 
 
@@ -41,8 +31,16 @@ To develop actively, use:
 
 > quarto render & eleventy --config eleventy.config.js --watch --serve
 
-Should probably switch to gulp
-
-To preprocess the CSS styles from tailwind, use: 
+To preprocess the custom CSS styles from tailwind, use: 
 
 > npx tailwindcss -i styles.css --output lib/css/tw_styles.css
+
+All source css/js/font/img assest are stored in `/lib` and statically copied to `/docs` on generation. 
+
+## TODO
+
+- Should probably switch to gulp
+- Add image minimizers 
+- Remove tailwind-elements.js and jquery.js dependencies for page performance
+- Nanofy tailwinds styles
+- Move the relevent katex.min and code highlighting styles to the blog/single_md templates
