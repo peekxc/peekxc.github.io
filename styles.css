@@ -2,6 +2,12 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@layer base {
+  a {
+    @apply text-blue-900;
+  }
+}
+
 @layer utilities {
   .hover_gray {
     @apply hover:border-gray-700 border-4;  

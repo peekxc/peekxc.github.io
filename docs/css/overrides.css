@@ -36,6 +36,9 @@
   }
 }
 
+.bullet_list ul {
+  list-style-type: disc;
+}
 
 /* article ul li {
   list-style-type: circle;
