@@ -12,18 +12,17 @@ Programming Experience
 
 <div class="prose-md text-justify leading-5">
 
-As I’ve been programming since 2009, my computational experience is
-diverse. My [university coursework](#education) (10-15’) typically
-required using Java, C++, or Matlab. From 2013-2015, I used C++98 or
-ANSI-C extensively for the [AFIT](#education)-affiliated projects,
-occasionally writing high level scripts in Python or Matlab
-(+[MEX](https://www.mathworks.com/help/matlab/cpp-mex-file-applications.html)).
-Throughout 2015-2019, I used either the [R
-project](https://www.r-project.org/)
+My computational experience is diverse. My [university
+coursework](#education) typically required using Java, C++, or Matlab
+(10-15’). I used C++98 or ANSI-C extensively for the
+[AFIT](#education)-affiliated projects, occasionally writing high level
+scripts in Python or Matlab
+(+[MEX](https://www.mathworks.com/help/matlab/cpp-mex-file-applications.html))
+(13-15’). I used either the [R project](https://www.r-project.org/)
 (+[Rcpp](https://cran.r-project.org/web/packages/Rcpp/index.html)) or
 [Python](https://www.python.org/) (+[Cython](https://cython.org/)) for
-the majority of the projects I was involved in, preferring the former.
-Since 2020, interfacing Python with modern C++
+the majority of the projects I was involved in, preferring the former
+(15-19’). Since 2020, interfacing Python with modern C++
 [FFIs](https://en.wikipedia.org/wiki/Foreign_function_interface)
 (e.g. [pybind11](https://pybind11.readthedocs.io/en/stable/index.html))
 has been my primary development workflow.
