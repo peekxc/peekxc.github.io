@@ -42,16 +42,15 @@ matt (dot) piekenbrock (at) gmail</span>
 
 </div>
 
-<div class="prose-sm text-justify">
+<div class="prose-base text-justify">
 
 I’m a computer scientist with research interests in geometric and
 topological data analysis, unsupervised learning, algorithm design, and
-scientific computing. More information about my background and
-experience can be found on my [online
-CV](https://mattpiekenbrock.com/cv) and my [Github
+scientific computing. My background experience and projects can be found
+on my [CV](https://mattpiekenbrock.com/cv) and [Github
 profile](https://github.com/peekxc).
 
-I’m currently a (transferred) PhD student at [Khoury College of Computer
+I’m currently a PhD transfer student at [Khoury College of Computer
 Sciences](https://www.khoury.northeastern.edu/), Northeastern University
 (NEU); prior to transferring, I completed 2 years of graduate coursework
 from the [Computational Mathematics, Science, and Engineering
@@ -70,6 +69,9 @@ among others.
 </div>
 
 <!-- I enjoy learning about open-ended areas of learning theory and data analysis, including topics such as unsupervised learning, clustering, dimensionality reduction, estimation theory, and so on. I'm also a [modern C++](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#abstract) enthusiast, and believer in [functional programming](https://en.wikipedia.org/wiki/Functional_programming), and a fervent supporter of open source software.  -->
+
+<br>
+
 <h2 class="text-2xl pb-0 mb-0 mt-1">
 News
 </h2>

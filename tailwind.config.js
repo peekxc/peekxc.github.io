@@ -9,8 +9,18 @@ module.exports = {
 		require("tw-elements/dist/plugin.cjs") // for TailWind elements JS 
 	], 
 	extend: {
-		border: ['hover']
+		border: ['hover'],
+		// fontFamily: {
+		// 	sans: [
+		// 		['"Proxima Nova"', 'Helvetica Neue', 'Arial'],
+		// 	]
+		// }
 	},
+	// fontFamily: {
+	// 	sans: [
+	// 		['"Proxima Nova"', 'Helvetica Neue', 'Arial']
+	// 	]
+	// },
 	// screens: {
 	// 	'2xl': {'max': '1535px'},
 	// 	'xl': {'max': '1279px'},

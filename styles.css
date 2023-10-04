@@ -6,6 +6,9 @@
   a {
     @apply text-blue-900;
   }
+  html {
+    font-family: "Times", "Times New Roman", "Georgia", serif, "Lucida Console", Courier, monospace, Verdana, Arial, Helvetica, sans-serif !important;
+  }
 }
 
 @layer utilities {

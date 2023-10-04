@@ -25,15 +25,16 @@ layout: index.pug
 [Github](https://github.com/peekxc){.bg-neutral-300 .text-black .text-xs .px-1 .rounded-xs .mr-1 .min-w-0 style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important"} [Scholar](https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en){.bg-neutral-300 .text-black .text-xs .px-1 .rounded-xs .mr-1 .min-w-0 style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important"} [Email: matt (dot) piekenbrock (at) gmail]{.bg-neutral-300 .text-black .text-xs .px-1 .rounded-xs .mr-1 .min-w-0 style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important"}
 :::
 
-::: {.prose-sm .text-justify}
-I'm a computer scientist with research interests in geometric and topological data analysis, unsupervised learning, algorithm design, and scientific computing. More information about my background and experience can be found on my [online CV](https://mattpiekenbrock.com/cv) and my [Github profile](https://github.com/peekxc).
+::: {.prose-base .text-justify}
+I'm a computer scientist with research interests in geometric and topological data analysis, unsupervised learning, algorithm design, and scientific computing. My background experience and projects can be found on my [CV](https://mattpiekenbrock.com/cv) and [Github profile](https://github.com/peekxc).
 
-I'm currently a (transferred) PhD student at [Khoury College of Computer Sciences](https://www.khoury.northeastern.edu/), Northeastern University (NEU); prior to transferring, I completed 2 years of graduate coursework from the [Computational Mathematics, Science, and Engineering Department](https://cmse.msu.edu/) (CMSE) at Michigan State University. I hold both B.S. and M.S. degrees in C.S. from [Wright State University](https://www.wright.edu/).
+I'm currently a PhD transfer student at [Khoury College of Computer Sciences](https://www.khoury.northeastern.edu/), Northeastern University (NEU); prior to transferring, I completed 2 years of graduate coursework from the [Computational Mathematics, Science, and Engineering Department](https://cmse.msu.edu/) (CMSE) at Michigan State University. I hold both B.S. and M.S. degrees in C.S. from [Wright State University](https://www.wright.edu/).
 
 My research has been supported by various sources, including the [NSF](https://www.nsf.gov/), [NASA](https://www.nasa.gov/), [DARPA](https://www.darpa.mil/), the [Center for Survelliance Research](https://www.wright.edu/center-for-surveillance-research/our-members), and a [Ginther Fellowship](https://givingto.msu.edu/stories/500k-endowment-creates-first-grad-fellowship-in-cmse), among others.
 :::
 
 <!-- I enjoy learning about open-ended areas of learning theory and data analysis, including topics such as unsupervised learning, clustering, dimensionality reduction, estimation theory, and so on. I'm also a [modern C++](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#abstract) enthusiast, and believer in [functional programming](https://en.wikipedia.org/wiki/Functional_programming), and a fervent supporter of open source software.  -->
+<br> 
 
 <h2 class="text-2xl pb-0 mb-0 mt-1"> News </h2>
 

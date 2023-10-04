@@ -13,10 +13,9 @@ Programming Experience
 <div class="prose-md text-justify leading-5">
 
 My computational experience is diverse. My [university
-coursework](#education) typically required using Java, C++, or Matlab
-(10-15’). I used C++98 or ANSI-C extensively for the
-[AFIT](#education)-affiliated projects, occasionally writing high level
-scripts in Python or Matlab
+coursework](#education) required using Java, C++, or Matlab (10-15’). I
+used C++98 or ANSI-C extensively for the [AFIT](#education)-affiliated
+projects, occasionally writing high level scripts in Python or Matlab
 (+[MEX](https://www.mathworks.com/help/matlab/cpp-mex-file-applications.html))
 (13-15’). I used either the [R project](https://www.r-project.org/)
 (+[Rcpp](https://cran.r-project.org/web/packages/Rcpp/index.html)) or

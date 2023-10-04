@@ -1,3 +1,8 @@
+/* Since tailwind just doesn't work sometimes */
+html {
+  font-family: "Cambay Devanagari Regular", "Helvetica Neue", "Georgia", sans-serif, serif !important;
+  font-feature-settings: 'ss01' 0, 'salt' 0;
+}
 .arrow_up_circle {
   display: inline-block;
   background-image: url(/lib/fonts/arrow_up_circle.svg);
