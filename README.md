@@ -29,7 +29,7 @@ From the root directory, to render `/content/**.md` => `/docs/**.html`
 
 To develop actively, use:
 
-> quarto render & eleventy --config eleventy.config.js --watch --serve
+> quarto render && eleventy --config eleventy.config.js --watch --serve
 
 To preprocess the custom CSS styles from tailwind, use: 
 
@@ -37,10 +37,16 @@ To preprocess the custom CSS styles from tailwind, use:
 
 All source css/js/font/img assest are stored in `/lib` and statically copied to `/docs` on generation. 
 
+## Font notes 
+
+For nice, hand-written book-like font, use et-book
+et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif
+
 ## TODO
 
 - Should probably switch to gulp
-- Add image minimizers 
+- Add image/css minimizers 
 - Remove tailwind-elements.js and jquery.js dependencies for page performance
-- Nanofy tailwinds styles
+- Nanofy tailwinds styles / figure out why nothing exports well 
 - Move the relevent katex.min and code highlighting styles to the blog/single_md templates
+- Use eleventy filter to provide sections in markdown for sidebar support
