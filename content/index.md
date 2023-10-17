@@ -17,7 +17,7 @@ layout: index.pug
 
 <div style="float: right; margin-left: 1.5rem;">
 
-<img src="../resources/profile_pic2.jpeg"
+<img src="../resources/profile_pic_white-min.jpg"
 class="rounded-lg object-cover md:visible hidden show-on-md-screen"
 style="max-width: 16rem;" alt="Profile picture" />
 
@@ -50,12 +50,12 @@ scientific computing. My background experience and projects can be found
 on my [CV](https://mattpiekenbrock.com/cv) and [Github
 profile](https://github.com/peekxc).
 
-I’m currently a PhD transfer student at [Khoury College of Computer
-Sciences](https://www.khoury.northeastern.edu/), Northeastern University
-(NEU); prior to transferring, I completed 2 years of graduate coursework
-from the [Computational Mathematics, Science, and Engineering
-Department](https://cmse.msu.edu/) (CMSE) at Michigan State University.
-I hold both B.S. and M.S. degrees in C.S. from [Wright State
+I’m currently a PhD \[transfer\] student at [Khoury College of Computer
+Sciences](https://www.khoury.northeastern.edu/), Northeastern
+University; prior to transferring, I completed 2 years of graduate
+coursework from the [Computational Mathematics, Science, and Engineering
+Department](https://cmse.msu.edu/) at Michigan State University. I hold
+both B.S. and M.S. degrees in C.S. from [Wright State
 University](https://www.wright.edu/).
 
 My research has been supported by various sources, including the

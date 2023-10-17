@@ -5,8 +5,9 @@ block main
 		ul.list-desc.relative.overflow-auto.space-y-2.prose-lg 
 		- console.log(collections.posts[1].page)		
 		each post in collections.posts
-			li 
-				a(href=post.url)= post.data.title
-		//- each post in collections.posts 
-		//- 	!= post.content
-	
+			//- - console.log(post.data.draft)
+			if !post.data.draft 
+				li 
+					span
+					|	(#{post.data.date}) 
+					a(href=post.url)= post.data.title

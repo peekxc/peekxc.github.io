@@ -16,7 +16,7 @@ layout: index.pug
 <!-- :::{.flex .justify-between .mx-auto} -->
 
 ::: {style="float: right; margin-left: 1.5rem;"}
-![Profile picture](/resources/profile_pic2.jpeg){.rounded-lg .object-cover .md:visible .hidden .show-on-md-screen style="max-width: 16rem;"}
+![Profile picture](/resources/profile_pic_white-min.jpg){.rounded-lg .object-cover .md:visible .hidden .show-on-md-screen style="max-width: 16rem;"}
 :::
 
 <h1 class="mb-0"> Matt Piekenbrock </h1>
@@ -28,7 +28,7 @@ layout: index.pug
 ::: {.prose-base .text-justify}
 I'm a computer scientist with research interests in geometric and topological data analysis, unsupervised learning, algorithm design, and scientific computing. My background experience and projects can be found on my [CV](https://mattpiekenbrock.com/cv) and [Github profile](https://github.com/peekxc).
 
-I'm currently a PhD transfer student at [Khoury College of Computer Sciences](https://www.khoury.northeastern.edu/), Northeastern University (NEU); prior to transferring, I completed 2 years of graduate coursework from the [Computational Mathematics, Science, and Engineering Department](https://cmse.msu.edu/) (CMSE) at Michigan State University. I hold both B.S. and M.S. degrees in C.S. from [Wright State University](https://www.wright.edu/).
+I'm currently a PhD [transfer] student at [Khoury College of Computer Sciences](https://www.khoury.northeastern.edu/), Northeastern University; prior to transferring, I completed 2 years of graduate coursework from the [Computational Mathematics, Science, and Engineering Department](https://cmse.msu.edu/) at Michigan State University. I hold both B.S. and M.S. degrees in C.S. from [Wright State University](https://www.wright.edu/).
 
 My research has been supported by various sources, including the [NSF](https://www.nsf.gov/), [NASA](https://www.nasa.gov/), [DARPA](https://www.darpa.mil/), the [Center for Survelliance Research](https://www.wright.edu/center-for-surveillance-research/our-members), and a [Ginther Fellowship](https://givingto.msu.edu/stories/500k-endowment-creates-first-grad-fellowship-in-cmse), among others.
 :::

@@ -31,6 +31,10 @@ To develop actively, use:
 
 > quarto render && eleventy --config eleventy.config.js --watch --serve
 
+To switch to rendering only blog posts and watching, use: 
+
+> quarto render content/posts && eleventy --config eleventy.config.js --watch --serve
+
 To preprocess the custom CSS styles from tailwind, use: 
 
 > npx tailwindcss -i styles.css --output lib/css/tw_styles.css
@@ -50,3 +54,4 @@ et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georg
 - Nanofy tailwinds styles / figure out why nothing exports well 
 - Move the relevent katex.min and code highlighting styles to the blog/single_md templates
 - Use eleventy filter to provide sections in markdown for sidebar support
+
