@@ -50,6 +50,10 @@ html {
   line-height: 1.40;
 }
 
+#scrollspy li.active {
+  font-weight: bold;
+}
+
 /* article ul li {
   list-style-type: circle;
 }

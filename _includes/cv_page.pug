@@ -34,18 +34,25 @@ block main
 								.ml-3.w-full(id=uni.page.fileSlug)!= uni.data.content
 
 			div(class="md:block md:visible").hidden.show-col-2-lg
-				#scrollspy-cv.sticky.top-0.pl-2.text-md
-					ul(data-te-nav-list-ref='')
-						li.py-1
-							a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#statement') Bio card 
-						li.py-1
-							a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' data-te-nav-link-active='' class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
-						li.py-1
-							a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#projects') Projects
-						li.py-1
-							a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#employment') Employment
-						li.py-1
-							a.bg-transparent.text-neutral-600.shadow-none(data-te-nav-link-ref='' class='px-[5px] dark:text-neutral-200' href='#education') Education
+				ul#scrollspy.sticky.top-0.pl-2.text-md
+					li.py-1
+						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#statement') Bio card 
+					li.py-1
+						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
+					li.py-1
+						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#projects') Projects
+					li.py-1
+						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#employment') Employment
+					li.py-1
+						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#education') Education
+
+block scripts
+	script.
+		var spy = new Gumshoe('#scrollspy li a', {
+			offset: function () { 
+				header = document.querySelector("header");
+				return header.getBoundingClientRect().height; }
+		});
 			//- //- For debugging 
 			//- each job,index in collections.jobs
 			//- 		p!= job.data.content

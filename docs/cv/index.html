@@ -310,11 +310,11 @@ Coursework (GPA: 3.42, in-major):
 <li>Linear Algebra</li>
 </ul>
 </div>
-</div></div></div></li></ol></section></div><div class="md:block md:visible hidden show-col-2-lg"><div class="sticky top-0 pl-2 text-md" id="scrollspy-cv"><ul data-te-nav-list-ref=""><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" data-te-nav-link-ref="" href="#statement">Bio card </a></li><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" data-te-nav-link-ref="" data-te-nav-link-active="" href="#compute_experience">Experience</a></li><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" data-te-nav-link-ref="" href="#projects">Projects</a></li><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" data-te-nav-link-ref="" href="#employment">Employment</a></li><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" data-te-nav-link-ref="" href="#education">Education</a></li></ul></div></div></div></main><footer class="footer text-center bottom-0 bg-gray-100 border w-full sticky mt-auto top-[100vh]"><span>&copy; Copyright Matt Piekenbrock 2023. </span>Proudly powered by <a href="https://www.11ty.dev/">Eleventy</a>&nbsp;and <a href="https://quarto.org/">Quarto</a>.</footer><script>//- Reset zoom
+</div></div></div></li></ol></section></div><div class="md:block md:visible hidden show-col-2-lg"><ul class="sticky top-0 pl-2 text-md" id="scrollspy"><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" href="#statement">Bio card </a></li><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" href="#compute_experience">Experience</a></li><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" href="#projects">Projects</a></li><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" href="#employment">Employment</a></li><li class="py-1"><a class="bg-transparent text-neutral-600 shadow-none px-[5px] dark:text-neutral-200" href="#education">Education</a></li></ul></div></div></main><footer class="footer text-center bottom-0 bg-gray-100 border w-full sticky mt-auto top-[100vh]"><span>&copy; Copyright Matt Piekenbrock 2023. </span>Proudly powered by <a href="https://www.11ty.dev/">Eleventy</a>&nbsp;and <a href="https://quarto.org/">Quarto</a>.</footer><script>//- Reset zoom
 var scale = 'scale(1)';
 document.body.style.webkitTransform = scale;   
 document.body.style.msTransform = scale;
-document.body.style.transform = scale;</script><script src="/js/jquery-3.2.1.min.js"></script><script href="/js/katex.min.js"> </script><script src="/js/tw-elements.umd.min.js"></script><script>//- document.addEventListener("DOMContentLoaded", function() {
+document.body.style.transform = scale;</script><script src="/js/jquery-3.2.1.min.js"></script><script href="/js/katex.min.js"> </script><script src="/js/gumshoe.polyfills.min.js"></script><script>//- document.addEventListener("DOMContentLoaded", function() {
 //- 	var cards = document.querySelectorAll('.card');
 //- 	cards.forEach.call(document.querySelectorAll(".accordion-header"), function(el){
 //- 		el.addEventListener("click", )
@@ -336,4 +336,36 @@ $(document).ready(function() {
 		$(this).find(".text-ellipsis").toggleClass("hidden");
 		$(this).find('svg').toggleClass("hidden");
 	});
-})</script></body></html>
+})</script><script>var spy = new Gumshoe('#scrollspy li a', {
+	offset: function () { 
+		header = document.querySelector("header");
+		return header.getBoundingClientRect().height; }
+});
+	//- //- For debugging 
+	//- each job,index in collections.jobs
+	//- 		p!= job.data.content
+	//- 		-	console.log(job.data)
+
+	//- #accordionExample.divide-y
+	//- 	.rounded-t-md.border.border-neutral-200.bg-white(data-te-collapse-init='' data-te-target='#collapse-1')
+	//- 		h2#heading-1.mb-0 Accordion Item #1
+	//- 		#collapse-1.border-t(class='!visible' data-te-collapse-item='' data-te-collapse-show='' data-te-parent='#accordionExample')
+	//- 			code.px-2.py-2.accordion-body Testing 
+	//- 	.rounded-t-md.border.border-neutral-200.bg-white(data-te-collapse-init='' data-te-target='#collapse-2')
+	//- 		h2#heading-2.mb-0 Accordion Item #2
+	//- 		#collapse-2.border-t(class='!visible hidden' data-te-collapse-item='' data-te-collapse-show='' data-te-parent='#accordionExample')
+	//- 			code.px-2.py-2.accordion-body Testing 
+	//- 	.rounded-t-md.border.border-neutral-200.bg-white(data-te-collapse-init='' data-te-target='#collapse-3')
+	//- 		h2#heading-3.mb-0 Accordion Item #2
+	//- 		#collapse-3.border-t(class='!visible hidden' data-te-collapse-item='' data-te-collapse-show='' data-te-parent='#accordionExample')
+	//- 			code.px-2.py-2.accordion-body Testing 
+
+//- Most general way to do it
+//- .flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
+//- 	h2.font-bold.text-red.text-xl Employment
+//- 	ol.relative.ml-3.border-l.border-red-400
+//- 		each card in jobs2
+//- 			.flex-start.flex.items-center.pt-1
+//- 				.absolute.w-4.h-4.bg-red-400.rounded-full.border.border-white(class='-left-2') 
+//- 				li.ml-3.w-full
+//- 					include partials/card</script></body></html>

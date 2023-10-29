@@ -17,9 +17,11 @@ html.h-100(lang="en-US")
 			document.body.style.webkitTransform = scale;   
 			document.body.style.msTransform = scale;
 			document.body.style.transform = scale;
+		//- script(src=filters.url("/js/simple-scrollspy.min.js"))
 		script(src=filters.url("/js/jquery-3.2.1.min.js"))
 		script(href=filters.url("/js/katex.min.js")) 
-		script(src=filters.url("/js/tw-elements.umd.min.js"))
+		//- script(src=filters.url("/js/tw-elements.umd.min.js"))
+		script(src=filters.url("/js/gumshoe.polyfills.min.js"))
 		script.
 			//- document.addEventListener("DOMContentLoaded", function() {
 			//- 	var cards = document.querySelectorAll('.card');
@@ -44,3 +46,21 @@ html.h-100(lang="en-US")
 					$(this).find('svg').toggleClass("hidden");
 				});
 			})
+		block scripts
+		//- script.
+		//- 	$(document).ready(function() {
+		//- 		scrollSpy('#main-menu', {
+		//- 			sectionClass: '.scrollspy',
+		//- 			menuActiveTarget: '.menu-item',
+		//- 			offset: 100,
+		//- 			// scrollContainer: null,
+		//- 			smoothScroll: true,
+		//- 			smoothScrollBehavior: function(element) {
+		//- 				console.log('run "smoothScrollBehavior"...', element)
+		//- 				element.scrollIntoView({ behavior: 'smooth' })
+		//- 			},
+		//- 			onActive: (el) => {
+		//- 				console.log('run "onActive"...', el)
+		//- 			}
+		//- 		});
+		//- 	});

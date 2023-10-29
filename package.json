@@ -4,6 +4,9 @@
     "@tailwindcss/typography": "^0.5.9",
     "http-server": "^14.1.1",
     "katex": "^0.16.8",
+    "markdown-it": "^13.0.2",
+    "markdown-it-anchor": "^8.6.7",
+    "markdown-it-attrs": "^4.1.6",
     "tw-elements": "^1.0.0-beta3"
   },
   "devDependencies": {

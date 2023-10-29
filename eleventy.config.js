@@ -4,6 +4,8 @@ const fs = require('fs');
 const _ = require("lodash");
 
 var markdownIt = require('markdown-it');
+const markdownItAnchor = require('markdown-it-anchor');
+const markdownItAttrs = require('markdown-it-attrs');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const browsersync = require("@11ty/eleventy-server-browsersync")
 const katex = require("katex");
@@ -36,7 +38,9 @@ module.exports = function(eleventyConfig) {
 		// 	return ''; // use external default escaping
 		// }
 	}).use(markdownItKatex);
-	eleventyConfig.setLibrary('md', md);
+	// eleventyConfig.setLibrary('md', md);
+	eleventyConfig.setLibrary("md", md.use(markdownItAnchor).use(markdownItAttrs))
+
   
   // Let pug use filter! this is needed for pathPrefix url!	
 	global.filters = eleventyConfig.javascriptFunctions; // magic happens here

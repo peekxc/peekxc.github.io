@@ -2,12 +2,23 @@ extends ./baseof.pug
 
 block main 
 	//- .container.px-8.mx-auto.items-center.max-w-screen-xl(style="min-width: 634px;" class="sm:mx-4 md:mx-16 lg:mx-32 sm:shrink-0 max-w-4xl")
-	.container.items-center.max-w-none.m-0.mx-auto
-		article.prose.prose-base.lead-3.prose-blockquote.max-w-4xl.mx-auto(style="min-width: 634px !important;")
-			h1.my-4 #{ title }
-			#page_content.w-full
-			!= content 
-			br
+	.grid.grid-cols-12
+		.container.items-center.max-w-none.m-0.mx-auto.space-y-2(class="col-span-12 md:col-start-1 md:col-span-10").show-col-10-lg
+			article.prose.prose-base.lead-3.prose-blockquote.max-w-4xl.mx-auto(style="min-width: 634px !important;")
+				h1.my-4 #{ title }
+				#page_content.w-full
+				!= content 
+				br
+		div(class="md:block md:visible").show-col-2-lg
+			//- See: https://github.com/11ty/eleventy/issues/1593
+			- console.log("headers: ")
+			- console.log(headers)
+			if headers
+				#scrollspy-cv.sticky.top-0.pl-0.text-md
+					ul#main-menu.menu.text-neutral-600.shadow-none
+						each header in headers 
+							li.py-1 
+								a.menu-item(href="#"+header['id'])=header['text']
 //- (class="md:flex md:flex-col")
 block sidebar
 	//- {{ $page_content := ( printf "%s/%s.html" .File.Dir .File.BaseFileName ) | relURL }}
