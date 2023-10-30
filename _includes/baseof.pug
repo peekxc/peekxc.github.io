@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-html.h-100(lang="en-US")
+html(lang="en-US")
 	include partials/head.pug	
 	header 
 		include partials/navbar.pug
-	body.flex.flex-col.min-h-screen(data-te-spy='scroll' data-te-target='#scrollspy-cv' data-te-offset='200')
+	body
 		block main 
 		block sidebar	
 		//- include ./partials/js_includes.pug
@@ -17,10 +17,8 @@ html.h-100(lang="en-US")
 			document.body.style.webkitTransform = scale;   
 			document.body.style.msTransform = scale;
 			document.body.style.transform = scale;
-		//- script(src=filters.url("/js/simple-scrollspy.min.js"))
 		script(src=filters.url("/js/jquery-3.2.1.min.js"))
-		script(href=filters.url("/js/katex.min.js")) 
-		//- script(src=filters.url("/js/tw-elements.umd.min.js"))
+		//- script(href=filters.url("/js/katex.min.js"))  // Not mandatory?
 		script(src=filters.url("/js/gumshoe.polyfills.min.js"))
 		script.
 			//- document.addEventListener("DOMContentLoaded", function() {

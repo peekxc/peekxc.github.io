@@ -89,7 +89,7 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
+/* @font-face {
   font-family: 'KaTeX_Size1';
   src: url(/fonts/KaTeX_Size1-Regular.woff2) format('woff2'), url(/fonts/KaTeX_Size1-Regular.woff) format('woff'), url(/fonts/KaTeX_Size1-Regular.ttf) format('truetype');
   font-weight: normal;
@@ -118,7 +118,7 @@
   src: url(/fonts/KaTeX_Typewriter-Regular.woff2) format('woff2'), url(/fonts/KaTeX_Typewriter-Regular.woff) format('woff'), url(/fonts/KaTeX_Typewriter-Regular.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
-}
+} */
 .katex {
   font: normal 1.21em KaTeX_Main, Times New Roman, serif;
   line-height: 1.2;

@@ -8,24 +8,23 @@ date: '2022-02-12'
 slug: diameter_1
 include_toc: true
 categories: ["C++"]
-headers: [
-  {id: "take-max", text: "Just take the max?"}
-]
 draft: false 
 --- 
 
-The *diameter* of an $n$ point set $X \subset \mathbb{R}^d$ is defined as the maximum [Euclidean distance]((https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm)) between any two points: 
+The *diameter* of an $n$ point set $X \subset \mathbb{R}^d$ is the maximum [Euclidean distance]((https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm)) between any pair of points: 
 
 $$ D(X) = \max_{x, x' \in X} \lVert x - x' \rVert_2 $$
 
 <!-- More generally, one may start with an arbitrary metric space $(X, d_X)$ and use the same definition with the metric $d_X$.  -->
-The diameter is a fundamental geometric primitive: many algorithms, theorems, and applications in graphics and geometry often need $D(X)$ prior to performing some downstream task. In this post, I'll introduce a way to compute $D(X)$ efficiently for non-pathological inputs—in $\approx O(nh)$ time and $O(n)$ memory, where $h << n$ for non-pathological inputs—<span style="color: 'orange';">_independent of the dimension_</span> $d$ of $X$. 
+The diameter is a fundamental primitive: many graphics and geometry applications, such as route planning or clustering, often require $D(X)$ prior to performing some downstream task. It's trivially obtained by computing $O(n^2)$ distances, but in many applications this is simply too costly. 
 
-The algorithm I'm summarizing was introduced in the following paper:
+In this post, I'll introduce a way to compute $D(X)$ efficiently for non-pathological inputs in $\approx O(nh)$ time and $O(n)$ memory, where $h << n$, <span style="color: 'orange';">_independent of the dimension_</span> $d$ of $X$. 
 
-> Malandain, Grégoire, and Jean-Daniel Boissonnat. "Computing the diameter of a point set." International Journal of Computational Geometry & Applications 12.06 (2002): 489-509.
+The method is extremely fast, uses very little memory, and does not involve any complicated data structures. Though developed mainly for points embedded in Euclidean space, the algorithm in principle may be adapted to any metric space. 
 
-The method is extremely fast, uses very little working memory, does not involve any complicated data structures. Moreover, though it was developed with the Euclidean metric in mind, the method is actually extendeable to any metric. 
+<!-- The algorithm I'm summarizing was introduced in the following paper:
+
+> Malandain, Grégoire, and Jean-Daniel Boissonnat. "Computing the diameter of a point set." International Journal of Computational Geometry & Applications 12.06 (2002): 489-509. -->
 
 <!-- Knowing the diameter of $X$ conveys a few things about the point set. Some examples:
 1. The [smallest enclosing sphere](https://en.wikipedia.org/wiki/Smallest-circle_problem) has radius $R(X)$ satisfying $R(X) \leq \frac{1}{2}D(X) \sqrt{\frac{d}{2(d+1)}}$ ([Jung's Theorem](https://en.wikipedia.org/wiki/Jung%27s_theorem))
@@ -41,15 +40,15 @@ By itself, the diameter is generally not a very informative quantity. Nonetheles
 
 First off, let's clear the air. Is computing all pairwise distances really _that bad_?
 
-Suppose $X \in \mathbb{R}^{n \times d}$ is our point cloud of interest. Then we have a trivial one-liner to obtain $D(X)$ in Python via [pdist](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html):
+Suppose $X \in \mathbb{R}^{n \times d}$ is our point set of interest; obtaining $D(X)$ with e.g. [SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html) is do-able in one line:
 
 ```python
 diameter = max(pdist(X))
 ```
 
-Note the temporary inside the max expands to `np.ndarray`, thus this approach takes _both_ $O(n^2)$ time and $O(n^2)$ space.
+Note this approach takes _both_ $O(n^2)$ time and $O(n^2)$ space, as the temporary inside the max expands to an `np.ndarray` containing all pairwise distances.
 
-Of course, a more memory efficient option using $O(1)$ memory and $O(n^2)$ time is to, as above, enumerate all distances:
+A more memory efficient option using $O(1)$ memory and $O(n^2)$ time is to keep a running max:
 
 ```python
 n, diam = X.shape[0], 0.0
@@ -65,7 +64,7 @@ diam = max(np.linalg.norm(xi - xj) for xi, xj in combinations(X, 2))
 
 Amongst these three solutions, can you guess which one is faster? 
 
-```{python}
+```python
 from scipy.spatial.distance import pdist
 def diameter1(X: np.ndarray) -> float:
   n, diam = X.shape[0], 0.0
@@ -81,38 +80,29 @@ def diameter3(X: np.ndarray) -> float:
   return max(pdist(X))
 ```
 
-Let's do a quick benchmark. 
+Let's do a quick benchmark with `timeit`. 
 
-```{python}
+```python
 from timeit import timeit 
-for n in range(3, 12):
+for n, f in product(range(3, 11), [diameter1, diameter2, diameter3]):
   X = np.random.uniform(size=(2**n, 2))
-  print(timeit(lambda: diameter1(X), number=30) / 30)
-  print(timeit(lambda: diameter2(X), number=30) / 30)
-  print(timeit(lambda: diameter3(X), number=30) / 30)
-  print(n)
+  print(timeit(lambda: f(X), number=30) / 30)
 ```
 
-| $2^n$ | `naive` | `combinations` | `pdist` |
-| ------ | -----  | ------  | -----  |
-|   0    | 2.24e-04   | 2.03e-04   | 1.30e-05   |
-|   1    | 8.46e-04   | 5.97e-04   | 1.49e-05   |
-|   2    | 2.13e-03   | 1.60e-03   | 3.24e-05   |
-|   3    | 8.26e-03   | 6.47e-03   | 1.09e-04   |
-|   4    | 3.51e-02   | 2.76e-02   | 4.41e-04   |
-|   5    | 1.29e-01   | 1.08e-01   | 1.77e-03   |
-|   6    | 5.15e-01   | 4.34e-01   | 6.85e-03   |
-|   7    | 2.11e+00   | 1.77e+00   | 2.77e-02   |
-|   8    | 8.65e+00   | 7.25e+00   | 1.16e-01   |
+On my laptop, I got the following results:
 
+| Method / Size  | $2^3$  | $2^4$         | $2^5$         | $2^6$         | $2^7$         | $2^8$         | $2^9$       | $2^10$      |
+| -------------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | ------ | :---- |
+| `naive`        | 2.24e-04 | 8.46e-04 | 2.13e-03 | 8.26e-03 | 0.0351   | 0.129    | 0.515    | 2.11   | 8.65  |
+| `combinations` | 2.03e-04 | 5.97e-04 | 1.60e-03 | 6.47e-03 | 0.0276   | 0.108    | 0.434    | 1.77   | 7.25  |
+| `pdist`        | 1.30e-05 | 1.49e-05 | 3.24e-05 | 1.09e-04 | 4.41e-04 | 1.77e-03 | 6.85e-03 | 0.0277 | 0.116 |
 
+Though the Python-based `naive` and `combinations` approaches uses the least amount of working memory, they are miserably slow compared to the 
+Depending on your background, these results may or may not surprise you: there is high latency associated with memory-access in Python in general, which typically doesn't exist with a pre-compiled  Moreover, with SciPy/Numpy code, we gain vectorization benefit. 
 
-A quick benchmark with $\lvert X \rvert = 100$ shows the SciPy solution takes 2.59 seconds to execute 100 times while the SciPy solution takes just **0.035 seconds**—_a 74x_ improvement.
+Thus, for very small point sets, the naive $O(n^2)$-space vectorized solution is the way to go. 
 
-Not surprising: there is high latency associated with memory-access in Python and the vectorization benefits an optimized, low-level implementation is bound to have. 
-Thus, for very small point sets, the naive yet vectorized solution is likely the way to go. 
-
-But the $O(n^2)$ memory for larger $n$ will simply kill the scalabilty of the naive approach. Indeed, representing distances using 64-bit floats, $10k$ points already incurs an overhead of $\approx 50\mathrm{M}$ distance computations and $\approx 381$ MB of working memory. This will not scale. 
+But allocating $O(n^2)$ memory for larger $n$ will simply kill the scalabilty of the naive approach. Indeed, in 64-bit floating poinut arithmetic, $10k$ points already incurs an overhead of $\approx 50\mathrm{M}$ distance computations and $\approx 381$ MB of working memory. This will not scale. 
 
 ## Learning from low dimensions {#learning-from-low-dimensions}
 
@@ -156,14 +146,15 @@ So we're done! The <code>diameter_hull</code> code shown above is very efficient
 
 ### Removing the $O(h^2)$ term - Rotating calipers
 
-What is the number of points $h$ on the Convex Hull is large? On idea to get around this is to use the [rotating calipers](https://en.wikipedia.org/wiki/Rotating_calipers) method, computes the diameter of a convex polygon in $O(n)$ time. The idea is here is to generate antipodal points by (figuratively) rotating calipers around the vertices of the convex hull until all antipodal points are found. $D(X)$ is then found by taking the largest of these. 
+Can we remove the quadratic dependency on $h$? It turns out in 2-dimensions the answer is yes! The idea is to use the [rotating calipers](https://en.wikipedia.org/wiki/Rotating_calipers) method. The idea is here is to generate antipodal points by (figuratively) rotating calipers around the vertices of the convex hull until all antipodal points are found. $D(X)$ is then found by taking the largest of these. 
 
 <div class="flex flex-row">
   <img class="mx-auto" src="rot_calipers1.png" alt="P1" style="height: 20em;"> </img>
   <img class="mx-auto" src="rot_calipers2.png" alt="P2" style="height: 20em;"> </img>
 </div> 
+Borrowed from [this great blog post](https://geidav.wordpress.com/tag/rotating-calipers/). The left picture shows a (non-convex) polygon, and the right-side shows the minimum bounding box around different sets of vertices on the convex hull.
 
-Above show two pictures to illustrate the intuition behind the rotating calipers method, borrowed from [this great blog post](https://geidav.wordpress.com/tag/rotating-calipers/). I recommend checking out said post if you're curious how it works. The left picture shows a (non-convex) polygon, and the right-side shows the minimum bounding box around different sets of vertices on the convex hull. Notice that $D(X)$ can be derived from these as well, and that these boxes only intersect points on the convex hull itself.
+Composing rotating calipers with the convex hull method yields a method to compute $D(X)$ in $O(n \log n + h)$ time, which reduces to $O(n log n)$ since $h \sim O(n)$ (and is often much smaller). Thus, for $d=2$, we're done! 
 
 ## The secret nobody tells you 
 
@@ -171,13 +162,13 @@ It is often the case in computational geometry that one only considers cases whe
 
 Indeed, despite the ingenuity of the rotating calipers method, it's not immediately clear how to translate it to higher dimensions. There exists 3D generalizations, however they seem to not be used in practice.
 
-_The convex hull is one such computation_. The _size_ of the convex hull $\mathcal{C}(X)$ of an $n$-point set $X$ scales as follows in $d$: 
+To make matters worse, the _size_ of the convex hull $\mathcal{C}(X)$ of an $n$-point set $X$ scales as follows in $d$: 
 
 $$ \lvert \mathcal{C}(X) \rvert \sim \Omega(n^{\lfloor d/2 \rfloor})$$
 
-Oof. The [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality) appear again. But, does this _actually_ affect the computation? Maybe it won't be so bad. 
+Oof. The [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality) appear again. Of course, this only holds asymptotically: we can simply ignore this and proceed, hoping that our individual $X$ doesn't exhibit this kind of exponential scaling. 
 
-Let's generate a small set of 1.5k normally distributed random points in $d$ dimensions for increasing $d$ and profile the time it takes to compute $D(X)$ 30 times.
+Let's test this. I generated small set of 1.5k normally distributed random points in $d$ dimensions for increasing $d$ and profiled the time it takes to compute $D(X)$ 30 times.
 ```python
 for d in [2, 3, 4, 5, 6, 7, 8, 9, 15]:
   X = np.random.normal(size=(1500, d))
@@ -202,73 +193,3 @@ And the results?
 Oof. When the 15 dimension test case didn't complete in 30 minutes, I called it. While the brute force stays effectively constant in $d$, the convex hull approach quickly becomes intractable. Thus, even though the asymptotics in low-dimensions are great, the vectorized brute-force code (which works in any dimension) is a much more consistent choice in practice for arbitrary dimensions. 
 
 It is a fun exercise, though non-trivial, to try to imagine how to extend techniques like the rotating calipers to higher dimensions. Intuitively, if we want to do less distance computations, one option is to try to only consider points that lie on the peripheary. Points near the center of $X$ will likely lie in the interior of $\mathcal{C}(X)$, so there is no reason to consider them in the computation of $D(X)$.
-
-## A series of clever observations
-
-In 2001, Malandain and Boissonatt ([1](#references)) published a way of getting at $D(X)$ quickly using a few clever observations. 
-
-Let $p, q \in X$ denote a pair of points satisfying $D(X) = d_X(p,q)$, i.e. a pair whose distance yields the diameter of $X$. Note there may be several of these, though we just need one; call these <span class="text-orange italic">maximal pairs</span>.
-
-1. If there exists a pair $x, x' \in X$ satisfying $d_X(x, x') < D(X)$, then at least one of $(p,q)$ lies outside of the ball $B[x, x']$, where:
-$$ B[x, x'] = B\left( \frac{x + x'}{2}, \frac{d_X(x, x')}{2} \right ) $$
-
-2. If $x, x' \in X$ are any two points such that $X /\ B[x,x'] = \emptyset$, then $D(X) = d_X(x, x')$ 
-
-3. Let $F(x) \subset X$ denote the set of points of $X$ furthest away from $x \in X$, and let:  
-$$ H = \{(x, x') : x \in F(x'), x' \in F(x) \} $$
-
-denote the set of so-called _double normals_. Since these pairs are each in the others furthest point sets, they must lie on the boundary of the convex hull. Thus $H \subset \mathcal{C}(X)$. 
-  
-<div class="flex flex-row">
-  <img class="mx-auto" src="p1.png" alt="P1" style="width: 33% !important;"> </img>
-  <img class="mx-auto" src="p2.png" alt="P2" style="width: 33% !important;"> </img>
-  <img class="mx-auto" src="p3.png" alt="P3" style="width: 33% !important;"> </img>
-</div> 
-Let's see what each of these observations afford us. 
-
-### Observation \#1
-
-<blockquote class="not-prose"> 
-
-If $x, x' \in X$ are any two points such that $d_X(x, x') < D(X)$, then at least one of $(p,q)$ lies outside of the ball $B[x, x']$, where:
-$$ B[x, x'] = B\left( \frac{x + x'}{2}, \frac{d_X(x, x')}{2} \right ) $$
-
-</blockquote>
-
-The idea underlying this simple observation is that if we find a ball $B[x,x']$ covering a large portion of $X$ for some pair $x, x' \in X$ and $X /\ B[x,x'] \, \cancel= \, \emptyset$, then we know the set $X /\ B[x,x']$ contains at least one of the points making up a maximal pair. Thus, if we only want to find one point in a maximal pair, we may eliminate all points in $X \cap B[x,x']$ from consideration. For example, consider the pair of points whose bounding sphere is the red sphere shown above. Clearly the red-ball does not cover $X$, thus we know at least one point of a maximal pair exists outside of this ball. This fact itself can lead to removing large chunks of unnecessary computations done in the brute force case.
-
-### Observation \#2
-<blockquote class="not-prose"> 
-
-If $x, x' \in X$ are any two points such that $X /\ B[x,x'] = \emptyset$, then $D(X) = d_X(x, x')$ 
-
-</blockquote>
-
-The second idea gives a partial stopping condition for the diameter computation. If we find a pair of points whose corresponding ball $B[x, x']$ contains all of $X$, then we are done: these two points must have distance $d_X(x, x') = D(X)$. However, the converse is not necessarily true, as demonstrated by the second picture. In general, it may be case that $X /\ B[p,q]$ is non-empty.
-
- Thus, we need more than this condition alone to find a maximal pair.
-
-### Observation \#3
-
-<blockquote class="not-prose"> 
-
-Let $F(x) \subset X$ denote the set of points of $X$ furthest away from $x \in X$, and let $H$ denote the set of _double normals_, defined as:  
-
-$$ H = \{(x, x') : x \in F(x'), x' \in F(x) \} $$
-
-Since these pairs are mutually in the others furthest point sets, they must lie on the boundary of the convex hull. Thus $H \subset \mathcal{C}(X)$. 
-
-</blockquote>
-
-This observation is essentially a more refined version of the convex hull observation and provides an intuitive generalization of the the pairs of antipodal points the rotating calipers method is based on to higher dimensions. Observe that a pair $(p, q)$ with distance $d_X(p, q) = D(X)$ matching the diameter of $X$ _must_ be a double normal: if there was any point further away from $p$ than $q$ is, then that pair would have a distance larger than $D(X)$ (and vice versa). Thus, both $p$ and $q$ must belong to $H$. 
-
-Both the convex hull $\mathcal{C}(X)$ and the set $H$ of double-normals are shown in the right-most image above. The black lines traverse the boundary of $\mathcal{C}(X)$, the green line connects the maximal pair whose distance yields the diameter, and the orange lines demarcate other double-normals. Observe $H \subset \mathcal{C}(X)$, thus if we can find double-normals quickly, we may be able to find the diameter quickly as well. 
-
-## Conclusions: Part I 
-
-Amazingly, the short list of ideas and observations described so far are all that is needed to produce an efficient algorithm for computing the diameter of a point set in $d$ dimensions in $\approx O(nh)$ time. The algorithm is simple, but does require more of an explanation than given so far—I defer its full description until Part II, which I will cover in my next posting. 
-
-<h2 id="#references"> References </h1>
-
-1. Malandain, Grégoire, and Jean-Daniel Boissonnat. "Computing the diameter of a point set." International Journal of Computational Geometry & Applications 12.06 (2002): 489-509.
-

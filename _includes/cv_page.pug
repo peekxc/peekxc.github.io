@@ -34,17 +34,17 @@ block main
 								.ml-3.w-full(id=uni.page.fileSlug)!= uni.data.content
 
 			div(class="md:block md:visible").hidden.show-col-2-lg
-				ul#scrollspy.sticky.top-0.pl-2.text-md
-					li.py-1
-						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#statement') Bio card 
-					li.py-1
-						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
-					li.py-1
-						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#projects') Projects
-					li.py-1
-						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#employment') Employment
-					li.py-1
-						a.bg-transparent.text-neutral-600.shadow-none(class='px-[5px] dark:text-neutral-200' href='#education') Education
+				ul#scrollspy.sticky.top-0.pl-2.text-md.space-y-1
+					li
+						a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#statement') Bio card 
+					li
+						a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
+					li
+						a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#projects') Projects
+					li
+						a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#employment') Employment
+					li
+						a.text-neutral-600(class='px-[5px] active dark:text-neutral-200' href='#education') Education
 
 block scripts
 	script.

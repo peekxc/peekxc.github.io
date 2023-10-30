@@ -5,7 +5,7 @@ block main
 		ul.list-desc.relative.overflow-auto.space-y-2.prose-lg 
 		- console.log(collections.posts[1].page)		
 		each post in collections.posts
-			//- - console.log(post.data.draft)
+			//- - console.log(post)
 			if !post.data.draft 
 				li 
 					span

@@ -1,13 +1,22 @@
 const plugin = require('tailwindcss/plugin')
 
+const typographyShared = {
+  css: {
+    // codeblock are handled with highlight.js
+    // disable tailwind typography for codeblocks
+    pre: false,
+    code: false,
+    'pre code': false,
+    'code::before': false,
+    'code::after': false
+  }
+};
+
 module.exports = { 
 	content: ['./_includes/*.pug', './_includes/partials/*.pug', './_includes/**/*.pug', './docs/**/*.html'],
-	important: false,
-	// separator: '_', // DON'T: THIS BREAKS HOVER -- For better looking pug code! => classes are .text_center, hover_*, etc.
-	plugins: [
-		require('@tailwindcss/typography'), 
-		require("tw-elements/dist/plugin.cjs") // for TailWind elements JS 
-	], 
+	// important: false,
+	important: true,
+	// separator: '_', // DON'T: THIS BREAKS HOVER -- For better looking pug code! => classes are .text_center, hover_*, etc. 
 	extend: {
 		border: ['hover'],
 		// fontFamily: {
@@ -15,7 +24,21 @@ module.exports = {
 		// 		['"Proxima Nova"', 'Helvetica Neue', 'Arial'],
 		// 	]
 		// }
+		typography: {
+			default: {
+				DEFAULT: typographyShared,
+        sm: typographyShared,
+        md: typographyShared,
+        lg: typographyShared,
+        xl: typographyShared,
+        '2xl': typographyShared
+			}
+		}
 	},
+	plugins: [
+		require('@tailwindcss/typography'), 
+		// require("tw-elements/dist/plugin.cjs") // for TailWind elements JS 
+	],
 	// fontFamily: {
 	// 	sans: [
 	// 		['"Proxima Nova"', 'Helvetica Neue', 'Arial']

@@ -7,13 +7,20 @@ var markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItAttrs = require('markdown-it-attrs');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const browsersync = require("@11ty/eleventy-server-browsersync")
-const katex = require("katex");
+// const browsersync = require("@11ty/eleventy-server-browsersync")
+// const katex = require("katex");
 const markdownItKatex = require("@iktakahiro/markdown-it-katex");
+const pluginTOC = require('eleventy-plugin-toc')
+const HTMLParser = require('node-html-parser');
+
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.setUseGitIgnore(true);
 	eleventyConfig.addPlugin(syntaxHighlight);
+	eleventyConfig.addPlugin(pluginTOC, { 
+		tags: ['h2'] // this generates the sidebar needed for scrollspy!
+		// wrapperClass: ["scrollspy-nav"]
+	});
 	// eleventyConfig.addPlugin(require('eleventy-plugin-heroicons'));
 	
 	// Copy folders `x/` to `_site/x/`
@@ -37,9 +44,28 @@ module.exports = function(eleventyConfig) {
 		// 	}
 		// 	return ''; // use external default escaping
 		// }
-	}).use(markdownItKatex);
+	}).use(markdownItKatex)
+		.use(markdownItAnchor, {
+			level: 2,  							// heading level for generating IDs
+			permalink: true,
+			permalinkClass: 'header-link',
+			permalinkSymbol: '#'
+		})
+		.use(markdownItAttrs);
 	// eleventyConfig.setLibrary('md', md);
-	eleventyConfig.setLibrary("md", md.use(markdownItAnchor).use(markdownItAttrs))
+	eleventyConfig.setLibrary("md", md);
+
+
+	eleventyConfig.addFilter("toHTML", function(value) {
+		el = HTMLParser.parse(value);
+		console.log(el.firstChild.structure);
+		return el.firstChild;
+	});
+
+	// eleventyConfig.addFilter("addClass", function(el){
+	// 	el.classList.add(class);
+	// 	return el;
+	// });
 
   
   // Let pug use filter! this is needed for pathPrefix url!	
@@ -55,7 +81,6 @@ module.exports = function(eleventyConfig) {
     port: 8080,
     watch: ["_includes/*.pug", "_includes/**/*.pug", "content/*.md", "content/**/*.md", "lib/css/*.css"] 
   })
-
   // Use regular browser sync
   // DOESNT WORK 
   // eleventyConfig.setServerOptions({
