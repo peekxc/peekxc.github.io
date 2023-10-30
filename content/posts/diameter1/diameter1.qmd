@@ -8,7 +8,7 @@ date: '2022-02-12'
 slug: diameter_1
 include_toc: true
 categories: ["C++"]
-draft: false 
+draft: true 
 --- 
 
 The *diameter* of an $n$ point set $X \subset \mathbb{R}^d$ is the maximum [Euclidean distance]((https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm)) between any pair of points: 

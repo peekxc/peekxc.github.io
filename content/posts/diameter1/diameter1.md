@@ -8,7 +8,7 @@ date: '2022-02-12'
 slug: diameter_1
 include_toc: true
 categories: ["C++"]
-draft: false 
+draft: true 
 --- 
 
 The *diameter* of an $n$ point set $X \subset \mathbb{R}^d$ is the
@@ -63,8 +63,9 @@ is do-able in one line:
 diameter = max(pdist(X))
 ```
 
-Note the temporary inside the max expands to `np.ndarray`, thus this
-approach takes *both* $O(n^2)$ time and $O(n^2)$ space.
+Note this approach takes *both* $O(n^2)$ time and $O(n^2)$ space, as the
+temporary inside the max expands to an `np.ndarray` containing all
+pairwise distances.
 
 A more memory efficient option using $O(1)$ memory and $O(n^2)$ time is
 to keep a running max:
