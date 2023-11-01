@@ -1782,6 +1782,10 @@ html {
   grid-column: 1 / -1 !important;
 }
 
+.float-right {
+  float: right !important;
+}
+
 .float-left {
   float: left !important;
 }

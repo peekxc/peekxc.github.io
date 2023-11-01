@@ -29,3 +29,13 @@ format: gfm # quarto-specific
 - Piekenbrock, Matthew, and Jose A. Perea. "Move Schedules: Fast persistence computations in coarse dynamic settings." arXiv preprint arXiv:2104.12285 (2021).
 :::
 :::
+
+:::{.flex .items-center .px-2 .py-1 .bg-gray-100}
+<h4 class="font-bold bg-gray-100"> Software </h4>
+:::
+
+:::{.p-2 .overflow-auto .px-4 .py-2 .bg-white-100}
+:::{.prose-md .lisc-desc .text-sm .space-y-2}
+- [Move scheduling code](https://github.com/peekxc/move_schedules)
+:::
+:::

@@ -11,34 +11,21 @@ card_tags: ["Clustering", "Geospatial analysis", "Network modeling"]
 date: 2017-01-01
 ---
 
-
-
-<div class="flex items-center px-2 py-1 bg-gray-100">
-
+::: {.flex .items-center .px-2 .py-1 .bg-gray-100}
 <h4 class="font-bold bg-gray-100">
 
 Publications
 
 </h4>
+:::
 
-</div>
+::: {.p-2 .overflow-auto .px-4 .py-2 .bg-white-100}
+:::{.bullet_list .text-sm .ml-2 .mt-1 .lisc-desc .space-y-2 .prose-md style="list-style-type: disc !important;"}
 
-<div class="p-2 overflow-auto px-4 py-2 bg-white-100">
-
-<div class="bullet_list text-sm ml-2 mt-1 lisc-desc space-y-2 prose-md"
-style="list-style-type: disc !important;">
-
-- Piekenbrock, Matthew J. Discovering Intrinsic Points of Interest from
-  Spatial Trajectory Data Sources. Masters thesis. Wright State
-  University, 2018.
-  [link](https://etd.ohiolink.edu/acprod/odb_etd/etd/r/1501/10?clear=10&p10_accession_num=wright1527160689990512)
-- Piekenbrock, Matthew, and Derek Doran. “Intrinsic point of interest
-  discovery from trajectory data.” arXiv:1712.05247 (2017) (doi:
-  https://doi.org/10.48550/arXiv.1712.05247)
-- Matthew Maurice, Matt Piekenbrock, and Derek Doran. Waminet: An open
-  source library for dynamic geospace analysis using WAMI. In IEEE
-  International Symposium on Multimedia, pages 445–448. IEEE, 2015.
-
-</div>
-
-</div>
+  - Piekenbrock, Matthew J. Discovering Intrinsic Points of Interest from Spatial Trajectory Data Sources. Masters thesis. Wright State University, 2018. [link](https://etd.ohiolink.edu/acprod/odb_etd/etd/r/1501/10?clear=10&p10_accession_num=wright1527160689990512)
+  - Piekenbrock, Matthew, and Derek Doran. "Intrinsic point of interest discovery from trajectory data." arXiv:1712.05247 (2017) (doi: 
+https://doi.org/10.48550/arXiv.1712.05247)
+  - Matthew Maurice, Matt Piekenbrock, and Derek Doran. Waminet: An open source library for dynamic geospace analysis using WAMI. In IEEE International Symposium on Multimedia, pages 445–448. IEEE, 2015.
+  
+:::
+:::

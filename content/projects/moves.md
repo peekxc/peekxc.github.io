@@ -39,3 +39,21 @@ Publications
 </div>
 
 </div>
+
+<div class="flex items-center px-2 py-1 bg-gray-100">
+
+<h4 class="font-bold bg-gray-100">
+Software
+</h4>
+
+</div>
+
+<div class="p-2 overflow-auto px-4 py-2 bg-white-100">
+
+<div class="prose-md lisc-desc text-sm space-y-2">
+
+- [Move scheduling code](https://github.com/peekxc/move_schedules)
+
+</div>
+
+</div>
