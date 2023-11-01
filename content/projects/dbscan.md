@@ -52,11 +52,11 @@ style="list-style-type: disc !important;">
 - [dbscan](https://github.com/mhahsler/dbscan) (R Package)
   <a href="https://cranlogs.r-pkg.org/badges/grand-total/dbscan"
   class="float-right"><img
-  src="https://cranlogs.r-pkg.org/badges/grand-total/dbscan.png"
+  src="https://cranlogs.r-pkg.org/badges/grand-total/dbscan"
   alt="Downloads" /></a>
   <a href="https://cran.r-project.org/web/packages/dbscan/"
   class="float-right"><img
-  src="http://www.r-pkg.org/badges/version/dbscan.png"
+  src="https://www.r-pkg.org/badges/version/dbscan"
   alt="CRAN version" /></a>
 - [Vignette on using
   HDBSCAN](https://cran.r-project.org/web/packages/dbscan/vignettes/hdbscan.html)

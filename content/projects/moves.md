@@ -53,6 +53,9 @@ Software
 <div class="prose-md lisc-desc text-sm space-y-2">
 
 - [Move scheduling code](https://github.com/peekxc/move_schedules)
+- [simplextree](https://github.com/peekxc/simplextree) (python package)
+  <a href="https://pepy.tech/project/simplextree" class="float-right"><img
+  src="https://static.pepy.tech/badge/simplextree" alt="Downloads" /></a>
 
 </div>
 

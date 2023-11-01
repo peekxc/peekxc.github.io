@@ -37,5 +37,6 @@ format: gfm # quarto-specific
 :::{.p-2 .overflow-auto .px-4 .py-2 .bg-white-100}
 :::{.prose-md .lisc-desc .text-sm .space-y-2}
 - [Move scheduling code](https://github.com/peekxc/move_schedules)
+- [simplextree](https://github.com/peekxc/simplextree) (python package) [![Downloads](https://static.pepy.tech/badge/simplextree)](https://pepy.tech/project/simplextree){.float-right}
 :::
 :::

@@ -50,7 +50,7 @@ Software
 - [simplextree](https://github.com/peekxc/simplextree) (R Package)
   <a href="https://cran.r-project.org/package=simplextree"
   class="float-right"><img
-  src="https://cranlogs.r-pkg.org/badges/grand-total/simplextree.png" /></a>
+  src="https://cranlogs.r-pkg.org/badges/grand-total/simplextree" /></a>
 - [Vignette on using Mapper for shape
   recognition](https://peekxc.github.io/Mapper/articles/ShapeRecognition.html)
 

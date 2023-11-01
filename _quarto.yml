@@ -15,6 +15,7 @@ format:
     keep-yaml: true 
     html-math-method: katex
     variant: +yaml_metadata_block
+    default-image-extension: ""
 
 # project:
 #   type: website

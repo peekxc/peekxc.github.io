@@ -36,7 +36,7 @@ Software
 
 ::: {.p-2 .overflow-auto .px-4 .py-2 .bg-white-100}
 :::{.text-sm .bullet_list .ml-2 .mt-1 .lisc-desc .space-y-2 .prose-md style="list-style-type: disc !important;"}
-  - [dbscan](https://github.com/mhahsler/dbscan) (R Package) [![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/dbscan)](https://cranlogs.r-pkg.org/badges/grand-total/dbscan){.float-right} [![CRAN version](http://www.r-pkg.org/badges/version/dbscan)](https://cran.r-project.org/web/packages/dbscan/){.float-right}
+  - [dbscan](https://github.com/mhahsler/dbscan) (R Package) [![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/dbscan)](https://cranlogs.r-pkg.org/badges/grand-total/dbscan){.float-right} [![CRAN version](https://www.r-pkg.org/badges/version/dbscan)](https://cran.r-project.org/web/packages/dbscan/){.float-right}
   - [Vignette on using HDBSCAN](https://cran.r-project.org/web/packages/dbscan/vignettes/hdbscan.html)
 :::
 :::
