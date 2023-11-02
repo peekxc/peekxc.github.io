@@ -6,17 +6,17 @@ card_subtitle: Perea Lab
 card_extra: 'MSU/NEU'
 card_date: 'Fall 2019 - Present'
 abstract: 'Motivated by my previous work on the foundations of density-based clustering, I focused on implementing and extending the Mapper algorithm, a popular and very general method which has been used successfully for data analysis.'
-background_image: /resources/wsu_biplane.png
+background_image: /resources/msu_logo.png
 card_tags: ["Topological Data Analysis", "Linear Algebra", "Machine Learning"]
 date: 2019-09-01
 ---
 
 
 
-Though I began my doctoral research at Michigan State University in Fall
-2019, I transferred to Northeastern University in the Fall of 2021 after
-my advisor (Jose Perea) accepted a joint appointment offer to transfer
-to Khoury College of Computer Sciences in Boston, MA.
+After beginning my doctoral research at Michigan State University (Fall
+19’), I transferred to Northeastern University (Boston, MA) in Fall 2021
+after my advisor ([Jose Perea](https://www.joperea.com/)) accepted a
+joint appointment offer at the Khoury College of Computer Sciences in .
 
 <br/>
 

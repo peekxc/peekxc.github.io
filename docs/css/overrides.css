@@ -52,9 +52,10 @@ html {
 .prose {
   max-width: 100%;
 }
-.prose a {
+/* For removing underlines in links */
+/* .prose a {
   text-decoration: none;
-}
+} */
 
 .prose :where(code):not(:where([class~="not-prose"] *))::before {
   content: "";
