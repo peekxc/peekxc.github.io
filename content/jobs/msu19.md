@@ -6,7 +6,7 @@ card_subtitle: Perea Lab
 card_extra: 'MSU/NEU'
 card_date: 'Fall 2019 - Present'
 abstract: 'Motivated by my previous work on the foundations of density-based clustering, I focused on implementing and extending the Mapper algorithm, a popular and very general method which has been used successfully for data analysis.'
-background_image: /resources/msu_logo.png
+background_image: /resources/msu_neu.png
 card_tags: ["Topological Data Analysis", "Linear Algebra", "Machine Learning"]
 date: 2019-09-01
 ---

@@ -1693,6 +1693,10 @@ html {
   visibility: visible !important;
 }
 
+.static {
+  position: static !important;
+}
+
 .fixed {
   position: fixed !important;
 }
@@ -2393,6 +2397,11 @@ html {
 .px-4 {
   padding-left: 1rem !important;
   padding-right: 1rem !important;
+}
+
+.px-6 {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 
 .px-8 {
