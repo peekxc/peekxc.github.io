@@ -7,10 +7,6 @@ project:
     # - "!content/jobs"
 
 format:
-  hugo-md: 
-    keep-yaml: true 
-    html-math-method: katex
-    variant: +yaml_metadata_block
   gfm: 
     keep-yaml: true 
     html-math-method: katex

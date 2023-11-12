@@ -11,8 +11,6 @@ card_tags: ["Clustering", "Topology", "R Package"]
 date: 2018-01-01
 ---
 
-
-
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">

@@ -11,12 +11,10 @@ card_tags: ["Optimization", "Graph theory", "Flow algorithms"]
 date: 2013-12-01
 ---
 
-
-
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
-Job Description:
+Job Description
 </h4>
 
 </div>
@@ -25,21 +23,20 @@ Job Description:
 
 Under the guidance of [Dr. Andrew
 Terzuoli](https://www.afit.edu/BIOS/bio.cfm?facID=224), I was hired at
-the [Air Force Institute of Technology](https://www.afit.edu/) (AFIT) as
-an undergraduate student to do research in a multi-disciplinary team
-called the Low Orbitals Radar and Electromagnetism (LOREnet) group,
-where I worked on a diverse set of projects involving computational,
-statistical, or physics-based requirements. Being my first
-research-oriented experience, I either assisted graduate students with
-primarily programmatic or educational tasks or worked on very
-computationally-oriented tasks.
+the [Air Force Institute of Technology](https://www.afit.edu/) (AFIT) to
+do research in a multi-disciplinary team called the Low Orbitals Radar
+and Electromagnetism (LOREnet) group, where I worked on a diverse set of
+projects involving computational, statistical, or physics-based
+requirements. As my first research-oriented experience, I primarily
+assisted graduate students with programmatic or
+computationally-intensive tasks.
 
 </div>
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
-Projects:
+Projects
 </h4>
 
 </div>
@@ -55,8 +52,8 @@ style="list-style-type: disc !important;">
   Python)
 - Creating a conversion tool between Oracle’s Abstract Data Type and
   XMLType (Java)
-- Developing a prototype UI to enhance searching and viewing of 2d/3d
-  models (JavaScript+three.js)
+- Developing a prototype UI for searching and viewing 3d models
+  (JavaScript+three.js)
 
 </div>
 
