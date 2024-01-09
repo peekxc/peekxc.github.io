@@ -17,9 +17,12 @@ layout: index.pug
 
 <div style="float: right; margin-left: 1.5rem;">
 
+<figure>
 <img src="../resources/profile_pic_white-min.jpg"
 class="rounded-lg object-cover md:visible hidden show-on-md-screen"
 style="max-width: 16rem;" alt="Profile picture" />
+<figcaption aria-hidden="true">Profile picture</figcaption>
+</figure>
 
 </div>
 
@@ -36,9 +39,10 @@ style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15
 href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&amp;hl=en"
 class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
 style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Scholar</a>
-<span class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
-style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Email:
-matt (dot) piekenbrock (at) gmail</span>
+<span id="em_link"
+class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
+style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important;">Email:
+matt.piekenbrock@gmail</span>
 
 </div>
 
@@ -79,12 +83,18 @@ News
 
 <div class="list-disc overflow-y-scroll mt-0">
 
-- I’ve been invited to give a contributed talk AIM-AMS special session
-  on Applied Topology Beyond Persistence Diagrams
+- I’ll be attending University of Florida’s [TDA Meeting
+  2024](https://people.clas.ufl.edu/peterbubenik/uftda2024/) (02/08/24)
+  <!-- - A journal paper _move scheduling_ has officially been accepted to -->
+- I’ve been invited to give a contributed talk at the [Joint Mathematics
+  Meeting
+  2024](https://www.jointmathematicsmeetings.org/meetings/national/jmm2024/2300_program.html)
+  AIM-AMS special session on Applied Topology Beyond Persistence
+  Diagrams
 - Short paper accepted at [Computational Persistence
   2023](https://www.cs.purdue.edu/ComPerWorkshop/index.html). I am
   scheduled to give a 30-minute contributed talk on my research on
-  spectral rank relaxations around September 25th  
+  spectral rank relaxations (09/25/23)
 - I’ve been invited to chair and give a contributed talk at the [Third
   Graduate Student Conference: Geometry and Topology meet Data Analysis
   and Machine Learning](https://gtdaml.wixsite.com/2023)
@@ -98,3 +108,5 @@ News
   Topology
 
 </div>
+
+<!-- TODO: for email link https://stackoverflow.com/questions/45071353/copy-text-string-on-click -->

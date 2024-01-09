@@ -1,0 +1,17 @@
+extends ./baseof.pug
+
+block main 
+	.min-h-screen.flex.flex-row.relative.w-screen
+		.hidden.px-2(class="lg:flex lg:w-2/5")
+		main.w-full.flex-grow.max-w-4xl.px-4.p-2.m-2
+			h2.font-bold.text-2xl.my-2.underline(style="text-align: center;") 
+				| Research Projects
+			each lst in [...collections.list_cards]
+				- console.log(lst.data.page.outputPath)
+				!= filters.readHTML(lst.data.page.outputPath)
+		.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
+
+
+
+//- - console.log(content)
+//- = {content}

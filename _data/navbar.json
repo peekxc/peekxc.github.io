@@ -2,6 +2,14 @@
  "CV": {
     "url": "/cv",
     "title": "CV"
+  }, 
+  "Projects": {
+    "url": "/projects",
+    "title": "Projects"
+  }, 
+  "Publications": {
+    "url": "https://scholar.google.com/citations?hl=en&user=2lPQ3UQAAAAJ",
+    "title": "Publications"
   },
   "Blog": {
     "url": "/blog",

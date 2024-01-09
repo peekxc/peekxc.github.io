@@ -1,100 +1,47 @@
 extends ./baseof.pug
 
+//- See: https://cardiff.marketing/pug-in-eleventy-making-it-work/
+
 //- TODO: adopt the variable fonts idea https://web.dev/articles/variable-fonts
 block main 
-	//- main.min-w-screen(class="sm:mx-4 md:mx-16 lg:mx-32 sm:px-4 md:px-8 lg:px-12 sm:shrink-0")
-	//- .grid.grid-cols-12.border-x.px-4.py-2.max-w-5xl(style="min-width: 640px; font-family: 'Lucida Grande';")
-	//- .space-y-2(class="col-span-12 md:col-start-1 md:col-span-10").show-col-10-lg
 	.min-h-screen.flex.flex-row.relative.w-screen
 		.hidden.px-2(class="lg:flex lg:w-2/5")
-		main.w-full.flex-grow.max-w-4xl.px-4(style="font-family: 'Lucida Grande';")
+		main.w-full.flex-grow.max-w-4xl.px-4.my-4(style="font-family: 'Lucida Grande';")
 			section#statement(class="md:flex md:visible").hidden.show-on-md-screen
 				include partials/bio_card
 				br
 				hr
 			
-			!= content
-			
-			section#projects.flex.flex-col.space-y-1.border-sm.p-2.mx-auto
-				h2.font-bold.text-yellow-400.text-2xl Projects
-					//- - console.log(collections.projects)
-				each project, index in [...collections.projects].reverse()
-					div!= project.data.content
-
 			section#employment.flex.flex-col.space-y-1.p-2.border-sm.mx-auto
-				h2.font-bold.text-red.text-2xl Employment
-				ol.relative.ml-3.border-l.border-red-400
-					each job in [...collections.jobs].reverse()
-						li.flex.flex-start.items-center.pt-1.mx-auto
-							.absolute.w-4.h-4.bg-red-400.rounded-full.border.border-white(class='-left-2') 
-							.ml-3.w-full!= job.data.content
-							
-			section#education.flex.flex-col.space-y-1.border-sm.p-2.mx-auto
-				h2.font-bold.text-orange.text-2xl Education
-				ol.relative.ml-3.border-l.border-orange-400
-					each uni  in [...collections.schools].reverse()
-						li.flex-start.flex.items-center.pt-1.mx-auto
-							.absolute.w-4.h-4.bg-orange-400.rounded-full.border.border-white(class='-left-2')
-							.ml-3.w-full(id=uni.page.fileSlug)!= uni.data.content
+				h2.font-bold.text-red-400.text-2xl Employment
+				- const JOB_LIST = collections.cv_lists.find((lst) => lst.url == '/jobs/')
+				!= filters.readHTML(JOB_LIST.page.outputPath)
+
+			section#education.flex.flex-col.space-y-1.p-2.border-sm.mx-auto
+				h2.font-bold.text-orange-400.text-2xl Education
+				- const SCHOOL_LIST = collections.cv_lists.find((lst) => lst.url == '/schools/')
+				!= filters.readHTML(SCHOOL_LIST.page.outputPath)	
+
+			!= content
 
 		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
 			ul#scrollspy.sticky.top-0.pl-2.text-md.space-y-1
 				li
 					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#statement') Bio card 
-				li
-					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
-				li
-					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#projects') Projects
+				//- li
+				//- 	a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#projects') Projects
 				li
 					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#employment') Employment
 				li
 					a.text-neutral-600(class='px-[5px] active dark:text-neutral-200' href='#education') Education
-
-			//- div(class="md:block md:visible").hidden.show-col-2-lg
-			//- 	ul#scrollspy.sticky.top-0.pl-2.text-md.space-y-1
-			//- 		li
-			//- 			a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#statement') Bio card 
-			//- 		li
-			//- 			a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
-			//- 		li
-			//- 			a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#projects') Projects
-			//- 		li
-			//- 			a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#employment') Employment
-			//- 		li
-			//- 			a.text-neutral-600(class='px-[5px] active dark:text-neutral-200' href='#education') Education
+				li
+					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
 
 block scripts
 	script.
 		var spy = new Gumshoe('#scrollspy li a', {
 			offset: function () { 
 				header = document.querySelector("header");
-				return header.getBoundingClientRect().height; }
+				return header.getBoundingClientRect().height; 
+			}
 		});
-			//- //- For debugging 
-			//- each job,index in collections.jobs
-			//- 		p!= job.data.content
-			//- 		-	console.log(job.data)
-
-			//- #accordionExample.divide-y
-			//- 	.rounded-t-md.border.border-neutral-200.bg-white(data-te-collapse-init='' data-te-target='#collapse-1')
-			//- 		h2#heading-1.mb-0 Accordion Item #1
-			//- 		#collapse-1.border-t(class='!visible' data-te-collapse-item='' data-te-collapse-show='' data-te-parent='#accordionExample')
-			//- 			code.px-2.py-2.accordion-body Testing 
-			//- 	.rounded-t-md.border.border-neutral-200.bg-white(data-te-collapse-init='' data-te-target='#collapse-2')
-			//- 		h2#heading-2.mb-0 Accordion Item #2
-			//- 		#collapse-2.border-t(class='!visible hidden' data-te-collapse-item='' data-te-collapse-show='' data-te-parent='#accordionExample')
-			//- 			code.px-2.py-2.accordion-body Testing 
-			//- 	.rounded-t-md.border.border-neutral-200.bg-white(data-te-collapse-init='' data-te-target='#collapse-3')
-			//- 		h2#heading-3.mb-0 Accordion Item #2
-			//- 		#collapse-3.border-t(class='!visible hidden' data-te-collapse-item='' data-te-collapse-show='' data-te-parent='#accordionExample')
-			//- 			code.px-2.py-2.accordion-body Testing 
-
-		//- Most general way to do it
-		//- .flex.flex-col.space-y-1.border-sm.p-2.mx-auto.w-full
-		//- 	h2.font-bold.text-red.text-xl Employment
-		//- 	ol.relative.ml-3.border-l.border-red-400
-		//- 		each card in jobs2
-		//- 			.flex-start.flex.items-center.pt-1
-		//- 				.absolute.w-4.h-4.bg-red-400.rounded-full.border.border-white(class='-left-2') 
-		//- 				li.ml-3.w-full
-		//- 					include partials/card

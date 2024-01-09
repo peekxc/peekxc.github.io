@@ -11,41 +11,13 @@ html(lang="en-US")
 		//- script(src="/js/highlight.min.js")
 		//- script hljs.initHighlightingOnLoad()		
 		include partials/footer.pug
+		include partials/body_scripts.pug
 		//- script. 
 		//- 	//- Reset zoom
 		//- 	var scale = 'scale(1)';
 		//- 	document.body.style.webkitTransform = scale;   
 		//- 	document.body.style.msTransform = scale;
 		//- 	document.body.style.transform = scale;
-		script(src=filters.url("/js/jquery-3.2.1.min.js"))
-		//- script(href=filters.url("/js/katex.min.js"))  // Not mandatory?
-		script(src=filters.url("/js/gumshoe.polyfills.min.js"))
-		script.
-			//- document.addEventListener("DOMContentLoaded", function() {
-			//- 	var cards = document.querySelectorAll('.card');
-			//- 	cards.forEach.call(document.querySelectorAll(".accordion-header"), function(el){
-			//- 		el.addEventListener("click", )
-			//- 	});
-			//- 		document.querySelectorAll(".accordion-header").toggleClass("active");
-			//- 		document.querySelectorAll(".accordion-body").toggleClass("hidden");
-			//- 		document.querySelectorAll(".text-ellipsis").toggleClass("hidden");
-			//- 		document.querySelectorAll('svg').toggleClass("hidden");
-			//- 	});
-			//- })
-			$(document).ready(function() {
-				// Toggle close accordions with data indices
-				//- var project_cards = $('#projects').find('.card')
-				var cards = $(document).find('.cursor-context-menu')
-				$(cards).on('click', function() {
-					console.log(this)
-					//- console.log("Clicked project card " + $(this))
-					$(this).parent().find(".accordion-header").toggleClass("active")
-					//- $(this).find(".accordion-header").toggleClass("active")
-					$(this).parent().find(".text-ellipsis").toggleClass("hidden");
-					$(this).parent().find(".accordion-body").toggleClass("hidden")
-					$(this).parent().find('svg').toggleClass("hidden"); //- down / up arrow
-				});
-			})
 		block scripts
 		//- script.
 		//- 	$(document).ready(function() {

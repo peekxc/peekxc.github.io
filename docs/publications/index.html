@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="initial-scale=1.0, width=device-width"/><meta name="description" content="MJP Website"/><meta name="author" content="Matthew Piekenbrock"/><link rel="stylesheet" type="text/css" href="/css/github.min.css"/><link rel="stylesheet" type="text/css" href="/css/katex.min.css"/><link rel="stylesheet" type="text/css" href="/css/prism-one-light.css"/><link rel="stylesheet" type="text/css" href="/css/fonts.css"/><link rel="stylesheet" type="text/css" href="/css/tw_styles.css"/><link rel="stylesheet" type="text/css" href="/css/overrides.css"/></head><header> <nav class="navbar top-0 left-0 w-full shadow-sm bg-white border-b"><div class="flex container p-3 items-center"><div class="flex align-middle"><a class="text-lg font-semibold mr-4" href="/">Home</a></div><div class="flex align-middle space-x-4"><a class="text-lg text-gray-600 hover:text-gray-600" href="/cv">CV</a><a class="text-lg text-gray-600 hover:text-gray-600" href="/projects">Projects</a><a class="text-lg text-gray-600 hover:text-gray-600" href="https://scholar.google.com/citations?hl=en&amp;user=2lPQ3UQAAAAJ">Publications</a><a class="text-lg text-gray-600 hover:text-gray-600" href="/blog">Blog</a></div></div></nav></header><body><div class="min-h-screen flex flex-row relative w-screen"><p>Please refer to my <a href="https://scholar.google.com/citations?hl=en&amp;user=2lPQ3UQAAAAJ">scholar page</a></p>
+<!-- [![trophy](https://github-profile-trophy.vercel.app/?username=peekxc)](https://github.com/peekxc/github-profile-trophy) -->
+</div><footer class="footer text-center bottom-0 bg-gray-100 border w-full sticky mt-auto top-[100vh]"><span>&copy; Matt Piekenbrock 2023. </span>Powered by <a href="https://www.11ty.dev/">Eleventy</a>&nbsp;and <a href="https://quarto.org/">Quarto</a>.</footer><script src="/js/jquery-3.2.1.min.js"></script><script src="/js/gumshoe.polyfills.min.js"></script><script>$(document).ready(function() {
+  // Toggle close accordions with data indices
+  //- var project_cards = $('#projects').find('.card')
+  var cards = $(document).find('.cursor-context-menu')
+  $(cards).on('click', function() {
+    console.log(this)
+    //- console.log("Clicked project card " + $(this))
+    $(this).parent().find(".accordion-header").toggleClass("active")
+    //- $(this).find(".accordion-header").toggleClass("active")
+    $(this).parent().find(".text-ellipsis").toggleClass("hidden");
+    $(this).parent().find(".accordion-body").toggleClass("hidden")
+    $(this).parent().find('svg').toggleClass("hidden"); //- down / up arrow
+  });
+})</script></body></html>

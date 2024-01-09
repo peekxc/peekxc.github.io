@@ -22,12 +22,16 @@ Teaching:
 
 <div class="lisc-desc p-2 bg-white-100 text-sm space-y-2">
 
+- Graduate teaching assistant - Unsupervised Data Mining (CS 6220 / DS
+  5230), Spring 2023
+- Graduate teaching assistant - Unsupervised Machine Learning (CS 6220 /
+  DS 5230), Fall 2023
 - Graduate teaching assistant - Data Mining Techniques (CS 6220 / DS
   5230), Summer 2023
-- Graduate teaching assistant - Machine Learning (CS 6140/4420), Spring
-  2023
-- Graduate teaching assistant - Unsupervised Learning (CS 6220 / DS
-  5230), Fall 2022
+- Graduate teaching assistant - Machine Learning (CS 6140 / 4420),
+  Spring 2023
+- Graduate teaching assistant - Unsupervised Machine Learning (CS 6220 /
+  DS 5230), Fall 2022
 
 </div>
 
@@ -41,6 +45,7 @@ Coursework (GPA: 3.83):
 
 <div class="lisc-desc p-2 bg-white-100 text-sm space-y-2">
 
+- Research Seminar - Topological Data Analysis
 - Formal Verification, Modeling, & Synthesis
 - Network Visualization
 

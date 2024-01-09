@@ -2,6 +2,7 @@
 // npx tailwindcss -c tailwind.config.js -o _src/styles.css
 const fs = require('fs');
 const _ = require("lodash");
+var http = require('http');
 
 var markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
@@ -9,20 +10,41 @@ const markdownItAttrs = require('markdown-it-attrs');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 // const browsersync = require("@11ty/eleventy-server-browsersync")
 // const katex = require("katex");
-const markdownItKatex = require("@iktakahiro/markdown-it-katex");
-const pluginTOC = require('eleventy-plugin-toc')
+const markdownItKatex = require("@aquabx/markdown-it-katex");
+
+const dirOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 const HTMLParser = require('node-html-parser');
+const pluginTOC = require('eleventy-plugin-toc');
+const { EleventyRenderPlugin } = require("@11ty/eleventy");
 
+// Great: https://photogabble.co.uk/tutorials/font-subsetting-with-eleventyjs/
 
-module.exports = function(eleventyConfig) {
+// const importSync = require('import-sync');
+// const rehypeKatex = importSync('https://esm.sh/rehype-katex@7');
+// const readingTime = require('eleventy-plugin-reading-time');
+// const EleventyUnifiedPlugin = require("eleventy-plugin-unified");
+const readingTime = require('reading-time');
+
+module.exports = function(eleventyConfig) { 
+	// eleventyConfig.addPlugin(dirOutputPlugin);// For logging sizes of things
 	eleventyConfig.setUseGitIgnore(true);
 	eleventyConfig.addPlugin(syntaxHighlight);
+
 	eleventyConfig.addPlugin(pluginTOC, { 
 		tags: ['h2'] // this generates the sidebar needed for scrollspy!
 		// wrapperClass: ["scrollspy-nav"]
 	});
+
 	// eleventyConfig.addPlugin(require('eleventy-plugin-heroicons'));
-	
+	eleventyConfig.addPlugin(EleventyRenderPlugin);
+
+	// For reading time 
+	eleventyConfig.addFilter("readingTime", (content) => {
+		const stats = readingTime(content);
+		return stats.text + ", " + stats.words + " words";
+	});
+
+
 	// Copy folders `x/` to `_site/x/`
 	eleventyConfig.addPassthroughCopy({ "lib/css": "css" })
 	eleventyConfig.addPassthroughCopy({ "lib/js" : "js" });
@@ -34,16 +56,10 @@ module.exports = function(eleventyConfig) {
 	// Set markdown library
 	// See: https://dev.to/matthewtole/eleventy-markdown-and-tailwind-css-14f8
 	const md = markdownIt({ 
-		linkify: true, 						// Autoconvert URL-like text to links
-		html: true,					 			// Enable HTML tags in source
-		typographer: false,				// Enable some language-neutral replacement + quotes beautification
-		breaks: false
-		// highlight: function (str, lang) {
-		// 	if (lang && hljs.getLanguage(lang)) { 
-		// 		try { return hljs.highlight(str, {language: lang}).value;} catch (__) {} 
-		// 	}
-		// 	return ''; // use external default escaping
-		// }
+		linkify: false, 						// Autoconvert URL-like text to links
+		html: true,					 				// Enable HTML tags in source
+		typographer: true,					// Enable some language-neutral replacement + quotes beautification
+		breaks: false								// Convert \n into <br/> tags
 	}).use(markdownItKatex)
 		.use(markdownItAnchor, {
 			level: 2,  							// heading level for generating IDs
@@ -51,14 +67,29 @@ module.exports = function(eleventyConfig) {
 			permalinkClass: 'header-link',
 			permalinkSymbol: '#'
 		})
-		.use(markdownItAttrs);
-	// eleventyConfig.setLibrary('md', md);
+		.use(markdownItAttrs);	
 	eleventyConfig.setLibrary("md", md);
 
+	eleventyConfig.addFilter("markdown", (content) => {
+		return md.render(content);
+	});
+
+	eleventyConfig.addFilter("readHTML", (path) => {
+		const html_str = fs.readFileSync(path, "utf8");
+		return html_str; 
+	})
+
+	eleventyConfig.addFilter("markdown", (content) => {
+		return md.render(content);
+	});
+
+	eleventyConfig.addFilter("uppercase", function(string) {
+    return string.toUpperCase();
+  });
 
 	eleventyConfig.addFilter("toHTML", function(value) {
 		el = HTMLParser.parse(value);
-		console.log(el.firstChild.structure);
+		// console.log(el.firstChild.structure);
 		return el.firstChild;
 	});
 
@@ -67,11 +98,11 @@ module.exports = function(eleventyConfig) {
 	// 	return el;
 	// });
 
-  
   // Let pug use filter! this is needed for pathPrefix url!	
 	global.filters = eleventyConfig.javascriptFunctions; // magic happens here
 	eleventyConfig.setPugOptions({ // and here
-    globals: ['filters']
+    globals: ['filters'],
+		debug: false
 	});
 
   // Serving + watching options
@@ -79,7 +110,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setServerOptions({
     domDiff: false, // this seems slower but better 
     port: 8080,
-    watch: ["_includes/*.pug", "_includes/**/*.pug", "content/*.md", "content/**/*.md", "lib/css/*.css"] 
+    watch: ["_includes/**/*.pug", "_includes/*.pug", "content/*.md", "content/**/*.md", "lib/css/*.css"] 
   })
   // Use regular browser sync
   // DOESNT WORK 
@@ -108,3 +139,10 @@ module.exports = function(eleventyConfig) {
 		pathPrefix: "/"
 	};
 };
+
+// highlight: function (str, lang) {
+// 	if (lang && hljs.getLanguage(lang)) { 
+// 		try { return hljs.highlight(str, {language: lang}).value;} catch (__) {} 
+// 	}
+// 	return ''; // use external default escaping
+// }

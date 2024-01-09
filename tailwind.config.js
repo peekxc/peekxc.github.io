@@ -39,6 +39,10 @@ module.exports = {
 		require('@tailwindcss/typography'), 
 		// require("tw-elements/dist/plugin.cjs") // for TailWind elements JS 
 	],
+	safelist: {
+		// pattern: [/^bg-(red|orange)-(400)/, /^text-(red|orange)/, /^border-(red|orange|white)/]
+		pattern: [/^bg-/, /^text-/, /^border-/, /^m(b|t|l|r|x|y)-([0-8])/, /^p(b|t|l|r|x|y)-([0-8])/]
+	},
 	// fontFamily: {
 	// 	sans: [
 	// 		['"Proxima Nova"', 'Helvetica Neue', 'Arial']

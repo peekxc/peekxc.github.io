@@ -7,42 +7,142 @@ author: "Matt Piekenbrock"
 date: '2023-10-15'
 slug: lanczos_method
 include_toc: true
-categories: ["linear_algebra"]
+categories: ["math", "linear algebra", "high performance computing"]
 draft: true
+editor: 
+    rendor-on-save: true
+bibliography: ../references.bib
 ---
 
-<!-- Computing the eigen-decomposition $A = U \Lambda U^T$ of a symmetric matrix $A \subset \mathbb{R}^{n \times n}$ takes $O(n^3)$ time and $O(n^2)$ space. There's just no way around it.
+In 1950, Cornelius Lanczos was concerned  *tridiagonalization*, which he referred to as the _method of minimized iterations_.
+The algorithm by which one produces such a $T$ is known as the *Lanczos method*.
+$$  AQ = Q T \quad \Leftrightarrow \quad Q^T A Q = T $$
 
-<span style="font-size: 14em;" > ...or is there? </span>  -->
-The Lanczos method 
-Suppose you have a the eigen-decomposition $A = U \Lambda U^T$ of a symmetric matrix $A \subset \mathbb{R}^{n \times n}$
-Well, assuming the "simple" computation model of multiplication, these bounds are tight for dense matrices: $U$ has size $\sim O(n^2)$, and reducing $A$ to its Householder form (Givens rotations, Householder reflectors, etc), the necessity of inner products taking $O(n)$ time.
+Since everyone loves animations, here's a teaser of what the Lanczos method accomplishes: 
 
-If $A$ is sparse or otherwise highly structured^[Such that one can compute the matrix-vector product of $A$ quickly.], there actually is a _simple_ algorithm that can compute  the eigenvalues $\Lambda$ of $A$ in essentially quadratic time. The idea is quite simple: 
+![Lanczos' "method of minimized iterations" visualized on 100x100 matrix](lanczos_krylov.gif){width=75% text-align="center" style="margin: auto;"}
 
-__Idea__: For some random $v \in \mathbb{R}^n$, expand successive powers of $A$:
+Despite its age, it remains the standard algorithms $^1$ both for computing eigensets and solving linear systems in the large-scale regime. It is ranked among the most important numerical methods of all time---indeed, an [IEEE guest editorial](https://www.computer.org/csdl/magazine/cs/2000/01/c1022/13rRUxBJhBm) places it among the **top 10 most influential algorithms of the 20th century**.
 
-$$ 
-\begin{align}
-K_j &= [ v \mid Av \mid A^2 v \mid \dots \mid A^{j-1}v] && \\
-Q_j &= [ q_1, q_2, \dots, q_j] \gets \mathrm{orthonormalize}(K_j) && \\
-T_j &= Q_j^T A Q_j &&
-\end{align}
+In fact, you may have learned the Lanczos method before without knowing it. 
+<!-- Here's a brief list of a few of the intrinsic connections the Lanczos method has:  -->
+The Lanczos method naturally manifest: 
+
+- As the _conjugate gradient_ method
+- The _theory of orthogonal polynomials_
+- As the means of obtaining _Gaussian quadrature_ rules on the cumulative spectral density
+- As the means of generating _orthogonal projectors_ onto Krylov subspaces
+- As the _Rayleigh Ritz_ algorithm applied to successive Krylov spaces
+
+## Lanczos on a bumper sticker
+
+Given any non-zero $v \in \mathbb{R}^n$, Lanczos generates a _Krylov subspace_ via successive powers of $A$:
+
+$$
+\mathcal{K}(A, v) \triangleq \{ \, A^{0} v, A^{1}v, A^{2}v, \dots, A^{n}v \, \}
 $$
 
-Cornelius Lanczos called this the _method of minimized iterations_. In his honor, we now refer to it as _the Lanczos method_.
+These vectors are [independent](https://en.wikipedia.org/wiki/Linear_independence), so orthogonalizing them not only yields an orthonormal basis for $\mathcal{K}(A, v)$ but also a _change-of-basis_ matrix $Q$, allowing $A$ to be represented by a new matrix $T$:
 
-However, if $v \mapsto Av \approx O(n)$, then $\Lambda(A)$ obtainable in <span style="color: red;"> $O(n^2)$ time </span> and <span style="color: red;">$O(n)$ space</span>!
+$$ 
+\begin{align*}
+K &= [\, v \mid Av \mid A^2 v \mid \dots \mid A^{n-1}v \,] && \\
+Q &= [\, q_1, q_2, \dots, q \,] \gets \mathrm{qr}(K) &&  \\
+T &= Q^T A Q &&
+\end{align*}
+$$
+
+It turns out that since $A$ is symmetric, $T$ is guaranteed to have a _symmetric tridiagonal structure_:
+
+$$
+T = \mathrm{tridiag} \Bigg(
+\begin{array}{ccccccccc} 
+& \beta_2 & & \beta_3 & & \cdot & & \beta_n & \\
+\alpha_1 & & \alpha_2 & & \cdot & & \cdot & & \alpha_n \\
+& \beta_2 & & \beta_3 & & \cdot & & \beta_n &
+\end{array}
+\Bigg)
+$$
+
+<!-- That's pretty fortunate, because computing the eigen-sets of _any_ tridiagonal matrix $T$ takes just $O(n^2)$ time[^2]! -->
+<!-- $Q$ is $A$-invariant[^5] ( -->
+Since $\mathrm{range}(Q) = \mathcal{K}(A, v)$, the change-of-basis $A \mapsto Q^{-1} A Q$ is in fact a [similarity transform](https://en.wikipedia.org/wiki/Matrix_similarity), which are known to be equivalence relations on $\mathcal{S}^n$---thus we can obtain $\Lambda$ by _diagonalizing_ $T$:
+
+$$ T = Y \Lambda Y^T $$
+<!-- $$ T = Y \Theta Y^T, \mathrm{diag}(Y) = (\theta_1, \theta_2, \dots, \theta_n)$$ -->
+
+As $T$ is quite structured, it can be easily diagonalized, thus we have effectively solved the eigenvalue problem. 
+To quote the [Lanczos introduction from Parlett](https://apps.dtic.mil/sti/tr/pdf/ADA289614.pdf), _could anything be more simple?_
+
+## The "iteration" part
+
+Lanczos originally referred to his algorithm as the _method of minimized iterations_, and indeed nowadays it is often called an _iterative_ method. Where's the iterative component?
+
+If you squint hard enough, you can deduce that for every $j \in [1, n)$: 
+
+$$ A Q_j = Q_j T_j + \beta_{j+1} q_{j+1} e_{j}^T $$
+
+Equating the $j$-th columns on each side of the equation and rearranging yields a *three-term recurrence*: 
+
+$$\begin{align*} 
+A q_j &= \beta_{j\text{-}1} q_{j\text{-}1} + \alpha_j q_j + \beta_j q_{j+1} \\
+\Leftrightarrow \quad \beta_{j} \, q_{j+1} &= A q_j - \alpha_j \, q_j - \beta_{j\text{-}1} \, q_{j\text{-}1}  
+\end{align*}$$
+
+The equation above is a variable-coefficient second-order linear difference equation, and it is known such equations have unique solutions; they are given below: 
+
+$$\alpha_j = q_j^T A q_j, \;\; \beta_j = \lVert r_j \rVert_2, \;\; q_{j+1} = r_j / \beta_j$$
+
+$$
+\text{where  } r_j = (A - \alpha_j I)q_j - \beta_{j\text{-}1} q_j
+$$
+
+In other words, if ($q_{j\text{-}1}, \beta_j, q_j$) are known, then ($\alpha_j$, $\beta_{j+1}, q_{j+1}$) are completely determined. In theory, this means we can _iteratively_ generate both $Q$ and $T$ using just a couple vectors at a time---no need to explicitly call to the QR algorithm as shown above. Pretty nifty, eh!
+
+## Wait, isn't $T$ arbitrary? 
+
+Unfortunately---and unlike the spectral decomposition[^6]---there is no canonical choice of $T$. Indeed, as $T$ is a family with $n - 1$ degrees of freedom and $v \in \mathbb{R}^n$ was chosen arbitrarily, there are infinitely many _essentially distinct_ such decompositions.
+
+Not all hope is lost though, as it turns out that $T$ is actually fully characterized by $v$. To see this, notice that since $Q$ is an orthogonal matrix, we have: 
+
+$$ Q Q^T = I_n = [e_1, e_2, \dots, e_n] $$
+
+By extension, given an initial pair $(A, q_1)$ satisfying $\lVert q_1 \rVert = 1$, the following holds:
+
+$$
+K_n(A, q_1) = Q Q^T K_n(A, q_1) = Q[ \, e_1 \mid T e_1 \mid T^2 e_1 \mid \dots \mid T^{n-1} e_1 \, ]
+$$
+
+...this _is_ a **QR** factorization, which is [essentially unique](https://www.math.purdue.edu/~kkloste/cs515fa14/qr-uniqueness.pdf)! Indeed, the Implicit Q Theorem asserts that if an upper Hessenburg matrix $T \in \mathbb{R}^{n \times n}$ has only positive elements on its first subdiagonal and there exists an orthogonal matrix $Q$ such that $Q^T A Q = T$, then $Q$ and $T$ are _uniquely determined_[^6] by $(A, q_1)$. 
+
+<!-- Moreover, so long as $T$ has non-zero subdiagonal entries, its the eigenvalues must be distinct -->
+
+## Beating the complexity bounds
+
+Elegant and as theoretically founded as the Lanczos method may be, is it efficient in practice? 
+
+Let's start by establishing a baseline on its complexity: 
+
+::: {#thm-line style="background-color: #efefef;"}
+
+## Parlett 1994
+
+Given a symmetric rank-$r$ matrix $A \in \mathbb{R}^{n \times n}$ whose operator $x \mapsto A x$ requires $O(\eta)$ time and $O(\nu)$ space, the Lanczos method computes $\Lambda(A)$ in $O(\max\{\eta, n\}\cdot r)$ time and $O(\max\{\nu, n\})$ space, when computation is done in exact arithmetic
+
+:::
+
+As its clear from the theorem, if we specialize it such that $r = n$ and $\eta = \nu = n$, then the Lanczos method requires just $O(n^2)$ time and $O(n)$ space to execute. In other words, the Lanczos method drops _both_ the time and space complexity[^4] of obtaining spectral information by **order of magnitude** over similar eigen-algorithms that decompose $A$ directly.
+
+To see why this is true, note that a symmetric tridiagonal matrix is fully characterized by its diagonal and subdiagonal terms, which requires just $O(n)$ space. If we assume that $v \mapsto Av \sim O(n)$, then carrying out the recurrence clearly takes at most $O(n^2)$ time, since there are most $n$ such vectors $\{q_i\}_{i=1}^n$ to generate! 
+
+Now, if we need to store all of $Y$ or $Q$ explicitly, we clearly need $O(n^2)$ space to do so. However, if we only need the eigen-_values_ $\Lambda(A)$ (and not their eigen-vectors $U$), then we may execute the recurrence keeping at most three vectors $\{q_{j-1}, q_{j}, q_{j+1}\}$ in memory at any given time. Since each of these is $O(n)$ is size, the claim of $O(n)$ space is justified!
 
 
-<div style="padding-left: 1em; border: 1px solid black; margin: 0em; ">
-__Theorem [@simon1984analysis]__: Given a symmetric rank-$r$ matrix $A \in \mathbb{R}^{n \times n}$ whose matrix-vector operator $A \mapsto A x$ requires $O(\eta)$ time and $O(\nu)$ space, the Lanczos iteration computes $\Lambda(A) = \{ \lambda_1, \lambda_2, \dots, \lambda_r \}$ in $O(\max\{\eta, n\}\cdot r)$ time and $O(\max\{\nu, n\})$ space _when executed in exact arithmetic_. 
-</div>
+<h3> Footnotes </h3>
 
-## Diving in 
-
-It turns out that every $A \in \mathbf{S}$ expanded this way admits a _three-term recurrence_ 
-
-$$ A q_j = \beta_{j-1} q_{j-1} + \alpha_j q_j + \beta_j q_{j+1} $$
-
-
+:::{.text-xs}
+1. A variant of the Lanczos method is actually at the heart `scipy.sparse.linalg`'s default `eigsh` solver (which is a port of [ARPACK](https://en.wikipedia.org/wiki/ARPACK)). 
+2. For general $A \in \mathbb{R}^{n \times n}$, computing the spectral-decomposition is essentially bounded by the matrix-multiplication time: $\Theta(n^\omega)$ time and $\Theta(n^2)$ space, where $\omega \approx 2.37\dots$ is the matrix multiplication constant. If we exclude the Strassen model for computation, we get effectively a $\Omega(n^3)$ time and $\Omega(n^2)$ space bound.
+3. Recall that if $S \subseteq \mathbb{R}^n$, then $S$ is called an _invariant subspace_ of $A$ or $A$-\emph{invariant} iff $x \in A \implies Ax \in S$ for all $x \in S$
+4. The spectral decomposition $A = U \Lambda U^T$ identifies a diagonalizable $A$ with its spectrum $\Lambda(A)$ up to a change of basis $A \mapsto M^{-1} A M$
+:::
