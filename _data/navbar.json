@@ -11,6 +11,10 @@
     "url": "https://scholar.google.com/citations?hl=en&user=2lPQ3UQAAAAJ",
     "title": "Publications"
   },
+  "Code": {
+    "url": "/software",
+    "title": "Code" 
+  },
   "Blog": {
     "url": "/blog",
     "title": "Blog"

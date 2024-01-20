@@ -34,7 +34,7 @@ Matt Piekenbrock
 
 <a href="https://github.com/peekxc"
 class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
-style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Github</a>
+style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Git</a>
 <a
 href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&amp;hl=en"
 class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
@@ -45,6 +45,11 @@ style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15
 matt.piekenbrock@gmail</span>
 
 </div>
+
+<!-- <a href="" class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0">
+  <span class="align-middle scholar_logo bg-no-repeat bg-center w-2"> </span>
+  Scholar
+</a> -->
 
 <div class="prose-base text-justify">
 

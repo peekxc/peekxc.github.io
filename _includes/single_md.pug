@@ -17,7 +17,7 @@ block main
 				.text-sm.align-middle 
 					span Posted: #{ date }
 					span.text-sm
-						!=  "          ~" + filters.readingTime(content) 
+						!=  ", ~" + filters.readingTime(content) 
 				#page_content.w-full
 				!= content 
 				br
@@ -34,7 +34,7 @@ block main
 
 block scripts
 	script.
-		var spy = new Gumshoe('#scrollspy li a', {
+		var spy = new Gumshoe('#toc li a', {
 			offset: function () { 
 				header = document.querySelector("header");
 				return header.getBoundingClientRect().height; }

@@ -77,6 +77,16 @@ html {
   font-weight: bold !important;
 }
 
+#toc a {
+  color: #525252;
+}
+
+#toc li.active a {
+  color: #374151 !important;
+  font-weight: bold !important;
+}
+
+
 blockquote {
   background: #f5f5f4;
   padding-top: 0.80em;

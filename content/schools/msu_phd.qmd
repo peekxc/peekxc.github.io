@@ -12,6 +12,16 @@ card_desc: "Click for teaching experience, coursework taken, and other details..
 date: 2019-01-01
 ---
 
+
+:::{.flex .items-center .px-2 .py-1 .bg-gray-100}
+<h4 class="font-bold"> Teaching: </h4>
+:::
+
+:::{.lisc-desc .p-2 .bg-white-100  .text-sm .space-y-2 }
+- Graduate teaching assistant - Computational Modeling (CMSE 201), Fall 2020 
+:::
+
+
 :::{.flex .items-center .px-2 .py-1 .bg-gray-100}
 <h4 class="font-bold"> Coursework (GPA: 3.83): </h4>
 :::

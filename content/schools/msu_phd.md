@@ -15,6 +15,21 @@ date: 2019-01-01
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold">
+Teaching:
+</h4>
+
+</div>
+
+<div class="lisc-desc p-2 bg-white-100 text-sm space-y-2">
+
+- Graduate teaching assistant - Computational Modeling (CMSE 201), Fall
+  2020
+
+</div>
+
+<div class="flex items-center px-2 py-1 bg-gray-100">
+
+<h4 class="font-bold">
 Coursework (GPA: 3.83):
 </h4>
 

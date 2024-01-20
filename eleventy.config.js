@@ -12,6 +12,10 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 // const katex = require("katex");
 const markdownItKatex = require("@aquabx/markdown-it-katex");
 
+// Minifiers and optimizers
+const CleanCSS = require("clean-css");
+
+
 const dirOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 const HTMLParser = require('node-html-parser');
 const pluginTOC = require('eleventy-plugin-toc');
@@ -40,7 +44,7 @@ module.exports = function(eleventyConfig) {
 
 	// For reading time 
 	eleventyConfig.addFilter("readingTime", (content) => {
-		const stats = readingTime(content);
+		const stats = readingTime(content, { 'wordsPerMinute': 400 });
 		return stats.text + ", " + stats.words + " words";
 	});
 
@@ -73,6 +77,10 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("markdown", (content) => {
 		return md.render(content);
 	});
+
+	eleventyConfig.addFilter("cssmin", function(code) {
+    return new CleanCSS({}).minify(code).styles;
+  });
 
 	eleventyConfig.addFilter("readHTML", (path) => {
 		const html_str = fs.readFileSync(path, "utf8");

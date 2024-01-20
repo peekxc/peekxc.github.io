@@ -41,7 +41,7 @@ module.exports = {
 	],
 	safelist: {
 		// pattern: [/^bg-(red|orange)-(400)/, /^text-(red|orange)/, /^border-(red|orange|white)/]
-		pattern: [/^bg-/, /^text-/, /^border-/, /^m(b|t|l|r|x|y)-([0-8])/, /^p(b|t|l|r|x|y)-([0-8])/]
+		pattern: [/^bg-/, /^text-/, /^border-/, /^m(b|t|l|r|x|y)-([0-8])/, /^p(b|t|l|r|x|y)-([0-8])/, /^leading-/]
 	},
 	// fontFamily: {
 	// 	sans: [
