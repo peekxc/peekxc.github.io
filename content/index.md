@@ -17,12 +17,9 @@ layout: index.pug
 
 <div style="float: right; margin-left: 1.5rem;">
 
-<figure>
 <img src="../resources/profile_pic_white-min.jpg"
 class="rounded-lg object-cover md:visible hidden show-on-md-screen"
-style="max-width: 16rem;" alt="Profile picture" />
-<figcaption aria-hidden="true">Profile picture</figcaption>
-</figure>
+style="max-width: 16rem;" />
 
 </div>
 

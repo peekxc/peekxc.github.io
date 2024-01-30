@@ -16,7 +16,7 @@ layout: index.pug
 <!-- :::{.flex .justify-between .mx-auto} -->
 
 ::: {style="float: right; margin-left: 1.5rem;"}
-![Profile picture](/resources/profile_pic_white-min.jpg){.rounded-lg .object-cover .md:visible .hidden .show-on-md-screen style="max-width: 16rem;"}
+![](/resources/profile_pic_white-min.jpg){.rounded-lg .object-cover .md:visible .hidden .show-on-md-screen style="max-width: 16rem;"}
 :::
 
 <h1 class="mb-0"> Matt Piekenbrock </h1>

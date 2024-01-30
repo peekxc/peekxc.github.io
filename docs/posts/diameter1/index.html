@@ -307,11 +307,9 @@ Intuitively, if we want to do less distance computations, one option is
 to try to only consider points that lie on the peripheary. Points near
 the center of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> will likely lie in the interior of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">C</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{C}(X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.05834em;">C</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span>,
 so there is no reason to consider them in the computation of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span>.</p>
-<br/></article></main><aside class="hidden sticky top-0 flex overflow-y-visible h-screen justify-left pt-4 lg:flex lg:w-2/5"><nav class="toc" >
-        <ol><li><a href="##take-max">
+<br/></article><script src="https://utteranc.es/client.js" repo="peekxc/blog_comments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="async"></script></main><aside class="hidden sticky top-0 flex overflow-y-visible h-screen justify-left pt-4 lg:flex lg:w-2/5"><ol class="sticky top-0 space-1-2 text-neutral-600 px-[5px] dark:text-neutral-200"><li><a href="##take-max">
 Just take the max?
-</a></li><li><a href="#learning-from-low-dimensions">Learning from low dimensions</a></li><li><a href="#the-secret-nobody-tells-you">The secret nobody tells you</a></li></ol>
-      </nav></aside></div><footer class="footer text-center bottom-0 bg-gray-100 border w-full sticky mt-auto top-[100vh]"><span>&copy; Matt Piekenbrock 2023. </span>Powered by <a href="https://www.11ty.dev/">Eleventy</a>&nbsp;and <a href="https://quarto.org/">Quarto</a>.</footer><script src="/js/jquery-3.2.1.min.js"></script><script src="/js/gumshoe.polyfills.min.js"></script><script>$(document).ready(function() {
+</a></li><li><a href="#learning-from-low-dimensions">Learning from low dimensions</a></li><li><a href="#the-secret-nobody-tells-you">The secret nobody tells you</a></li></ol></aside></div><footer class="footer text-center bottom-0 bg-gray-100 border w-full sticky mt-auto top-[100vh]"><span>&copy; Matt Piekenbrock 2023. </span>Powered by <a href="https://www.11ty.dev/">Eleventy</a>&nbsp;and <a href="https://quarto.org/">Quarto</a>.</footer><script src="/js/jquery-3.2.1.min.js"></script><script src="/js/gumshoe.polyfills.min.js"></script><script>$(document).ready(function() {
   // Toggle close accordions with data indices
   //- var project_cards = $('#projects').find('.card')
   var cards = $(document).find('.cursor-context-menu')
@@ -329,5 +327,6 @@ Just take the max?
 		header = document.querySelector("header");
 		return header.getBoundingClientRect().height; }
 });
+
 
 	//- .hidden.px-2(class="md:flex md:w-1/6")</script></body></html>

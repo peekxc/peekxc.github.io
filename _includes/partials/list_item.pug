@@ -1,17 +1,24 @@
-li.border.p-2.space-y-1 
-  span.text-2xl.font-bold=lib_name
-  - var code_desc_html = filters.markdown(code_desc)
+li.border-2.p-2.space-y-1.space-x-2
+  h2.text-2xl.font-bold.italic.underline.inline.ml-2=lib_name
+  //- - var code_desc_html = filters.markdown(code_desc)
   //- - console.log(code_desc_html)
   //- - code_desc_html.classList.add('text-sm', 'leading-4')
-  div(style="[&>*]:leading-1 [&>*]:test-sm")!= code_desc_html
+  //- div(style="[&>*]:leading-1 [&>*]:test-sm")!= code_desc_html
   //- a.cursor-pointer(href=doc_link) docs
+  if code_links
+    each link, text in code_links
+      - console.log(link)
+      span.bg-gray-100.text-gray-800.text-sm.font-bold.rounded-sm.px-1.py-1.border.align-center.middle-align.float-right.m-0
+        a(href=link) [#{text}]
+  br
   //- each badge in badges 
   //-   span.bg-gray-100.text-gray-800.text-md.font-bold.rounded-md.px-2.py-1.border
-  - console.log(filters.url("/resources/" + background_img))
-  if background_img
-    img(src=filters.url("/resources/" + background_img) width="100%")
-  hr.my-2
-  - var content_list = filters.toHTML(content).innerHTML
-  if content_list
-    span.flex.flex-row.space-x-1.overflow-hidden(style="min-height: 24px !important;")
-      != content_list
+  //- - console.log(filters.url("/resources/" + background_img))
+  //- if background_img
+  //-   img(src=filters.url("/resources/" + background_img) width="100%")
+  //- hr.my-2
+  != content
+  //- - var content_list = filters.toHTML(content).innerHTML
+  //- if content_list
+  //-   span.flex.flex-row.space-x-1.overflow-hidden(style="min-height: 24px !important;")
+  //-     != content_list

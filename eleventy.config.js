@@ -15,7 +15,7 @@ const markdownItKatex = require("@aquabx/markdown-it-katex");
 // Minifiers and optimizers
 const CleanCSS = require("clean-css");
 
-
+const EleventyFetch = require("@11ty/eleventy-fetch");
 const dirOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 const HTMLParser = require('node-html-parser');
 const pluginTOC = require('eleventy-plugin-toc');
@@ -76,6 +76,9 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addFilter("markdown", (content) => {
 		return md.render(content);
+	});
+	eleventyConfig.addFilter("markdown_inline", (content) => {
+		return md.renderInline(content);
 	});
 
 	eleventyConfig.addFilter("cssmin", function(code) {

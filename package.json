@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-fetch": "^4.0.0",
+    "@11ty/eleventy-img": "^3.1.8",
     "@11ty/eleventy-plugin-directory-output": "^1.0.1",
     "@aquabx/markdown-it-katex": "^4.0.5",
     "@iktakahiro/markdown-it-katex": "^4.0.1",

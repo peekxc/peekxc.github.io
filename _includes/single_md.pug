@@ -21,16 +21,22 @@ block main
 				#page_content.w-full
 				!= content 
 				br
+			script(src="https://utteranc.es/client.js" repo="peekxc/blog_comments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async)
 		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
 			- var page_toc = filters.toc(content);
-			//- - console.log(page_toc)
-			- var el = filters.toHTML(page_toc);
-			- el = el.querySelector('ol');
-			- el.setAttribute('id', 'scrollspy');
-			- el.classList.add('sticky');
-			- el.classList.add('top-0');
-			- el.classList.add('space-y-2');
-			!= page_toc 
+			- console.log(page_toc)
+			if page_toc
+				- var el = filters.toHTML(page_toc);
+				- el = el.querySelector('ol');
+				//- - el.setAttribute('id', 'scrollspy');
+				- el.classList.add('sticky');
+				- el.classList.add('top-0');
+				- el.classList.add('space-1-2');
+				- el.classList.add('text-neutral-600')
+				- el.classList.add('px-[5px]')
+				- el.classList.add('dark:text-neutral-200')
+				//- - console.log(page_toc)
+				!= el 	
 
 block scripts
 	script.
@@ -39,6 +45,7 @@ block scripts
 				header = document.querySelector("header");
 				return header.getBoundingClientRect().height; }
 		});
+
 
 			//- .hidden.px-2(class="md:flex md:w-1/6")
 	//- .container.px-8.mx-auto.items-center.max-w-screen-xl(style="min-width: 634px;" class="sm:mx-4 md:mx-16 lg:mx-32 sm:shrink-0 max-w-4xl")

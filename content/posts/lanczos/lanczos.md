@@ -30,32 +30,32 @@ form](https://en.wikipedia.org/wiki/Canonical_form) may be obtained via
 *orthogonal diagonalization*. Such matrices are among the most commonly
 encountered matrices in applications.
 
-In 1950, Cornelius Lanczos proposed an iterative algorithm—now known as
-the *Lanczos method*—for obtaining by different factorization of
-$A \in \mathrm{Sym}_n$ by means of *tri-diagonalization*:
+In 1950, Cornelius Lanczos proposed an algorithm for obtaining by
+different kind of factorization of $A \in \mathrm{Sym}_n$ by means of
+*tri-diagonalization*:
 $$  AQ = Q T \quad \Leftrightarrow \quad Q^T A Q = T $$
 
-Like the eigen-decomposition, the outer term(s) $Q$ are orthonormal
-transforms which map $A$ to a highly structured matrix $T$—however, the
-factorization is not canonical and the eigensets are not readily
-available, prompting questions of its utility.
+Like the eigen-decomposition, the “outer” term(s) $Q$ orthogonally
+project $A$ to a highly structured “inner” matrix $T$. Unlike the
+eigen-decomposition, this factorization has no canonical form and does
+not readily yield the eigensets of $A$, prompting questions of its
+utility.
 
 <!-- The algorithm by which one produces such a $T$ is now known as the *Lanczos method*.  -->
 <!-- Indeed, nearly all large-scale eigen-solvers are two phase algorithms which first transform their inputs into tridiagonal form.  -->
 
 Nonetheless, this decomposition ended up proving to be one of the most
-revealing spectral decompositions of all time. Despite its age, Lanczos
-remains the standard algorithm<sup>1</sup> for both computing eigensets
-and solving linear systems in the large-scale regime. An [IEEE guest
+revealing spectral decompositions of all time. Despite its age, Lanczos’
+method of tridiagonalization remains the standard algorithm<sup>1</sup>
+for both computing eigensets and solving linear systems in the
+large-scale regime. An [IEEE guest
 editorial](https://www.computer.org/csdl/magazine/cs/2000/01/c1022/13rRUxBJhBm)
 places it among the **top 10 most influential algorithms of the 20th
 century**.
 
 <!-- represents no longer contains the eigenvectors of $A$ nor  -->
 <!-- The algorithm by which one produces such a $T$ is known as the *Lanczos method*. -->
-
-Just to give away the punchline, here’s a teaser of what the Lanczos
-method accomplishes:
+<!-- So what is the Lanczos method, how does it work, and why should you care? Well, here's a teaser of what the Lanczos method accomplishes:  -->
 
 <figure>
 <img src="lanczos_krylov.gif" style="margin: auto;;width:75.0%"
@@ -66,6 +66,7 @@ on a 100x100 matrix with eigenvalues (0, 0.01, 0.02, …, 2, 2.5,
 3)</figcaption>
 </figure>
 
+<!-- To decipher the rest, read on! -->
 <!-- In fact, you may have learned the Lanczos method before without knowing it. 
 The Lanczos method naturally manifest: 
 &#10;- As the _conjugate gradient_ method
@@ -113,18 +114,18 @@ $$
 <!-- That's pretty fortunate, because computing the eigen-sets of _any_ tridiagonal matrix $T$ takes just $O(n^2)$ time[^2]! -->
 <!-- $Q$ is $A$-invariant[^5] ( -->
 
-Since $\mathrm{range}(Q) = \mathcal{K}(A, v)$, the change-of-basis
-$A \mapsto Q^{-1} A Q$ is a [similarity
-transform](https://en.wikipedia.org/wiki/Matrix_similarity), which is an
+Since $Q$ spans $\mathcal{K}(A, v) = \mathrm{range}(A)$, the
+change-of-basis $A \mapsto Q^{-1} A Q$ is a [similarity
+transform](https://en.wikipedia.org/wiki/Matrix_similarity)—an
 equivalence relation on $\mathrm{Sym}_n$—thus we can obtain $\Lambda$ by
 *diagonalizing* $T$:
 
 $$ T = Y \Lambda Y^T $$
 <!-- $$ T = Y \Theta Y^T, \mathrm{diag}(Y) = (\theta_1, \theta_2, \dots, \theta_n)$$ -->
 
-As $T$ is quite structured, it is easy to diagonalize, thus we have
-effectively solved the eigenvalue problem for $A$. To quote the [Lanczos
-introduction from
+As $T$ is quite structured, it is easy to diagonalize, and in doing so
+we have effectively solved the eigenvalue problem for $A$. To quote the
+[Lanczos introduction from
 Parlett](https://apps.dtic.mil/sti/tr/pdf/ADA289614.pdf), *could
 anything be more simple?*
 

@@ -19,6 +19,8 @@ date: 2018-06-01
 
 I was hired by [Dr. Steven Arnold](https://www.linkedin.com/in/steve-arnold-72545416/) under NASAs 10-week [LERCIP program](https://ntrs.nasa.gov/citations/20050185532) to use machine learning to accelerate the simulation-based design of materials and structures through multiscale modeling, in line with [NASA's 2040 vision](https://ntrs.nasa.gov/citations/20180002010). 
 
+<!-- https://ntrs.nasa.gov/search?author=Matthew%20Piekenbrock -->
+
 :::
 
 :::{.flex .items-center .px-2 .py-1 .bg-gray-100}
