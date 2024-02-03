@@ -17,7 +17,7 @@
 %                required packages
 %-------------------------------------------------------------------------------
 
-
+\usepackage{comment}
 %-------------------------------------------------------------------------------
 %                package options
 %-------------------------------------------------------------------------------
@@ -213,7 +213,9 @@
 	  {\itshape #3\ifthenelse{\equal{#6}{}}{}{, #6}} & {\itshape #2}\\%
   \end{tabular*}%
   \ifx&#7&%
-    \else{\\\vbox{\small#7}}\fi%
+    \else{
+    \\\vbox{\small #7} % NOTE: the descriptions of the jobs
+  }\fi%
   \par\addvspace{#1}}
 
 \newbox{\cvitemwithcommentmainbox}

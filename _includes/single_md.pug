@@ -23,6 +23,7 @@ block main
 				br
 			script(src="https://utteranc.es/client.js" repo="peekxc/blog_comments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async)
 		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
+			
 			- var page_toc = filters.toc(content);
 			- console.log(page_toc)
 			if page_toc

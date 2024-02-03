@@ -37,6 +37,16 @@
 \usepackage{footmisc}
 \usepackage{multibib}
 \usepackage{url}
+\usepackage{multicol}
+%\usepackage{comment}
+%\usepackage{hyperref}
+
+\includecomment{comment} % for 2-page resume / CV 
+%\excludecomment{comment} % for 1-page resume 
+
+\newenvironment{twoitemize}
+ {\begin{multicols}{2}\raggedright\begin{itemize}}
+ {\end{itemize}\end{multicols}}
 
 \geometry{verbose,tmargin=1cm,bmargin=1cm} % lmargin=3cm,rmargin=3cm
 
@@ -119,10 +129,12 @@
 \subsection{Teaching Experience}
 \begin{itemize}
 \setlength\itemsep{-0.5em}	
-\item Teaching Assistant - Data Mining Techniques \hfill CS 6220 / DS 5230, Summer 2023 (NEU)
-\item Teaching Assistant - Supervised Machine Learning \hfill CS 6140/4420, Spring 2023 (NEU)
-\item Teaching Assistant (NEU) \hfill  Unsupervised Learning (DS 5230), Fall 2022
-\item Graduate Teaching Assistant (MSU) \hfill Comp. Modeling \& Data Analysis (CMSE 201), Fall 2020
+\item Teaching assistant - Unsupervised Learning \hfill CS 6220 / DS 5230, Spring 2024 (NEU)
+\item Teaching assistant - Unsupervised Learning \hfill CS 6220 / DS 5230, Fall 2023 (NEU)
+\item Teaching assistant - Data Mining Techniques \hfill CS 6220 / DS 5230, Summer 2023 (NEU)
+\item Teaching assistant - Supervised Machine Learning \hfill CS 6140/4420, Spring 2023 (NEU)
+\item Teaching assistant - Unsupervised Learning \hfill DS 5230, Fall 2022 (NEU)
+\item Teaching assistant - Comp. Modeling \& Data Analysis \hfill  CMSE 201, Fall 2020 (MSU)
 \end{itemize}
  
 %\subsection{Relevant Coursework}
@@ -157,21 +169,22 @@
 
 \section{Experience}
 
-\cventry{Graduate Student}
+\cventry{Fall 2019-Present (Graduating Summer 24)}
 			 {Northeastern University / Michigan State University}
 			 {Graduate Research Assistant}
-			 {Fall 2019-Present (Graduating Summer 24)}{}{\vspace{3pt}
+			 {Perea Lab}{}{\vspace{3pt}
 %			 My PhD spanned two universities: MSU from 2019-2021, and NEU from 2021-2024. 
 			 My PhD research focused on developing computationally tractable extensions of \emph{Persistent Homology} in dynamic and multi-parameter settings, and in showing viable applications to problems such as periodic time series analysis, characterizing graph similarity, and $n$-D shape matching. 
-			 Subsequent focused on topological dimensionality reduction using fiber bundle theory (see \textbf{tallem} in the \textbf{Open Source} section) and on spectral-relaxations of the persistent rank invariant, with applications to exploratory data analysis, .
+			 Subsequent work focused on topological dimensionality reduction using fiber bundle theory (see \textbf{tallem} in the \textbf{Open Source} section) and on spectral-relaxations of the persistent rank invariant, with applications to exploratory data analysis.
 			}
 \vspace{0.75em}
 
-\cventry{National Aeronautics and Space Administration }
+\cventry{Summer 2022}
 			 {John H. Glenn Research Center at Lewis Field}
 			 {LERCIP Intern}
-			 {Summer 2022}{}{\vspace{3pt}
+			 {National Aeronautics and Space Administration}{}{\vspace{3pt}
 I was re-hired back at NASA as part of the Space Communications and Navigation (SCaN) program to expand the algorithmic theory necessary to have effective satellite communications in space environments. My research focused on incorporating additional geometric assumptions into routing models built for of delay- and disruption-tolerant networks, particularly in the low Earth orbit regime.
+Publications summarizing the works can be found in my CV. Project materials are available upon request for U.S. citizens only. 
 %\begin{itemize}
 %	\item testing
 %\end{itemize}	
@@ -192,83 +205,95 @@ I was re-hired back at NASA as part of the Space Communications and Navigation (
 %\vspace{0.75em}
 
 %------------------------------------------------
-\cventry{Oak Ridge Institute for Science and Education}
-			 {Air Force Research Laboratory}
-			 {AI Research Associate}
-			 {Fall 2018-Fall 2019, Fall 2017}{}{\vspace{3pt}
-			 In a collaborative effort to foster new research frontiers in the area of Topology Data Analysis (TDA) between WSU and AFRL, I worked in a research group studying how to combine techniques from  the field of topology and machine learning in both supervised and unsupervised settings. I primarily researched multi-scale extensions to the \textit{Mapper} framework, an often used modality for performing TDA. 
+\cventry{Fall 2018-Fall 2019, Fall 2017 }
+			 {Oak Ridge Institute for Science and Education}
+			 {Machine Learning Scientist}
+			 {Air Force Research Laboratory}{}{\vspace{3pt}}
+
+\begin{comment}		
+\small
+In an effort to promote research into the frontiers of Topology Data Analysis (TDA), I joined a research group at the Air Force Research Labs (AFRL) to study how to combine techniques from the field of topology with machine learning in both supervised and unsupervised settings. I primarily researched multi-scale extensions to the \textit{Mapper} framework, an often used modality for performing TDA.
+The group has since founded an AI startup\footnote{See \url{https://minedxai.com/} for more details} company. 
+\end{comment}
+
 %			 Specifically, I implemented a multi-scale extension of Mapper which filters the \emph{mapper} construction using a tower of cover refinements to produce a filtration of complexes. This filtration was used to measure the persistent homology and stability properties of various \emph{mapper} graphs. 
-The effort required developing a number of custom open source packages, such as the \textbf{Mapper} and \textbf{simplextree} packages (see the \textbf{Open Source} section).  
-			 % My work lead to the development of an algorithmic solution which greatly reduces the complexity of the \textit{Mapper} framework and enables a more tractable analysis of {\em mapper} constructions in both the exploratory setting and in the context of Persistent Homology. A journal article demonstrating the utility of this solution is in development, available as a draft~\cite{mapperext}. 
-}
+%The effort required developing a number of custom open source packages, such as the \textbf{Mapper} and \textbf{simplextree} packages (see the \textbf{Open Source} section).  
+%Projects including modeling object detection from video data 
+% My work lead to the development of an algorithmic solution which greatly reduces the complexity of the \textit{Mapper} framework and enables a more tractable analysis of {\em mapper} constructions in both the exploratory setting and in the context of Persistent Homology. A journal article demonstrating the utility of this solution is in development, available as a draft~\cite{mapperext}. 
+
 \vspace{0.75em}
 %------------------------------------------------
-\cventry{National Aeronautics and Space Administration }
+\cventry{Summer 2018}
 			 {John H. Glenn Research Center at Lewis Field}
 			 {LERCIP Intern}
-			 {Summer 2018}{}{\vspace{3pt}
-Towards accelerating materials discovery and design, I was hired by Dr. Steven Arnold (via the Multiscale Modeling Materials and Structures Division) to spend an extended internship at NASA using ML to infer multiscale structural properties from material stress-response data.  
-The project involved deducing process-structure-property (PSP) relationships from a surrogate model trained on laminate stress-strain curve data generated via the Generalized Method of Cells via experimental design theory.
-My time was primarily spent:
-\begin{itemize}
-	\item Learning basic micromechanics and lamination theory
-	\item Architecting a feed-forward neural network (the surrogate model) to model laminate stress-response data 
-	\item Implementing a non-parametric information-theoretic estimator efficiently, proving its convergence rates, and modifying an MCMC-like optimization procedure (approximate coordinate exchange) to minimize it 
+			 {National Aeronautics and Space Administration}{}{}
+%{\vspace{3pt}
+\begin{comment}		
+\small
+Towards accelerating materials discovery and design, I was hired by Dr. Steven Arnold (Multiscale Modeling Materials and Structures Division) to spend an extended internship at NASA using ML to infer multiscale structural properties from material stress-response data.  
+The project involved using {\em experimental design theory} to deduce process-structure-property relationships from a surrogate regression model trained on laminate stress-strain curve data.
+My time was primarily spent learning basic micromechanics and lamination theory, architecting a neural network to model material stress-response data, and implementing a custom information-theoretic estimator (the loss function).  
+Publications summarizing the works can be found in my CV. Other technical material including reports, presentations, and code are available upon request for U.S. citizens only. 
+%}
+\end{comment}
+
+%, proving its convergence rates, and modifying an MCMC-like optimization procedure (approximate coordinate exchange) to minimize it 
 %	\item Implementing a non-parametric CMI estimator efficiently and proving its convergence rates
-\end{itemize}	
-%Per NASAs Vision 2040 guidelines, the project incorporated experimental design theory to interpret and make use of the models PSP predictions.  
-A technical report and subsequent journal publication can be found on my CV. Presentation material, code, and all other material is available upon request for U.S. citizens only. 
-}
+%\end{itemize}	
+%Per NASAs Vision 2040 guidelines, the project incorporated experimental design theory to interpret and make use of the models PSP predictions.
 \vspace{0.75em}
 %------------------------------------------------
 
-\cventry{Machine Learning and Complex Systems Lab}
+\cventry{Fall 2015 - Spring 2018}
 			 {Wright State University}
 			 {Graduate Research Assistant}
-			 {2015 - 2018}{}
-{  \vspace{3pt}
-After a brief independent study, I began a graduate research assistantship (GRA) with the Machine Learning and Complex Systems lab studying the use of generative models for modeling macroscopic patterns of real-world traffic networks inferred from raw trajectory (e.g. GPS) data.
+			 {Machine Learning \& Complex Systems Lab}
+			 {}{\vspace{3pt}}
+\begin{comment}		
+\small
+I joined the Machine Learning and Complex Systems lab under a graduate research assistantship to research the possibility of using {\em generative graph models} to understand macroscopic patterns of real-world traffic networks inferred from trajectory (e.g. GPS) data.
+Topic areas spanned by the research include \emph{density based clustering}, {\em geospatial analysis}, {\em stochastic block models}.
+My masters thesis focused using the {\em cluster tree}---a level-set shape characteristic of an estimated density function---to infer significant clusters of movement. 
+This research was supported by the Center for Surveillance Research, a National Science Foundation I/UCRC.
+\end{comment}
 %raw positioning/track information into a dynamic network representation. 
-Topic areas the project focused on included density based clustering, {\em temporal network models } (e.g. stochastic block models), and {\em trajectory mining}.
-Much of my research focused on ensuring the data-inferred networks were representative of the underlying movement data. Our solution involved using the {\em cluster tree}---a level-set shape characteristic of an estimated density function---to infer significant clusters of movement. This research was supported by the Center for Surveillance Research, a National Science Foundation I/UCRC.
-}
+%Much of my research focused on ensuring the data-inferred networks were representative of the underlying movement data. 
 \vspace{0.75em}
 %------------------------------------------------
 
-\cventry{R Project for Statistical Computing / Google}
-			 {Google Summer of Code 2017}
+\cventry{Summer 2017}
+			 {R Project for Statistical Computing}
 			 {Student Participant}
-			 {Summer 2017}{}{\vspace{3pt} % Begin summary 
-			 I submitted a successful funding proposal under the Google Summer of Code (GSOC) Initiative to the R Project for Statistical Computing to explore, develop, and unify developments related the theory of density-based clustering, namely the recent developments related to the cluster tree. This involved a variety of code development which culminated in the form of an R package, as well as research to further understand the theory and utility of the cluster tree. For more details, see the project page.\footnotemark 
-			 } 
+			 {Google Summer of Code}
+			 {}{\vspace{3pt}}
+\begin{comment}		
+\small
+I received funding for a proposal accepted by the Google Summer of Code (GSOC) Initiative to the R Project for Statistical Computing to explore, develop, and unify developments related the theory of density-based clustering, namely theory related to the {\em cluster tree}. This involved a variety of code development which culminated in the form of an R package; for more details, see the project page.\footnotemark 
 \footnotetext{\url{https://summerofcode.withgoogle.com/archive/2017/projects/5919718795902976/}}
+\end{comment}
+
 \vspace{0.75em}
 %------------------------------------------------
 
-\cventry{Oak Ridge Institute for Science and Education}
+\cventry{2014 - 2016}
 			 {Air Force Institute of Technology}
 			 {Research Associate}
-			 {2014 - 2016}{}{\vspace{3pt}
-Towards the end of my undergraduate degree, my contract at AFIT was extended under ORISE, where I continued working with the same research group. 
-During this time I primarily worked on the development of a novel Iterative Closest Point algorithm amenable to massive parallelization, implemented in C++/CUDA, for the purposes of enabling real-time tracking of aircraft in the context of Autonomous Aerial Refueling. Our solution involved pairing a cache-oblivious KD-tree search with a novel ``Jump-and-Walk'' closest-point search on a preprocessed Delaunay triangulation. The effort lead to multiple publications (see CV). I also worked on:
-\begin{itemize}
-	\item Researching hierarchical markov model for predicting web navigation patterns 
-	\item Parallelizing existing atmospheric absorption routines with OpenCL 
-	\item Coding a nonlinear optimization algorithm in ANSI-C, and making it callable from MATLAB via MEX
-\end{itemize}
+			 {Oak Ridge Institute for Science and Education}
+			 {}{ 
+\vspace{3pt}
+As part of an ORISE fellowship, I primarily worked on developing a novel Iterative Closest Point algorithm amenable to massive parallelization for real-time tracking of aircraft in turbulent conditions. Our proposed solution involved combining $k$-NN data structures with the geometric structure of Delaunay meshes, which lead to significant speedup compared to state of the art methods and several subsequent publications (see CV\ref{}.
+During my tenure at AFIT, I also worked on parallelizing various atmospheric absorption routines (C++/OpenCL) and coding a nonlinear optimization algorithm (C/MATLAB).
 }
+%Towards the end of my undergraduate degree, my contract at AFIT was extended under ORISE, where I continued working with the same research group. 
+%I recieved
+%Our  solution involved pairing a descend-only KD-tree search with a novel ``Jump-and-Walk'' closest-point search on a preprocessed Delaunay triangulation. 
 \vspace{0.75em}
 %------------------------------------------------
-\cventry{Southwestern Ohio Council for Higher Education}
+\cventry{2013 - 2014}
 			 {Air Force Institute of Technology}
 			 {Undergraduate Research Assistant}
-			 {2013 - 2014}{}{\vspace{3pt}
-I was hired at the Air Force Institute of Technology (AFIT) as an undergraduate student to do research in a multi-disciplinary team called the Low Orbitals Radar and Electromagnetism group, where I worked on a diverse set of projects involving computational, statistical, or physics-based requirements. Being my first research-oriented experience, I either assisted graduate students with primarily programmatic or educational tasks or worked on very computationally-oriented tasks. Some example projects involved: 
-\begin{itemize}
-	\item Implementing an unsplittable flow approximation algorithm in C++ and Python
-	\item Creating a conversion tool between Oracle's Abstract Data Type and XMLType
-	\item A prototypical UI to to enhance searching and viewing of 2-or-3D models using JavaScript
-\end{itemize}	
+			 {Southwestern Ohio Council for Higher Education}{}{\vspace{3pt}
+I was hired at the Air Force Institute of Technology (AFIT) as an undergraduate student to do research in a multi-disciplinary team called the Low Orbitals Radar and Electromagnetism group, where I worked on a diverse set of projects involving computational, statistical, or physics-based requirements. As my first experience doing research, I assisted graduate students with primarily programmatic or educational tasks. Exemplary research projects include the implementation of an {\em unsplittable flow} approximation algorithm in (C++ / Python) and developing a graphical UI to enhance searching and viewing of 3D models (C++ / JavaScript). 
 }
 %\cventry{}{}{Other Jobs}{Pre-2013}{}{\vspace{-14pt}
 %			 Dairy Queen ('05), Kroger ('06-'08), Kniess and Associates ('10), Cold Stone ('11), Adapted Recreation ('11-'14), Chipotle ('12), the Mens Wearhouse ('12-'13)
@@ -315,14 +340,33 @@ I was hired at the Air Force Institute of Technology (AFIT) as an undergraduate 
 
 %----------------------------------------------------------------------------------------
 %	PACKAGES SECTION
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------
 \section{Open Source Contributions}\label{sec:opensrc}
-{\bfseries primate (python package)} \hfill {\em Author} @ \url{[gh]/peekxc/primate} \\
-{\bfseries dbscan (R package)} \hfill {\em Coauthor} @ \url{[gh]/mhahsler/dbscan} \\
-{\bfseries clustertree (R package)} \hfill {\em Author} @ \url{[gh]/peekxc/clustertree} \\ 
-{\bfseries Mapper (R package)}\hfill {\em Author} @ \url{[gh]/peekxc/mapper} \\
-{\bfseries simplextree (R / Python package)} \hfill {\em Author} @ \url{[gh]/peekxc/simplextree-py} \\
-{\bfseries tallem (python package)} \hfill {\em Author} @ \url{[gh]/peekxc/tallem}
+\vspace{-1.4em}
+\begin{twoitemize}[label={}, leftmargin=0pt, noitemsep, topsep=0pt]
+	\setlength\itemsep{0.0em}
+	\item\textbf{primate (python package)} 
+	\item\textbf{dbscan (R package)} 
+	\item\textbf{clustertree (R package)} 
+	\item\textbf{Mapper (R package)} 
+	\item\textbf{simplextree (python/R package)} 
+	\item\textbf{tallem (python package)} 
+
+	\item \href{https://github.com/peekxc}{[gh]/peekxc/primate} \hfill (Author)
+	\item \href{https://github.com/peekxc}{[gh]/mhahsler/dbscan} \hfill (Coauthor)
+	\item \href{https://github.com/peekxc}{[gh]/peekxc/clustertree} \hfill (Author)
+	\item \href{https://github.com/peekxc}{[gh]/peekxc/Mapper} \hfill (Author)
+	\item \href{https://github.com/peekxc}{[gh]/peekxc/simplextree} \hfill (Author)
+	\item \href{https://github.com/peekxc}{[gh]/peekxc/tallem} \hfill (Author)
+\end{twoitemize}
+
+%
+%{\bfseries primate (python package)} \hfill {\em Author} @ \url{[gh]/peekxc/primate} \\
+%{\bfseries dbscan (R package)} \hfill {\em Coauthor} @ \url{[gh]/mhahsler/dbscan} \\
+%{\bfseries clustertree (R package)} \hfill {\em Author} @ \url{[gh]/peekxc/clustertree} \\ 
+%{\bfseries Mapper (R package)}\hfill {\em Author} @ \url{[gh]/peekxc/mapper} \\
+%{\bfseries simplextree (R / Python package)} \hfill {\em Author} @ \url{[gh]/peekxc/simplextree-py} \\
+%{\bfseries tallem (python package)} \hfill {\em Author} @ \url{[gh]/peekxc/tallem}
 %\cvitem{DBSCAN R package}{\hfill Coauthor}
 %\cvitem{clustertree R package}{\hfill Author}
 %\cvitem{Mapper R package}{\hfill Author}
@@ -335,11 +379,12 @@ I was hired at the Air Force Institute of Technology (AFIT) as an undergraduate 
 \section{Awards, Extra Curricular, Misc.}
 
 %\cvitem{2017}{Google Summer of Code - Funding }
-%\cvitem{Ginther Fellow}{\hfill MSU 2019-2020}
 \cvitem{Ginther Fellow}{\hfill MSU 2019-2020}
-\cvitem{Outstanding Masters Student Award (Computer Science)}{\hfill WSU 2017-2018 academic year}
+\cvitem{Outstanding Masters Student Award (Computer Science)}{\hfill WSU 2017-2018}
 %\cvitem{Student participant and presenter}{\hfill NSF TRIPODS TGDA Summer School and Workshop}
 %\cvitem{Volunteer staff}{\hfill Regional Model United Nations Annual Conference  (2016 - 2017)}
+\cvitem{ORISE Fellow}{\hfill AFIT 2016-2016}
+\cvitem{SOCHE Fellow}{\hfill AFIT 2013-2014}
 \cvitem{Outstanding Position Paper Award}{\hfill National Model United Nations Annual Conference (2014)}
 \cvitem{Outstanding Delegation Award}{\hfill National Model United Nations Annual Conference (2013)}
 
