@@ -1,0 +1,55 @@
+extends ../baseof.pug
+
+block main 
+	.min-h-screen.flex.flex-row.relative.w-screen
+		.hidden.px-2(class="lg:flex lg:w-2/5")
+		main.w-full.flex-grow.max-w-4xl.px-4.p-2.m-2
+			h2.font-bold.text-2xl.my-2.underline(style="text-align: center;") 
+				| Research Projects
+			ol.relative.ml-3.border-l(class="border-"+tagcolor+"-400")
+				each project in [...collections.projects].reverse()
+					//- NOTE: Neither extending nor including via partials the card content seems to work, despite console.log working
+					//- include partials/project_card.pug
+					block card_content
+						li.flex-start.flex.items-center.pt-1.mx-auto
+							.absolute.w-4.h-4.rounded-full.border.border-white(class='-left-2 bg-'+tagcolor+'-400') 
+							.ml-3.w-full
+								.card.shadow-xs.bg-white.leading-5.max-w-4xl
+									.cursor-context-menu.border-2.px-4.py-2.bg-neutral-200.bg-cover.bg-clip-border.bg-no-repeat.bg-right.bg-blend-overlay(style="background-image: url('" + filters.url(project.data.background_image) + "'); background-size: 50% !important;" class="hover:border-slate-500")
+										.accordion-header.grid.grid-cols-8.gap-y-1.content-between
+											h4.font-bold.col-span-full.text-lg!= project.data.card_title
+											hr.col-span-full
+										.flex.justify-between
+											.flex
+												each t in project.data.card_tags
+													span.bg-neutral-300.text-black.text-xs.py-1.px-1.rounded-xs.mr-1.min-w-0(style="white-space: nowrap") #{ t }
+											.self-end
+												svg.stroke-3.h-4.w-4.mr-1.align-middle.justify-self-end(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="col-span-"+(12-project.data.card_tags.length))
+													path(stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z")
+												svg.stroke-3.h-4.w-4.mr-1.hidden(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor")
+													path(stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z")
+										p.w-full.text-ellipsis.bg-transparent.overflow-hidden.pr-2.pt-1.italic.text-sm(class="line-clamp-2") #{ project.data.abstract }
+									.accordion-body.card-body.border-x-2.border-b-2.hidden(data-index=index)
+										//- - console.log(page)
+										.grid.grid-cols-12.bg-white-100.justify-center.items-center.p-2
+											.col-span-5.px-3.overflow-hidden.mx-auto
+												img.rounded-sm.object-cover.max-h-64(loading="lazy" src=project.data.image)
+											.col-span-7.flex.flex-col.px-3.overflow-y-scroll.text-center
+												summary.prose-sm.leading-4.text-justify.max-h-64.inline #{ project.data.abstract_full }
+										.p-2.overflow-auto.px-4.py-2.space-y-1
+											!= project.content
+		.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
+
+
+//- - console.log(project.data.content)
+//- != project.content
+//- - console.log(lst.data.content)
+//- - console.log(lst.content)
+//- - console.log(lst.data.page.url)
+//- != filters.readHTML(lst.data.page.outputPath)
+//- | !{lst.data.content}
+//- != lst.data.content
+//- != lst.content
+//- block project_cards
+//- include partials/project_card.pug
+//- != project.content // this works unfortunately 

@@ -1,0 +1,52 @@
+extends ../baseof.pug
+
+//- See: https://cardiff.marketing/pug-in-eleventy-making-it-work/
+
+//- TODO: adopt the variable fonts idea https://web.dev/articles/variable-fonts
+block main 
+	.min-h-screen.flex.flex-row.relative.w-screen
+		.hidden.px-2(class="lg:flex lg:w-2/5")
+		main.w-full.flex-grow.max-w-4xl.px-4.my-4(style="font-family: 'Lucida Grande';")
+			section#statement(class="md:flex md:visible").hidden.show-on-md-screen
+				include ../partials/bio_card
+				br
+				hr
+			
+			//- TODO: this sometimes fails on a dry-run
+			section#employment.flex.flex-col.space-y-1.p-2.border-sm.mx-auto
+				h2.font-bold.text-red-400.text-2xl Employment
+				each job in [...collections.jobs].reverse()
+					!= job.data.content
+				//- - const JOB_LIST = collections.cv_lists.find((lst) => lst.url == '/jobs/')
+				//- != filters.readHTML(JOB_LIST.page.outputPath)
+
+			section#education.flex.flex-col.space-y-1.p-2.border-sm.mx-auto
+				h2.font-bold.text-orange-400.text-2xl Education
+				each school in [...collections.schools].reverse()
+					!= school.data.content
+				//- - const SCHOOL_LIST = collections.cv_lists.find((lst) => lst.url == '/schools/')
+				//- != filters.readHTML(SCHOOL_LIST.page.outputPath)	
+
+			!= content
+
+		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
+			ul#scrollspy.sticky.top-0.pl-2.text-md.space-y-1
+				li
+					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#statement') Bio card 
+				//- li
+				//- 	a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#projects') Projects
+				li
+					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#employment') Employment
+				li
+					a.text-neutral-600(class='px-[5px] active dark:text-neutral-200' href='#education') Education
+				li
+					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
+
+block scripts
+	script.
+		var spy = new Gumshoe('#scrollspy li a', {
+			offset: function () { 
+				header = document.querySelector("header");
+				return header.getBoundingClientRect().height; 
+			}
+		});

@@ -1,0 +1,112 @@
+---
+format: gfm
+layout: single_md.pug
+tags: ["posts"]
+title: "Minimal perfect hashing"
+author: "Matt Piekenbrock"
+date: '2024-02-25'
+slug: mphf1
+include_toc: true
+categories: ["math", "hashing", "C++"]
+draft: true
+editor: 
+    rendor-on-save: true
+execute:
+  echo: false
+  eval: false 
+bibliography: ../references.bib
+---
+
+A _hash function_ is a function $h : U \to M$ that maps some set of $n$ keys $S \subseteq U$ to some set $M$, typically a subset of the integers $M \subset \mathbb{Z}$. A _perfect hash function_ is an injection $h : S \to M$, where $m = \lvert M \rvert$ must necessarily satisfy $m \geq n$. If $m = n$ and $M = \{0, 1, \dots, n - 1\}$, $h$ is called a _minimal perfect hash function_ (MPHF). If additionally, for any pair of keys $s, s' \in S$ with $s < s'$ the map $h$ satisfies $h(s) < h(s')$, then $h$ is called _order preserving_. 
+
+Perfect hashing 
+Given a universe $U$ and a fixed subset of keys $S \subseteq U$, a hashing function is a function that resembles a function $f: S \to I$ to some index set. 
+
+When $I$ 
+
+```{python}
+import numpy as np 
+from typing import Iterable
+
+## Miller-Rabin primality test
+def is_prime(n: int):
+  """Miller-Rabin primality test"""
+  return False if n % 2 == 0 and n > 2 else all(n % i for i in range(3, int(np.sqrt(n)) + 1, 2))
+
+def gen_primes_above(n: int, m: int, b: int = 100):
+  """Finds the first *n* prime numbers larger than *m*."""
+  from itertools import islice
+  from array import array
+  m, n = int(m), int(n)
+  primes = array('I')
+  while len(primes) < n:
+    ## Use Bertrand's postulate to generate primes in blocks of 100 
+    prime_candidates = islice(filter(is_prime, range(m, 2*m - 2)), b)
+    primes.extend(prime_candidates)
+    m = primes[-1]+1
+  return np.array(primes)
+
+
+## Universal Hash Function (Linear Congruential Generator)
+## https://en.wikipedia.org/wiki/Linear_congruential_generator
+## NOTE: If c = 1, then the prime will be fixed which isn't good for hashing as multiple hash functions
+## will be be more likely to be linearly independent.  
+class LCG:
+  """Produces a (random) Universal Hash Function. 
+  
+  Parameters: 
+    N = universe size 
+    c = number of primes larger than m to sample from. Defaults to 100. 
+  
+  Returns: 
+    a random LCG hash function (x, params) which hashes integer inputs. Supply params=True to see the parameters.
+  """
+  def __init__(self, primes: Iterable):
+    self.primes = np.fromiter(iter(primes), dtype=np.int64)
+
+  def randomize(self, m: int):
+    """Randomizes the LCG generator """
+    self.m = m                                  ## Table size / output range 
+    self.p = np.random.choice(self.primes)      ## Random prime from first |c| primes after m 
+    self.a = max([1,np.random.choice(self.p)])  ## Random coefficient in the range [1, p)
+    self.b = np.random.choice(self.p)           ## Random coefficient in the range [1, p)
+  
+  def __call__(self, x: int, params: bool = False):
+    return ((self.a*x + self.b) % self.p) % self.m if not params else (self.a,self.b,self.p,self.m)
+
+from collections import Counter
+P = gen_primes_above(n=256, m=1024)
+G = LCG(P)
+
+np.random.seed(1234)
+U = range(1024)
+S = np.sort(np.random.choice(U, size=128, replace=False))
+
+## Claim 1: For any x \in S, the expected number of keys in the bin h(x) is n / m
+## Answer: Definately seems to not be true, unless m = n**2
+n,m = len(S), 2*len(S)
+k = 1
+E, C = [], []
+for i in range(1000):
+  G.randomize(m)
+  bin_counts = np.array(list(Counter([G(s) for s in S]).values()))
+  E.append(np.mean(bin_counts))
+  C.append(np.max(bin_counts))
+  collisions = np.sum(bin_counts != 1)
+  # print(f"No collisions: {np.sum(bin_counts != 1) == 0}")
+  assert comb(collisions, 2) <= n * (n - 1) / 2*m, "Upper bound doesn't hold"
+
+
+print(np.mean(E))
+
+
+## Idea: generate larger and larger bit array, until finding h: i -> j s.t. b[h(i)] = 1 
+## for all i \in S and there are no collisions 
+n, m = len(S), 5*len(S)
+bit_array = np.zeros(m)
+for i in range(1000):
+  G.randomize(m)
+  if len(np.unique(G(S))) == n:
+    break
+
+```
