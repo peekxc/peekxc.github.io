@@ -1,50 +1,61 @@
 # peekxc.github.io source code
-This repository exists to keep track and act as a host to for the mattpiekenbrock.com
+Source code for statically generating my personal website, hosted at mattpiekenbrock.com (or peekxc.github.io).
+
+This site was built using [Quarto](https://quarto.org/) and [Eleventy](https://www.11ty.dev/) (11ty) for site generation. The template files are written in [PugJS](https://pugjs.org/api/getting-started.html), and the CSS is generated using [TailwindCSS](https://tailwindcss.com/).
 
 ## Layout format 
 
-This site uses [Quarto](https://quarto.org/) and [Eleventy](https://www.11ty.dev/) (11ty) as its primary two tools for site generation.
-
-The following workflow ([inspired from here](https://quarto.org/docs/output-formats/docusaurus#workflow)), for any given source file, is as follows: 
+For any given source file, the following workflow ([inspired from here](https://quarto.org/docs/output-formats/docusaurus#workflow)) is as follows: 
 
 **source.qmd** => *quarto* =>  **source.md**  => *eleventy* =>  **source.html**
 
-Canonically, the cascade 
-1. Author content files are stored as quarto, ipynb, or markdown documents in `/content`
-2. Render *.ipynb / *.qmd / *.md to Github flavored markdown (GFM) *.md files using quarto's `render` 
-3. Use template files for site generation in folders prefixed with underscores, e.g. `/_includes` and `/_data`
-4. Call eleventy to merge the content from (2) with the templates from (3), generating the final html site in `/docs`
+Canonically, the cascade is as follows: 
+1. Write content files, stored in _plain text_, as quarto or markdown documents in `/content`
+2. Call _quarto_ to render *.qmd / *.md from (1) to Github flavored markdown (GFM) *.md files
+3. Write template `.pug` files for site generation in `/_includes`
+4. Call _eleventy_ to merge the content from (2) with the templates from (3), generating the final html site in `/docs`
 
-Using quarto as an intermediate step prior to eleventy is similar to the [page bundles](https://gohugo.io/content-management/page-bundles/) idea, wherein a "page" constitutes a directory with markdown text storing the content alongside additional folders holding the rendered images, videos, resources, code outputs, JS includes, etc.
+Each piece of content must be stored as a directory + markdown file, similar to the idea of [page bundles](https://gohugo.io/content-management/page-bundles/), wherein a "page" constitutes a directory with markdown text storing the text content alongside additional folders or files holding the rendered images, videos, resources, code outputs, JS includes, etc.
 
 ## Workflow 
 
 From the root directory, to render `/content/**.qmd` => `/content/**.md`
 
-> quarto render 
+```bash 
+quarto render 
+```
 
 From the root directory, to render `/content/**.md` => `/docs/**.html`
 
-> eleventy --config eleventy.config.js 
+```bash
+eleventy --config eleventy.config.js 
+```
 
 To develop actively, use:
 
-> quarto render && eleventy --config eleventy.config.js --watch --serve
+```bash
+quarto render && eleventy --config eleventy.config.js --watch --serve
+```
 
 To switch to rendering only blog posts and watching, use: 
 
-> quarto render content/posts && eleventy --config eleventy.config.js --watch --serve
+```bash
+quarto render content/posts && eleventy --config eleventy.config.js --watch --serve
+```
+
+The entire website can be quickly previewed in incremental mode using: 
+
+```bash
+quarto preview --no-browser .
+```
 
 To preprocess the custom CSS styles from tailwind, use: 
 
-> npx tailwindcss -i styles.css --output lib/css/tw_styles.css
+```bash
+npx tailwindcss -i styles.css --output lib/css/tw_styles.css
+```
 
-All source css/js/font/img assest are stored in `/lib` and statically copied to `/docs` on generation. 
-
-## Font notes 
-
-For nice, hand-written book-like font, use et-book
-et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif
+On generation, all source css/js/font/img assets that are stored in `/lib` and statically copied to `/docs`, which is then used as the root host for GH pages.  
 
 ## TODO
 
@@ -54,4 +65,4 @@ et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georg
 - Nanofy tailwinds styles / figure out why nothing exports well 
 - Move the relevent katex.min and code highlighting styles to the blog/single_md templates
 - Use eleventy filter to provide sections in markdown for sidebar support
-
+- Implement some of the tricks from [this site](https://github.com/google/eleventy-high-performance-blog)

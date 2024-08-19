@@ -1,17 +1,25 @@
 ---
-tags: ["jobs"]
+tags:
+  - jobs
 layout: partials/card.pug
 card_title: Graduate Research Assistant
 card_subtitle: Web and Complex Systems Group
-card_extra: 'Wright State University'
-card_date: 'Spring 2016 - Fall 2018'
-abstract: 'Motivated by my previous work on the foundations of density-based clustering, I focused on implementing and extending the Mapper algorithm, a popular and very general method which has been used successfully for data analysis.'
+card_extra: Wright State University
+card_date: Spring 2016 - Fall 2018
+abstract: >-
+  Motivated by my previous work on the foundations of density-based clustering,
+  I focused on implementing and extending the Mapper algorithm, a popular and
+  very general method which has been used successfully for data analysis.
 background_image: /resources/wsu_biplane.png
-card_tags: ["Clustering", "Network analysis", "Machine Learning"]
-date: 2018-09-01
-end_date: 2018-01-01
-start_date: 2015-01-01
+card_tags:
+  - Clustering
+  - Network analysis
+  - Machine Learning
+date: 2018-09-01T00:00:00.000Z
+end_date: 2018-01-01T00:00:00.000Z
+start_date: 2015-01-01T00:00:00.000Z
 ---
+
 
 My graduate research aimed at modeling real-world traffic network
 networks at a macroscopic scale. The high-level goal of the project was

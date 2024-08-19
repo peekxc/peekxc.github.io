@@ -1,15 +1,23 @@
 ---
-tags: ["jobs"]
+tags:
+  - jobs
 layout: partials/card.pug
 card_title: Research Associate
 card_subtitle: Oak Ridge Institute for Science and Education
 card_extra: 'Air Force Research Laboratory, WPAFB'
 card_date: 'Fall 2017, Fall 2018 - Fall 2019'
-abstract: 'Motivated by my previous work on the foundations of density-based clustering, I focused on implementing and extending the Mapper algorithm, a popular and very general method which has been used successfully for data analysis.'
+abstract: >-
+  Motivated by my previous work on the foundations of density-based clustering,
+  I focused on implementing and extending the Mapper algorithm, a popular and
+  very general method which has been used successfully for data analysis.
 background_image: /resources/afrl.png
-card_tags: ["Topology", "Mapper", "R package"]
-date: 2019-09-01
+card_tags:
+  - Topology
+  - Mapper
+  - R package
+date: 2019-09-01T00:00:00.000Z
 ---
+
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
 

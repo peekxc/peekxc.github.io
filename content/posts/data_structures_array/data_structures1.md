@@ -20,18 +20,25 @@ Moreover, although an expansive knowledge of a variety of data structures can be
 > - Jon Bentley, Programming Pearls
 
 
+> Probably the most beneficial [data structure] for your career is learning to be effective arrays... being good with arrays is very very beneficial - Primagen (Scams in Software Engineering, 18 min)
+
 So what data structures should everyone know? Since this post is part I, I'll start by characterizing the properties of _the most fundamental category_ of data structures that every computer scientist should know. -->
 
-What is the fastest, most versatile data structure in the planet? 
+<!-- They are the fastest, most versatile data structure in the planet?  -->
+<!-- Well of course, it is the humble _array_.  -->
 
-Well of course, it is the humble _array_. 
+Arrays are my favorite data structure. Though the humble array is the first data structure I learned, and though I learned of many other data structures since then, I've come to appreciate that arrays are not only ubiquitous, but also incredibly versatile. Yet, to my surprise, I've seen many junior developers overreach to much more complicated data structures, e.g. hash-tables or sets (usually implemented as trees), despite the array being more than sufficient. 
 
-An _array_ is a sequence container that organizes $n$ homogeneous elements within a contiguous block of memory that supports randomized ($O(1)$) access to its elements. Contiguity and homogeneity are necessary conditions for randomized access: homogeneity guarantees the size of each element is fixed and contiguity guarantees the elements can be indexed in constant-time using [offsets](https://en.wikipedia.org/wiki/Offset_(computer_science)). Any reference to an "array" data structure in other languages that does not support these two properties is referring to a different structure than the one defined here.
+<!-- In this post, I thought I'd cover  -->
+
+An _array_ is a sequence container that organizes $n$ homogeneous elements within a contiguous block of memory that supports randomized ($O(1)$) access to its elements. Contiguity and homogeneity are necessary conditions for randomized access: homogeneity guarantees the size of each element is fixed and contiguity guarantees the elements can be indexed in constant-time using [offsets](https://en.wikipedia.org/wiki/Offset_(computer_science)). 
+
+Beginner developers often refer to similar data structures as "arrays" (e.g. lists), but this is a technicality: contiguity and homogeneity are necessary conditions for a data structure to be called an _array_. 
 
 There are many types of arrays, of which the following are worth discussing in detail:
 
 1. Fixed-size arrays
-2. Dynamic arrays
+2. Dynamically-sized arrays
 3. $n$-dimensional arrays
 4. Sparse arrays
 5. Bit arrays
@@ -135,9 +142,14 @@ Where again $m = \lceil \log_2(n) \rceil - 1$ . Since both terms on the right ha
 Strictly speaking, re-allocations need not always be performed when $n$ exceeds powers of $2$.  In the array insertion case, as long as the frequency with which the allocator chooses to perform the re-allocation is inversely proportional to a superpolynomial, the amortized cost should be sublinear and thus the allocator scheme is efficient. There are other kinds of amortized analysis; the simplest one which is shown above is called the _aggregate method_, however there are more detailed kinds of amortized analysis e.g. the [potential method](https://en.wikipedia.org/wiki/Potential_method). See [here](https://www.cs.cornell.edu/courses/cs3110/2011sp/Lectures/lec20-amortized/amortized.htm) and [here](https://www.cl.cam.ac.uk/teaching/1516/Algorithms/lec13-24.pdf) for a more in-depth review of amortized analyis. 
 
 
-## $n$-dimensional matrix
+## $d$-dimensional array
 
-A _dense matrix_ is a generalization of a fixed-size _array_ whose size is recorded by two numbers, instead of one. More generally, a _$d$-dimensional array_ is a fixed-size array whose size is recorded by $d$ numbers. These are sometimes called [multi-dimensional arrays](https://en.wikipedia.org/wiki/Array_data_type#Multi-dimensional_arrays) and should not be confused with [jagged arrays](https://en.wikipedia.org/wiki/Jagged_array). Matrices are still memory-contiguous and type-homogenous. Instead of elements being indexed by offsets, they are indexed by [strides](https://en.wikipedia.org/wiki/Stride_of_an_array) (the multi-dimensional generalization of an offset).
+Oweing to its contiguity requirement, an array is fundamentally a 1-dimensional data structure. 
+<!-- Nonetheless, it is common in practice to  -->
+
+
+<!-- Rather than recording the size of an array with 1 number, one could instead use $d$ numbers.   -->
+A _matrix_ is a 2-dimensional generalization of a fixed-size _array_ whose size is recorded by two numbers, instead of one. More generally, a _$d$-dimensional array_ is a fixed-size array whose size is recorded by $d$ numbers. These are sometimes called [multi-dimensional arrays](https://en.wikipedia.org/wiki/Array_data_type#Multi-dimensional_arrays) and should not be confused with [jagged arrays](https://en.wikipedia.org/wiki/Jagged_array). Matrices are still memory-contiguous and type-homogenous. Instead of elements being indexed by offsets, they are indexed by [strides](https://en.wikipedia.org/wiki/Stride_of_an_array) (the multi-dimensional generalization of an offset).
 
 There are many concepts that are useful to know about a particular matrix implementation. For example, since arrays store memory contiguously, should memory be stored in [column or row-major order](https://en.wikipedia.org/wiki/Row-_and_column-major_order)? C/C++'s 'native' multi-dimensional array is row-major. For various performance reasons, many popular linear algebra libraries in C++ use column-major order (e.g. [Eigen](https://eigen.tuxfamily.org/dox/group__TopicStorageOrders.html) and [Armadillo](http://arma.sourceforge.net/docs.html)), as does [MATLAB and Fortran](https://www.mathworks.com/help/coder/ug/what-are-column-major-and-row-major-representation-1.html). In Python, the canonical matrix implementation is with NumPy, but by default uses row-major ordering.
 
@@ -146,7 +158,7 @@ Nonetheless, at the end of the day, _dense matrices_ and _multi-dimensional arra
 ## Sparse arrays
 
 A _sparse array_ is a data structure that mimicks the semantics of _arrays_, but whose space complexity is proportional to the number of non-zero values it contains. 
-Like _arrays_, there are (fixed, dynamic, and $n$-dimensional) variants of them, they are typically type-homogenous, and they also use an offset-based scheme to permit fast element access. Unlike _arrays_, element-wise access is typically not constant-time. 
+Like _arrays_, there exist fixed / dynamic / $d$-dimensional variants, they are typically type-homogenous, and they also use an offset-based scheme to permit fast element access. Unlike _arrays_, element-wise access is typically not constant-time. 
 
 Suppose you wanted to build a $(n \times n)$ [sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix) $M$ from a [generator](https://peps.python.org/pep-0255/) $f$ whose size is unknown and which on evaluation yields a 3-tuple of the form $(i,j,x)$, where:
 

@@ -1,18 +1,23 @@
 ---
 format: gfm
 layout: single_md.pug
-tags: ["posts"]
-title: "The Lanczos Algorithm"
-author: "Matt Piekenbrock"
+tags:
+  - posts
+title: The Lanczos Algorithm
+author: Matt Piekenbrock
 date: '2023-10-15'
 slug: lanczos_method2
 include_toc: true
-categories: ["math", "linear algebra", "high performance computing"]
+categories:
+  - math
+  - linear algebra
+  - high performance computing
 draft: true
-editor: 
-    rendor-on-save: true
+editor:
+  rendor-on-save: true
 bibliography: ../references.bib
 ---
+
 
 ## Beating the complexity bounds
 
@@ -23,7 +28,7 @@ Let’s start by establishing a baseline on its complexity:
 
 <div id="thm-line" class="theorem" style="background-color: #efefef;">
 
-<span class="theorem-title">**Theorem 1 (Parlett 1994) **</span>Given a
+<span class="theorem-title">**Theorem 1 (Parlett 1994)**</span> Given a
 symmetric rank-$r$ matrix $A \in \mathbb{R}^{n \times n}$ whose operator
 $x \mapsto A x$ requires $O(\eta)$ time and $O(\nu)$ space, the Lanczos
 method computes $\Lambda(A)$ in $O(\max\{\eta, n\}\cdot r)$ time and

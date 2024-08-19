@@ -1,5 +1,5 @@
 ---
-layout: software.pug
+layout: pages/software_page.pug
 format: gfm
 tagname: software
 ---

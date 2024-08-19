@@ -1,19 +1,24 @@
 ---
 format: gfm
 layout: single_md.pug
-tags: ["posts"]
-title: "The Lanczos Method"
-author: "Matt Piekenbrock"
+tags:
+  - posts
+title: The Lanczos Method
+author: Matt Piekenbrock
 date: '2023-10-15'
 slug: lanczos_method
 include_toc: true
-categories: ["math", "linear algebra", "matrix decompositions"]
+categories:
+  - math
+  - linear algebra
+  - matrix decompositions
 draft: false
-editor: 
-    rendor-on-save: true
+editor:
+  rendor-on-save: true
 bibliography: ../references.bib
-citations-hover: true 
+citations-hover: true
 ---
+
 
 <!-- Whether for simplifying the representation of complicated systems, characterizing the asymptotic behavior of differential equations, or just fitting polynomials via least-squares, the decompositional approach to matrix computation remains the primary mode with which    -->
 <!-- in many areas of sciences and engineering.  -->
@@ -57,14 +62,9 @@ century**.
 <!-- The algorithm by which one produces such a $T$ is known as the *Lanczos method*. -->
 <!-- So what is the Lanczos method, how does it work, and why should you care? Well, here's a teaser of what the Lanczos method accomplishes:  -->
 
-<figure>
 <img src="lanczos_krylov.gif" style="margin: auto;;width:75.0%"
 data-text-align="center"
 alt="Lanczos’ “method of minimized iterations” on a 100x100 matrix with eigenvalues (0, 0.01, 0.02, …, 2, 2.5, 3)" />
-<figcaption aria-hidden="true">Lanczos’ “method of minimized iterations”
-on a 100x100 matrix with eigenvalues (0, 0.01, 0.02, …, 2, 2.5,
-3)</figcaption>
-</figure>
 
 <!-- To decipher the rest, read on! -->
 <!-- In fact, you may have learned the Lanczos method before without knowing it. 

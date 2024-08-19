@@ -7,10 +7,14 @@ var http = require('http');
 var markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItAttrs = require('markdown-it-attrs');
+const markdownItKatex = require("@aquabx/markdown-it-katex");
+
+
+
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 // const browsersync = require("@11ty/eleventy-server-browsersync")
 // const katex = require("katex");
-const markdownItKatex = require("@aquabx/markdown-it-katex");
+
 
 // Minifiers and optimizers
 const CleanCSS = require("clean-css");
@@ -67,9 +71,10 @@ module.exports = function(eleventyConfig) {
 	}).use(markdownItKatex)
 		.use(markdownItAnchor, {
 			level: 2,  							// heading level for generating IDs
-			permalink: true,
-			permalinkClass: 'header-link',
-			permalinkSymbol: '#'
+			// markdownItAnchor.permalink[#](permalinkOpts)
+			// permalink: true,
+			// permalinkClass: 'header-link',
+			// permalinkSymbol: '#'
 		})
 		.use(markdownItAttrs);	
 	eleventyConfig.setLibrary("md", md);

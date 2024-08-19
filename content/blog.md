@@ -1,4 +1,4 @@
 ---
 format: gfm
-layout: blog.pug
+layout: pages/blog_page.pug
 ---
