@@ -1,37 +1,26 @@
 // import hljs from 'highlight.js';
 // npx tailwindcss -c tailwind.config.js -o _src/styles.css
 const fs = require('fs');
-const _ = require("lodash");
-var http = require('http');
-
-var markdownIt = require('markdown-it');
+const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItKatex = require("@aquabx/markdown-it-katex");
-
-
-
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-// const browsersync = require("@11ty/eleventy-server-browsersync")
-// const katex = require("katex");
-
-
-// Minifiers and optimizers
 const CleanCSS = require("clean-css");
-
-const EleventyFetch = require("@11ty/eleventy-fetch");
-const dirOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 const HTMLParser = require('node-html-parser');
 const pluginTOC = require('eleventy-plugin-toc');
 const { EleventyRenderPlugin } = require("@11ty/eleventy");
+const readingTime = require('reading-time');
 
 // Great: https://photogabble.co.uk/tutorials/font-subsetting-with-eleventyjs/
-
+// const _ = require("lodash");
+// var http = require('http');
+// const browsersync = require("@11ty/eleventy-server-browsersync")
+// const katex = require("katex");
 // const importSync = require('import-sync');
 // const rehypeKatex = importSync('https://esm.sh/rehype-katex@7');
 // const readingTime = require('eleventy-plugin-reading-time');
 // const EleventyUnifiedPlugin = require("eleventy-plugin-unified");
-const readingTime = require('reading-time');
 
 module.exports = function(eleventyConfig) { 
 	// eleventyConfig.addPlugin(dirOutputPlugin);// For logging sizes of things
@@ -143,6 +132,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("content/**/*.png");
 	eleventyConfig.addPassthroughCopy("content/**/*.gif");
 	// eleventyConfig.ignores.add("content/_jobs/*");
+
 	return {
 		templateFormats: [ "md", "pug", "html" ], // - "liquid"
 		dir: {

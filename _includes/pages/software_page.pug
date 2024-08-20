@@ -9,7 +9,8 @@ block main
 			ul.list-none.space-y-2
 				//- - console.log(collections.software)
 				each lib in [...collections.software].reverse()
-					//- - console.log(lib.data.templateContent)
-					//- != filters.readHTML(lib.outputPath)
-					!= lib.data.content
+					//- - console.log(lib)
+					!= filters.readHTML(lib.page.outputPath)
+					//- != lib.templateContent
+					//- block card_content
 		.hidden.px-2(class="lg:flex lg:w-2/5")

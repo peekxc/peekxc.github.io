@@ -15,7 +15,7 @@ block main
 							.absolute.w-4.h-4.rounded-full.border.border-white(class='-left-2 bg-'+tagcolor+'-400') 
 							.ml-3.w-full
 								.card.shadow-xs.bg-white.leading-5.max-w-4xl
-									.cursor-context-menu.border-2.px-4.py-2.bg-neutral-200.bg-cover.bg-clip-border.bg-no-repeat.bg-right.bg-blend-overlay(style="background-image: url('" + filters.url(project.data.background_image) + "'); background-size: 50% !important;" class="hover:border-slate-500")
+									.cursor-context-menu.border-2.px-4.py-2.bg-neutral-200.bg-cover.bg-clip-border.bg-no-repeat.bg-right.bg-blend-overlay(style="background-image: url('" + project.data.background_image + "'); background-size: 50% !important;" class="hover:border-slate-500")
 										.accordion-header.grid.grid-cols-8.gap-y-1.content-between
 											h4.font-bold.col-span-full.text-lg!= project.data.card_title
 											hr.col-span-full

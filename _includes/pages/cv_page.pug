@@ -16,14 +16,17 @@ block main
 			section#employment.flex.flex-col.space-y-1.p-2.border-sm.mx-auto
 				h2.font-bold.text-red-400.text-2xl Employment
 				each job in [...collections.jobs].reverse()
-					!= job.data.content
+					!= filters.readHTML(job.page.outputPath)
 				//- - const JOB_LIST = collections.cv_lists.find((lst) => lst.url == '/jobs/')
 				//- != filters.readHTML(JOB_LIST.page.outputPath)
 
 			section#education.flex.flex-col.space-y-1.p-2.border-sm.mx-auto
 				h2.font-bold.text-orange-400.text-2xl Education
 				each school in [...collections.schools].reverse()
-					!= school.data.content
+					//- - console.log(school)
+					//- != school.content
+					//- != school.templateContent
+					!= filters.readHTML(school.page.outputPath)
 				//- - const SCHOOL_LIST = collections.cv_lists.find((lst) => lst.url == '/schools/')
 				//- != filters.readHTML(SCHOOL_LIST.page.outputPath)	
 
