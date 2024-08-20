@@ -12,7 +12,7 @@ categories:
   - computer science
   - algorithms
   - math
-draft: false
+draft: true
 editor:
   rendor-on-save: true
 execute:

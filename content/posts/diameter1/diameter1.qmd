@@ -8,7 +8,7 @@ date: '2022-02-12'
 slug: diameter_1
 include_toc: true
 categories: ["Algorithms", "Computer Science", "Geometry"]
-draft: false
+draft: true
 abstract: "Testing the abstract"
 ---
 

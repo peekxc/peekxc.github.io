@@ -1,6 +1,6 @@
 ---
-layout: pages/cv_page.pug
 format: gfm
+layout: pages/cv_page.pug
 ---
 
 

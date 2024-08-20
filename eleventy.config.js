@@ -133,13 +133,16 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("content/**/*.gif");
 	// eleventyConfig.ignores.add("content/_jobs/*");
 
+	// To call eleventy correctly, use `npx eleventy ...` from root 
+	// The includes, layouts, and data directories seem relative to either content/* or docs/* folders
 	return {
 		templateFormats: [ "md", "pug", "html" ], // - "liquid"
 		dir: {
 			input: "content",
-			includes: "../_includes", 
-			data: "../_data",
-			output: "docs" // needed for GH pgaes
+			output: "docs", // needed for GH pgaes
+			includes: "../_includes", // NOTE: this depends on where you call eleventy from 
+			layouts: "../_includes",  // NOTE: this depends on where you call eleventy from 
+			data: "../_data"          // NOTE: this depends on where you call eleventy from 
 		}, 
 		passthroughFileCopy: true,
 		pathPrefix: "/"

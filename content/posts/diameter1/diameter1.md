@@ -12,8 +12,8 @@ categories:
   - Algorithms
   - Computer Science
   - Geometry
-draft: false
-abstract: "Testing the abstract what is going on"
+draft: true
+abstract: Testing the abstract
 ---
 
 

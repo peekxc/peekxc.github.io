@@ -6,7 +6,7 @@ layout: index.pug
 
 <!-- :::{.flex .justify-between .mx-auto} -->
 
-<div style="float: right; margin-left: 1.5rem;">
+<div style="float: right; margin-left: 1.5rem;" loading="lazy">
 
 <img src="../resources/profile_pic_white-min.jpg"
 class="rounded-lg object-cover md:visible hidden show-on-md-screen"

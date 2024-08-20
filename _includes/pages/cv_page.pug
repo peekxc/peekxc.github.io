@@ -3,6 +3,7 @@ extends ../baseof.pug
 //- See: https://cardiff.marketing/pug-in-eleventy-making-it-work/
 
 //- TODO: adopt the variable fonts idea https://web.dev/articles/variable-fonts
+//- TODO: this sometimes fails on a dry-run
 block main 
 	.min-h-screen.flex.flex-row.relative.w-screen
 		.hidden.px-2(class="lg:flex lg:w-2/5")
@@ -11,25 +12,14 @@ block main
 				include ../partials/bio_card
 				br
 				hr
-			
-			//- TODO: this sometimes fails on a dry-run
 			section#employment.flex.flex-col.space-y-1.p-2.border-sm.mx-auto
 				h2.font-bold.text-red-400.text-2xl Employment
 				each job in [...collections.jobs].reverse()
 					!= filters.readHTML(job.page.outputPath)
-				//- - const JOB_LIST = collections.cv_lists.find((lst) => lst.url == '/jobs/')
-				//- != filters.readHTML(JOB_LIST.page.outputPath)
-
 			section#education.flex.flex-col.space-y-1.p-2.border-sm.mx-auto
 				h2.font-bold.text-orange-400.text-2xl Education
 				each school in [...collections.schools].reverse()
-					//- - console.log(school)
-					//- != school.content
-					//- != school.templateContent
 					!= filters.readHTML(school.page.outputPath)
-				//- - const SCHOOL_LIST = collections.cv_lists.find((lst) => lst.url == '/schools/')
-				//- != filters.readHTML(SCHOOL_LIST.page.outputPath)	
-
 			!= content
 
 		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
