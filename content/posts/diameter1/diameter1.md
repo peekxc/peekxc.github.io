@@ -1,48 +1,57 @@
 ---
 format: gfm
-tags: ["posts"]
+tags:
+  - posts
 layout: single_md.pug
-title: "Computing the Diameter in any dimension"
-author: "Matt Piekenbrock"
+title: Computing the Diameter
+author: Matt Piekenbrock
 date: '2022-02-12'
 slug: diameter_1
 include_toc: true
-categories: ["C++"]
-draft: true 
---- 
+categories:
+  - Algorithms
+  - Computer Science
+  - Geometry
+draft: true
+abstract: Testing the abstract
+---
+
 
 The *diameter* of an $n$ point set $X \subset \mathbb{R}^d$ is the
-maximum [Euclidean
-distance]((https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm))
+maximum [distance](https://en.wikipedia.org/wiki/Euclidean_distance)
 between any pair of points:
 
-$$ D(X) = \max_{x, x' \in X} \lVert x - x' \rVert_2 $$
+$$ D(X) \triangleq \max_{x, x' \in X} \lVert x - x' \rVert_2 $$
 
 <!-- More generally, one may start with an arbitrary metric space $(X, d_X)$ and use the same definition with the metric $d_X$.  -->
 
-The diameter is a fundamental primitive: many graphics and geometry
-applications, such as route planning or clustering, often require $D(X)$
-prior to performing some downstream task. It’s trivially obtained by
-computing $O(n^2)$ distances, but in many applications this is simply
-too costly.
+A fundamental primitive, the diameter appears often in 3D shape
+settings, route planning algorithms, cluster analysis, spatial indexing
+structures, and even in bounds involving the Gromov Hausdorff distance
+between metric spaces.
 
-In this post, I’ll introduce a way to compute $D(X)$ efficiently for
+Though $D(X)$ is trivially obtained in $O(n^2)$ time, in many
+applications this is exhorbitant. Ideally an algorithm that’s extremely
+fast, uses very little memory, and does not involve any complicated data
+structures. It turns out such an algorithm exists, and was introduced in
+the following paper:
+
+> Malandain, Grégoire, and Jean-Daniel Boissonnat. “Computing the
+> diameter of a point set.” International Journal of Computational
+> Geometry & Applications 12.06 (2002): 489-509.
+
+In the above paper, it was shown how to compute $D(X)$ efficiently for
 non-pathological inputs in $\approx O(nh)$ time and $O(n)$ memory, where
 $h << n$, <span style="color: 'orange';">*independent of the
-dimension*</span> $d$ of $X$.
+dimension*</span> $d$ of $X$. Though developed mainly for points
+embedded in Euclidean space, the algorithm in principle may be adapted
+to any metric space.
 
-The method is extremely fast, uses very little memory, and does not
-involve any complicated data structures. Though developed mainly for
-points embedded in Euclidean space, the algorithm in principle may be
-adapted to any metric space.
-
-<!-- The algorithm I'm summarizing was introduced in the following paper:
-&#10;> Malandain, Grégoire, and Jean-Daniel Boissonnat. "Computing the diameter of a point set." International Journal of Computational Geometry & Applications 12.06 (2002): 489-509. -->
 <!-- Knowing the diameter of $X$ conveys a few things about the point set. Some examples:
 1. The [smallest enclosing sphere](https://en.wikipedia.org/wiki/Smallest-circle_problem) has radius $R(X)$ satisfying $R(X) \leq \frac{1}{2}D(X) \sqrt{\frac{d}{2(d+1)}}$ ([Jung's Theorem](https://en.wikipedia.org/wiki/Jung%27s_theorem))
-2. $\frac{1}{n} D(X) \leq \epsilon_\ast(X)$ where $\epsilon_\ast(X)$ is twice the minimum radius needed to ensure $\epsilon$-neighbor graph $N_\epsilon(X)$ is connected. 
-3. Let $A, B \subseteq X$. Then $D(A \cup B) \leq D(A) + D(B) + d_H(A, B)$, where $d_H(A, B)$ is the Hausdorff distance 
-4. Let $(X, d_X)$ and $(Y, d_Y)$ denote two metric spaces. Then 
+2. $\frac{1}{n} D(X) \leq \epsilon_\ast(X)$ where $\epsilon_\ast(X)$ is twice the minimum radius needed to ensure $\epsilon$-neighbor graph $N_\epsilon(X)$ is connected.
+3. Let $A, B \subseteq X$. Then $D(A \cup B) \leq D(A) + D(B) + d_H(A, B)$, where $d_H(A, B)$ is the Hausdorff distance
+4. Let $(X, d_X)$ and $(Y, d_Y)$ denote two metric spaces. Then
    $$ \frac{1}{2} \lvert D(X) - D(Y)\rvert \leq d_{GH}(X, Y) \leq \frac{1}{2}\max\{D(X), D(Y)\}$$
    where $d_{GH}$ is the Gromov-Hausdorff distance ( [introduction video](https://www.youtube.com/watch?v=tvbkSt_QxnE) if you're curious )
 As an aside, $\epsilon_\ast(X)$ can also be interpreted as the largest edge in the [metric minimum spanning tree](https://en.wikipedia.org/wiki/Euclidean_minimum_spanning_tree), which is useful itself in a variety of circumstances as this is the minimum radius one needs to ensure $N_\epsilon(X)$—the union of balls centered at points in $X$ with radii $\epsilon$—is connected.
@@ -54,21 +63,26 @@ Just take the max?
 First off, let’s clear the air. Is computing all pairwise distances
 really *that bad*?
 
-Suppose $X \in \mathbb{R}^{n \times d}$ is our point set of interest;
+Let $X \in \mathbb{R}^{n \times d}$ is our point set of interest;
 obtaining $D(X)$ with
-e.g. [SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html)
+[SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html)
 is do-able in one line:
 
 ``` python
-diameter = max(pdist(X))
+diameter = np.max(pdist(X))
 ```
 
 Note this approach takes *both* $O(n^2)$ time and $O(n^2)$ space, as the
-temporary inside the max expands to an `np.ndarray` containing all
-pairwise distances.
+temporary inside the max expands to an `ndarray` of size $n \choose 2$.
+An alternative approach that uses only $O(n)$ space—but calculates twice
+the number of necessary distances—is to use `cdist`:
 
-A more memory efficient option using $O(1)$ memory and $O(n^2)$ time is
-to keep a running max:
+``` python
+diameter = max([np.max(cdist(X, X[i][np.newaxis,:])) for i in range(X.shape[0])])
+```
+
+Of course, the most memory efficient option using $O(1)$ space that also
+avoids excess computations is to just keep a running max:
 
 ``` python
 n, diam = X.shape[0], 0.0
@@ -77,62 +91,158 @@ for i in range(n):
     diam = max(diam, np.linalg.norm(X[i,:] - X[j,:]))
 ```
 
-or, more succinctly using the `combinations` generator from `itertools`:
+or, more succinctly, using the `combinations` functions from the
+`itertools` package:
 
 ``` python
 diam = max(np.linalg.norm(xi - xj) for xi, xj in combinations(X, 2))
 ```
 
-Amongst these three solutions, can you guess which one is faster?
+Let’s pack these four solutions into function and benchmark them.
+They’re all doing the same algorithm, so maybe their performance will be
+similar?
+
+<details class="code-fold">
+<summary>Code</summary>
 
 ``` python
-from scipy.spatial.distance import pdist
+from scipy.spatial.distance import pdist, cdist
+import itertools as it
+
 def diameter1(X: np.ndarray) -> float:
-  n, diam = X.shape[0], 0.0
-  for i in range(n):
-    for j in range(i+1, n):
-      diam = max(diam, np.linalg.norm(X[i,:] - X[j,:]))
-  return diam 
+  return np.max(pdist(X))
 
 def diameter2(X: np.ndarray) -> float:
-  return max(np.linalg.norm(xi - xj) for xi, xj in combinations(X, 2))
+  return max([np.max(cdist(X, X[i][np.newaxis,:])) for i in range(X.shape[0])])
 
 def diameter3(X: np.ndarray) -> float:
-  return max(pdist(X))
+  diam = -np.inf
+  for i, j in it.combinations(range(X.shape[0]), 2):
+    diam = max(diam, np.linalg.norm(X[i] - X[j]))
+  return diam.item()
+
+def diameter4(X: np.ndarray) -> float:
+  n, diam = X.shape[0], -np.inf 
+  for i in range(n): 
+    for j in range(i+1, n):
+      diam = max(diam, np.linalg.norm(X[i] - X[j]))
+  return diam.item()
 ```
+
+</details>
 
 Let’s do a quick benchmark with `timeit`.
 
 ``` python
-from timeit import timeit 
-for n, f in product(range(3, 11), [diameter1, diameter2, diameter3]):
+from timeit import timeit
+from collections import defaultdict
+output_times = defaultdict(list)
+for n, f in it.product(range(5, 12), [diameter1, diameter2, diameter3, diameter4]):
   X = np.random.uniform(size=(2**n, 2))
-  print(timeit(lambda: f(X), number=30) / 30)
+  output_times[f].append(timeit(lambda: f(X), number=5))
 ```
 
-On my laptop, I got the following results:
+On my 2.6GHz 6-core Macbook Pro from 2019, I got the following results
+(**in seconds**):
 
-| Method / Size  | $2^3$    | $2^4$    | $2^5$    | $2^6$    | $2^7$    | $2^8$    | $2^9$    | $2^10$ |       |
-|----------------|----------|----------|----------|----------|----------|----------|----------|--------|:------|
-| `naive`        | 2.24e-04 | 8.46e-04 | 2.13e-03 | 8.26e-03 | 0.0351   | 0.129    | 0.515    | 2.11   | 8.65  |
-| `combinations` | 2.03e-04 | 5.97e-04 | 1.60e-03 | 6.47e-03 | 0.0276   | 0.108    | 0.434    | 1.77   | 7.25  |
-| `pdist`        | 1.30e-05 | 1.49e-05 | 3.24e-05 | 1.09e-04 | 4.41e-04 | 1.77e-03 | 6.85e-03 | 0.0277 | 0.116 |
+| Method         | $2^5$   | $2^6$   | $2^7$   | $2^8$   | $2^9$   | $2^{10}$ |
+|----------------|---------|---------|---------|---------|---------|----------|
+| `naive`        | 2.13e-3 | 8.26e-3 | 0.0351  | 0.129   | 0.515   | 2.11     |
+| `combinations` | 1.60e-3 | 6.47e-3 | 0.0276  | 0.108   | 0.434   | 1.77     |
+| `pdist`        | 2.96e-5 | 2.42e-5 | 3.77e-5 | 1.00e-4 | 2.70e-4 | 0.001    |
 
-Though the Python-based `naive` and `combinations` approaches uses the
-least amount of working memory, they are miserably slow compared to the
-Depending on your background, these results may or may not surprise you:
-there is high latency associated with memory-access in Python in
-general, which typically doesn’t exist with a pre-compiled Moreover,
-with SciPy/Numpy code, we gain vectorization benefit.
+<!-- | Method  | $2^5$    | $2^6$    | $2^7$    | $2^8$    | $2^9$    | $2^{10}$ | $2^{11}$ |
+| -------------- | -------- | -------- | -------- | -------- | -------- | -------- | 
+| `naive`        | 2.13e-03 | 8.26e-03 | 0.0351   | 0.129    | 0.515    | 2.11     |
+| `combinations` | 1.60e-03 | 6.47e-03 | 0.0276   | 0.108    | 0.434    | 1.77     |  
+| `pdist`        | 2.96e-05 | 2.42e-05 | 3.77e-5 | 1.00e-4 | 2.70e-4 | 0.001   | 0.00 -->
+<!-- array([[0.000477288, 2.76946e-05, 5.27886e-05, 8.46514e-05, 0.000324717, 0.00140285, 0.00700403],
+       [0.000738826, 0.000863106, 0.001616, 0.00378446, 0.0112478, 0.0386153, 0.123106],
+       [0.00232528, 0.00741627, 0.0260823, 0.104198, 0.439307, 1.71004, 6.84932],
+       [0.00212785, 0.00650383, 0.0253084, 0.103801, 0.421321, 1.70617, 6.71721]]) -->
 
-Thus, for very small point sets, the naive $O(n^2)$-space vectorized
-solution is the way to go.
+Oof, the benefits of vectorization strikes again. Coming in hot at just
+over 70 ms, `pdist`-solution is **978x faster** than agonizingly slow
+6.8s basic Python implementation. Even the `cdist` solution—which
+computes *twice* the number of distances than the other three—is **55x**
+faster than other two Python solutions.
 
-But allocating $O(n^2)$ memory for larger $n$ will simply kill the
-scalabilty of the naive approach. Indeed, in 64-bit floating poinut
-arithmetic, $10k$ points already incurs an overhead of
-$\approx 50\mathrm{M}$ distance computations and $\approx 381$ MB of
-working memory. This will not scale.
+It looks like we have our solution! We can rest easy at night, swapping
+in our `pdist` solution and going about our lives.
+
+<!-- The speed of highly-optimized C code is always surprising.  Perhaps the way to think about this is not so much that `pdist` is fast, but 
+rather that Python is just inherently slow (by design): there is high latency associated with memory-access in 
+Python in general, whereas with SciPy/Numpy code we gain vectorization. -->
+
+## Something something No Free Lunch
+
+Unfortunately, life is not so simple. As foreshadowed by the complexity
+analysis, the space usage[^1] tells a different story:
+
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
+from collections import defaultdict
+from itertools import product, combinations
+import memray
+import json 
+import os
+import sys
+import time
+json_file = "memray-stats-diameter.bin.json"
+output_space= defaultdict(list)
+for n, f in product(range(5, 12), [diameter1, diameter2, diameter3, diameter4]):
+  X = np.random.uniform(size=(2**n, 2))
+  out = memray.FileDestination("diameter.bin", overwrite=True)
+  # alloc_type = memray.FileFormat.AGGREGATED_ALLOCATIONS
+  alloc_type = memray.FileFormat.ALL_ALLOCATIONS
+  with memray.Tracker(destination=out, file_format=alloc_type):
+    # y = np.zeros(4) # this seems to be necessary for unknonw reasons
+    diam = f(X)
+  if os.path.isfile(json_file):
+    os.remove(json_file)
+  os.system("memray stats diameter.bin --json")
+  time.sleep(0.1)
+  # gc.collect()
+  mem_profile = json.load(open(json_file, 'r'))
+  output_space[f].append(mem_profile['metadata']['peak_memory'])
+
+import math
+def convert_size(size_bytes):
+   if size_bytes == 0:
+       return "0B"
+   size_name = ("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
+   i = int(math.floor(math.log(size_bytes, 1024)))
+   p = math.pow(1024, i)
+   s = round(size_bytes / p, 2)
+   return "%s %s" % (s, size_name[i])
+MEM_USED = np.array([v for v in output_space.values()])
+np.array([convert_size(v) for v in MEM_USED.ravel()]).reshape(MEM_USED.shape)
+```
+
+</details>
+
+| Method / Bytes used | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 |
+|----|---:|---:|---:|---:|---:|---:|---:|
+| `pdist` | 4.52 KB | 17.69 KB | 64.14 KB | 255.64 KB | 1.0 MB | 4.0 MB | 16.0 MB |
+| `cdist` | 1008.0 B | 3.12 KB | 4.62 KB | 6.85 KB | 12.77 KB | 25.3 KB | 50.45 KB |
+| `combinations` | 3.02 KB | 3.55 KB | 4.05 KB | 5.05 KB | 7.05 KB | 11.05 KB | 17.95 KB |
+| `basic` | 3.01 KB | 3.01 KB | 3.01 KB | 3.01 KB | 3.01 KB | 3.01 KB | 3.01 KB |
+
+16 MB? That’s almost as much as a [Chrome tab]()!
+
+<!-- The slowest method `diameter4` indeed uses a constant amount of working memory, regardless of the problem size. Surprisingly, it appears that `it.combinations` does need to make a copy of the `ndarray`, despite its support for Sequence semantics. Of course, the real  -->
+<!-- Though the Python-only approaches use the least amount of working memory,  -->
+
+But allocating $O(n^2)$ memory for larger $n$ will simply kill its
+scalability. Indeed, in 64-bit floating point arithmetic, $10k$ points
+already incurs an overhead of $\approx 50\mathrm{M}$ distance
+computations and $\approx 381$ MB of working memory. If you have $100k$
+points, the space usage jumps to $\approx 37$ GB, and at 1M points its
+well beyond 3 TB!
+
+This clearly will not scale. We need something better!
 
 ## Learning from low dimensions
 
@@ -167,7 +277,7 @@ How well does this fare? Let’s do a quick test with 5k uniformly random
 samples.
 
 ``` python
-import timeit 
+import timeit
 import numpy as np
 X = np.random.uniform(size=(5000,2))
 diameter_hull = lambda: max(pdist(X[ConvexHull(X).vertices,:]))
@@ -200,7 +310,7 @@ vertices is small.
 So we’re done! The <code>diameter_hull</code> code shown above is very
 efficient (for $d = 2$…)!
 
-### Removing the $O(h^2)$ term - Rotating calipers
+## Detour: Can the $O(h^2)$ term be removed?
 
 Can we remove the quadratic dependency on $h$? It turns out in
 2-dimensions the answer is yes! The idea is to use the [rotating
@@ -249,13 +359,20 @@ $$ \lvert \mathcal{C}(X) \rvert \sim \Omega(n^{\lfloor d/2 \rfloor})$$
 
 Oof. The [curse of
 dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality)
-appear again. Of course, this only holds asymptotically: we can simply
-ignore this and proceed, hoping that our individual $X$ doesn’t exhibit
-this kind of exponential scaling.
+appear again. In other words, for higher dimensions, we cannot hope to
+do better than brute-force, as for all dimensions $d \geq 6$, the growth
+rate of $\lvert \mathcal{C}(X) \rvert$ dominates $O(n^2)$.
+
+Of course, this is an asymptotic result… so maybe it applies to only
+pathological inputs. We *could* simply ignore this and proceed, hoping
+the convex hull of our given $X$ doesn’t exhibit this kind of
+exponential behavior.
 
 Let’s test this. I generated small set of 1.5k normally distributed
 random points in $d$ dimensions for increasing $d$ and profiled the time
-it takes to compute $D(X)$ 30 times.
+it takes to compute $D(X)$ 30 times. Since these points are normally
+distributed, it’s expected that the majority of the ‘mass’ of the points
+is close to the center—away from the boundary of hull.
 
 ``` python
 for d in [2, 3, 4, 5, 6, 7, 8, 9, 15]:
@@ -291,3 +408,137 @@ Intuitively, if we want to do less distance computations, one option is
 to try to only consider points that lie on the peripheary. Points near
 the center of $X$ will likely lie in the interior of $\mathcal{C}(X)$,
 so there is no reason to consider them in the computation of $D(X)$.
+
+## A series of clever observations
+
+In 2001, Malandain and Boissonatt ([1](#references)) published a way of
+getting at $D(X)$ quickly using a few clever observations. To elucidate
+these observations, we need to study pairs of points $p, q \in X$
+satisfying $D(X) = d_X(p,q)$, i.e. pairs whose distance yields the
+diameter of $X$. Note there may be several of these, though we just need
+one; call these <span class="text-orange italic">maximal pairs</span>.
+<!-- 1. If there exists a pair $x, x' \in X$ satisfying $d_X(x, x') < D(X)$, then at least one of $(p,q)$ lies outside of the ball $B[x, x']$, where:
+$$ B[x, x'] = B\Bigg( \, \frac{x + x'}{2}, \frac{d_X(x, x')}{2} \, \Bigg) $$
+
+2. If $x, x' \in X$ are any two points such that $X /\ B[x,x'] = \emptyset$, then $D(X) = d_X(x, x')$
+
+3. Let $F(x) \subset X$ denote the set of points of $X$ furthest away from $x \in X$, and let:
+$$ H = \{(x, x') : x \in F(x'), x' \in F(x) \} $$
+
+denote the set of so-called _double normals_. Since these pairs are each in the others furthest point sets, they must lie on the boundary of the convex hull. Thus $H \subset \mathcal{C}(X)$.
+
+<div class="flex flex-row">
+  <img class="mx-auto" src="p1.png" alt="P1" style="width: 33% !important;"> </img>
+  <img class="mx-auto" src="p2.png" alt="P2" style="width: 33% !important;"> </img>
+  <img class="mx-auto" src="p3.png" alt="P3" style="width: 33% !important;"> </img>
+</div>  -->
+<!-- Let's see what each of these observations afford us. -->
+
+### Observation \#1
+
+<blockquote class="not-prose">
+
+If $x, x' \in X$ are any two points such that $d_X(x, x') < D(X)$, then
+at least one of $(p,q)$ lies outside of the ball $B[x, x']$, where:
+$$ B[x, x'] = B\left( \frac{x + x'}{2}, \frac{d_X(x, x')}{2} \right ) $$
+
+</blockquote>
+
+<img class="float-right" src="p1.png" alt="P1" style="width: 53% !important;">
+</img>
+
+The idea underlying this simple observation is that if we find a ball
+$B[x,x']$ covering a large portion of $X$ for some pair $x, x' \in X$
+and $X /\ B[x,x'] \, \cancel= \, \emptyset$, then we know the set
+$X /\ B[x,x']$ contains at least one of the points making up a maximal
+pair. Thus, if we only want to find one point in a maximal pair, we may
+eliminate all points in $X \cap B[x,x']$ from consideration. For
+example, consider the pair of points whose bounding sphere is the red
+sphere shown to the right. The red-ball does not cover $X$, thus we know
+at least one point of a maximal pair exists outside of this ball. This
+fact itself can lead to removing large chunks of unnecessary
+computations done in the brute force case.
+
+### Observation \#2
+
+<blockquote class="not-prose">
+
+If $x, x' \in X$ are any two points such that
+$X /\ B[x,x'] = \emptyset$, then $D(X) = d_X(x, x')$
+
+</blockquote>
+
+The second idea gives a partial stopping condition for the diameter
+computation. If we find a pair of points whose corresponding ball
+$B[x, x']$ contains all of $X$, then we’re done: $d_X(x, x') = D(X)$.
+
+However, the converse is not necessarily true, as demonstrated by the
+picture shown on the left.
+
+<img class="float-start" src="p2.png" alt="P1" style="width: 33% !important; padding: 1em; ">
+</img>
+
+In general, it may be that $X /\ B[p,q]$ is non-empty, so this condition
+alone is not sufficient to find a maximal pair.
+
+<br>
+
+### Observation \#3
+
+<blockquote class="not-prose">
+
+Let $F(x) \subset X$ denote the set of points of $X$ furthest away from
+$x \in X$, and let $H$ denote the set of *double normals*, defined as:
+
+$$ H = \{(x, x') : x \in F(x'), x' \in F(x) \} $$
+
+Since these pairs are mutually in the others furthest point sets, they
+must lie on the boundary of the convex hull. Thus
+$H \subset \mathcal{C}(X)$.
+
+</blockquote>
+
+<img class="float-left" src="p3.png" alt="P3" style="width: 43% !important; padding: 1em;">
+</img>
+
+This observation is essentially a more refined version of the convex
+hull observation and provides an intuitive generalization of the the
+pairs of antipodal points the rotating calipers method is based on to
+higher dimensions. Observe that a pair $(p, q)$ with distance
+$d_X(p, q) = D(X)$ matching the diameter of $X$ *must* be a double
+normal: if there was any point further away from $p$ than $q$ is, then
+that pair would have a distance larger than $D(X)$ (and vice versa).
+Thus, both $p$ and $q$ must belong to $H$.
+
+Both the convex hull $\mathcal{C}(X)$ and the set $H$ of double-normals
+are shown in the right-most image above. The black lines traverse the
+boundary of $\mathcal{C}(X)$, the green line connects the maximal pair
+whose distance yields the diameter, and the orange lines demarcate other
+double-normals. Observe $H \subset \mathcal{C}(X)$, thus if we can find
+double-normals quickly, we may be able to find the diameter quickly as
+well.
+
+## Conclusions: Part I
+
+Amazingly, the short list of ideas and observations described so far are
+all that is needed to produce an efficient algorithm for computing the
+diameter of a point set in $d$ dimensions in $\approx O(nh)$ time. The
+algorithm is simple, but does require more of an explanation than given
+so far—I defer its full description until Part II, which I will cover in
+my next posting.
+
+<h2 id="#references">
+References
+</h1>
+
+1.  Malandain, Grégoire, and Jean-Daniel Boissonnat. “Computing the
+    diameter of a point set.” International Journal of Computational
+    Geometry & Applications 12.06 (2002): 489-509.
+
+[^2]: To profile the memory usage, I’ll use [memray]() to track
+allocations, recording the peak memory usage or “high water mark” used
+by each function call.
+
+[^1]: 1
+
+[^2]: 1

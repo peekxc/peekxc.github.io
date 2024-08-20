@@ -1,26 +1,32 @@
-project: 
+project:
   type: default
   execute-dir: project
   # output-dir: content
   render:
     - "content/**/*.qmd"
     # - "!content/jobs"
+  preview:
+    browser: false
+    watch-inputs: true
+    navigate: false
+    serve:
+      cmd: "eleventy --config eleventy.config.js --watch --serve --incremental"
+      ready: "Server at"
 
 format:
-  gfm: 
-    keep-yaml: true 
+  gfm:
+    keep-yaml: true
     html-math-method: katex
     variant: +yaml_metadata_block
     default-image-extension: ""
-
 # project:
 #   type: website
 #   output-dir: docs
-#   resources: 
+#   resources:
 #     - "/lib" # do not use lib-dir option
-#   render: 
+#   render:
 #     - "_website/"
-    
+
 # website:
 #   repo-url: https://github.com/peekxc/peekxc.github.io
 #   navbar:
@@ -42,11 +48,11 @@ format:
 #         aria-label: GitHub
 
 # format:
-  # html:
-  #   theme: yeti
-  #   linkcolor: rgb(240 94 35)
-  #   mainfont: serif
-  #   css: styles.css
-  #   toc: true
-  #   embed-resources: false
-  #   self-contained-math: false
+# html:
+#   theme: yeti
+#   linkcolor: rgb(240 94 35)
+#   mainfont: serif
+#   css: styles.css
+#   toc: true
+#   embed-resources: false
+#   self-contained-math: false

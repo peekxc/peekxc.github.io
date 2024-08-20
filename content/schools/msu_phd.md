@@ -1,16 +1,19 @@
 ---
 format: gfm
-tags: ["schools"]
+tags:
+  - schools
 layout: partials/card.pug
-card_title: "<span class='line-through'>Doctorate in CMSE</span> (Transferred)"
-card_subtitle: Computational Mathematics, Science and Engineering
-card_date: Michigan State University, 2019-2021
-card_extra: "Advisor: <a class='cursor-pointer underline' href='https://www.joperea.com/' style='color: #0000EE;'>Jose Perea</a>"
+card_title: <span class='line-through'>Doctorate in CMSE</span> (Transferred)
+card_subtitle: 'Computational Mathematics, Science and Engineering'
+card_date: 'Michigan State University, 2019-2021'
+card_extra: >-
+  Advisor: <a class='cursor-pointer underline' href='https://www.joperea.com/'
+  style='color: #0000EE;'>Jose Perea</a>
 background_image: /resources/msu_logo.png
-# card_tags: ["Topology", "Computational mathematics", "Machine learning"]
-card_desc: "Click for teaching experience, coursework taken, and other details..." 
-date: 2019-01-01
+card_desc: 'Click for teaching experience, coursework taken, and other details...'
+date: 2019-01-01T00:00:00.000Z
 ---
+
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
 

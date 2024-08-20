@@ -1,0 +1,59 @@
+extends ../baseof.pug
+
+block main 
+	.container.flex.flex-col.mx-auto.py-2.px-32.min-h-screen
+		// Mode Toggle Buttons
+		.flex.justify-end.mb-4
+			button#compactBtn.p-2.text-gray-500(class='hover:text-gray-700' onclick="showView('compact')")
+				svg.h-6.w-6(xmlns='http://www.w3.org/2000/svg' fill='none' viewbox='0 0 24 24' stroke='currentColor')
+					path(stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 10h18M3 6h18M3 14h18M3 18h18')
+			button#cardBtn.p-2.text-gray-500(class='hover:text-gray-700' onclick="showView('card')")
+				svg.h-6.w-6(xmlns='http://www.w3.org/2000/svg' fill='none' viewbox='0 0 24 24' stroke='currentColor')
+					path(stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 7h18M3 12h18M3 17h18')
+			button#gridBtn.p-2.text-gray-500(class='hover:text-gray-700' onclick="showView('grid')")
+				svg.h-6.w-6(xmlns='http://www.w3.org/2000/svg' fill='none' viewbox='0 0 24 24' stroke='currentColor')
+					path(stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z')
+
+		// Compact view
+		#compactView
+			ul.list-desc.relative.overflow-auto.space-y-2.prose-lg
+				each post in collections.posts
+					if !post.data.draft 
+						li.w-full.border
+							a(href=post.url class='hover:cursor-pointer')
+								.mb-2.text-xl.font-bold.text-gray-900(class='dark:text-white')= post.data.title
+								.mt-auto
+									span.inline-block.calendar_icon.bg-no-repeat.bg-center.h-3.w-3
+									span.inline-block.mx-2.text-xs= post.data.date
+									span.inline-block.tag_icon.bg-no-repeat.bg-center.h-3.w-3
+									span.text-xs.mx-2.text-gray-500= post.data.categories.join(', ')
+
+		// Card view
+		#cardView.hidden
+			ul.list-desc.relative.overflow-auto.space-y-2.prose-lg
+				each post in collections.posts
+					if !post.data.draft 
+						a.duration-250.m-2.flex.max-w-3xl.overflow-hidden.rounded-lg.border.bg-white.shadow-sm.transition(class='hover:cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700' href=post.url style="min-height: 150px;")
+							div.px-3.py-2.flex.flex-col(class='w-3/5')
+								.mb-2.text-xl.font-bold.text-gray-900(class='dark:text-white')= post.data.title
+								p.text-base.text-gray-700(class='dark:text-gray-400')
+									| #{post.data.abstract}
+								.mt-auto
+									span.inline-block.calendar_icon.bg-no-repeat.bg-center.h-3.w-3
+									span.inline-block.mx-2.text-xs= post.data.date
+									span.inline-block.tag_icon.bg-no-repeat.bg-center.h-3.w-3
+									span.text-xs.mx-2.text-gray-500= post.data.categories.join(', ')
+							div.m-0(class='w-2/5' style="min-height: 150px;")
+								img.m-0.object-cover(src='https://via.placeholder.com/400x200' alt='Card Image' loading="lazy")
+
+
+block scripts
+	script.
+		function showView(view) {
+			console.log("Clicked view: "+view);
+			console.log(document.getElementById('compactView'))
+			document.getElementById('compactView').classList.add('hidden');
+			document.getElementById('cardView').classList.add('hidden');
+			//- document.getElementById('gridView').classList.add('hidden');
+			document.getElementById(`${view}View`).classList.remove('hidden');
+		}

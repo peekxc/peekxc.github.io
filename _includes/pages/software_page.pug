@@ -1,0 +1,16 @@
+extends ../baseof.pug
+
+block main 
+	.min-h-screen.flex.flex-row.relative.w-screen
+		.hidden.px-2(class="lg:flex lg:w-2/5")
+		main.w-full.flex-grow.max-w-4xl.px-4.p-2.m-2
+			h2.font-bold.text-2xl.my-2.underline(style="text-align: center;") 
+				| Software 
+			ul.list-none.space-y-2
+				//- - console.log(collections.software)
+				each lib in [...collections.software].reverse()
+					//- - console.log(lib)
+					!= filters.readHTML(lib.page.outputPath)
+					//- != lib.templateContent
+					//- block card_content
+		.hidden.px-2(class="lg:flex lg:w-2/5")

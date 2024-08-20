@@ -1,5 +1,5 @@
 ---
-layout: cv_page.pug
+layout: pages/cv_page.pug
 format: gfm
 ---
 

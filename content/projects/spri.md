@@ -1,16 +1,43 @@
 ---
-tags: ["projects"]
+tags:
+  - projects
 layout: partials/project_card.pug
-card_title: "Spectral relaxations of persistent rank invariants"
-card_subtitle: ""
+card_title: Spectral relaxations of persistent rank invariants
+card_subtitle: ''
 background_image: /resources/elephant_sparsify.png
-abstract: "We introduce a framework for constructing families of continuous relaxations of the persistent rank invariant for persistence modules indexed over the real line. Applications to multi-parameter persistence, parameter optimization, and shape classification are also presented."
-abstract_full: "Using the fact that the persistent rank invariant determines the persistence diagram and vice versa, we introduce a framework for constructing families of continuous relaxations of the persistent rank invariant for persistence modules indexed over the real line. Like the rank invariant, these families obey inclusion-exclusion, are derived from simplicial boundary operators, and encode all the information needed to construct a persistence diagram. Unlike the rank invariant, these spectrally-derived families enjoy a number of stability and continuity properties typically reserved for persistence diagrams, such as smoothness and differentiability over the positive semi-definite cone. By leveraging its relationship with combinatorial Laplacian operators, we find the non-harmonic spectra of our proposed relaxation encode valuable geometric information about the underlying space, prompting several avenues for geometric data analysis. As these Laplacian operators are trace-class operators, we also find the corresponding relaxation can be efficiently approximated with a randomized algorithm based on the stochastic Lanczos quadrature method. We investigate the utility of our relaxation with applications in topological data analysis and machine learning, such as parameter optimization and shape classification."
-image: "/resources/size_function_relax.png"
-card_tags: ["Topology", "Persistence", "Linear Algebra"]
-date: 2023-10-01
-format: gfm # quarto-specific 
+abstract: >-
+  We introduce a framework for constructing families of continuous relaxations
+  of the persistent rank invariant for persistence modules indexed over the real
+  line. Applications to multi-parameter persistence, parameter optimization, and
+  shape classification are also presented.
+abstract_full: >-
+  Using the fact that the persistent rank invariant determines the persistence
+  diagram and vice versa, we introduce a framework for constructing families of
+  continuous relaxations of the persistent rank invariant for persistence
+  modules indexed over the real line. Like the rank invariant, these families
+  obey inclusion-exclusion, are derived from simplicial boundary operators, and
+  encode all the information needed to construct a persistence diagram. Unlike
+  the rank invariant, these spectrally-derived families enjoy a number of
+  stability and continuity properties typically reserved for persistence
+  diagrams, such as smoothness and differentiability over the positive
+  semi-definite cone. By leveraging its relationship with combinatorial
+  Laplacian operators, we find the non-harmonic spectra of our proposed
+  relaxation encode valuable geometric information about the underlying space,
+  prompting several avenues for geometric data analysis. As these Laplacian
+  operators are trace-class operators, we also find the corresponding relaxation
+  can be efficiently approximated with a randomized algorithm based on the
+  stochastic Lanczos quadrature method. We investigate the utility of our
+  relaxation with applications in topological data analysis and machine
+  learning, such as parameter optimization and shape classification.
+image: /resources/size_function_relax.png
+card_tags:
+  - Topology
+  - Persistence
+  - Linear Algebra
+date: 2023-10-01T00:00:00.000Z
+format: gfm
 ---
+
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
 

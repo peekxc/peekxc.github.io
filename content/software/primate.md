@@ -1,8 +1,8 @@
 ---
 format: gfm
 tags: ["software"]
-layout: partials/list_item.pug
 lib_name: "primate" 
+layout: partials/list_item.pug
 doc_link: "https://peekxc.github.io/primate/"
 src_link: "https://github.com/peekxc/primate"
 badges: []

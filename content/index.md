@@ -1,21 +1,12 @@
 ---
 format: gfm
 layout: index.pug
-# about:
-#   template: jolla
-#   image: /resources/profile_pic2.jpg
-#   links:
-#     - icon: twitter
-#       text: twitter
-#       href: https://twitter.com
-#     - icon: github
-#       text: Github
-#       href: https://github.com
 ---
+
 
 <!-- :::{.flex .justify-between .mx-auto} -->
 
-<div style="float: right; margin-left: 1.5rem;">
+<div style="float: right; margin-left: 1.5rem;" loading="lazy">
 
 <img src="../resources/profile_pic_white-min.jpg"
 class="rounded-lg object-cover md:visible hidden show-on-md-screen"
@@ -85,6 +76,13 @@ News
 
 <div class="list-disc overflow-y-scroll mt-0">
 
+- My hypergraph-to-simplicial lifting submission [won silver and
+  bronze](https://pyt-team.github.io/packs/challenge.html) in ICML’s
+  2024 Topological Deep Learning challenge ([GRaM
+  workshop](https://gram-workshop.github.io/))! A blog post to follow
+  soon.
+- I’ll be attending the [2024 Workshop on Computational
+  Persistence](https://www.tugraz.at/projekte/cpw/home) (09/24/24)
 - I’ll be attending University of Florida’s [TDA Meeting
   2024](https://people.clas.ufl.edu/peterbubenik/uftda2024/) (02/08/24)
   <!-- - A journal paper _move scheduling_ has officially been accepted to -->

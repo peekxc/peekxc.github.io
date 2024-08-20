@@ -10,7 +10,13 @@ html(lang="en-US")
 		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js" integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4=" crossorigin="anonymous")
 		//- script(src="/js/highlight.min.js")
 		//- script hljs.initHighlightingOnLoad()		
-		include partials/footer.pug
+		footer.footer.text-center.bottom-0.bg-gray-100.border.w-full.sticky.mt-auto(class="top-[100vh]")
+			span &copy; Matt Piekenbrock 2024. 
+			| Powered by 
+			a(href='https://www.11ty.dev/') Eleventy
+			|&nbsp;and 
+			a(href='https://quarto.org/') Quarto
+			|.
 		include partials/body_scripts.pug
 		//- script. 
 		//- 	//- Reset zoom

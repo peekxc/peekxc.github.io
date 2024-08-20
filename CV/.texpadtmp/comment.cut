@@ -1,0 +1,3 @@
+\small
+I received funding for a proposal accepted by the Google Summer of Code (GSOC) Initiative to the R Project for Statistical Computing to explore, develop, and unify developments related the theory of density-based clustering, namely theory related to the {\em cluster tree}. This involved a variety of code development which culminated in the form of an R package; for more details, see the project page.\footnotemark
+\footnotetext{\url{https://summerofcode.withgoogle.com/archive/2017/projects/5919718795902976/}}

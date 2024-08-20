@@ -1,7 +1,8 @@
 ---
-layout: cv_page.pug
 format: gfm
+layout: pages/cv_page.pug
 ---
+
 
 <div id="compute_experience"
 class="flex flex-col space-y-1 border-sm p-2 mx-auto w-full">

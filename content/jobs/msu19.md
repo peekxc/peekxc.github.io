@@ -1,15 +1,23 @@
 ---
-tags: ["jobs"]
+tags:
+  - jobs
 layout: partials/card.pug
 card_title: Graduate Research Assistant
 card_subtitle: Perea Lab
-card_extra: 'MSU/NEU'
-card_date: 'Fall 2019 - Present'
-abstract: 'Motivated by my previous work on the foundations of density-based clustering, I focused on implementing and extending the Mapper algorithm, a popular and very general method which has been used successfully for data analysis.'
+card_extra: MSU/NEU
+card_date: Fall 2019 - Present
+abstract: >-
+  Motivated by my previous work on the foundations of density-based clustering,
+  I focused on implementing and extending the Mapper algorithm, a popular and
+  very general method which has been used successfully for data analysis.
 background_image: /resources/msu_neu.png
-card_tags: ["Topological Data Analysis", "Linear Algebra", "Machine Learning"]
-date: 2023-09-01
+card_tags:
+  - Topological Data Analysis
+  - Linear Algebra
+  - Machine Learning
+date: 2023-09-01T00:00:00.000Z
 ---
+
 
 After beginning my doctoral research at Michigan State University (Fall
 19’), I transferred to Northeastern University (Boston, MA) in Fall 2021

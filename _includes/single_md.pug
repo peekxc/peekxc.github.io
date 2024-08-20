@@ -1,10 +1,10 @@
 extends ./baseof.pug
 
-block main 
+block main  
 	.min-h-screen.flex.flex-row.relative.w-screen
 		.hidden.px-2(class="lg:flex lg:w-2/5")
 		//- Don't put h-full on main!
-		main.w-full.flex-grow.max-w-5xl.px-8
+		main.w-full.flex-grow.max-w-5xl(class="px-4 lg:px-8")
 			article.prose.prose-base.text-lg
 				h1.my-1.text-center #{ title }
 				//- .text-center.font-light.text-gray Author:&nbsp; 
@@ -16,28 +16,28 @@ block main
 				span.font-medium Matt Piekenbrock 
 				.text-sm.align-middle 
 					span Posted: #{ date }
-					span.text-sm
-						!=  ", ~" + filters.readingTime(content) 
+					//- span.text-sm
+					//- 	!=  ", ~" + readingTime(content) 
 				#page_content.w-full
 				!= content 
 				br
 			script(src="https://utteranc.es/client.js" repo="peekxc/blog_comments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async)
 		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
 			
-			- var page_toc = filters.toc(content);
-			- console.log(page_toc)
-			if page_toc
-				- var el = filters.toHTML(page_toc);
-				- el = el.querySelector('ol');
-				//- - el.setAttribute('id', 'scrollspy');
-				- el.classList.add('sticky');
-				- el.classList.add('top-0');
-				- el.classList.add('space-1-2');
-				- el.classList.add('text-neutral-600')
-				- el.classList.add('px-[5px]')
-				- el.classList.add('dark:text-neutral-200')
-				//- - console.log(page_toc)
-				!= el 	
+			//- - var page_toc = toc(content);
+			//- //- - console.log(page_toc)
+			//- if page_toc
+			//- 	- var el = toHTML(page_toc);
+			//- 	- el = el.querySelector('ol');
+			//- 	//- - el.setAttribute('id', 'scrollspy');
+			//- 	- el.classList.add('sticky');
+			//- 	- el.classList.add('top-0');
+			//- 	- el.classList.add('space-1-2');
+			//- 	- el.classList.add('text-neutral-600')
+			//- 	- el.classList.add('px-[5px]')
+			//- 	- el.classList.add('dark:text-neutral-200')
+			//- 	//- - console.log(page_toc)
+			//- 	!= el 	
 
 block scripts
 	script.
