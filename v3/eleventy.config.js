@@ -4,6 +4,8 @@ import pugPlugin from "@11ty/eleventy-plugin-pug";
 import readingTime from 'reading-time';
 import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 
+// NOTE: For moving to v3, getting JS functions to work w/o filters seems doable via the following:
+// https://github.com/Zearin/eleventy-plugin-pug/blob/main/test-stubs/data-functions/_src/_data/daFunc.js
 export default function (config) {
 	config.setDataDeepMerge(true)
 	config.setUseGitIgnore(true);
@@ -24,16 +26,16 @@ export default function (config) {
 	config.setLibrary("md", md);
 
 	// magic to add basic filters 
-	pugPlugin.options = { 
-		globals: ['filters'],
-		debug: false, 
-		filters: { "readingTime" : readingTime }
-	}
-	// global.filters = config.javascriptFunctions; // magic happens here
 	config.addFilter( "readingTime", readingTime);
 
 	// Add plugins 
-	config.addPlugin(pugPlugin);
+	config.addPlugin(pugPlugin, { 
+		globals: ['filters'],
+		debug: false, 
+		filters: { "readingTime" : readingTime }
+	});
+	// global.filters = config.javascriptFunctions; // magic happens here
+
 	config.addPlugin(InputPathToUrlTransformPlugin);
 
 	// Add callable filters 

@@ -6,7 +6,7 @@ extends ../baseof.pug
 //- TODO: this sometimes fails on a dry-run
 block main 
 	.min-h-screen.flex.flex-row.relative.w-screen
-		.hidden.px-2(class="lg:flex lg:w-2/5")
+		aside.hidden.px-2(class="lg:flex lg:w-2/5")
 		main.w-full.flex-grow.max-w-4xl.px-4.my-4(style="font-family: 'Lucida Grande';")
 			section#statement(class="md:flex md:visible").hidden.show-on-md-screen
 				include ../partials/bio_card
@@ -36,6 +36,7 @@ block main
 					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
 
 block scripts
+	include ../partials/base_scripts.pug
 	script.
 		var spy = new Gumshoe('#scrollspy li a', {
 			offset: function () { 

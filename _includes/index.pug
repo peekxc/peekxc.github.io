@@ -1,24 +1,15 @@
 extends ./baseof.pug
 
 block main 
-	//- sm:mx-16 md:mx-32 lg:mx-48 sm:px-8 md:px-16 lg:px-32
-	//- .container.items-center.max-w-none.m-0.mx-auto(class="") 
-	//- 	article.prose.prose-sm.lead-3.prose-blockquote.max-w-4xl.px-12.mx-auto(style="min-width: 634px !important;")
-	//- 		h1.my-4 #{ title }
-	//- 		#page_content.w-full
-	//- 		!= content 
-	//- 		br
-	.container.items-center.max-w-none.m-0.mx-auto
+	main.container.items-center.max-w-none.m-0.mx-auto
 		.prose.prose-sm.lead-3.prose-blockquote.max-w-4xl.px-12.mx-auto
 			h1.my-4 #{ title }
 			#page_content.w-full
 			!= content 
 			br
-//- (class="md:flex md:flex-col")
+
 block sidebar
-	//- {{ $page_content := ( printf "%s/%s.html" .File.Dir .File.BaseFileName ) | relURL }}
-	//- {{ with .Site.GetPage (printf "%s" $page_content) }}
-	//-   p {{ .TableOfContents }}
-	//-   {{ partial "scrollspy" . }}
-	//- {{ end }}
 	//- TODO: implement auotmated scrollspy https://github.com/jake-low/remark-sectionize/blob/master/index.js
+
+block scripts 
+	include partials/base_scripts.pug

@@ -6,39 +6,6 @@ html(lang="en-US")
 	body
 		block main 
 		block sidebar	
-		//- include ./partials/js_includes.pug
-		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js" integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4=" crossorigin="anonymous")
-		//- script(src="/js/highlight.min.js")
-		//- script hljs.initHighlightingOnLoad()		
-		footer.footer.text-center.bottom-0.bg-gray-100.border.w-full.sticky.mt-auto(class="top-[100vh]")
-			span &copy; Matt Piekenbrock 2024. 
-			| Powered by 
-			a(href='https://www.11ty.dev/') Eleventy
-			|&nbsp;and 
-			a(href='https://quarto.org/') Quarto
-			|.
-		include partials/body_scripts.pug
-		//- script. 
-		//- 	//- Reset zoom
-		//- 	var scale = 'scale(1)';
-		//- 	document.body.style.webkitTransform = scale;   
-		//- 	document.body.style.msTransform = scale;
-		//- 	document.body.style.transform = scale;
 		block scripts
-		//- script.
-		//- 	$(document).ready(function() {
-		//- 		scrollSpy('#main-menu', {
-		//- 			sectionClass: '.scrollspy',
-		//- 			menuActiveTarget: '.menu-item',
-		//- 			offset: 100,
-		//- 			// scrollContainer: null,
-		//- 			smoothScroll: true,
-		//- 			smoothScrollBehavior: function(element) {
-		//- 				console.log('run "smoothScrollBehavior"...', element)
-		//- 				element.scrollIntoView({ behavior: 'smooth' })
-		//- 			},
-		//- 			onActive: (el) => {
-		//- 				console.log('run "onActive"...', el)
-		//- 			}
-		//- 		});
-		//- 	});
+		include partials/footer.pug
+		link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/fonts.css")

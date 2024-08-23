@@ -11,6 +11,7 @@ const HTMLParser = require('node-html-parser');
 const pluginTOC = require('eleventy-plugin-toc');
 const { EleventyRenderPlugin } = require("@11ty/eleventy");
 const readingTime = require('reading-time');
+const { compress } = require('eleventy-plugin-compress');
 
 // Great: https://photogabble.co.uk/tutorials/font-subsetting-with-eleventyjs/
 // const _ = require("lodash");
@@ -31,6 +32,20 @@ module.exports = function(eleventyConfig) {
 		tags: ['h2'] // this generates the sidebar needed for scrollspy!
 		// wrapperClass: ["scrollspy-nav"]
 	});
+	
+	// Minify HTML
+	eleventyConfig.addPlugin(require("./_11ty/html-minifier.js"));
+
+	// Minify CSS
+	// eleventyConfig.addPlugin(require("./_11ty/css-minifier.js"));
+	// eleventyConfig.addPlugin(require("eleventy-plugin-postcss"));
+	eleventyConfig.addPlugin(require("@11tyrocks/eleventy-plugin-lightningcss"));
+
+	// Compression 
+	eleventyConfig.addPlugin(compress, {
+		enabled: true,
+		algorithm: 'brotli' 
+	});
 
 	// eleventyConfig.addPlugin(require('eleventy-plugin-heroicons'));
 	eleventyConfig.addPlugin(EleventyRenderPlugin);
@@ -41,15 +56,20 @@ module.exports = function(eleventyConfig) {
 		return stats.text + ", " + stats.words + " words";
 	});
 
+	// For lazy, blurred images low quality image placeholders (LQIP)
+	eleventyConfig.addPlugin(require('eleventy-plugin-lazyimages'), {
+		preferNativeLazyLoad: true
+	});
 
 	// Copy folders `x/` to `_site/x/`
-	eleventyConfig.addPassthroughCopy({ "lib/css": "css" })
-	eleventyConfig.addPassthroughCopy({ "lib/js" : "js" });
-	eleventyConfig.addPassthroughCopy({ "lib/fonts" : "fonts"}); // katex expects top-level fonts, see: https://katex.org/docs/font
-	// eleventyConfig.addPassthroughCopy("CV");
-	// eleventyConfig.addPassthroughCopy({ "data": "data" });
-	// eleventyConfig.addPassthroughCopy({ "images": "images" });
-	
+	// eleventyConfig.addPassthroughCopy({ "lib/css": "css" })
+	// eleventyConfig.addPassthroughCopy({ "lib/js" : "js" });
+	eleventyConfig.addPassthroughCopy({ "content/fonts" : "fonts"}); // katex expects top-level fonts, see: https://katex.org/docs/font
+	eleventyConfig.addPassthroughCopy("resources");
+	eleventyConfig.addPassthroughCopy("content/**/*.jpg");
+  eleventyConfig.addPassthroughCopy("content/**/*.png");
+	eleventyConfig.addPassthroughCopy("content/**/*.gif");
+
 	// Set markdown library
 	// See: https://dev.to/matthewtole/eleventy-markdown-and-tailwind-css-14f8
 	const md = markdownIt({ 
@@ -75,10 +95,6 @@ module.exports = function(eleventyConfig) {
 		return md.renderInline(content);
 	});
 
-	eleventyConfig.addFilter("cssmin", function(code) {
-    return new CleanCSS({}).minify(code).styles;
-  });
-
 	eleventyConfig.addFilter("readHTML", (path) => {
 		const html_str = fs.readFileSync(path, "utf8");
 		return html_str; 
@@ -98,6 +114,7 @@ module.exports = function(eleventyConfig) {
 		return el.firstChild;
 	});
 
+
 	// eleventyConfig.addFilter("addClass", function(el){
 	// 	el.classList.add(class);
 	// 	return el;
@@ -115,28 +132,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setServerOptions({
     domDiff: false, // this seems slower but better 
     port: 8080,
-    watch: ["_includes/**/*.pug", "_includes/*.pug", "content/*.md", "content/**/*.md", "lib/css/*.css"] 
+    watch: ["_includes/**/*.pug", "_includes/*.pug", "content/*.md", "content/**/*.md", "content/css/*.css"] 
   })
-  // Use regular browser sync
-  // DOESNT WORK 
-  // eleventyConfig.setServerOptions({
-  //   module: "@11ty/eleventy-server-browsersync",
-  //   port: 8080,
-  //   open: false,
-  //   notify: false,
-  //   ui: false,
-  //   ghostMode: false
-  // })
-	eleventyConfig.addPassthroughCopy("resources");
-	eleventyConfig.addPassthroughCopy("content/**/*.jpg");
-  eleventyConfig.addPassthroughCopy("content/**/*.png");
-	eleventyConfig.addPassthroughCopy("content/**/*.gif");
 	// eleventyConfig.ignores.add("content/_jobs/*");
 
 	// To call eleventy correctly, use `npx eleventy ...` from root 
 	// The includes, layouts, and data directories seem relative to either content/* or docs/* folders
 	return {
-		templateFormats: [ "md", "pug", "html" ], // - "liquid"
+		templateFormats: [ "md", "pug", "html", "css", "js"], // - "liquid"
 		dir: {
 			input: "content",
 			output: "docs", // needed for GH pgaes

@@ -31,7 +31,8 @@ html {
 
 
 .link_color{
-  color: #0000EE;
+  /* color: #0000EE; */
+	color: #000000;
 }
 
 @media (min-width: 640px) {

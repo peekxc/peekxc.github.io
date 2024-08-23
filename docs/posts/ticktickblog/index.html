@@ -1,44 +1,34 @@
-<!DOCTYPE html><html lang="en-US"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="initial-scale=1.0, width=device-width"/><meta name="description" content="MJP Website"/><meta name="author" content="Matthew Piekenbrock"/><link rel="stylesheet" type="text/css" href="/css/github.min.css"/><link rel="stylesheet" type="text/css" href="/css/katex.min.css"/><link rel="stylesheet" type="text/css" href="/css/prism-one-light.css"/><link rel="stylesheet" type="text/css" href="/css/fonts.css"/><link rel="stylesheet" type="text/css" href="/css/tw_styles.css"/><link rel="stylesheet" type="text/css" href="/css/overrides.css"/><link type="text/javascript" href="https://cdn.bokeh.org/bokeh/release/bokeh-3.2.0.min.js"/></head><header> <nav class="navbar top-0 left-0 w-full shadow-sm bg-white border-b"><div class="flex container p-3 items-center"><div class="flex align-middle"><a class="text-lg font-semibold mr-4" href="/">Home</a></div><div class="flex align-middle space-x-4"><a class="text-lg text-gray-600 hover:text-gray-600" href="/cv">CV</a><a class="text-lg text-gray-600 hover:text-gray-600" href="/projects">Projects</a><a class="text-lg text-gray-600 hover:text-gray-600" href="https://scholar.google.com/citations?hl=en&amp;user=2lPQ3UQAAAAJ">Publications</a><a class="text-lg text-gray-600 hover:text-gray-600" href="/software">Code</a><a class="text-lg text-gray-600 hover:text-gray-600" href="/blog">Blog</a></div></div></nav></header><body><div class="min-h-screen flex flex-row relative w-screen"><div class="hidden px-2 lg:flex lg:w-2/5"></div><main class="w-full flex-grow max-w-5xl px-4 lg:px-8"><article class="prose prose-base text-lg"><h1 class="my-1 text-center">Tick... tick... Blog!</h1><div class="text-center"><div class="space-x-1 align-middle"><span class="border rounded-sm py-0 px-1 text-sm">web-dev</span><span class="border rounded-sm py-0 px-1 text-sm">javascript</span><span class="border rounded-sm py-0 px-1 text-sm">blogging</span></div></div><hr class="m-1"/><span class="font-medium">Matt Piekenbrock </span><div class="text-sm align-middle"> <span>Posted: 2023-10-15</span></div><div class="w-full" id="page_content"></div><!-- ## Creating a blog over... 10 years...  -->
-<p>Afte a laborous 10 years of working a diner in … NY, … his masterpeice: …</p>
-<p>It was filled with advanced dystopian world, new characters and aliens, and nuanced views. It was for an upper class of denizens.</p>
-<p Or="" so="" the="" movie="" tells="" it.="">And it was garbage\footnote</p>
-<p>After a dismal reaction to his play, … agent tells him a common quip often told to beginner writers,</p>
-<blockquote>
-<p>Next time… write about what what you know</p>
-</blockquote>
-<p or="" so="" im="" told.="">Johnathon Larson would go on to write tick tick boom, and Rent, forever changing the theatre\footnote</p>
-<hr/>
-<p>I’m not a web developer. In fact, I’m quit far from being anything close to a web developer.</p>
-<p>However, I <em>did</em> make this blog / website. From scratch (ish). After trying 3 static site generators, 8 CSS frameworks, and spending 10 years of learning a fraction of web development no more than an hour or two a week, I can finally say I’m happy with the site I’ve built. Some stats for nerds:</p>
-<ul>
-<li>Source templates are less than 1 KB.</li>
-<li>~ 15ms average build time per page (~0.50 seconds for the entire site)</li>
-<li></li>
-</ul>
-<p>More interesting that the stats themselves is the famili</p>
-<ul>
-<li>All basic content comes from markdown files</li>
-<li>All computational content comes from quarto</li>
-<li>The site is fully static</li>
-</ul>
-<br/></article><script src="https://utteranc.es/client.js" repo="peekxc/blog_comments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="async"></script></main><aside class="hidden sticky top-0 flex overflow-y-visible h-screen justify-left pt-4 lg:flex lg:w-2/5"></aside></div><footer class="footer text-center bottom-0 bg-gray-100 border w-full sticky mt-auto top-[100vh]"><span>&copy; Matt Piekenbrock 2024. </span>Powered by <a href="https://www.11ty.dev/">Eleventy</a>&nbsp;and <a href="https://quarto.org/">Quarto</a>.</footer><script src="/js/jquery-3.2.1.min.js"></script><script src="/js/gumshoe.polyfills.min.js"></script><script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.2.0.min.js"></script><script>$(document).ready(function() {
-  // Toggle close accordions with data indices
-  //- var project_cards = $('#projects').find('.card')
-  var cards = $(document).find('.cursor-context-menu')
-  $(cards).on('click', function() {
-    console.log(this)
-    //- console.log("Clicked project card " + $(this))
-    $(this).parent().find(".accordion-header").toggleClass("active")
-    //- $(this).find(".accordion-header").toggleClass("active")
-    $(this).parent().find(".text-ellipsis").toggleClass("hidden");
-    $(this).parent().find(".accordion-body").toggleClass("hidden")
-    $(this).parent().find('svg').toggleClass("hidden"); //- down / up arrow
-  });
-})</script><script>var spy = new Gumshoe('#toc li a', {
+<!doctype html><html lang="en-US"><head><title>MJP Personal Website</title><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,width=device-width"><meta name="description" content="Personal website of Matthew Piekenbrock - includes research, background, resume/CV, and work experience."><meta name="author" content="Matthew Piekenbrock"><link rel="stylesheet" type="text/css" href="/css/tw_styles.css"><link rel="stylesheet" type="text/css" href="/css/overrides.css"><link rel="preload" href="fonts/NunitoSans/NunitoSans-Bold.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="fonts/NunitoSans/NunitoSans-Italic.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="fonts/NunitoSans/NunitoSans-Regular.woff2" as="font" type="font/woff2" crossorigin="crossorigin"></head><header><nav class="navbar top-0 left-0 w-full shadow-sm bg-white border-b"><div class="flex container p-3 items-center"><div class="flex align-middle"><a class="text-lg font-semibold mr-4" href="/">Home</a></div><div class="flex align-middle space-x-4"><a class="text-lg text-gray-600 hover:text-gray-600" href="/cv">CV</a><a class="text-lg text-gray-600 hover:text-gray-600" href="/projects">Projects</a><a class="text-lg text-gray-600 hover:text-gray-600" href="https://scholar.google.com/citations?hl=en&amp;user=2lPQ3UQAAAAJ">Publications</a><a class="text-lg text-gray-600 hover:text-gray-600" href="/software">Code</a><a class="text-lg text-gray-600 hover:text-gray-600" href="/blog">Blog</a></div></div></nav></header><body><div class="min-h-screen flex flex-row relative w-screen"><aside class="hidden px-2 lg:flex lg:w-2/5"></aside><main class="w-full flex-grow max-w-5xl px-4 lg:px-8"><article class="prose prose-base text-lg"><h1 class="my-1 text-center">Tick... tick... Blog!</h1><div class="text-center"><div class="space-x-1 align-middle"><span class="border rounded-sm py-0 px-1 text-sm">web-dev</span><span class="border rounded-sm py-0 px-1 text-sm">javascript</span><span class="border rounded-sm py-0 px-1 text-sm">blogging</span></div></div><hr class="m-1"><span class="font-medium">Matt Piekenbrock</span><div class="text-sm align-middle"><span>Posted: 2023-10-15</span></div><div class="w-full" id="page_content"></div><p>Afte a laborous 10 years of working a diner in … NY, … his masterpeice: …</p><p>It was filled with advanced dystopian world, new characters and aliens, and nuanced views. It was for an upper class of denizens.</p><p or="" so="" the="" movie="" tells="" it.="">And it was garbage\footnote</p><p>After a dismal reaction to his play, … agent tells him a common quip often told to beginner writers,</p><blockquote><p>Next time… write about what what you know</p></blockquote><p or="" so="" im="" told.="">Johnathon Larson would go on to write tick tick boom, and Rent, forever changing the theatre\footnote</p><hr><p>I’m not a web developer. In fact, I’m quit far from being anything close to a web developer.</p><p>However, I <em>did</em> make this blog / website. From scratch (ish). After trying 3 static site generators, 8 CSS frameworks, and spending 10 years of learning a fraction of web development no more than an hour or two a week, I can finally say I’m happy with the site I’ve built. Some stats for nerds:</p><ul><li>Source templates are less than 1 KB.</li><li>~ 15ms average build time per page (~0.50 seconds for the entire site)</li><li></li></ul><p>More interesting that the stats themselves is the famili</p><ul><li>All basic content comes from markdown files</li><li>All computational content comes from quarto</li><li>The site is fully static</li></ul><br></article></main><aside class="hidden sticky top-0 flex overflow-y-visible h-screen justify-left pt-4 lg:flex lg:w-2/5"></aside></div><script src="/js/gumshoe.polyfills.min.js"></script><script>//- $(document).ready(function() {
+//-   // Toggle close accordions with data indices
+//-   //- var project_cards = $('#projects').find('.card')
+//-   var cards = $(document).find('.cursor-context-menu')
+//-   $(cards).on('click', function() {
+//-     console.log(this)
+//-     //- console.log("Clicked project card " + $(this))
+//-     $(this).parent().find(".accordion-header").toggleClass("active")
+//-     //- $(this).find(".accordion-header").toggleClass("active")
+//-     $(this).parent().find(".text-ellipsis").toggleClass("hidden");
+//-     $(this).parent().find(".accordion-body").toggleClass("hidden")
+//-     $(this).parent().find('svg').toggleClass("hidden"); //- down / up arrow
+//-   });
+//- })
+document.addEventListener('DOMContentLoaded', function() {
+	var cards = document.querySelectorAll('.cursor-context-menu');
+	cards.forEach(function(card) {
+		card.addEventListener('click', function() {
+			console.log(this);
+			var parent = this.parentElement;
+			parent.querySelector(".accordion-header").classList.toggle("active");
+			parent.querySelector(".text-ellipsis").classList.toggle("hidden");
+			parent.querySelector(".accordion-body").classList.toggle("hidden");
+			parent.querySelector('svg').classList.toggle("hidden");
+		});
+	});
+});</script><link rel="stylesheet" property="stylesheet" type="text/css" href="/css/katex.min.css"><link rel="stylesheet" property="stylesheet" type="text/css" href="/css/github.min.css"><link rel="stylesheet" property="stylesheet" type="text/css" href="/css/prism-one-light.css"><script src="https://utteranc.es/client.js" repo="peekxc/blog_comments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="async"></script><script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.2.0.min.js"></script><script>var spy = new Gumshoe('#toc li a', {
 	offset: function () { 
 		header = document.querySelector("header");
 		return header.getBoundingClientRect().height; }
 });
 
 
-	//- .hidden.px-2(class="md:flex md:w-1/6")</script></body></html>
+	//- .hidden.px-2(class="md:flex md:w-1/6")</script><footer class="footer text-center bottom-0 bg-gray-100 border w-full sticky mt-auto top-[100vh]"><span>&copy; Matt Piekenbrock 2024. </span>Powered by <a href="https://www.11ty.dev/">Eleventy</a>&nbsp;and <a href="https://quarto.org/">Quarto</a>.</footer><link rel="stylesheet" property="stylesheet" type="text/css" href="/css/fonts.css"></body></html>
