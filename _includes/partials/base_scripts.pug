@@ -1,21 +1,5 @@
-//- script(src="/js/jquery-3.2.1.min.js")
-//- script(href=filters.url("/js/katex.min.js"))  // Not mandatory?
 script(src="/js/gumshoe.polyfills.min.js")
 script.
-	//- $(document).ready(function() {
-	//-   // Toggle close accordions with data indices
-	//-   //- var project_cards = $('#projects').find('.card')
-	//-   var cards = $(document).find('.cursor-context-menu')
-	//-   $(cards).on('click', function() {
-	//-     console.log(this)
-	//-     //- console.log("Clicked project card " + $(this))
-	//-     $(this).parent().find(".accordion-header").toggleClass("active")
-	//-     //- $(this).find(".accordion-header").toggleClass("active")
-	//-     $(this).parent().find(".text-ellipsis").toggleClass("hidden");
-	//-     $(this).parent().find(".accordion-body").toggleClass("hidden")
-	//-     $(this).parent().find('svg').toggleClass("hidden"); //- down / up arrow
-	//-   });
-	//- })
 	document.addEventListener('DOMContentLoaded', function() {
 		var cards = document.querySelectorAll('.cursor-context-menu');
 		cards.forEach(function(card) {
@@ -32,3 +16,4 @@ script.
 script.
 	window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 script(defer src="/_vercel/speed-insights/script.js")
+script(defer src="/_vercel/insights/script.js")

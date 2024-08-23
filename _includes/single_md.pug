@@ -1,10 +1,16 @@
 extends ./baseof.pug
 
+block head 
+	include ./partials/head.pug	
+	//- link(rel="preload" href="fonts/NunitoSans/NunitoSans-Bold.woff2" as="font" type="font/woff2" crossorigin)
+	//- link(rel="preload" href="fonts/NunitoSans/NunitoSans-Italic.woff2" as="font" type="font/woff2" crossorigin)
+	//- link(rel="preload" href="fonts/NunitoSans/NunitoSans-Regular.woff2" as="font" type="font/woff2" crossorigin)
+
 block main  
 	.min-h-screen.flex.flex-row.relative.w-screen
-		aside.hidden.px-2(class="lg:flex lg:w-2/5")
+		aside.hidden.px-2(class="lg:flex lg:w-1/6")
 		//- Don't put h-full on main!
-		main.w-full.flex-grow.max-w-5xl(class="px-4 lg:px-8")
+		main.w-full.flex-grow.max-w-5xl(class="px-4 lg:px-6")
 			article.prose.prose-base.text-lg
 				h1.my-1.text-center #{ title }
 				//- .text-center.font-light.text-gray Author:&nbsp; 
@@ -21,7 +27,7 @@ block main
 				#page_content.w-full
 				!= content 
 				br
-		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
+		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-1/6')
 			
 			//- - var page_toc = toc(content);
 			//- //- - console.log(page_toc)
@@ -40,6 +46,7 @@ block main
 
 block scripts
 	include ./partials/base_scripts.pug
+	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/fonts.css")
 	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/katex.min.css") 
 	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/github.min.css")
 	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/prism-one-light.css")
