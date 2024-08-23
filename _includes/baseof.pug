@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 html(lang="en-US")
-	include partials/head.pug	
+	block head 
+		include partials/head.pug	
 	header 
 		include partials/navbar.pug
 	body
@@ -8,4 +9,3 @@ html(lang="en-US")
 		block sidebar	
 		block scripts
 		include partials/footer.pug
-		link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/fonts.css")

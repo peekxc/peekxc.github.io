@@ -22,10 +22,14 @@ const { compress } = require('eleventy-plugin-compress');
 // const rehypeKatex = importSync('https://esm.sh/rehype-katex@7');
 // const readingTime = require('eleventy-plugin-reading-time');
 // const EleventyUnifiedPlugin = require("eleventy-plugin-unified");
+const PRODUCTION = true
 
 module.exports = function(eleventyConfig) { 
 	// eleventyConfig.addPlugin(dirOutputPlugin);// For logging sizes of things
 	eleventyConfig.setUseGitIgnore(true);
+	eleventyConfig.ignores.add("/_vercel/speed-insights/script.js");
+	eleventyConfig.ignores.add("/_vercel/insights/script.js");
+
 	eleventyConfig.addPlugin(syntaxHighlight);
 
 	eleventyConfig.addPlugin(pluginTOC, { 
@@ -33,22 +37,23 @@ module.exports = function(eleventyConfig) {
 		// wrapperClass: ["scrollspy-nav"]
 	});
 	
-	// Minify HTML
-	eleventyConfig.addPlugin(require("./_11ty/html-minifier.js"));
+	// Minify HTML, CSS
+	// Adds lazy, blurred images low quality image placeholders (LQIP)
+	// NOTE: lightningcss is awesome / the way to go!
+	if (PRODUCTION){
+		eleventyConfig.addPlugin(require("./_11ty/html-minifier.js"));
+		eleventyConfig.addPlugin(require("@11tyrocks/eleventy-plugin-lightningcss"));
+		eleventyConfig.addPlugin(require('eleventy-plugin-lazyimages'), {
+			preferNativeLazyLoad: true
+		});
+	}
 
-	// Minify CSS
-	// eleventyConfig.addPlugin(require("./_11ty/css-minifier.js"));
-	// eleventyConfig.addPlugin(require("eleventy-plugin-postcss"));
-	eleventyConfig.addPlugin(require("@11tyrocks/eleventy-plugin-lightningcss"));
-
-	// Compression 
+	// Compression - this should be the last plugin loaded, and after transforms
 	eleventyConfig.addPlugin(compress, {
-		enabled: true,
-		algorithm: 'brotli' 
+		enabled: PRODUCTION,
+		algorithm: 'brotli'
 	});
 
-	// eleventyConfig.addPlugin(require('eleventy-plugin-heroicons'));
-	eleventyConfig.addPlugin(EleventyRenderPlugin);
 
 	// For reading time 
 	eleventyConfig.addFilter("readingTime", (content) => {
@@ -56,14 +61,8 @@ module.exports = function(eleventyConfig) {
 		return stats.text + ", " + stats.words + " words";
 	});
 
-	// For lazy, blurred images low quality image placeholders (LQIP)
-	eleventyConfig.addPlugin(require('eleventy-plugin-lazyimages'), {
-		preferNativeLazyLoad: true
-	});
 
 	// Copy folders `x/` to `_site/x/`
-	// eleventyConfig.addPassthroughCopy({ "lib/css": "css" })
-	// eleventyConfig.addPassthroughCopy({ "lib/js" : "js" });
 	eleventyConfig.addPassthroughCopy({ "content/fonts" : "fonts"}); // katex expects top-level fonts, see: https://katex.org/docs/font
 	eleventyConfig.addPassthroughCopy("resources");
 	eleventyConfig.addPassthroughCopy("content/**/*.jpg");

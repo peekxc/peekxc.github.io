@@ -4,3 +4,6 @@
 **/node_modules/**
 _site
 **/**/.idea
+/_vercel/**/*.js
+/docs/_vercel/**/*.js
+/content/_vercel/**/*.js

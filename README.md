@@ -62,14 +62,26 @@ npx lightningcss --minify --bundle content/css/*.css --output-dir docs/css/
 
 <!-- MY_ENVIRONMENT=production -->
 
-On generation, all source css/js/font/img assets that are stored in `/lib` and statically copied to `/docs`, which is then used as the root host for GH pages.  
+On generation, all source css/js/font/img assets that are stored in `/content` and statically copied to `/docs`, which is then used as the root host for GH pages.  
 
 ## TODO
-
-- Should probably switch to gulp
-- Add image/css minimizers 
-- Remove tailwind-elements.js and jquery.js dependencies for page performance
-- Nanofy tailwinds styles / figure out why nothing exports well 
-- Move the relevent katex.min and code highlighting styles to the blog/single_md templates
+- Switch to gulp?
+- Finish the grid layout and styling 
+- Add categories and tags pages
+- Add static "search support" / filtering with elastic-lunar
 - Use eleventy filter to provide sections in markdown for sidebar support
-- Implement some of the tricks from [this site](https://github.com/google/eleventy-high-performance-blog)
+- Implement the tricks from [the high performance blog](https://github.com/google/eleventy-high-performance-blog)
+- Port the text content to make it configurable from _data'
+- Figure out layout chaining problem vs readHTML filter solution used now
+- Switch to eleventy 3.0 
+- Add production flag
+- Add 'eleventy-plugin-heroicons' and figure out pug eq. 
+
+
+## Done 
+- Added image / js / css / html minimizers 
+- Enabled brotli compressions 
+- Fixed most of the layout shifting issues
+- Removed tailwind-elements.js and jquery.js dependencies for page performance
+- Moved relevent katex.min and code highlighting styles to the blog/single_md templates
+- Switched to bun 

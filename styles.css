@@ -4,10 +4,10 @@
 
 @layer base {
   a {
-    @apply text-blue-900;
+    @apply text-zinc-700;
   }
   html {
-    font-family: "Times", "Times New Roman", "Georgia", serif, "Lucida Console", Courier, monospace, Verdana, Arial, Helvetica, sans-serif !important;
+    font-family: "Helvetica Neue", "Times", "Times New Roman", "Georgia", serif, "Lucida Console", Courier, monospace, Verdana, Arial, Helvetica, sans-serif !important;
   }
 }
 
@@ -16,3 +16,5 @@
     @apply hover:border-gray-700 border-4;  
   }
 }
+
+

@@ -17,7 +17,12 @@ editor:
   rendor-on-save: true
 bibliography: ../references.bib
 citations-hover: true
+background_image: /posts/lanczos/lanczos_krylov.gif
+abstract: >-
+  An overview of the Lanczos method for tridiagonalizing symmetric linear
+  operators
 ---
+
 
 <!-- Whether for simplifying the representation of complicated systems, characterizing the asymptotic behavior of differential equations, or just fitting polynomials via least-squares, the decompositional approach to matrix computation remains the primary mode with which    -->
 <!-- in many areas of sciences and engineering.  -->
@@ -26,10 +31,8 @@ Central to the theory of matrix factorization is the [spectral
 theorem](https://en.wikipedia.org/wiki/Spectral_theorem), which provides
 conditions under which a linear operator
 $A : \mathbb{R}^n \to \mathbb{R}^n$ can be *diagonalized* in terms of
-its eigenvectors: $$ A = U \Lambda U^{-1} $$
-
-When $A$ is symmetric, the eigen-decomposition is not only guarenteed to
-exist, but its [canonical
+its eigenvectors: $$ A = U \Lambda U^{-1} $$ When $A$ is symmetric, the
+eigen-decomposition is not only guarenteed to exist, but its [canonical
 form](https://en.wikipedia.org/wiki/Canonical_form) may be obtained via
 *orthogonal diagonalization*. Such matrices are among the most commonly
 encountered matrices in applications.

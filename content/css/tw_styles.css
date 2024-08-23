@@ -448,11 +448,11 @@ video {
 
 a {
   --tw-text-opacity: 1;
-  color: rgb(30 58 138 / var(--tw-text-opacity));
+  color: rgb(63 63 70 / var(--tw-text-opacity));
 }
 
 html {
-  font-family: "Times", "Times New Roman", "Georgia", serif, "Lucida Console", Courier, monospace, Verdana, Arial, Helvetica, sans-serif !important;
+  font-family: "Helvetica Neue", "Times", "Times New Roman", "Georgia", serif, "Lucida Console", Courier, monospace, Verdana, Arial, Helvetica, sans-serif !important;
 }
 
 *, ::before, ::after {
@@ -1991,10 +1991,6 @@ html {
   margin-bottom: 0.5rem !important;
 }
 
-.mb-4 {
-  margin-bottom: 1rem !important;
-}
-
 .ml-2 {
   margin-left: 0.5rem !important;
 }
@@ -2092,6 +2088,10 @@ html {
 
 .min-h-screen {
   min-height: 100vh !important;
+}
+
+.w-2 {
+  width: 0.5rem !important;
 }
 
 .w-2\/5 {
@@ -2204,10 +2204,6 @@ html {
 
 .items-stretch {
   align-items: stretch !important;
-}
-
-.justify-end {
-  justify-content: flex-end !important;
 }
 
 .justify-center {
@@ -2771,13 +2767,17 @@ html {
     display: flex !important;
   }
 
+  .lg\:w-1\/6 {
+    width: 16.666667% !important;
+  }
+
   .lg\:w-2\/5 {
     width: 40% !important;
   }
 
-  .lg\:px-8 {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+  .lg\:px-6 {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
   }
 }
 
@@ -2807,3 +2807,5 @@ html {
     background-color: rgb(55 65 81 / var(--tw-bg-opacity)) !important;
   }
 }
+
+

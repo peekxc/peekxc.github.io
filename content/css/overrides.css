@@ -1,8 +1,8 @@
 /* Since tailwind just doesn't work sometimes */
-html {
+/* html {
   font-family: "Nunito Sans", "Cambay Devanagari Regular", "Helvetica Neue", "Georgia", sans-serif, serif !important;
   font-feature-settings: 'ss01' 0, 'salt' 0;
-}
+} */
 /* "Vollkorn" */
 .arrow_up_circle {
   display: inline-block;
@@ -32,7 +32,8 @@ html {
 
 .link_color{
   /* color: #0000EE; */
-	color: #000000;
+	color: rgb(39 39 42);
+	background-color: rgb(39 39 42);
 }
 
 @media (min-width: 640px) {
@@ -116,4 +117,15 @@ blockquote > p {
 }
 .katex-display {
   margin: 0;
+}
+
+/* article p {
+	margin-top: 0.0rem !important;
+	margin-bottom: 0.0rem !important;
+} */
+
+/* Removes extra space between equations */
+article p:has(+ .katex-block), .katex-block + p {
+	margin-top: 0.0rem !important;
+	margin-bottom: 0.0rem !important;
 }
