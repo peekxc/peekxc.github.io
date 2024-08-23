@@ -2,7 +2,7 @@ extends ./baseof.pug
 
 block main  
 	.min-h-screen.flex.flex-row.relative.w-screen
-		.hidden.px-2(class="lg:flex lg:w-2/5")
+		aside.hidden.px-2(class="lg:flex lg:w-2/5")
 		//- Don't put h-full on main!
 		main.w-full.flex-grow.max-w-5xl(class="px-4 lg:px-8")
 			article.prose.prose-base.text-lg
@@ -21,7 +21,6 @@ block main
 				#page_content.w-full
 				!= content 
 				br
-			script(src="https://utteranc.es/client.js" repo="peekxc/blog_comments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async)
 		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
 			
 			//- - var page_toc = toc(content);
@@ -40,6 +39,12 @@ block main
 			//- 	!= el 	
 
 block scripts
+	include ./partials/base_scripts.pug
+	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/katex.min.css") 
+	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/github.min.css")
+	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/prism-one-light.css")
+	script(src="https://utteranc.es/client.js" repo="peekxc/blog_comments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async)
+	script(src="https://cdn.bokeh.org/bokeh/release/bokeh-3.2.0.min.js")
 	script.
 		var spy = new Gumshoe('#toc li a', {
 			offset: function () { 

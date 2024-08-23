@@ -14,7 +14,6 @@ const typographyShared = {
 
 module.exports = { 
 	content: ['./_includes/*.pug', './_includes/partials/*.pug', './_includes/**/*.pug', './docs/**/*.html'],
-	// important: false,
 	important: true,
 	// separator: '_', // DON'T: THIS BREAKS HOVER -- For better looking pug code! => classes are .text_center, hover_*, etc. 
 	extend: {
@@ -40,7 +39,6 @@ module.exports = {
 		// require("tw-elements/dist/plugin.cjs") // for TailWind elements JS 
 	],
 	safelist: {
-		// pattern: [/^bg-(red|orange)-(400)/, /^text-(red|orange)/, /^border-(red|orange|white)/]
 		pattern: [/^bg-/, /^text-/, /^border-/, /^m(b|t|l|r|x|y)-([0-8])/, /^p(b|t|l|r|x|y)-([0-8])/, /^leading-/]
 	},
 	// fontFamily: {
@@ -107,4 +105,3 @@ module.exports = {
 		preflight: true // turning this to false destroys the styles
 	}
 }
-// npx tailwindcss --output lib/css/tw_styles.css

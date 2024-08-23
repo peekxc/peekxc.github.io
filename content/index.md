@@ -6,11 +6,10 @@ layout: index.pug
 
 <!-- :::{.flex .justify-between .mx-auto} -->
 
-<div style="float: right; margin-left: 1.5rem;" loading="lazy">
+<div style="float: right; margin-left: 1.5rem;">
 
-<img src="../resources/profile_pic_white-min.jpg"
-class="rounded-lg object-cover md:visible hidden show-on-md-screen"
-style="max-width: 16rem;" />
+<img src="/resources/profile_pic_white-min.jpg" class="rounded-lg object-cover md:visible .hidden show-on-md-screen" loading="lazy" style="max-width: 16rem; height: auto;" alt="MJP profile pic">
+</img>
 
 </div>
 

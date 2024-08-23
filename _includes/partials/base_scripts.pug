@@ -1,0 +1,31 @@
+//- script(src="/js/jquery-3.2.1.min.js")
+//- script(href=filters.url("/js/katex.min.js"))  // Not mandatory?
+script(src="/js/gumshoe.polyfills.min.js")
+script.
+	//- $(document).ready(function() {
+	//-   // Toggle close accordions with data indices
+	//-   //- var project_cards = $('#projects').find('.card')
+	//-   var cards = $(document).find('.cursor-context-menu')
+	//-   $(cards).on('click', function() {
+	//-     console.log(this)
+	//-     //- console.log("Clicked project card " + $(this))
+	//-     $(this).parent().find(".accordion-header").toggleClass("active")
+	//-     //- $(this).find(".accordion-header").toggleClass("active")
+	//-     $(this).parent().find(".text-ellipsis").toggleClass("hidden");
+	//-     $(this).parent().find(".accordion-body").toggleClass("hidden")
+	//-     $(this).parent().find('svg').toggleClass("hidden"); //- down / up arrow
+	//-   });
+	//- })
+	document.addEventListener('DOMContentLoaded', function() {
+		var cards = document.querySelectorAll('.cursor-context-menu');
+		cards.forEach(function(card) {
+			card.addEventListener('click', function() {
+				console.log(this);
+				var parent = this.parentElement;
+				parent.querySelector(".accordion-header").classList.toggle("active");
+				parent.querySelector(".text-ellipsis").classList.toggle("hidden");
+				parent.querySelector(".accordion-body").classList.toggle("hidden");
+				parent.querySelector('svg').classList.toggle("hidden");
+			});
+		});
+	});

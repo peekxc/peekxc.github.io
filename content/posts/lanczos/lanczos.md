@@ -19,7 +19,6 @@ bibliography: ../references.bib
 citations-hover: true
 ---
 
-
 <!-- Whether for simplifying the representation of complicated systems, characterizing the asymptotic behavior of differential equations, or just fitting polynomials via least-squares, the decompositional approach to matrix computation remains the primary mode with which    -->
 <!-- in many areas of sciences and engineering.  -->
 

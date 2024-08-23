@@ -28,13 +28,13 @@ quarto render
 From the root directory, to render `/content/**.md` => `/docs/**.html`
 
 ```bash
-eleventy --config eleventy.config.js 
+npx eleventy --config eleventy.config.js 
 ```
 
 To develop actively, use:
 
 ```bash
-quarto render && eleventy --config eleventy.config.js --watch --serve
+quarto render && npx eleventy --config eleventy.config.js --watch --serve
 ```
 
 To switch to rendering only blog posts and watching, use: 
@@ -52,8 +52,15 @@ quarto preview --no-browser .
 To preprocess the custom CSS styles from tailwind, use: 
 
 ```bash
-npx tailwindcss -i styles.css --output lib/css/tw_styles.css
+npx tailwindcss -i styles.css --output content/css/tw_styles.css
 ```
+
+To minimize the CSS, use the CLI command: 
+```bash
+npx lightningcss --minify --bundle content/css/*.css --output-dir docs/css/
+```
+
+<!-- MY_ENVIRONMENT=production -->
 
 On generation, all source css/js/font/img assets that are stored in `/lib` and statically copied to `/docs`, which is then used as the root host for GH pages.  
 
