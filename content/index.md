@@ -1,42 +1,20 @@
 ---
 format: gfm
 layout: index.pug
+profile_img: /resources/profile_pic_white-min.jpg
+profile_alt: MJP Profile picture
+name: Matt Piekenbrock
+buttons:
+  - tag: Git
+    url: 'https://github.com/peekxc'
+    class: github_logo
+  - tag: Scholar
+    url: 'https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en'
+    class: scholar_logo
+  - tag: Email
+    text: matt.piekenbrock@gmail.com
 ---
 
-
-<!-- :::{.flex .justify-between .mx-auto} -->
-
-<div style="float: right; margin-left: 1.5rem;">
-
-<img src="/resources/profile_pic_white-min.jpg" class="rounded-lg object-cover md:visible .hidden show-on-md-screen" loading="lazy" style="max-width: 16rem; height: auto;" alt="MJP profile pic">
-</img>
-
-</div>
-
-<h1 class="mb-0">
-Matt Piekenbrock
-</h1>
-
-<div class="my-0">
-
-<a href="https://github.com/peekxc"
-class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
-style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Git</a>
-<a
-href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&amp;hl=en"
-class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
-style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important">Scholar</a>
-<span id="em_link"
-class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0"
-style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important;">Email:
-matt.piekenbrock@gmail</span>
-
-</div>
-
-<!-- <a href="" class="bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0">
-  <span class="align-middle scholar_logo bg-no-repeat bg-center w-2"> </span>
-  Scholar
-</a> -->
 
 <div class="prose-base text-justify">
 

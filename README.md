@@ -77,7 +77,6 @@ On generation, all source css/js/font/img assets that are stored in `/content` a
 - Add production flag
 - Add 'eleventy-plugin-heroicons' and figure out pug eq. 
 
-
 ## Done 
 - Added image / js / css / html minimizers 
 - Enabled brotli compressions 
@@ -85,3 +84,7 @@ On generation, all source css/js/font/img assets that are stored in `/content` a
 - Removed tailwind-elements.js and jquery.js dependencies for page performance
 - Moved relevent katex.min and code highlighting styles to the blog/single_md templates
 - Switched to bun 
+
+## NOTES
+- The eleventy-img plugin is buggy, at least the universal transform 
+- 
