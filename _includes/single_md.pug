@@ -14,25 +14,24 @@ block main
 			article.prose.prose-base.text-lg
 				h1.my-1.text-center #{ title }
 				//- .text-center.font-light.text-gray Author:&nbsp; 
+				//- .flex.justify-between.items-end
+				//- TODO: author icon like https://demo.ghost.io/down-the-rabbit-hole/ or https://chirpy.cotes.page/posts/getting-started/
+				.text-center.text-nowrap.text-md.italic
+					| By: Matt Piekenbrock,&nbsp;&nbsp;&nbsp; Posted: #{ filters.date(date) }, &nbsp;&nbsp;&nbsp; ~#{filters.readingTime(content)}
 				.text-center
 					.space-x-1.align-middle
 						each cat in categories
 							span.border.rounded-sm.py-0.px-1.text-sm #{cat}
 				hr.m-1
-				span.font-medium Matt Piekenbrock 
-				.text-sm.align-middle 
-					span Posted: #{ date }
-					//- span.text-sm
-					//- 	!=  ", ~" + readingTime(content) 
-				#page_content.w-full
-				!= content 
+				#page_content.w-full.pt-4
+					!= content 
 				br
 		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-1/6')
-			
-			//- - var page_toc = toc(content);
-			//- //- - console.log(page_toc)
-			//- if page_toc
-			//- 	- var el = toHTML(page_toc);
+			- var page_toc = filters.toc(content);
+			//- - console.log(page_toc)
+			if page_toc
+				- var el = filters.toHTML(page_toc);
+				!= el 	
 			//- 	- el = el.querySelector('ol');
 			//- 	//- - el.setAttribute('id', 'scrollspy');
 			//- 	- el.classList.add('sticky');
@@ -42,7 +41,6 @@ block main
 			//- 	- el.classList.add('px-[5px]')
 			//- 	- el.classList.add('dark:text-neutral-200')
 			//- 	//- - console.log(page_toc)
-			//- 	!= el 	
 
 block scripts
 	include ./partials/base_scripts.pug
