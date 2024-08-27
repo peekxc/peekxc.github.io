@@ -3,6 +3,6 @@ nav.navbar.top-0.left-0.w-full.shadow-sm.bg-white.border-b
 		.flex.align-middle
 			a.text-lg.font-semibold.mr-4(href="/") Home
 		.flex.align-middle.space-x-4
-			each nb_el in navbar
+			each nb_el in navbar.pages
 				a.text-lg.text-gray-600(href=nb_el.url, class="hover:text-gray-600")
 					= nb_el.title

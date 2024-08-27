@@ -1,6 +1,7 @@
 // Transformer to minify HTML output.
 
-const htmlmin = require("html-minifier");
+// const htmlmin = require("html-minifier");
+import htmlmin from "html-minifier";
 
 const convert = async (rawContent, outputPath) => {
     const content = rawContent;
@@ -17,9 +18,16 @@ const convert = async (rawContent, outputPath) => {
     return content;
 };
 
-module.exports = {
-    initArguments: {},
-    configFunction: async (eleventyConfig = {}) => {
-        eleventyConfig.addTransform("minifyHTML", convert);
-    }
-};
+export default function (config) {
+	config.addTransform("minifyHTML", convert);
+}
+// module.exports = {
+//     initArguments: {},
+//     configFunction: async (eleventyConfig = {}) => {
+//         eleventyConfig.addTransform("minifyHTML", convert);
+//     }
+// };
+
+export const config = {
+
+}

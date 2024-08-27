@@ -7,7 +7,7 @@ extends ../baseof.pug
 block main 
 	.min-h-screen.flex.flex-row.relative.w-screen
 		aside.hidden.px-2(class="lg:flex lg:w-2/5")
-		main.w-full.flex-grow.max-w-4xl.px-4.my-4(style="font-family: 'Lucida Grande';")
+		main.w-full.flex-grow.max-w-4xl.px-4.my-4(style="font-family: 'Lucida Grande'; min-width: 28rem;")
 			section#statement(class="md:flex md:visible").hidden.show-on-md-screen
 				include ../partials/bio_card
 				br
