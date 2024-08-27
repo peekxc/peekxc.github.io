@@ -1,4 +1,4 @@
-const PRODUCTION = false
+const PRODUCTION = true
 
 // Node-js imports
 import fs from 'fs';
@@ -6,6 +6,8 @@ import fs from 'fs';
 // First-class plugins
 import pugPlugin from "@11ty/eleventy-plugin-pug";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import Image, { generateHTML } from "@11ty/eleventy-img";
+import { RenderPlugin } from '@11ty/eleventy';
 
 // Third-party plugins
 import { compress } from 'eleventy-plugin-compress';
@@ -19,9 +21,9 @@ import markdownItAttrs from 'markdown-it-attrs';
 import readingTime from 'reading-time';
 import lightningcss from '@11tyrocks/eleventy-plugin-lightningcss';
 import HTMLParser from 'node-html-parser'
-// import { Image } from "@11ty/eleventy-img"; // buggy 
 // import { InputPathToUrlTransformPlugin } from "@11ty/eleventy"; // messes with paths
 import { DateTime } from 'luxon';
+import toml from "@iarna/toml"
 
 // Local plugins 
 import htmlMinifier from "./_11ty/html-minifier.js"
@@ -37,16 +39,42 @@ function reading_time(content){
 	// + stats.words + " words"
 }
 
+// Makes a shortcode callable from the markdown content
+async function optimizeImage(src, alt="", sizes = "16rem", width = "auto", loading = "lazy", classes="", styles=""){
+	console.log("Optimizing image: "+src+" (alt: "+alt+")")
+	let metadata = await Image(src, { 
+		formats: ["webp", "jpeg"],
+		widths: [width],
+		outputDir: "./docs/img", 
+		sharpOptions: { density: 180 },
+		sharpWebpOptions: { lossless: false, quality: 40, effort: 6 },
+		sharpJpegOptions: { quality: 40 }
+	});
+	let img_attr = { alt, sizes, loading: loading, decoding: "async", class: classes, style: styles };
+	let options = {
+		pictureAttributes: { class: classes, style: styles },
+		whitespaceMode: "inline"
+	};
+	let img_html = Image.generateHTML(metadata, img_attr, options);
+	// console.log(metadata);
+	// console.log(img_html);
+	return img_html;
+}
+
 export default function (config) {
+	config.setLiquidParameterParsing("builtin");
+	config.addDataExtension("toml", (contents) => toml.parse(contents));
 	config.setDataDeepMerge(true)
 	config.setUseGitIgnore(true);
 	config.setLayoutResolution(false);
 	config.ignores.add("/_vercel/speed-insights/script.js");
 	config.ignores.add("/_vercel/insights/script.js");
 
-	// Generate table of contents
+
 	config.addPlugin(syntaxHighlight);
-	
+	config.addPlugin(RenderPlugin);
+	config.addShortcode("optimizeImg", optimizeImage);
+
 	// Minify HTML, CSS, images
 	if (PRODUCTION){
 		config.addPlugin(htmlMinifier);
@@ -59,8 +87,8 @@ export default function (config) {
 	}
 
 	// Copy folders `x/` to `_site/x/`
-	config.addPassthroughCopy({ "content/fonts" : "fonts"}); // katex expects top-level fonts, see: https://katex.org/docs/font
-	config.addPassthroughCopy("resources");
+	config.addPassthroughCopy({ "content/fonts" : "fonts"}); // katex needs top-level fonts: https://katex.org/docs/font
+	config.addPassthroughCopy("content/resources");
 	config.addPassthroughCopy("content/**/*.jpg");
   config.addPassthroughCopy("content/**/*.png");
 	config.addPassthroughCopy("content/**/*.gif");
@@ -88,6 +116,8 @@ export default function (config) {
 	config.addFilter("uppercase", (string) => string.toUpperCase());
 	config.addFilter("toHTML", (content) => HTMLParser.parse(content).firstChild);
 	config.addFilter("date", (date) => DateTime.fromISO(date).toLocaleString(DateTime.DATE_MED))
+	config.addFilter("optimize_image", optimizeImage);
+	config.addFilter("optimize_img", async function(content) { content }); // Faux-paired shortcode
 	// HTMLParser.parse(value).firstChild
 	// config.addFilter("toc", (content) => pluginTOC(content));
 	// console.log(pluginTOC)
@@ -123,6 +153,7 @@ export default function (config) {
 			layouts: "../_includes",  // NOTE: this depends on where you call eleventy from 
 			data: "../_data"          // NOTE: this depends on where you call eleventy from 
 		}, 
+		markdownTemplateEngine: "liquid",
 		passthroughFileCopy: true,
 		pathPrefix: "/"
 	};

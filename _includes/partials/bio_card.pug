@@ -2,12 +2,12 @@
   .flex.flex-col.p-2.my-auto.justify-items-center
     img.object-cover.rounded-t-md.align-middle.aspect-square(src="/resources/profile_pic_blue-min.jpg" style="max-width: 14rem; width: 14rem; height: 14rem;" alt="MJP Profile picture")
     .flex.justify-between.items-stretch
-      a.flex.grow.items-center.rounded-bl-sm(style="white-space: nowrap; background-color: #5087ed;" class="py-1.5" href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en")
-        span.align-middle.scholar_logo.bg-no-repeat.bg-center.h-4.w-4.mx-auto
-      a.flex.grow.items-center.bg-black(style="white-space: nowrap" class="py-1" href="https://github.com/peekxc")
-        span.align-middle.github_logo.bg-no-repeat.bg-center.h-4.w-4.mx-auto
-      a.flex.grow.items-center.rounded-br-sm(style="white-space: nowrap; background-color: #2a66bc;" class="py-1" href="https://www.linkedin.com/in/matthew-piekenbrock-1469777a/")
-        span.place-self-center.linkedin_logo.bg-no-repeat.bg-center.h-4.w-4.mx-auto
+      a.flex.grow.items-center.rounded-bl-sm(style="white-space: nowrap; background-color: #5087ed;" class="py-1.5" href=meta.links.scholar)
+        span.scholar_logo.align-middle.bg-no-repeat.bg-center.h-4.w-4.mx-auto
+      a.flex.grow.items-center.bg-black(style="white-space: nowrap" class="py-1" href=meta.links.github)
+        span.github_logo.align-middle.bg-no-repeat.bg-center.h-4.w-4.mx-auto
+      a.flex.grow.items-center.rounded-br-sm(style="white-space: nowrap; background-color: #2a66bc;" class="py-1" href=meta.links.linkedin)
+        span.linkedin_logo.place-self-center.bg-no-repeat.bg-center.h-4.w-4.mx-auto
   .flex.flex-col.justify-between.px-3.overflow-y-scroll.text-left.py-2.flex-1
     h4.font-bold.text-2xl.antialiased Matt Piekenbrock
     summary.prose-md.leading-5.inline.m-auto.

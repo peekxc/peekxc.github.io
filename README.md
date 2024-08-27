@@ -52,7 +52,7 @@ quarto preview --no-browser .
 To preprocess the custom CSS styles from tailwind, use: 
 
 ```bash
-npx tailwindcss -i styles.css --output content/css/tw_styles.css
+npx tailwindcss -i styles.css -m --output content/css/tw_styles.css
 ```
 
 To minimize the CSS, use the CLI command: 
@@ -76,6 +76,7 @@ On generation, all source css/js/font/img assets that are stored in `/content` a
 - Switch to eleventy 3.0 
 - Add production flag
 - Add 'eleventy-plugin-heroicons' and figure out pug eq. 
+- Compress images to webP with https://squoosh.app/editor, or somehow automate it
 
 ## Done 
 - Added image / js / css / html minimizers 

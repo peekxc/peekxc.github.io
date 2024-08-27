@@ -1,5 +1,3 @@
-const plugin = require('tailwindcss/plugin')
-
 const typographyShared = {
   css: {
     // codeblock are handled with highlight.js
@@ -13,7 +11,7 @@ const typographyShared = {
 };
 
 module.exports = { 
-	content: ['./_includes/*.pug', './_includes/partials/*.pug', './_includes/**/*.pug', './docs/**/*.html'],
+	content: ['./_includes/*.pug', './_includes/**/*.pug', './docs/**/*.html'],
 	important: true,
 	// separator: '_', // DON'T: THIS BREAKS HOVER -- For better looking pug code! => classes are .text_center, hover_*, etc. 
 	extend: {
