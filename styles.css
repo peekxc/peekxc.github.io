@@ -7,13 +7,14 @@
     @apply text-zinc-700;
   }
   html {
-    font-family: "Helvetica Neue", "Times", "Times New Roman", "Georgia", serif, "Lucida Console", Courier, monospace, Verdana, Arial, Helvetica, sans-serif !important;
+    /* font-family: "Helvetica Neue", "Times", "Times New Roman", "Georgia", serif, "Lucida Console", Courier, monospace, Verdana, Arial, Helvetica, sans-serif !important; */
+		font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
   }
 }
 
 @layer utilities {
   .hover_gray {
-    @apply hover:border-gray-700 border-4;  
+    @apply border-4 hover:border-gray-700;  
   }
 }
 

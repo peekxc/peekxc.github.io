@@ -1,21 +1,21 @@
 const typographyShared = {
-  css: {
-    // codeblock are handled with highlight.js
-    // disable tailwind typography for codeblocks
-    pre: false,
-    code: false,
-    'pre code': false,
-    'code::before': false,
-    'code::after': false
-  }
+	css: {
+		// codeblock are handled with highlight.js
+		// disable tailwind typography for codeblocks
+		pre: false,
+		code: false,
+		"pre code": false,
+		"code::before": false,
+		"code::after": false,
+	},
 };
 
-module.exports = { 
-	content: ['./_includes/*.pug', './_includes/**/*.pug', './docs/**/*.html'],
+module.exports = {
+	content: ["./_includes/*.pug", "./_includes/**/*.pug", "./docs/**/*.html"],
 	important: true,
-	// separator: '_', // DON'T: THIS BREAKS HOVER -- For better looking pug code! => classes are .text_center, hover_*, etc. 
+	// separator: '_', // DON'T: THIS BREAKS HOVER -- For better looking pug code! => classes are .text_center, hover_*, etc.
 	extend: {
-		border: ['hover'],
+		border: ["hover"],
 		// fontFamily: {
 		// 	sans: [
 		// 		['"Proxima Nova"', 'Helvetica Neue', 'Arial'],
@@ -24,20 +24,20 @@ module.exports = {
 		typography: {
 			default: {
 				DEFAULT: typographyShared,
-        sm: typographyShared,
-        md: typographyShared,
-        lg: typographyShared,
-        xl: typographyShared,
-        '2xl': typographyShared
-			}
-		}
+				sm: typographyShared,
+				md: typographyShared,
+				lg: typographyShared,
+				xl: typographyShared,
+				"2xl": typographyShared,
+			},
+		},
 	},
 	plugins: [
-		require('@tailwindcss/typography'), 
-		// require("tw-elements/dist/plugin.cjs") // for TailWind elements JS 
+		require("@tailwindcss/typography"),
+		// require("tw-elements/dist/plugin.cjs") // for TailWind elements JS
 	],
 	safelist: {
-		pattern: [/^bg-/, /^text-/, /^border-/, /^m(b|t|l|r|x|y)-([0-8])/, /^p(b|t|l|r|x|y)-([0-8])/, /^leading-/]
+		pattern: [/^bg-/, /^text-/, /^border-/, /^m(b|t|l|r|x|y)-([0-8])/, /^p(b|t|l|r|x|y)-([0-8])/, /^leading-/],
 	},
 	// fontFamily: {
 	// 	sans: [
@@ -53,18 +53,18 @@ module.exports = {
 	// },
 	// variants: {
 	// 	borderColor: ['responsive', 'hover', 'focus', 'active'],
-	// 	backgroundColor: ['responsive', 'hover', 'focus', 'active'], 
+	// 	backgroundColor: ['responsive', 'hover', 'focus', 'active'],
 	// 	textColor: ['responsive', 'hover', 'focus', 'active'],
-	// 	overflow: ['responsive', 'hover', 'focus'], 
+	// 	overflow: ['responsive', 'hover', 'focus'],
 	// 	overscrollBehavior: ['responsive', 'hover', 'focus']
 	// }
 	// theme: {
 	// 	colors: {
 	// 		transparent: 'transparent',
-	// 		orange: '#f05e23', 
+	// 		orange: '#f05e23',
 	// 		red: '#ff0000',
-	// 		white: '#ffffff', 
-	// 		lightgray: '#cecece', 
+	// 		white: '#ffffff',
+	// 		lightgray: '#cecece',
 	// 		black: '#000000',
 	// 		gray: {
 	// 			'': '#808080',
@@ -79,7 +79,7 @@ module.exports = {
 	// 			'900': '#212121',
 	// 		}
 	// 	}
-  // },
+	// },
 	// fontSize: {
 	// 	xs: ['0.75rem', { lineHeight: '1rem' }],
 	// 	sm: ['0.875rem', { lineHeight: '1.25rem' }],
@@ -97,9 +97,9 @@ module.exports = {
 	// 	bold: '700',
 	// 	extrabold: '800',
 	// 	black: '900',
-	// }, 
+	// },
 	// For what preflight does, see: https://v2.tailwindcss.com/docs/preflight
 	corePlugins: {
-		preflight: true // turning this to false destroys the styles
-	}
-}
+		preflight: true, // turning this to false destroys the styles
+	},
+};

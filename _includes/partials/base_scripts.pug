@@ -1,5 +1,10 @@
-script(src="/js/gumshoe.polyfills.min.js")
 script.
+	const menuBtn = document.getElementById('menu-btn');
+	const mobileMenu = document.getElementById('mobile-menu');
+	menuBtn.addEventListener('click', () => {
+		mobileMenu.classList.toggle('hidden');
+		mobileMenu.classList.toggle('block');
+	});
 	document.addEventListener('DOMContentLoaded', function() {
 		var cards = document.querySelectorAll('.cursor-context-menu');
 		cards.forEach(function(card) {

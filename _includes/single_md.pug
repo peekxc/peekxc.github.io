@@ -6,27 +6,32 @@ block head
 	//- link(rel="preload" href="fonts/NunitoSans/NunitoSans-Italic.woff2" as="font" type="font/woff2" crossorigin)
 	//- link(rel="preload" href="fonts/NunitoSans/NunitoSans-Regular.woff2" as="font" type="font/woff2" crossorigin)
 
+
+//- Working grid layout: 
+//- https://play.tailwindcss.com/kmfwDrCg26?size=804x720
 block main  
-	.min-h-screen.flex.flex-row.relative.w-screen
-		aside.hidden.px-2(class="lg:flex lg:w-1/6")
-		//- Don't put h-full on main!
-		main.w-full.flex-grow.max-w-5xl(class="px-4 lg:px-6")
-			article.prose.prose-base.text-lg
+	//- .w-full.min-h-screen.max-w-screen
+	main.container.grid.grid-cols-1(class="md:grid-cols-12")
+		aside.hidden(class="md:block md:col-span-2")
+		//- NO h-full on main! also delegate min width to higher elements. For some reason mx-auto messes up with col-span
+		.mx-auto.w-full(class="px-4 md:px-4 lg:px-6 md:col-span-8" style="max-width: 85ch;")
+			article.text-lg.prose.prose-base
 				h1.my-1.text-center #{ title }
-				//- .text-center.font-light.text-gray Author:&nbsp; 
+				//- .font-light.text-center.text-gray Author:&nbsp; 
 				//- .flex.justify-between.items-end
 				//- TODO: author icon like https://demo.ghost.io/down-the-rabbit-hole/ or https://chirpy.cotes.page/posts/getting-started/
-				.text-center.text-nowrap.text-md.italic
+				.text-sm.italic.text-center
 					| By: Matt Piekenbrock,&nbsp;&nbsp;&nbsp; Posted: #{ filters.date(date) }, &nbsp;&nbsp;&nbsp; ~#{filters.readingTime(content)}
 				.text-center
 					.space-x-1.align-middle
 						each cat in categories
-							span.border.rounded-sm.py-0.px-1.text-sm #{cat}
+							span.px-1.py-0.text-sm.rounded-sm.border #{cat}
 				hr.m-1
-				#page_content.w-full.pt-4
+				#page_content.pt-4.w-full
 					!= content 
 				br
-		aside.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-1/6')
+		//- aside.flex.hidden.overflow-y-visible.sticky.top-0.pt-4.h-screen.justify-left
+		aside.hidden(class="md:block md:col-span-2")
 			- var page_toc = filters.toc(content);
 			//- - console.log(page_toc)
 			if page_toc
@@ -43,6 +48,7 @@ block main
 			//- 	//- - console.log(page_toc)
 
 block scripts
+	script(src="/js/gumshoe.polyfills.min.js")
 	include ./partials/base_scripts.pug
 	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/fonts.css")
 	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/katex.min.css") 
@@ -59,10 +65,10 @@ block scripts
 
 
 			//- .hidden.px-2(class="md:flex md:w-1/6")
-	//- .container.px-8.mx-auto.items-center.max-w-screen-xl(style="min-width: 634px;" class="sm:mx-4 md:mx-16 lg:mx-32 sm:shrink-0 max-w-4xl")
+	//- .container.items-center.px-8.mx-auto.max-w-screen-xl(style="min-width: 634px;" class="max-w-4xl sm:mx-4 md:mx-16 lg:mx-32 sm:shrink-0")
 	//- .grid.grid-cols-12
-	//- 	.container.items-center.max-w-none.m-0.mx-auto.space-y-2(class="col-span-12 md:col-start-1 md:col-span-10").show-col-10-lg
-	//- 		article.prose.prose-base.lead-3.prose-blockquote.max-w-4xl.mx-auto(style="min-width: 634px !important;")
+	//- 	.container.items-center.m-0.mx-auto.space-y-2.max-w-none(class="col-span-12 md:col-start-1 md:col-span-10").show-col-10-lg
+	//- 		article.mx-auto.max-w-4xl.prose.prose-base.lead-3.prose-blockquote(style="min-width: 634px !important;")
 	//- 			h1.my-4 #{ title }
 	//- 			#page_content.w-full
 	//- 			!= content 
@@ -73,7 +79,7 @@ block scripts
 	//- 		- console.log(headers)
 	//- 		if headers
 	//- 			#scrollspy.sticky.top-0.pl-0.text-md
-	//- 				ul#main-menu.menu.text-neutral-600.shadow-none
+	//- 				ul#main-menu.shadow-none.menu.text-neutral-600
 	//- 					each header in headers 
 	//- 						li.py-1 
 	//- 							a.menu-item(href="#"+header['id'])=header['text']

@@ -1,5 +1,6 @@
 ---
 format: gfm
+tags: ["page"]
 layout: pages/cv_page.pug
 ---
 
