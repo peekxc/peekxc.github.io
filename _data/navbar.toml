@@ -16,7 +16,7 @@ url = "/projects"
 
 [[pages]]
 title = "Publications"
-url = "/https://scholar.google.com/citations?hl=en&user=2lPQ3UQAAAAJ"
+url = "https://scholar.google.com/citations?hl=en&user=2lPQ3UQAAAAJ"
 
 [[pages]]
 title = "Code"

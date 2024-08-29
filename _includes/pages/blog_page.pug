@@ -2,11 +2,11 @@ extends ../baseof.pug
 
 block main 
 
-	.flex.flex-row.w-screen.min-h-screen.mx-auto
+	main.container.flex.flex-row.w-screen.min-h-screen.mx-auto
 		aside.hidden.w-0(class="lg:flex lg:w-1/6")
 		.flex.flex-col(style="min-width: 28rem; lg:w-4/6").w-full
 			// Mode Toggle Buttons
-			.flex.mb-2.w-full
+			.flex.w-full
 				button#cardBtn.p-2.text-gray-500(class='hover:text-gray-700' onclick="showView('card')")
 					svg.h-6.w-6(xmlns='http://www.w3.org/2000/svg', fill='none', viewBox='0 0 24 24', stroke-width='1.5', stroke='currentColor')
 						path(fill-rule='evenodd', d='M2.625 6.75a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875 0A.75.75 0 0 1 8.25 6h12a.75.75 0 0 1 0 1.5h-12a.75.75 0 0 1-.75-.75ZM2.625 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 12a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 0 1.5h-12A.75.75 0 0 1 7.5 12Zm-4.875 5.25a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875 0a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 0 1.5h-12a.75.75 0 0 1-.75-.75Z', clip-rule='evenodd')
@@ -22,8 +22,8 @@ block main
 				#cardView.w-full
 					each post in collections.posts
 						if !post.data.draft 
-							li
-								a.duration-250.m-2.flex.overflow-hidden.rounded-lg.border.bg-white.shadow-sm.transition(class='hover:cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700' href=post.url style="min-height: 150px; max-height: 220px;")
+							li.px-2(class="md:px-0")
+								a.duration-250.flex.overflow-hidden.rounded-lg.border.bg-white.shadow-sm.transition(class='hover:cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700' href=post.url style="min-height: 150px; max-height: 220px;")
 									.px-3.py-2.flex.flex-col
 										.mb-2.text-xl.font-bold.text-gray-900(class='dark:text-white')= post.data.title
 										p.text-base.text-ellipsis.overflow-hidden.text-gray-700(class='dark:text-gray-400').m-0
@@ -37,12 +37,12 @@ block main
 										img.m-0.object-cover.h-full(src=post.data.background_image alt='Card Image' loading="lazy")
 				
 				// Compact view
-				#compactView.hidden
+				#compactView.flex.flex-col.hidden.mt-0
 					each post in collections.posts
 						if !post.data.draft 
-							.min-w-max.w-full.border.p-2(class='lg:w-3/5')
-								a(href=post.url class='hover:cursor-pointer')
-									.mb-0.text-lg.font-bold.text-black-600(class='dark:text-white')= post.data.title
+							li.min-w-max.w-full.border.px-2.py-1.bg-white.duration-250.transition(class="md:px-1 hover:cursor-pointer hover:bg-gray-100")
+								a.shadow-sm(href=post.url)
+									.mb-0.text-lg.font-bold.text-gray-900(class='dark:text-white')= post.data.title
 									.mt-auto.flex.flex-row.items-center
 										span.inline-block.calendar_icon.bg-no-repeat.bg-center.h-3.w-3
 										span.inline-block.mx-2.text-xs= post.data.date

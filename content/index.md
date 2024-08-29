@@ -2,6 +2,7 @@
 format: gfm
 layout: index.pug
 name: Matt Piekenbrock
+tags: ["page"]
 buttons:
   - tag: Git
     url: 'https://github.com/peekxc'

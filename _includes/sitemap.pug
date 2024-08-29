@@ -1,0 +1,13 @@
+doctype xml
+urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+	each page in collections.page
+		url
+			loc
+				| #{filters.url("https://mattpiekenbrock.com" + page.url)}
+			lastmod=page.date.toISOString()
+	each post in collections.posts
+		if !post.data.draft
+			url
+				loc
+				| #{filters.url("https://mattpiekenbrock.com" + post.url)}
+				lastmod=post.date.toISOString()

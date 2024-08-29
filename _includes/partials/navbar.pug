@@ -1,8 +1,20 @@
-nav.navbar.top-0.left-0.w-full.shadow-sm.bg-white.border-b
-	.flex.container.p-3.items-center
-		.flex.align-middle
-			a.text-lg.font-semibold.mr-4(href="/") Home
-		.flex.align-middle.space-x-4
+nav.top-0.left-0.w-full.bg-white.border-b.navbar.shadow-sm
+	.flex.flex-row.items-center.p-3(class="justify-start md:justify-start")
+		#brand.flex.align-middle
+			a.mr-4.text-lg.font-semibold(href="/") Home
+		#navlinks.flex.hidden.overflow-hidden.space-x-4.align-middle.grow(class="md:flex")
 			each nb_el in navbar.pages
-				a.text-lg.text-gray-600(href=nb_el.url, class="hover:text-gray-600")
+				a.text-lg.text-gray-600(href=nb_el.url, class="hover:text-gray-900")
 					= nb_el.title
+		.flex.items-center.mr-2.align-middle(class="md:hidden hover:cursor-pointer")
+			#menu-btn.inline-flex.justify-center.items-center.text-gray-400.rounded-md.button.place-end(type="button" style="hover:text-white hover:bg-gray-700 focus:outline-none")
+				svg(class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24")
+					path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16")
+	//- Mobile menu 
+	#mobile-menu.flex.hidden.flex-col.px-2.pt-0.pb-2.space-y-1.border.divide-y(style="sm:px-3" class="md:hidden")
+		each nb_el in navbar.pages
+			a.block.w-full.text-lg.text-gray-600.rounded-sm(href=nb_el.url, class="hover:text-gray-900")
+				if filters.url(page.url).startsWith(filters.url(nb_el.url))
+					| &#10132; !{nb_el.title}
+				else 
+					| &nbsp;&nbsp; !{nb_el.title}

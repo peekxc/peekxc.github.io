@@ -4,6 +4,7 @@ layout: index.pug
 profile_img: "/resources/profile_pic_white-min.jpg"
 profile_alt: MJP Profile picture
 name: Matt Piekenbrock
+tags: ["page"]
 buttons: [
 	{ 
 		"tag": "Git",

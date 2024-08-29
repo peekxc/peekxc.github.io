@@ -3,7 +3,7 @@ extends ../baseof.pug
 block main 
 	.min-h-screen.flex.flex-row.relative.w-screen
 		.hidden.px-2(class="lg:flex lg:w-2/5")
-		main.w-full.flex-grow.max-w-4xl.px-4.p-2.m-2
+		main.w-full.flex-grow.max-w-4xl.px-4.p-2.m-2(style="min-width: 512px;")
 			h2.font-bold.text-2xl.my-2.underline(style="text-align: center;") 
 				| Research Projects
 			ol.relative.ml-3.border-l(class="border-"+tagcolor+"-400")
@@ -41,6 +41,7 @@ block main
 		.hidden.sticky.top-0.flex.overflow-y-visible.h-screen.justify-left.pt-4(class='lg:flex lg:w-2/5')
 
 block scripts 
+	script(src="/js/gumshoe.polyfills.min.js")
 	include ../partials/base_scripts.pug
 //- - console.log(project.data.content)
 //- != project.content

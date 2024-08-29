@@ -7,7 +7,7 @@ extends ../baseof.pug
 block main 
 	.min-h-screen.flex.flex-row.relative.w-screen
 		aside.hidden.px-2(class="lg:flex lg:w-2/5")
-		main.w-full.flex-grow.max-w-4xl.px-4.my-4(style="font-family: 'Lucida Grande'; min-width: 28rem;")
+		main.w-full.flex-grow.max-w-4xl.px-4.my-4(style="font-family: 'Lucida Grande'; min-width: 512px;")
 			section#statement(class="md:flex md:visible").hidden.show-on-md-screen
 				include ../partials/bio_card
 				br
@@ -36,6 +36,7 @@ block main
 					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
 
 block scripts
+	script(src="/js/gumshoe.polyfills.min.js")
 	include ../partials/base_scripts.pug
 	script.
 		var spy = new Gumshoe('#scrollspy li a', {
