@@ -1,7 +1,9 @@
 ---
-layout: pages/cv_page.pug
+layout: pages/cv.pug
 tags: ["page"]
 format: gfm
+eleventyImport:
+  collections: ["schools", "jobs"]
 ---
 
 :::: {#compute_experience .flex .flex-col .space-y-1 .border-sm .p-2 .mx-auto .w-full}

@@ -1,7 +1,7 @@
 ---
 format: gfm
 tags: ["schools"]
-layout: partials/card.pug
+layout: partials/card_block.pug
 card_title: "<span class='line-through'>Doctorate in CMSE</span> (Transferred)"
 card_subtitle: Computational Mathematics, Science and Engineering
 card_date: Michigan State University, 2019-2021

@@ -1,5 +1,5 @@
 ---
 format: gfm
-layout: pages/blog_page.pug
+layout: pages/blog.pug
 tags: ["page"]
 ---

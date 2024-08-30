@@ -1,9 +1,9 @@
 ---
 tags:
   - projects
-layout: partials/project_card.pug
+layout: partials/card_block.pug
 card_title: Automating Point of Interest Discovery in Geospatial Contexts
-card_subtitle: ''
+card_subtitle: ""
 background_image: /resources/geonet.png
 abstract: >-
   With the rapid development and widespread deployment of sensors dedicated to
@@ -42,7 +42,6 @@ card_tags:
   - Network modeling
 date: 2017-01-01T00:00:00.000Z
 ---
-
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
 

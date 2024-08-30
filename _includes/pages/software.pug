@@ -5,12 +5,12 @@ block main
 		.m-2.mx-auto.w-full.max-w-4xl.flex-grow.p-2.px-4(style="min-width: 512px")
 			h2.my-2.text-2xl.font-bold.underline(style="text-align: center") 
 				| Software
-			ul.list-none.space-y-2
+			ul.list-none.prose.prose-base.prose-md
 				each lib in [...collections.software].reverse()
 					!= filters.readHTML(lib.page.outputPath)
 
 block scripts
-	include ../partials/base_scripts.pug
+	include ../partials/scripts.pug
 	link(
 		rel="stylesheet",
 		property="stylesheet",

@@ -1,6 +1,6 @@
 ---
 tags: ["jobs"]
-layout: partials/card.pug
+layout: partials/card_block.pug
 card_title: Research Associate
 card_subtitle: Oak Ridge Institute for Science and Education
 card_extra: 'Air Force Research Laboratory, WPAFB'

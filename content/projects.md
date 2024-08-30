@@ -1,6 +1,7 @@
 ---
-layout: pages/project_page.pug
+layout: pages/projects.pug
 format: gfm
 tags: ["page"]
-tagname: projects
+eleventyImport:
+  collections: ["projects"]
 ---

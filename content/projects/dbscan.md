@@ -1,9 +1,9 @@
 ---
 tags:
   - projects
-layout: partials/project_card.pug
+layout: partials/card_block.pug
 card_title: Bringing High Performance Density-based Clustering to R
-card_subtitle: 'Funding: Air Force Research Labs'
+card_subtitle: "Funding: Air Force Research Labs"
 background_image: /resources/dbscan_ex.png
 abstract: >-
   Density-based clustering techniques have become extremely popular in the past
@@ -41,7 +41,6 @@ card_tags:
 date: 2016-01-01T00:00:00.000Z
 format: gfm
 ---
-
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
 

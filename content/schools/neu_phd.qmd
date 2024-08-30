@@ -1,7 +1,7 @@
 ---
 format: gfm
 tags: ["schools"]
-layout: partials/card.pug
+layout: partials/card_block.pug
 card_title: Doctorate in CS (Pursuing) 
 card_subtitle: Khoury College of Computer Sciences
 card_date: "Northeastern University, 2021-Present"

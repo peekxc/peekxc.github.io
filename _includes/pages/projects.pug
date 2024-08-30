@@ -9,7 +9,7 @@ block main
 			ol.relative.ml-3.border-l(class="border-"+tagcolor+"-400")
 				each project in [...collections.projects].reverse()
 					//- NOTE: Neither extending nor including via partials the card content seems to work, despite console.log working
-					//- include partials/project_card.pug
+					//- include partials/card_block.pug
 					block card_content
 						li.flex-start.flex.items-center.pt-1.mx-auto
 							.absolute.w-4.h-4.rounded-full.border.border-white(class='-left-2 bg-'+tagcolor+'-400') 
@@ -42,7 +42,7 @@ block main
 
 block scripts 
 	script(src="/js/gumshoe.polyfills.min.js")
-	include ../partials/base_scripts.pug
+	include ../partials/scripts.pug
 //- - console.log(project.data.content)
 //- != project.content
 //- - console.log(lst.data.content)
@@ -53,5 +53,5 @@ block scripts
 //- != lst.data.content
 //- != lst.content
 //- block project_cards
-//- include partials/project_card.pug
+//- include partials/card_block.pug
 //- != project.content // this works unfortunately 

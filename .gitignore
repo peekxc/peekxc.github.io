@@ -7,3 +7,4 @@ _site
 /_vercel/**/*.js
 /docs/_vercel/**/*.js
 /content/_vercel/**/*.js
+**/_vercel/**/*.js

@@ -1,6 +1,7 @@
 ---
-layout: pages/software_page.pug
+layout: pages/software.pug
 format: gfm
 tags: ["page"]
-tagname: software
+eleventyImport:
+  collections: ["software"]
 ---

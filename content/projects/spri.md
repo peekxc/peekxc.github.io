@@ -1,9 +1,9 @@
 ---
 tags:
   - projects
-layout: partials/project_card.pug
+layout: partials/card_block.pug
 card_title: Spectral relaxations of persistent rank invariants
-card_subtitle: ''
+card_subtitle: ""
 background_image: /resources/elephant_sparsify.png
 abstract: >-
   We introduce a framework for constructing families of continuous relaxations
@@ -37,7 +37,6 @@ card_tags:
 date: 2023-10-01T00:00:00.000Z
 format: gfm
 ---
-
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
 

@@ -1,6 +1,6 @@
 ---
 tags: ["projects"]
-layout: partials/project_card.pug
+layout: partials/card_block.pug
 card_title: "Move Schedules: Fast persistence computations  in coarse dynamic settings"
 card_subtitle: "Funding: Ginther Fellowship & NSF Grant CCF-2006661"
 background_image: /resources/patch_manifold.png
