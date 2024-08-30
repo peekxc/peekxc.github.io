@@ -1,9 +1,9 @@
 ---
 tags:
   - projects
-layout: partials/project_card.pug
-card_title: 'Move Schedules: Fast persistence computations  in coarse dynamic settings'
-card_subtitle: 'Funding: Ginther Fellowship & NSF Grant CCF-2006661'
+layout: partials/card_block.pug
+card_title: "Move Schedules: Fast persistence computations  in coarse dynamic settings"
+card_subtitle: "Funding: Ginther Fellowship & NSF Grant CCF-2006661"
 background_image: /resources/patch_manifold.png
 abstract: >-
   Persistence diagrams are known to vary continuously with respect to their
@@ -44,7 +44,6 @@ card_tags:
 date: 2022-01-01T00:00:00.000Z
 format: gfm
 ---
-
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
 

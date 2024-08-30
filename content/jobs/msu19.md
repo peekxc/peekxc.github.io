@@ -1,7 +1,7 @@
 ---
 tags:
   - jobs
-layout: partials/card.pug
+layout: partials/card_block.pug
 card_title: Graduate Research Assistant
 card_subtitle: Perea Lab
 card_extra: MSU/NEU
@@ -17,7 +17,6 @@ card_tags:
   - Machine Learning
 date: 2023-09-01T00:00:00.000Z
 ---
-
 
 After beginning my doctoral research at Michigan State University (Fall
 19’), I transferred to Northeastern University (Boston, MA) in Fall 2021

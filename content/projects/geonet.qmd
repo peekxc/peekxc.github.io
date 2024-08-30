@@ -1,6 +1,6 @@
 ---
 tags: ["projects"]
-layout: partials/project_card.pug
+layout: partials/card_block.pug
 card_title: Automating Point of Interest Discovery in Geospatial Contexts
 card_subtitle: ""
 background_image: /resources/geonet.png

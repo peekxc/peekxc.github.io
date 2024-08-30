@@ -1,6 +1,6 @@
 ---
 tags: ["jobs"]
-layout: partials/card.pug
+layout: partials/card_block.pug
 card_title: Graduate Research Assistant
 card_subtitle: Perea Lab
 card_extra: 'MSU/NEU'

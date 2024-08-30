@@ -1,9 +1,9 @@
 ---
 tags:
   - projects
-layout: partials/project_card.pug
-card_title: 'Towards Autonomous Aerial Refueling: Massive Parallel Iterative Closest Point'
-card_subtitle: 'Funding: Oak Ridge Institute for Science and Education'
+layout: partials/card_block.pug
+card_title: "Towards Autonomous Aerial Refueling: Massive Parallel Iterative Closest Point"
+card_subtitle: "Funding: Oak Ridge Institute for Science and Education"
 background_image: /resources/aircraft.png
 abstract: >-
   The Iterative Closest Point (ICP) problem is now a well-studied problem that
@@ -45,7 +45,6 @@ date: 2014-01-01T00:00:00.000Z
 format: gfm
 ---
 
-
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
@@ -79,5 +78,5 @@ style="list-style-type: disc !important;">
 <h4 class="font-bold bg-gray-100"> Software </h4>
 :::
 &#10;:::{.p-2 .overflow-auto .px-4 .py-2 .bg-white-100 .text-sm}
-&#10;The software is not publically available, however the 
+&#10;The software is not publically available, however the
 &#10;::: -->

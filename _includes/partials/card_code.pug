@@ -1,4 +1,4 @@
-li.p-2.space-x-2.space-y-1.border-2
+li.px-2.pt-2.space-x-2.space-y-1.border-2
 	h2.inline.ml-2.text-2xl.italic.font-bold.underline=lib_name
 	//- - var code_desc_html = filters.markdown(code_desc)
 	//- - console.log(code_desc_html)
@@ -7,7 +7,7 @@ li.p-2.space-x-2.space-y-1.border-2
 	//- a.cursor-pointer(href=doc_link) docs
 	if code_links
 		each link, text in code_links
-			//- - console.log(link)
+			- console.log(link)
 			span.float-right.px-1.py-1.m-0.text-sm.font-bold.text-gray-800.bg-gray-100.rounded-sm.border.align-center.middle-align
 				a(href=link) [#{text}]
 	br
@@ -19,6 +19,11 @@ li.p-2.space-x-2.space-y-1.border-2
 	//- hr.my-2
 	!= content
 	hr
+	.inline-flex.flex-row.space-x-1.overflow-hidden.not-prose
+		if badges
+			each badge in badges
+				a.m-0(href=badge.url)
+					img(src=badge.src alt=badge.alt)
 	//- if images 
 	//- 	.flex.overflow-hidden.flex-row.space-x-1 
 	//- 	each image_url in images 

@@ -1,6 +1,6 @@
 ---
 tags: ["jobs"]
-layout: partials/card.pug
+layout: partials/card_block.pug
 card_title: Civilian Research Assistant
 card_subtitle: Southwestern Ohio Council For Higher Education
 card_date: December 2013 - June 2014

@@ -1,7 +1,7 @@
 ---
 tags:
   - jobs
-layout: partials/card.pug
+layout: partials/card_block.pug
 card_title: Graduate Research Assistant
 card_subtitle: Web and Complex Systems Group
 card_extra: Wright State University
@@ -19,7 +19,6 @@ date: 2018-09-01T00:00:00.000Z
 end_date: 2018-01-01T00:00:00.000Z
 start_date: 2015-01-01T00:00:00.000Z
 ---
-
 
 My graduate research aimed at modeling real-world traffic network
 networks at a macroscopic scale. The high-level goal of the project was

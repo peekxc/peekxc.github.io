@@ -1,6 +1,6 @@
 ---
 tags: ["projects"]
-layout: partials/project_card.pug
+layout: partials/card_block.pug
 card_title: "Efficient Multiscale Simplicial Complex Generation for Mapper"
 card_subtitle: "Funding: Air Force Research Labs"
 background_image: /resources/reeb_graph.png

@@ -1,7 +1,9 @@
 ---
 format: gfm
 tags: ["page"]
-layout: pages/cv_page.pug
+layout: pages/cv.pug
+eleventyImport:
+  collections: ["schools", "jobs"]
 ---
 
 <div id="compute_experience"

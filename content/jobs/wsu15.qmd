@@ -1,6 +1,6 @@
 ---
 tags: ["jobs"]
-layout: partials/card.pug
+layout: partials/card_block.pug
 card_title: Graduate Research Assistant
 card_subtitle: Web and Complex Systems Group
 card_extra: 'Wright State University'

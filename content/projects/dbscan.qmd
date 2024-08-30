@@ -1,6 +1,6 @@
 ---
 tags: ["projects"]
-layout: partials/project_card.pug
+layout: partials/card_block.pug
 card_title: Bringing High Performance Density-based Clustering to R
 card_subtitle: "Funding: Air Force Research Labs"
 background_image: /resources/dbscan_ex.png
