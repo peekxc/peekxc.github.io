@@ -2,7 +2,6 @@
 .idea
 **/.idea/**
 **/node_modules/**
-_site
 **/**/.idea
 /_vercel/**/*.js
 /docs/_vercel/**/*.js

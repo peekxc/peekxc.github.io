@@ -24,7 +24,7 @@ buttons: [
 ---
 
 ```{=html}
-{% optimizeImg './content/resources/profile_pic_white-min.jpg', 'profile_pic', '100vw', '720px', 'eager', 'rounded-lg object-cover md:visible hidden show-on-md-screen float-right', 'max-width: 16rem; width: 16rem; height: 16rem; margin: 0 0 0 2em; ' %}
+{% optimizeImg './content/resources/profile_pic_white-min.jpg', 'profile_pic', '720px', 'eager', ['webp', 'jpeg'], '100vw', 'rounded-lg object-cover md:visible hidden show-on-md-screen float-right', 'max-width: 16rem; width: 16rem; height: 16rem; margin: 0 0 0 2em;' %}
 ```
 
 ::: {.prose-base .text-justify}

@@ -29,6 +29,17 @@ badges:
 
 _simplextree_ is joint R / Python package that simplifies computation for general [simplicial complexes](https://en.wikipedia.org/wiki/Abstract_simplicial_complex) of any dimension by providing pybind11 bindings to a Simplex Tree data structure implemented in C++17.
 
-![image](/resources/simplextree.png)
+{% optimizeImg './content/resources/simplextree.png', 'simplextree', 'auto', 'lazy', ['webp', 'png'], '100vw', 'text-middle object-center mx-auto', '' %}
 
 Natively supports many tree operations, including insertions, removals, expansions, collapses, star/link enumerations, and various ordered traversals.
+
+<!-- <div class="inline-flex flex-row space-x-1 overflow-hidden not-prose">
+for badge in badges
+optimizeImg badge.src badge.alt "auto" "lazy" "svg" "100vw" "text-middle object-center mx-auto" ""
+endfor
+</div> -->
+
+<!-- , { alt: badge.alt, widths: 480, loading: 'lazy', formats: 'svg', sizes: '100vw', classes: 'text-middle object-center mx-auto', styles: '' -->
+<!-- <a class="m-0" href={{badge.url}}>
+<img src={{badge.src}} alt={{badge.alt}}> </img>
+</a> -->

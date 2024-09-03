@@ -38,12 +38,18 @@ block main
 					a.text-neutral-600(class='px-[5px] dark:text-neutral-200' href='#compute_experience') Experience
 
 block scripts
-	script(src="/js/gumshoe.polyfills.min.js")
 	include ../partials/scripts.pug
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/simple-scrollspy/2.4.1/simple-scrollspy.min.js")
 	script.
-		var spy = new Gumshoe('#scrollspy li a', {
-			offset: function () { 
-				header = document.querySelector("header");
-				return header.getBoundingClientRect().height; 
-			}
-		});
+		window.onload = function () {
+			navbar = document.querySelector("#navbar");
+			var scrollspy = scrollSpy("#scrollspy", {
+				sectionClass: ".scrollspy", 
+				menuActiveTarget: "li > a", 
+				offset: navbar.getBoundingClientRect().height, 
+				smoothscroll: false,
+				//- onActive: (el) => {
+				//- 	console.log('run "onActive"...', el)
+				//- }
+			})
+		}

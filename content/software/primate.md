@@ -5,7 +5,6 @@ lib_name: "primate"
 layout: partials/card_code.pug
 doc_link: "https://peekxc.github.io/primate/"
 src_link: "https://github.com/peekxc/primate"
-background_image: /resources/msu_logo.png
 code_category: ["Linear algebra"]
 code_tags: ["linear algebra", "spectral functions"]
 code_links:

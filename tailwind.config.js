@@ -11,7 +11,8 @@ const typographyShared = {
 };
 
 module.exports = {
-	content: ["./_includes/*.pug", "./_includes/**/*.pug", "./docs/**/*.html"],
+	// For some reason, the glob pattern doesn't pick up the partials and pages directories
+	content: ["./_includes/**/*.pug", "./_includes/partials/*.pug", "./_includes/pages/*.pug", "./_site/**/*.html"],
 	important: true,
 	// separator: '_', // DON'T: THIS BREAKS HOVER -- For better looking pug code! => classes are .text_center, hover_*, etc.
 	extend: {
