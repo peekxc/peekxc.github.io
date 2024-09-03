@@ -69,6 +69,7 @@ On generation, all source css/js/font/img assets that are stored in `/content` a
 
 ## TODO
 
+- Use google console to ensure GH.io site / main site are canonicalized (see: https://ahrefs.com/blog/canonical-tags/)
 - Switch to gulp?
 - Finish the grid layout and styling
 - Add categories and tags pages
