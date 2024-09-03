@@ -78,20 +78,11 @@
 	color: #d4d4d4;
 }
 
-#scrollspy a {
-	color: #525252;
-}
-
-#scrollspy li.active a {
-	color: #374151 !important;
-	font-weight: bold !important;
-}
-
 #toc a {
 	color: #525252;
 }
 
-#toc li.active a {
+#toc li a.active {
 	color: #374151 !important;
 	font-weight: bold !important;
 }

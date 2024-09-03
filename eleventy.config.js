@@ -12,12 +12,14 @@ import { RenderPlugin } from "@11ty/eleventy";
 // Third-party plugins
 import { compress } from "eleventy-plugin-compress";
 import lazyimages from "eleventy-plugin-lazyimages";
+// import eleventyRemark from "@fec/eleventy-plugin-remark";
 // import pluginTOC from 'eleventy-plugin-toc';
 import pluginTOC from "eleventy-plugin-nesting-toc";
 import markdownIt from "markdown-it";
 import markdownItKatex from "@aquabx/markdown-it-katex";
 import markdownItAnchor from "markdown-it-anchor";
 import markdownItAttrs from "markdown-it-attrs";
+import markdownItHeaderSections from "markdown-it-header-sections";
 import readingTime from "reading-time";
 import lightningcss from "@11tyrocks/eleventy-plugin-lightningcss";
 import HTMLParser from "node-html-parser";
@@ -43,17 +45,18 @@ function reading_time(content) {
 async function optimizeImage(
 	src,
 	alt = "",
-	sizes = "16rem",
 	width = "auto",
 	loading = "lazy",
+	formats = ["webp", "jpeg"],
+	sizes = "100vw",
 	classes = "",
 	styles = ""
 ) {
-	console.log("Optimizing image: " + src + " (alt: " + alt + ")");
+	console.log("-- [11ty] Optimizing image: " + alt + " with formats: " + formats);
 	let metadata = await Image(src, {
-		formats: ["webp", "jpeg"],
+		formats: formats,
 		widths: [width],
-		outputDir: "./docs/img",
+		outputDir: "./_site/img",
 		sharpOptions: { density: 180 },
 		sharpWebpOptions: { lossless: false, quality: 40, effort: 6 },
 		sharpJpegOptions: { quality: 40 },
@@ -70,7 +73,7 @@ async function optimizeImage(
 }
 
 export default function (config) {
-	config.setLiquidParameterParsing("builtin");
+	config.setLiquidParameterParsing("builtin"); // for named key-value parameters (doesn't work)
 	config.addDataExtension("toml", (contents) => toml.parse(contents));
 	config.setDataDeepMerge(true);
 	config.setUseGitIgnore(true);
@@ -81,6 +84,7 @@ export default function (config) {
 	config.addPlugin(syntaxHighlight);
 	config.addPlugin(RenderPlugin);
 	config.addShortcode("optimizeImg", optimizeImage);
+	// config.addPlugin(eleventyRemark);
 
 	// Minify HTML, CSS, images
 	if (PRODUCTION) {
@@ -108,9 +112,10 @@ export default function (config) {
 		typographer: true, // Enable some language-neutral replacement + quotes beautification
 		breaks: false, // Convert \n into <br/> tags
 	})
-		.use(markdownItKatex)
 		.use(markdownItAnchor, { level: 2 })
-		.use(markdownItAttrs);
+		.use(markdownItAttrs)
+		// .use(markdownItHeaderSections)
+		.use(markdownItKatex);
 	config.setLibrary("md", md);
 
 	// Register table of contents plugin
@@ -125,10 +130,9 @@ export default function (config) {
 	config.addFilter("uppercase", (string) => string.toUpperCase());
 	config.addFilter("toHTML", (content) => HTMLParser.parse(content).firstChild);
 	config.addFilter("date", (date) => DateTime.fromISO(date).toLocaleString(DateTime.DATE_MED));
-	config.addFilter("optimize_image", optimizeImage);
-	config.addFilter("optimize_img", async function (content) {
-		content;
-	}); // Faux-paired shortcode
+	config.addFilter("optimize_image", function (url) {
+		return optimizeImage(url).then((img_html) => img_html);
+	});
 	// HTMLParser.parse(value).firstChild
 	// config.addFilter("toc", (content) => pluginTOC(content));
 	// console.log(pluginTOC)
@@ -159,7 +163,7 @@ export default function (config) {
 		templateFormats: ["md", "pug", "html", "css", "js"], // - "liquid"
 		dir: {
 			input: "content",
-			output: "docs", // needed for GH pgaes
+			output: "_site",
 			includes: "../_includes", // NOTE: this depends on where you call eleventy from
 			layouts: "../_includes", // NOTE: this depends on where you call eleventy from
 			data: "../_data", // NOTE: this depends on where you call eleventy from

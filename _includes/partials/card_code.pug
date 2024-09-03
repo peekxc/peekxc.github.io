@@ -1,22 +1,10 @@
 li.px-2.pt-2.space-x-2.space-y-1.border-2
 	h2.inline.ml-2.text-2xl.italic.font-bold.underline=lib_name
-	//- - var code_desc_html = filters.markdown(code_desc)
-	//- - console.log(code_desc_html)
-	//- - code_desc_html.classList.add('text-sm', 'leading-4')
-	//- div(style="[&>*]:leading-1 [&>*]:test-sm")!= code_desc_html
-	//- a.cursor-pointer(href=doc_link) docs
 	if code_links
 		each link, text in code_links
-			- console.log(link)
 			span.float-right.px-1.py-1.m-0.text-sm.font-bold.text-gray-800.bg-gray-100.rounded-sm.border.align-center.middle-align
 				a(href=link) [#{text}]
 	br
-	//- each badge in badges 
-	//-   span.px-2.py-1.font-bold.text-gray-800.bg-gray-100.rounded-md.border.text-md
-	//- - console.log(filters.url("/resources/" + background_img))
-	//- if background_img
-	//-   img(src=filters.url("/resources/" + background_img) width="100%")
-	//- hr.my-2
 	!= content
 	hr
 	.inline-flex.flex-row.space-x-1.overflow-hidden.not-prose
@@ -24,11 +12,3 @@ li.px-2.pt-2.space-x-2.space-y-1.border-2
 			each badge in badges
 				a.m-0(href=badge.url)
 					img(src=badge.src alt=badge.alt)
-	//- if images 
-	//- 	.flex.overflow-hidden.flex-row.space-x-1 
-	//- 	each image_url in images 
-	//- 		img(src=filters.image(image_url))
-	//- - var content_list = filters.toHTML(content).innerHTML
-	//- if content_list
-	//-   span.flex.overflow-hidden.flex-row.space-x-1(style="min-height: 24px !important;")
-	//-     != content_list

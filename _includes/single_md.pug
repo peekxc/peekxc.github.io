@@ -11,11 +11,11 @@ block head
 //- https://play.tailwindcss.com/oxQ6VX7DIg?size=1032x720
 block main  
 	//- .w-full.min-h-screen.max-w-screen
-	main.container.grid.grid-cols-1(class="md:grid-cols-12")
+	main.grid.grid-cols-1(class="md:grid-cols-12")
 		aside.hidden(class="md:block md:col-span-2")
 		//- NO h-full on main! also delegate min width to higher elements. For some reason mx-auto messes up with col-span
-		.mx-auto.w-full(class="px-4 md:px-4 lg:px-6 md:col-span-8" style="max-width: 85ch;")
-			article.text-lg.prose.prose-base
+		article.mx-auto.w-full(class="px-4 md:px-4 lg:px-6 md:col-span-8" style="max-width: 85ch;")
+			.text-lg.prose.prose-base
 				h1.my-1.text-center #{ title }
 				//- .font-light.text-center.text-gray Author:&nbsp; 
 				//- .flex.justify-between.items-end
@@ -35,20 +35,24 @@ block main
 			- var page_toc = filters.toc(content);
 			//- - console.log(page_toc)
 			if page_toc
-				- var el = filters.toHTML(page_toc);
-				!= el 	
-			//- 	- el = el.querySelector('ol');
-			//- 	//- - el.setAttribute('id', 'scrollspy');
-			//- 	- el.classList.add('sticky');
-			//- 	- el.classList.add('top-0');
-			//- 	- el.classList.add('space-1-2');
-			//- 	- el.classList.add('text-neutral-600')
-			//- 	- el.classList.add('px-[5px]')
-			//- 	- el.classList.add('dark:text-neutral-200')
-			//- 	//- - console.log(page_toc)
+				ol#toc.sticky.top-2.space-1-2.text-neutral-600(class="px-[5px] dark:text-neutral-200 hover:text-gray-600")
+					- var el = filters.toHTML(page_toc);
+					- var items = el.getElementsByTagName("li");
+					each item in items
+						!= item 
+					//- - el = el.querySelector('ol');
+					//- - el.setAttribute('id', 'scrollspy');
+					//- - el.classList.add('sticky');
+					//- - el.classList.add('top-0');
+					//- - el.classList.add('space-1-2');
+					//- - el.classList.add('text-neutral-600')
+					//- - el.classList.add('px-[5px]')
+					//- - el.classList.add('dark:text-neutral-200')
+					//- - console.log(page_toc)
 
 block scripts
-	script(src="/js/gumshoe.polyfills.min.js")
+	//- script(src="/js/gumshoe.polyfills.min.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/simple-scrollspy/2.4.1/simple-scrollspy.min.js" integrity="sha512-NNb5TgmE+7PHedvAWwPKZ/ukCGJciTHZ23ghPriEeEfcGySDBm9zIrjaXp/WNAUcVYhi5XhJ1rHveDKR35CInw==" crossorigin="anonymous" referrerpolicy="no-referrer")
 	include ./partials/scripts.pug
 	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/fonts.css")
 	link(rel="stylesheet" property="stylesheet" type="text/css" href="/css/katex.min.css") 
@@ -57,31 +61,28 @@ block scripts
 	script(src="https://utteranc.es/client.js" repo="peekxc/blog_comments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async)
 	script(src="https://cdn.bokeh.org/bokeh/release/bokeh-3.2.0.min.js")
 	script.
-		var spy = new Gumshoe('#toc li a', {
-			offset: function () { 
-				header = document.querySelector("header");
-				return header.getBoundingClientRect().height; }
-		});
+		window.onload = function () {
+			navbar = document.querySelector("#navbar");
+			var scrollspy = scrollSpy("#toc", {
+				sectionClass: ".scrollspy", 
+				menuActiveTarget: "li > a", 
+				offset: navbar.getBoundingClientRect().height, 
+				smoothscroll: true,
+				//- scrollContainer: "article"
+				//- onActive: (el) => {
+				//- 	console.log('run "onActive"...', el)
+				//- }
+			})
+		}
+	//- script.
+	//- 	var spy = new Gumshoe('#toc li a', {
+	//- 		offset: function () { 
+	//- 			navbar = document.querySelector("#navbar");
+	//- 			return navbar.getBoundingClientRect().height; 
+	//- 		},
+	//- 		reflow: false
+	//- 	});
 
 
-			//- .hidden.px-2(class="md:flex md:w-1/6")
-	//- .container.items-center.px-8.mx-auto.max-w-screen-xl(style="min-width: 634px;" class="max-w-4xl sm:mx-4 md:mx-16 lg:mx-32 sm:shrink-0")
-	//- .grid.grid-cols-12
-	//- 	.container.items-center.m-0.mx-auto.space-y-2.max-w-none(class="col-span-12 md:col-start-1 md:col-span-10").show-col-10-lg
-	//- 		article.mx-auto.max-w-4xl.prose.prose-base.lead-3.prose-blockquote(style="min-width: 634px !important;")
-	//- 			h1.my-4 #{ title }
-	//- 			#page_content.w-full
-	//- 			!= content 
-	//- 			br
-	//- 	div(class="md:block md:visible").show-col-2-lg
-	//- 		//- See: https://github.com/11ty/eleventy/issues/1593
-	//- 		- console.log("headers: ")
-	//- 		- console.log(headers)
-	//- 		if headers
-	//- 			#scrollspy.sticky.top-0.pl-0.text-md
-	//- 				ul#main-menu.shadow-none.menu.text-neutral-600
-	//- 					each header in headers 
-	//- 						li.py-1 
-	//- 							a.menu-item(href="#"+header['id'])=header['text']
 
 block sidebar

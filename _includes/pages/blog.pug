@@ -2,9 +2,10 @@ extends ../baseof.pug
 
 block main 
 
-	main.container.flex.flex-row.w-screen.min-h-screen.mx-auto
+	//- main.container.flex.flex-row.w-screen.min-h-screen.mx-auto
+	main.flex.flex-row.w-full.min-h-screen
 		aside.hidden.w-0(class="lg:flex lg:w-1/6")
-		.flex.flex-col(style="min-width: 28rem; lg:w-4/6").w-full
+		.flex.flex-col(style="lg:w-4/6").w-full
 			// Mode Toggle Buttons
 			.flex.w-full
 				button#cardBtn.p-2.text-gray-500(class='hover:text-gray-700' onclick="showView('card')")
@@ -24,7 +25,7 @@ block main
 						if !post.data.draft 
 							li.px-2(class="md:px-0")
 								a.duration-250.flex.overflow-hidden.rounded-lg.border.bg-white.shadow-sm.transition(class='hover:cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700' href=post.url style="min-height: 150px; max-height: 220px;")
-									.px-3.py-2.flex.flex-col
+									.px-3.py-2.flex.flex-col(class="md:w-3/5")
 										.mb-2.text-xl.font-bold.text-gray-900(class='dark:text-white')= post.data.title
 										p.text-base.text-ellipsis.overflow-hidden.text-gray-700(class='dark:text-gray-400').m-0
 											| #{post.data.abstract}
@@ -33,7 +34,7 @@ block main
 											span.inline-block.mx-2.text-xs= post.data.date
 											span.inline-block.tag_icon.bg-no-repeat.bg-center.h-3.w-3
 											span.text-xs.mx-2.text-gray-500= post.data.categories.join(', ')
-									.m-0.border-l(class='w-0 lg:w-2/5' style="min-height: 150px; lg:flex lg:visible").show-on-lg-screen
+									.m-0.border-l.hidden(class='md:w-2/5 md:flex md:visible overflow-hidden' style="min-height: 150px;")
 										img.m-0.object-cover.h-full(src=post.data.background_image alt='Card Image' loading="lazy")
 				
 				// Compact view

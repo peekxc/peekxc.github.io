@@ -2,9 +2,8 @@
 html(lang="en-US")
 	block head 
 		include partials/head.pug	
-	header 
-		include partials/navbar.pug
-	body(style="min-width: 38rem;")
+	include partials/navbar.pug
+	body(style="min-width: 428px !important;")
 		block main 
 		block sidebar	
 		block scripts

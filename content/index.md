@@ -1,8 +1,11 @@
 ---
 format: gfm
 layout: index.pug
+profile_img: /resources/profile_pic_white-min.jpg
+profile_alt: MJP Profile picture
 name: Matt Piekenbrock
-tags: ["page"]
+tags:
+  - page
 buttons:
   - tag: Git
     url: 'https://github.com/peekxc'
@@ -15,7 +18,7 @@ buttons:
 ---
 
 
-{% optimizeImg './content/resources/profile_pic_white-min.jpg', 'profile_pic', '100vw', '720px', 'eager', 'rounded-lg object-cover md:visible hidden show-on-md-screen float-right', 'max-width: 16rem; width: 16rem; height: 16rem; margin: 0 0 0 2em; ' %}
+{% optimizeImg './content/resources/profile_pic_white-min.jpg', 'profile_pic', '720px', 'eager', ['webp', 'jpeg'], '100vw', 'rounded-lg object-cover md:visible hidden show-on-md-screen float-right', 'max-width: 16rem; width: 16rem; height: 16rem; margin: 0 0 0 2em;' %}
 
 <div class="prose-base text-justify">
 
