@@ -9,5 +9,5 @@ urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
 		if !post.data.draft
 			url
 				loc
-				| #{filters.url("https://mattpiekenbrock.com" + post.url)}
+					| #{filters.url("https://mattpiekenbrock.com" + post.url)}
 				lastmod=post.date.toISOString()
