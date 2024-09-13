@@ -15,7 +15,7 @@ code_links:
   }
 badges:
   - url: https://CRAN.R-project.org/package=dbscan
-    src: http://www.r-pkg.org/badges/version/dbscan
+    src: https://www.r-pkg.org/badges/version/dbscan
     alt: CRAN version
     height: 18
   - url: https://mhahsler.r-universe.dev/dbscan
