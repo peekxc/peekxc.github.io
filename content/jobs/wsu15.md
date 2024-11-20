@@ -20,6 +20,7 @@ end_date: 2018-01-01T00:00:00.000Z
 start_date: 2015-01-01T00:00:00.000Z
 ---
 
+
 My graduate research aimed at modeling real-world traffic network
 networks at a macroscopic scale. The high-level goal of the project was
 to model dynamic network representations extracted from raw

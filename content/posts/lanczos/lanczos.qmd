@@ -22,7 +22,7 @@ abstract: An overview of the Lanczos method for tridiagonalizing symmetric linea
 
 Central to the theory of matrix factorization is the [spectral theorem](https://en.wikipedia.org/wiki/Spectral_theorem), which provides conditions under which a linear operator $A : \mathbb{R}^n \to \mathbb{R}^n$ can be _diagonalized_ in terms of its eigenvectors:
 $$ A = U \Lambda U^{-1} $$ 
-When $A$ is symmetric, the eigen-decomposition is not only guarenteed to exist, but its [canonical form](https://en.wikipedia.org/wiki/Canonical_form) may be obtained via _orthogonal diagonalization_. Such matrices are among the most commonly encountered matrices in applications.
+When $A$ is symmetric, the eigen-decomposition is not only guaranteed to exist, but its [canonical form](https://en.wikipedia.org/wiki/Canonical_form) may be obtained via _orthogonal diagonalization_. Such matrices are among the most commonly encountered matrices in applications.
 
 In 1950, Cornelius Lanczos proposed an algorithm for obtaining by different kind of factorization of $A \in \mathrm{Sym}_n$ by means of *tri-diagonalization*:
 $$  AQ = Q T \quad \Leftrightarrow \quad Q^T A Q = T $$
@@ -93,6 +93,7 @@ $$ T = Y \Lambda Y^T $$
 <!-- $$ T = Y \Theta Y^T, \mathrm{diag}(Y) = (\theta_1, \theta_2, \dots, \theta_n)$$ -->
 
 As $T$ is quite structured, it is easy to diagonalize, and in doing so we have effectively solved the eigenvalue problem for $A$. 
+
 To quote the [Lanczos introduction from Parlett](https://apps.dtic.mil/sti/tr/pdf/ADA289614.pdf), _could anything be more simple?_
 
 ## The "iteration" part
@@ -124,7 +125,7 @@ In other words, if ($q_{j\text{-}1}, \beta_j, q_j$) are known, then ($\alpha_j$,
 
 Unlike the spectral decomposition<sup>2</sup>, there is no canonical choice of $T$. Indeed, as $T$ is a family with $n - 1$ degrees of freedom and $v \in \mathbb{R}^n$ was chosen arbitrarily, there are infinitely many _essentially distinct_ such decompositions.
 
-**Not all hope is lost though**. It turns out that $T$ is actually fully characterized by the pair $(A, v)$. To see this, notice that since $Q$ is an orthogonal matrix, we have: 
+_Not all hope is lost though_. It turns out that $T$ is actually fully characterized by the pair $(A, v)$. To see this, notice that since $Q$ is an orthogonal matrix, we have: 
 
 $$ Q Q^T = I_n = [e_1, e_2, \dots, e_n] $$
 
@@ -134,7 +135,7 @@ $$
 K_n(A, q_1) = Q Q^T K_n(A, q_1) = Q[ \, e_1 \mid T e_1 \mid T^2 e_1 \mid \dots \mid T^{n-1} e_1 \, ]
 $$
 
-...this _is_ a **QR** factorization, which is [essentially unique](https://www.math.purdue.edu/~kkloste/cs515fa14/qr-uniqueness.pdf)! Indeed, the Implicit Q Theorem asserts that if an upper Hessenburg matrix $T \in \mathbb{R}^{n \times n}$ has only positive elements on its first subdiagonal and there exists an orthogonal matrix $Q$ such that $Q^T A Q = T$, then $Q$ and $T$ are _uniquely determined_ by $(A, q_1)$. 
+...this _is_ a QR factorization, which is [essentially unique](https://www.math.purdue.edu/~kkloste/cs515fa14/qr-uniqueness.pdf)! Indeed, the Implicit Q Theorem asserts that if an upper Hessenburg matrix $T \in \mathbb{R}^{n \times n}$ has only positive elements on its first subdiagonal and there exists an orthogonal matrix $Q$ such that $Q^T A Q = T$, then $Q$ and $T$ are _uniquely determined_ by $(A, q_1)$. 
 
 <!-- Moreover, so long as $T$ has non-zero subdiagonal entries, its the eigenvalues must be distinct -->
 

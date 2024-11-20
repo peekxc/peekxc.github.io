@@ -44,8 +44,6 @@ and a [Ginther
 Fellowship](https://givingto.msu.edu/stories/500k-endowment-creates-first-grad-fellowship-in-cmse),
 among others.
 
-My [Erdős number is 5](https://mathscinet.ams.org/mathscinet/freetools/collab-dist?source=1622846&target=189017).
-
 </div>
 
 <!-- I enjoy learning about open-ended areas of learning theory and data analysis, including topics such as unsupervised learning, clustering, dimensionality reduction, estimation theory, and so on. I'm also a [modern C++](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#abstract) enthusiast, and believer in [functional programming](https://en.wikipedia.org/wiki/Functional_programming), and a fervent supporter of open source software.  -->

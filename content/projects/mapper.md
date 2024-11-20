@@ -3,7 +3,7 @@ tags:
   - projects
 layout: partials/card_block.pug
 card_title: Efficient Multiscale Simplicial Complex Generation for Mapper
-card_subtitle: "Funding: Air Force Research Labs"
+card_subtitle: 'Funding: Air Force Research Labs'
 background_image: /resources/reeb_graph.png
 abstract: >-
   The primary result of the Mapper framework is the geometric realization of a
@@ -30,6 +30,7 @@ card_tags:
   - R Package
 date: 2018-01-01T00:00:00.000Z
 ---
+
 
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
