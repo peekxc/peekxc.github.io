@@ -153,7 +153,7 @@ export default function (config) {
 	// Serving + watching options
 	config.setServerOptions({
 		domDiff: false, // this seems slower but better
-		port: 8080,
+		port: 8086,
 		watch: ["_includes/**/*.pug", "_includes/*.pug", "content/*.md", "content/**/*.md", "lib/css/*.css"],
 	});
 

@@ -1,10 +1,13 @@
 extends ./baseof.pug
 
+
+
 block head 
 	include ./partials/head.pug	
-	//- link(rel="preload" href="fonts/NunitoSans/NunitoSans-Bold.woff2" as="font" type="font/woff2" crossorigin)
-	//- link(rel="preload" href="fonts/NunitoSans/NunitoSans-Italic.woff2" as="font" type="font/woff2" crossorigin)
-	//- link(rel="preload" href="fonts/NunitoSans/NunitoSans-Regular.woff2" as="font" type="font/woff2" crossorigin)
+	//- - var FONT_NAME = "Vollkorn";
+	//- link(rel="preload" href="fonts/"+FONT_NAME+"/"+FONT_NAME+"-Bold.woff2" as="font" type="font/woff2" crossorigin)
+	//- link(rel="preload" href="fonts/"+FONT_NAME+"/"+FONT_NAME+"-Italic.woff2" as="font" type="font/woff2" crossorigin)
+	//- link(rel="preload" href="fonts/"+FONT_NAME+"/"+FONT_NAME+"-Regular.woff2" as="font" type="font/woff2" crossorigin)
 
 
 //- Working grid layout: 
@@ -14,8 +17,10 @@ block main
 	main.grid.grid-cols-1(class="md:grid-cols-12")
 		aside.hidden(class="md:block md:col-span-2")
 		//- NO h-full on main! also delegate min width to higher elements. For some reason mx-auto messes up with col-span
-		article.mx-auto.w-full(class="px-4 md:px-4 lg:px-6 md:col-span-8" style="max-width: 85ch;")
-			.text-lg.prose.prose-base
+		//- px-4 md:px-4 lg:px-6
+		//- iAWriterQuattroS
+		article.mx-auto.w-full.text-justify(class="md:col-span-8" style="max-width: 85ch;") 
+			.prose.prose-base.prose-article(style="font-family: 'et-book';") 
 				h1.my-1.text-center #{ title }
 				//- .font-light.text-center.text-gray Author:&nbsp; 
 				//- .flex.justify-between.items-end

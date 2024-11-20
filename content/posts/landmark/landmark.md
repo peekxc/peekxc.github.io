@@ -44,7 +44,7 @@ $$ (1 - \epsilon) \mathcal{P}(S) \leq \mathcal{P}(X) \leq (1 + \epsilon) \mathca
 
 Of course, The exact definitions of “feasibly” and “approximate” often
 change based on the problem, but in general subsets which **provably**
-achieve such approximations gaurantees are called
+achieve such approximations guarantees are called
 [coresets](https://en.wikipedia.org/wiki/Coreset), and they are
 *everywhere*: whether for vector quantization, low rank matrix
 approximation, or surface simplification, coresets have proven
@@ -97,12 +97,11 @@ $k = n$, the resulting sequence is a permutation of $X$.
 
 ## Properties: it has all of them.
 
-One of the principal interests in the greedy permtuation is that it,
-despite being just a simple permutation, it approximates the $k$-center
-clustering problem at all resolutions. Specifically, the $k$-prefix
-given by the first $k$ vertices of the permutations provides a
-$2$-approximation to the $k$-center clustering problem, for all
-$k \in \{ \, 2, \dots, n \, \}$.
+One of the principal interests in the greedy permutation is that it
+approximates the $k$-center clustering problem at all resolutions.
+Specifically, the $k$-prefix given by the first $k$ vertices of the
+permutations provides a $2$-approximation to the $k$-center clustering
+problem, for all $k \in \{ \, 2, \dots, n \, \}$.
 
 <!-- Assume we've constructed a greedy permutation $P$ of $X$. What are its properties, what problems can it approximate, and how does it relate to coresets? First, let's define a _ball_: -->
 

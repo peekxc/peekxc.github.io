@@ -1,16 +1,22 @@
 ---
-format: gfm
-tags: ["page"]
 layout: pages/cv.pug
+tags:
+  - page
+format: gfm
 eleventyImport:
-  collections: ["schools", "jobs"]
+  collections:
+    - schools
+    - jobs
 ---
+
 
 <div id="compute_experience"
 class="flex flex-col space-y-1 border-sm p-2 mx-auto w-full">
 
 <h2 class="font-bold text-blue-400 text-2xl">
+
 Programming Experience
+
 </h2>
 
 <div class="prose-md text-justify leading-5">
@@ -32,3 +38,14 @@ has been my primary development workflow.
 </div>
 
 </div>
+
+<!-- ```{python}
+#| echo: true
+#| output-location: column
+import numpy as np
+from bokeh.plotting import figure, show
+X = np.random.uniform(size=(1500,2))
+p = figure(width=350, height=350)
+p.scatter(*X.T)
+show(p)
+&#10;``` -->

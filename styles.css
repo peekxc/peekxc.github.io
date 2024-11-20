@@ -18,4 +18,14 @@
   }
 }
 
+.prose-article {
+	font-size: 1.2em;
+}
+.prose-base :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  font-size: 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  line-height: 1.3333333
+}
+
 

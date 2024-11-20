@@ -3,12 +3,23 @@
 /* Import ET Book styles adapted from https://github.com/edwardtufte/et-book/blob/gh-pages/et-book.css */
 @font-face {
 	font-family: "et-book";
-	src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot");
-	src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.ttf") format("truetype"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.svg#etbookromanosf") format("svg");
+	src: url("/fonts/et-book/etbookot-bold-webfont.woff2");
 	font-weight: bold;
 	font-style: normal;
-	font-display: swap;
 }
+@font-face {
+	font-family: "et-book";
+	src: url("/fonts/et-book/etbookot-roman-webfont.woff2");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "et-book";
+	src: url("/fonts/et-book/etbookot-italic-webfont.woff2");
+	font-weight: normal;
+	font-style: italic;
+}
+
 
 /* https://web.dev/articles/preload-optional-fonts */
 @font-face {
@@ -81,4 +92,31 @@
   font-weight: bold;
   font-style: normal;
 	font-display: optional;
+}
+@font-face {
+  font-family: 'iAWriterQuattroS';
+  src: url('/fonts/iAWriterQuattroS/iAWriterQuattroS-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'iAWriterQuattroS';
+  src: url('/fonts/iAWriterQuattroS/iAWriterQuattroS-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'iAWriterQuattroS';
+  src: url('/fonts/iAWriterQuattroS/iAWriterQuattroS-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'iAWriterQuattroS';
+  src: url('/fonts/iAWriterQuattroS/iAWriterQuattroS-BoldItalic.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
 }

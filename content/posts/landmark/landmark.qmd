@@ -43,7 +43,7 @@ While basic sampling techniques (e.g. uniform) may suffice for some problems, so
 
 $$ (1 - \epsilon) \mathcal{P}(S) \leq \mathcal{P}(X) \leq (1 + \epsilon) \mathcal{P}(S)$$
 
-Of course, The exact definitions of "feasibly" and "approximate" often change based on the problem, but in general subsets which **provably** achieve such approximations gaurantees are called [coresets](https://en.wikipedia.org/wiki/Coreset), and they are _everywhere_: whether for vector quantization, low rank matrix approximation, or surface simplification, coresets have proven ubiquitious for scientific computing.
+Of course, The exact definitions of "feasibly" and "approximate" often change based on the problem, but in general subsets which **provably** achieve such approximations guarantees are called [coresets](https://en.wikipedia.org/wiki/Coreset), and they are _everywhere_: whether for vector quantization, low rank matrix approximation, or surface simplification, coresets have proven ubiquitious for scientific computing.
 
 <!-- pop up in a variety of computational, geometric, or learning settings. -->
 <!-- Indeed, the [stochastic gradient descent](https://en.wikipedia.org/wiki/Stochastic_gradient_descent)---a cornerstone of deep learning---is a type of coreset. -->
@@ -63,8 +63,7 @@ In spite of this, there is one particular coreset construction that seems to hav
 <!-- Greedy permutations are effective permutations of an input set that keep points as far apart as possible while minimizing the maximum distance from any point to the sample. -->
 The idea of the greedy permutation is to construct a permutation $P$ of a set $X$ that keeps successive points as far apart as possible, i.e. minimizing the maximum distance to previously encountered points.
 
-![Picture from _Approximate Greedy Clustering and Distance Selection for
-Graph Metrics_, by Eppstein et al](fft.png)
+![Picture from _Approximate Greedy Clustering and Distance Selection for Graph Metrics_, by Eppstein et al](fft.png)
 
 To clarify, let $(X, d_X)$ denote a metric space of size $\lvert X \rvert = n$, and $P = (p_0, p_1, \dots, p_{n-1})$ a sequence of points from $X$. The sequence $P$ is called a <u> *greedy permutation* </u> if for all $i \in [n]$:
 
@@ -76,7 +75,7 @@ Greedy permutations are easy to construct: simply choose a seed point $p_0$, add
 
 ## Properties: it has all of them.
 
-One of the principal interests in the greedy permtuation is that it, despite being just a simple permutation, it approximates the $k$-center clustering problem at all resolutions. Specifically, the $k$-prefix given by the first $k$ vertices of the permutations provides a $2$-approximation to the $k$-center clustering problem, for all $k \in \{ \, 2, \dots, n \, \}$.
+One of the principal interests in the greedy permutation is that it approximates the $k$-center clustering problem at all resolutions. Specifically, the $k$-prefix given by the first $k$ vertices of the permutations provides a $2$-approximation to the $k$-center clustering problem, for all $k \in \{ \, 2, \dots, n \, \}$.
 
 <!-- Assume we've constructed a greedy permutation $P$ of $X$. What are its properties, what problems can it approximate, and how does it relate to coresets? First, let's define a _ball_: -->
 

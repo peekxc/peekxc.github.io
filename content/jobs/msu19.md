@@ -18,6 +18,7 @@ card_tags:
 date: 2023-09-01T00:00:00.000Z
 ---
 
+
 After beginning my doctoral research at Michigan State University (Fall
 19’), I transferred to Northeastern University (Boston, MA) in Fall 2021
 after my advisor ([Jose Perea](https://www.joperea.com/)) accepted a
