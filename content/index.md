@@ -57,11 +57,14 @@ News
 
 <div class="list-disc overflow-y-scroll mt-0">
 
+- My work on using geometry to improve routing in time-varying networks
+  is now [on arxiv](https://arxiv.org/pdf/2412.07964), pending
+  submission elsewhere. (12/15/24)
 - My hypergraph-to-simplicial lifting submission [won silver and
   bronze](https://pyt-team.github.io/packs/challenge.html) in ICML’s
   2024 Topological Deep Learning challenge ([GRaM
   workshop](https://gram-workshop.github.io/))! A blog post to follow
-  soon.
+  soon. (07/28/24)
 - I’ll be attending the [2024 Workshop on Computational
   Persistence](https://www.tugraz.at/projekte/cpw/home) (09/24/24)
 - I’ll be attending University of Florida’s [TDA Meeting

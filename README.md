@@ -78,13 +78,15 @@ On generation, all source css/js/font/img assets that are stored in `/content` a
 - Implement the tricks from [the high performance blog](https://github.com/google/eleventy-high-performance-blog)
 - Port the text content to make it configurable from \_data'
 - Figure out layout chaining problem vs readHTML filter solution used now
-- Switch to eleventy 3.0
-- Add production flag
+- Add better production flag
 - Add 'eleventy-plugin-heroicons' and figure out pug eq.
 - Compress images to webP with https://squoosh.app/editor, or somehow automate it
+- Fixed ENOENT errors on vercel files
+- Figure out how to have less verbosity in the compression of HTML/CSS file minimizers
 
 ## Done
 
+- Switch to eleventy 3.0
 - Added image / js / css / html minimizers
 - Enabled brotli compressions
 - Fixed most of the layout shifting issues
