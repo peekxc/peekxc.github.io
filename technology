@@ -1,0 +1,33 @@
+Languages familiar with: 
+Python, R, C++90 - C++20, Matlab, JavaScript, CUDA, OpenCL + transpilers / FFIs (MEX, Rcpp, pybind11, cython, pythran, numba)
+
+Languages used for less than a month:
+Lean, Rust, Scheme, 
+
+Libraries (familiar with, preferred): 
+Python: numpy, scipy, bokeh, torch, quarto, shapely, cplex, pycuda, dask, plotly
+R: data.table, dplyr, leaflet, ggplot
+JS: underscore, D3, bokeh.js, pixi.js, tailwind, bootstrap, 
+Web: HTML/CSS, node, gulp, 11ty
+Tooling: Meson, slurm, git, bash, podman
+Typesetting: Latex, Typst
+
+Libraries (familar with, not preferred):
+Python: matplotlib (bleh), seaborn, pandas, holoviz suite, tensorflow
+Tooling: Make, CMake, docker, SQL
+
+
+
+
+
+Math + CS topics explored in detail: 
+Optimizing: Trust regions, line search, proximal methods, compressed sensing
+Linear Algebra: matrix functions, projection operators, 
+Topology: Homology, Cohomology, Persistence, 
+
+
+
+
+
+
+
