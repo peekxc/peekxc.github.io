@@ -14,6 +14,9 @@ categories:
   - Geometry
 draft: true
 abstract: Testing the abstract
+execute:
+  cache: true
+  freeze: true
 ---
 
 
@@ -56,7 +59,9 @@ to any metric space.
    where $d_{GH}$ is the Gromov-Hausdorff distance ( [introduction video](https://www.youtube.com/watch?v=tvbkSt_QxnE) if you're curious )
 As an aside, $\epsilon_\ast(X)$ can also be interpreted as the largest edge in the [metric minimum spanning tree](https://en.wikipedia.org/wiki/Euclidean_minimum_spanning_tree), which is useful itself in a variety of circumstances as this is the minimum radius one needs to ensure $N_\epsilon(X)$—the union of balls centered at points in $X$ with radii $\epsilon$—is connected.
 By itself, the diameter is generally not a very informative quantity. Nonetheless, it is a useful quantity to have, as its often used as a building block other algorithms. Despite this, it's not immediately clear how to compute $D(X)$ efficiently. Let's look at some ways to go about doing just that.  -->
+
 <h2 id="#take-max">
+
 Just take the max?
 </h2>
 
@@ -156,6 +161,7 @@ On my 2.6GHz 6-core Macbook Pro from 2019, I got the following results
 | `naive`        | 2.13e-03 | 8.26e-03 | 0.0351   | 0.129    | 0.515    | 2.11     |
 | `combinations` | 1.60e-03 | 6.47e-03 | 0.0276   | 0.108    | 0.434    | 1.77     |  
 | `pdist`        | 2.96e-05 | 2.42e-05 | 3.77e-5 | 1.00e-4 | 2.70e-4 | 0.001   | 0.00 -->
+
 <!-- array([[0.000477288, 2.76946e-05, 5.27886e-05, 8.46514e-05, 0.000324717, 0.00140285, 0.00700403],
        [0.000738826, 0.000863106, 0.001616, 0.00378446, 0.0112478, 0.0386153, 0.123106],
        [0.00232528, 0.00741627, 0.0260823, 0.104198, 0.439307, 1.71004, 6.84932],
@@ -233,6 +239,7 @@ np.array([convert_size(v) for v in MEM_USED.ravel()]).reshape(MEM_USED.shape)
 16 MB? That’s almost as much as a [Chrome tab]()!
 
 <!-- The slowest method `diameter4` indeed uses a constant amount of working memory, regardless of the problem size. Surprisingly, it appears that `it.combinations` does need to make a copy of the `ndarray`, despite its support for Sequence semantics. Of course, the real  -->
+
 <!-- Though the Python-only approaches use the least amount of working memory,  -->
 
 But allocating $O(n^2)$ memory for larger $n$ will simply kill its
@@ -528,6 +535,7 @@ so far—I defer its full description until Part II, which I will cover in
 my next posting.
 
 <h2 id="#references">
+
 References
 </h1>
 

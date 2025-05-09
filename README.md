@@ -19,21 +19,16 @@ Canonically, the cascade is as follows:
 
 Each piece of content must be stored as a directory + markdown file, similar to the idea of [page bundles](https://gohugo.io/content-management/page-bundles/), wherein a "page" constitutes a directory with markdown text storing the text content alongside additional folders or files holding the rendered images, videos, resources, code outputs, JS includes, etc.
 
-## Workflow
+## Development workflow
 
-From the root directory, to render `/content/**.qmd` => `/content/**.md`
+From root: 
 
-```bash
-quarto render
-```
+|-----------------------------------------------------------------|
+| render `/content/**.qmd` => `/content/**.md` | `quarto render` |
+| render `/content/**.md` => `/docs/**.html` | `npx eleventy` |
+|-----------------------------------------------------------------|
 
-From the root directory, to render `/content/**.md` => `/docs/**.html`
-
-```bash
-npx eleventy --config eleventy.config.js
-```
-
-To develop actively, use:
+To develop the entire website actively, use:
 
 ```bash
 quarto render && npx eleventy --config eleventy.config.js --watch --serve
@@ -51,7 +46,7 @@ The entire website can be quickly previewed in incremental mode using:
 quarto preview --no-browser .
 ```
 
-To preprocess the custom CSS styles from tailwind, use:
+To pre-process the custom CSS styles from tailwind, use:
 
 ```bash
 npx tailwindcss -i styles.css -m --output content/css/tw_styles.css

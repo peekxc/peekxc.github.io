@@ -5,7 +5,7 @@ layout: partials/card_block.pug
 card_title: Civilian Research Assistant
 card_subtitle: Southwestern Ohio Council For Higher Education
 card_date: December 2013 - June 2014
-card_extra: 'Air Force Institute of Technology, WPAFB'
+card_extra: Air Force Institute of Technology, WPAFB
 abstract: >-
   As my first experience doing undergraduate research, I worked in a heavily
   multi-disciplinary team called the Low Orbitals Radar and Electromagnetism
@@ -23,6 +23,7 @@ date: 2013-12-01T00:00:00.000Z
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Job Description
 </h4>
 
@@ -45,6 +46,7 @@ computationally-intensive tasks.
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Projects
 </h4>
 

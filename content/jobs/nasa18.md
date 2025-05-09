@@ -4,7 +4,7 @@ tags:
 layout: partials/card_block.pug
 card_title: LERCIP Intern
 card_subtitle: National Aeronautics and Space Administration
-card_extra: 'John H. Glenn Research Center at Lewis Field, OH'
+card_extra: John H. Glenn Research Center at Lewis Field, OH
 card_date: Summer 2018
 abstract: >-
   Towards accelerating the design and discovery materials for use in extreme
@@ -22,6 +22,7 @@ date: 2018-06-01T00:00:00.000Z
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Job Description:
 </h4>
 
@@ -43,6 +44,7 @@ materials and structures through multiscale modeling, in line with
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Publications:
 </h4>
 
@@ -67,6 +69,7 @@ style="list-style-type: disc !important;">
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Software
 </h4>
 

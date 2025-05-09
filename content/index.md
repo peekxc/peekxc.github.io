@@ -8,10 +8,10 @@ tags:
   - page
 buttons:
   - tag: Git
-    url: 'https://github.com/peekxc'
+    url: https://github.com/peekxc
     class: github_logo
   - tag: Scholar
-    url: 'https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en'
+    url: https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en
     class: scholar_logo
   - tag: Email
     text: matt.piekenbrock@gmail.com
@@ -22,19 +22,19 @@ buttons:
 
 <div class="prose-base text-justify">
 
-I’m a computer scientist with research interests in geometric and
-topological data analysis, unsupervised learning, algorithm design, and
+I’m a computer scientist with research interests in unsupervised
+learning, algorithm design, geometric and topological data analysis, and
 scientific computing. My background experience and projects can be found
 on my [CV](https://mattpiekenbrock.com/cv) and [Github
 profile](https://github.com/peekxc).
 
-I’m currently a PhD \[transfer\] student at [Khoury College of Computer
-Sciences](https://www.khoury.northeastern.edu/), Northeastern
-University; prior to transferring, I completed 2 years of graduate
-coursework from the [Computational Mathematics, Science, and Engineering
-Department](https://cmse.msu.edu/) at Michigan State University. I hold
-both B.S. and M.S. degrees in C.S. from [Wright State
+I’m currently a Senior Computer Scientist at
+[Tenet3](https://www.tenet3.com/). I hold a PhD in C.S. from
+Northeastern’s [Khoury College of Computer
+Sciences](https://www.khoury.northeastern.edu/), as well as B.S. and
+M.S. degrees also in C.S. from [Wright State
 University](https://www.wright.edu/).
+<!-- I'm currently a PhD [transfer] student at [Khoury College of Computer Sciences](https://www.khoury.northeastern.edu/), Northeastern University; prior to transferring, I completed 2 years of graduate coursework from the [Computational Mathematics, Science, and Engineering Department](https://cmse.msu.edu/) at Michigan State University. I hold both B.S. and M.S. degrees in C.S. from [Wright State University](https://www.wright.edu/). -->
 
 My research has been supported by various sources, including the
 [NSF](https://www.nsf.gov/), [NASA](https://www.nasa.gov/),
@@ -51,12 +51,18 @@ among others.
 <br>
 
 <h2 class="text-2xl pb-0 mb-0 mt-1">
+
 News
 </h2>
+
 <hr style="margin: 0.20rem !important;"/>
 
 <div class="list-disc overflow-y-scroll mt-0">
 
+- I’ve started a new role as Senior Computer Scientist
+  [Tenet3](https://www.tenet3.com/)! (02/10/25)
+- I’ve officially defended my dissertation and graduated from NEU with a
+  PhD in Computer Science. (01/24/25)
 - My work on using geometry to improve routing in time-varying networks
   is now [on arxiv](https://arxiv.org/pdf/2412.07964), pending
   submission elsewhere. (12/15/24)

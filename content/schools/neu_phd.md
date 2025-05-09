@@ -5,12 +5,12 @@ tags:
 layout: partials/card_block.pug
 card_title: Doctorate in CS (Pursuing)
 card_subtitle: Khoury College of Computer Sciences
-card_date: 'Northeastern University, 2021-Present'
+card_date: Northeastern University, 2021-Present
 card_extra: >-
   Advisor: <a class='cursor-pointer underline' href='https://www.joperea.com/'
   style='color: #0000EE;'>Jose Perea</a>
 background_image: /resources/neu_logo.png
-card_desc: 'Click for teaching experience, coursework taken, and other details...'
+card_desc: Click for teaching experience, coursework taken, and other details...
 date: 2021-01-01T00:00:00.000Z
 ---
 
@@ -18,6 +18,7 @@ date: 2021-01-01T00:00:00.000Z
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold">
+
 Teaching:
 </h4>
 
@@ -41,6 +42,7 @@ Teaching:
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold">
+
 Coursework (GPA: 3.83):
 </h4>
 

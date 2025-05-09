@@ -18,6 +18,8 @@ editor:
 execute:
   echo: false
   eval: false
+  freeze: auto
+  cache: true
 bibliography: ../references.bib
 ---
 

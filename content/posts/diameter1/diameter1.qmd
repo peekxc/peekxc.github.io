@@ -10,6 +10,9 @@ include_toc: true
 categories: ["Algorithms", "Computer Science", "Geometry"]
 draft: true
 abstract: "Testing the abstract"
+execute:
+  cache: true
+  freeze: true
 ---
 
 The *diameter* of an $n$ point set $X \subset \mathbb{R}^d$ is the maximum [distance](https://en.wikipedia.org/wiki/Euclidean_distance) between any pair of points:

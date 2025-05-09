@@ -42,6 +42,7 @@ format: gfm
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Publications
 </h4>
 
@@ -62,6 +63,7 @@ Publications
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Software
 </h4>
 
@@ -86,6 +88,7 @@ Software
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Related materials
 </h4>
 

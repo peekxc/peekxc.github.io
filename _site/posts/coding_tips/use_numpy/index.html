@@ -1,0 +1,25 @@
+<hr>
+<p>title: “Use NumPy!” author: “Matt “Peek” Piekenbrock” format: revealjs —</p>
+<p>```python ## Produced by Claude Sonet 3.7 def
+find_common_elements(lists_of_items): if not lists_of_items: return []</p>
+<p># Start with all elements from the first list
+common_elements = set(lists_of_items[0])</p>
+<p># Intersect with each subsequent list
+for items in lists_of_items[1:]:
+current_set = set(items)
+common_elements = common_elements.intersection(current_set)</p>
+<p># Count occurrences of each common element across all lists
+counts = {}
+for element in common_elements:
+for items in lists_of_items:
+# Count how many times each element appears in each list
+if element in counts:
+counts[element] += items.count(element)
+else:
+counts[element] = items.count(element)</p>
+<p># Find elements that appear in all lists
+result = [(element, counts[element]) for element in common_elements]</p>
+<p># Sort by total occurrence count (highest first)
+result.sort(key=lambda x: x[1], reverse=True)</p>
+<p>return result
+```</p>

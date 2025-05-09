@@ -5,7 +5,7 @@ layout: partials/card_block.pug
 card_title: Civilian Research Assistant
 card_subtitle: Oak Ridge Institute for Science and Education
 card_date: June 2014 - Spring 2015
-card_extra: 'Air Force Institute of Technology, WPAFB'
+card_extra: Air Force Institute of Technology, WPAFB
 abstract: >-
   Towards the end of my undergraduate degree, my contract at the [Air Force
   Institute of Technology](https://www.afit.edu/) (AFIT) was extended under
@@ -23,6 +23,7 @@ date: 2013-12-01T00:00:00.000Z
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Job Description
 </h4>
 
@@ -47,6 +48,7 @@ Refueling](https://en.wikipedia.org/wiki/Automated_aerial_refueling).
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Publications
 </h4>
 
@@ -76,6 +78,7 @@ style="list-style-type: disc !important;">
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Projects
 </h4>
 
