@@ -7,3 +7,4 @@
 /docs/_vercel/**/*.js
 /content/_vercel/**/*.js
 **/_vercel/**/*.js
+package-lock.json
