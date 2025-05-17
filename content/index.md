@@ -51,7 +51,6 @@ among others.
 <br>
 
 <h2 class="text-2xl pb-0 mb-0 mt-1">
-
 News
 </h2>
 

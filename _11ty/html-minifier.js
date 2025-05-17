@@ -1,18 +1,23 @@
 // Transformer to minify HTML output.
 
 // const htmlmin = require("html-minifier");
-import htmlmin from "html-minifier";
+// import htmlmin from "html-minifier";
+import minifyHtml from "@minify-html/node";
 
 const convert = async (rawContent, outputPath) => {
     const content = rawContent;
-
     if (outputPath && outputPath.endsWith(".html")) {
-        const minified = htmlmin.minify(content, {
-            useShortDoctype: true,
-            removeComments: true,
-            collapseWhitespace: true
-        });
-        return minified;
+			// console.log("Testing");
+			// const minified = htmlmin.minify(content, {
+			//     useShortDoctype: true,
+			//     removeComments: true,
+			//     collapseWhitespace: true
+			// });
+			const minified = minifyHtml.minify(Buffer.from(content), { 
+				keep_spaces_between_attributes: true, 
+				keep_comments: false
+			});
+			return minified;
     }
 
     return content;

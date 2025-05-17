@@ -1,4 +1,4 @@
-const PRODUCTION = false;
+const PRODUCTION = true;
 
 // Node-js imports
 import fs from "fs";
