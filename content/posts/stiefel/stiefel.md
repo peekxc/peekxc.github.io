@@ -1,12 +1,27 @@
-Good point—this perspective makes the Stiefel manifold a lot more
-intuitive. Here’s an updated version that frames it through projection
-and frames of reference:
+---
+format: gfm
+tags:
+  - posts
+layout: single_md.pug
+title: 'Geodesics on the Stiefel Manifold '
+author: Matt Piekenbrock
+date: '2022-02-12'
+slug: stiefel_1
+include_toc: true
+categories:
+  - Algorithms
+  - Computer Science
+  - Geometry
+draft: true
+abstract: Testing the abstract
+execute:
+  freeze: auto
+---
 
-------------------------------------------------------------------------
 
 ### Bridging diversity in perspective: the Stiefel Manifold
 
-Dimensionality reduction has alwys been an interesting idea to me.
+Dimensionality reduction has always been an interesting idea to me.
 
 The Stiefel manifold is a collection of all possible ways to set up this
 frame of reference with orthogonal projectors. Each point on the Stiefel

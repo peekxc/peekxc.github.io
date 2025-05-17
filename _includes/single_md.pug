@@ -1,7 +1,5 @@
 extends ./baseof.pug
 
-
-
 block head 
 	include ./partials/head.pug	
 	//- - var FONT_NAME = "Vollkorn";
@@ -19,7 +17,7 @@ block main
 		//- NO h-full on main! also delegate min width to higher elements. For some reason mx-auto messes up with col-span
 		//- px-4 md:px-4 lg:px-6
 		//- iAWriterQuattroS
-		article.mx-auto.w-full.text-justify(class="md:col-span-8" style="max-width: 85ch;") 
+		article.mx-auto.w-full.text-justify(class="md:col-span-8 px-4" style="max-width: 85ch;") 
 			.prose.prose-base.prose-article(style="font-family: 'et-book';") 
 				h1.my-1.text-center #{ title }
 				//- .font-light.text-center.text-gray Author:&nbsp; 

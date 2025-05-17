@@ -28,9 +28,10 @@ buttons: [
 ```
 
 ::: {.prose-base .text-justify}
-I'm a computer scientist with research interests in geometric and topological data analysis, unsupervised learning, algorithm design, and scientific computing. My background experience and projects can be found on my [CV](https://mattpiekenbrock.com/cv) and [Github profile](https://github.com/peekxc).
+I'm a computer scientist with research interests in unsupervised learning, algorithm design, geometric and topological data analysis, and scientific computing. My background experience and projects can be found on my [CV](https://mattpiekenbrock.com/cv) and [Github profile](https://github.com/peekxc).
 
-I'm currently a PhD [transfer] student at [Khoury College of Computer Sciences](https://www.khoury.northeastern.edu/), Northeastern University; prior to transferring, I completed 2 years of graduate coursework from the [Computational Mathematics, Science, and Engineering Department](https://cmse.msu.edu/) at Michigan State University. I hold both B.S. and M.S. degrees in C.S. from [Wright State University](https://www.wright.edu/).
+I'm currently a Senior Computer Scientist at [Tenet3](https://www.tenet3.com/). I hold a PhD in C.S. from Northeastern's [Khoury College of Computer Sciences](https://www.khoury.northeastern.edu/), as well as B.S. and M.S. degrees also in C.S. from [Wright State University](https://www.wright.edu/). 
+<!-- I'm currently a PhD [transfer] student at [Khoury College of Computer Sciences](https://www.khoury.northeastern.edu/), Northeastern University; prior to transferring, I completed 2 years of graduate coursework from the [Computational Mathematics, Science, and Engineering Department](https://cmse.msu.edu/) at Michigan State University. I hold both B.S. and M.S. degrees in C.S. from [Wright State University](https://www.wright.edu/). -->
 
 My research has been supported by various sources, including the [NSF](https://www.nsf.gov/), [NASA](https://www.nasa.gov/), [DARPA](https://www.darpa.mil/), the [Center for Survelliance Research](https://www.wright.edu/center-for-surveillance-research/our-members), and a [Ginther Fellowship](https://givingto.msu.edu/stories/500k-endowment-creates-first-grad-fellowship-in-cmse), among others.
 :::
@@ -43,6 +44,8 @@ My research has been supported by various sources, including the [NSF](https://w
 <hr style="margin: 0.20rem !important;"/>
 
 ::: {.list-disc .overflow-y-scroll .mt-0}
+- I've started a new role as Senior Computer Scientist [Tenet3](https://www.tenet3.com/)! (02/10/25)
+- I've officially defended my dissertation and graduated from NEU with a PhD in Computer Science. (01/24/25)
 - My work on using geometry to improve routing in time-varying networks is now [on arxiv](https://arxiv.org/pdf/2412.07964), pending submission elsewhere. (12/15/24)
 - My hypergraph-to-simplicial lifting submission [won silver and bronze](https://pyt-team.github.io/packs/challenge.html) in ICML's 2024 Topological Deep Learning challenge ([GRaM workshop](https://gram-workshop.github.io/))! A blog post to follow soon. (07/28/24)
 - I'll be attending the [2024 Workshop on Computational Persistence](https://www.tugraz.at/projekte/cpw/home) (09/24/24)

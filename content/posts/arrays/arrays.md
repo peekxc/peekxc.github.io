@@ -27,13 +27,13 @@ So what data structures should everyone know? Since this post is part I, I'll st
 <!-- They are the fastest, most versatile data structure in the planet?  -->
 <!-- Well of course, it is the humble _array_.  -->
 
-Arrays are my favorite data structure. Though the humble array is the first data structure I learned, and though I learned of many other data structures since then, I've come to appreciate that arrays are not only ubiquitous, but also incredibly versatile. Yet, to my surprise, I've seen many junior developers overreach to much more complicated data structures, e.g. hash-tables or sets (usually implemented as trees), despite the array being more than sufficient. 
+<!-- Arrays are my favorite data structure. Though the humble array is the first data structure I learned, and though I learned of many other data structures since then, I've come to appreciate that arrays are not only ubiquitous, but also incredibly versatile. Yet, to my surprise, I've seen many junior developers overreach to much more complicated data structures, e.g. hash-tables or sets (usually implemented as trees), despite the array being more than sufficient.  -->
 
 <!-- In this post, I thought I'd cover  -->
 
-An _array_ is a sequence container that organizes $n$ homogeneous elements within a contiguous block of memory that supports randomized ($O(1)$) access to its elements. Contiguity and homogeneity are necessary conditions for randomized access: homogeneity guarantees the size of each element is fixed and contiguity guarantees the elements can be indexed in constant-time using [offsets](https://en.wikipedia.org/wiki/Offset_(computer_science)). 
+An _array_ is a sequence container that organizes $n$ homogeneous elements into a contiguous block of memory, typically supporting $O(1)$  [randomized access](https://en.wikipedia.org/wiki/Random_access). Contiguity and homogeneity are necessary conditions for randomized access: homogeneity guarantees the size of each element is fixed and contiguity guarantees the elements can be indexed in constant-time using [offsets](https://en.wikipedia.org/wiki/Offset_(computer_science)) & [strides](https://en.wikipedia.org/wiki/Stride_of_an_array). 
 
-Beginner developers often refer to similar data structures as "arrays" (e.g. lists), but this is a technicality: contiguity and homogeneity are necessary conditions for a data structure to be called an _array_. 
+In Python, newer developers often confuse lists and arrays, because Python's list is implemented as an array of object pointers. The subtlety here is that though these pointers are both constant in size and stored contiguously in memory, the objects they point to need not be. In this sense, Python's `list` type is not a general purpose _array_, because the only types it supports with _array_ semantics are pointers. 
 
 There are many types of arrays, of which the following are worth discussing in detail:
 
@@ -53,7 +53,7 @@ auto a = std::array< int, 15 >(); // must know its type *and* size
 
 Observe both the type (_int_) and size (_15_) are supplied at compile-time via the type's [template parameters](https://en.cppreference.com/w/cpp/language/template_parameters). 
 
-Fixed-sized arrays have advantages in C++ as they are typically stored [on the stack](https://www.learncpp.com/cpp-tutorial/the-stack-and-the-heap/) or in global program memory, which [can be much faster to access than the heap](https://publicwork.wordpress.com/2019/06/27/stack-allocation-vs-heap-allocation-performance-benchmark/). This is not strictly true, however, because [alloca exists](https://man7.org/linux/man-pages/man3/alloca.3.html) and can be used to create "stack-allocated dynamic arrays." Nonetheless, if an array's size is known at compile-time, a fixed-size array should be used.
+Fixed-sized arrays have advantages in C++ as they are typically stored [on the stack](https://www.learncpp.com/cpp-tutorial/the-stack-and-the-heap/) or in global program memory, which [can be much faster to access than the heap](https://publicwork.wordpress.com/2019/06/27/stack-allocation-vs-heap-allocation-performance-benchmark/)[^1].
 
 Surprisingly, Python does not have a fixed-size array implementation---the canonical fixed-size array data structure is the [numpy array](https://numpy.org/doc/stable/reference/arrays.html). Numpy arrays are true arrays: they [are homogeneous](https://numpy.org/doc/stable/glossary.html#term-homogeneous) and they [know their value (d)types](https://numpy.org/doc/stable/reference/arrays.dtypes.html).
 
@@ -199,3 +199,4 @@ Python provides [bitwise operations natively via PEP 225](https://peps.python.or
 
 Arrays are not just the simplest data structures, they are also the most performant ones in many situations. An array is _the most compact and most cache-friendly data structure that there is_. In my humble opinion, arrays should be one's __first choice__ to use if the situation allows. This may sound obvious to anyone who has worked with a compiled language, yet there exist many random [internet articles abound](https://betterprogramming.pub/stop-using-lists-for-everything-in-python-46fad15217f4) recommending the average Python programmer 'branch out' by using other non-array data structures like _sets_ and _dictionaries_. I often see this with my own students, many of who either use lists or numpy arrays because they don't even know the array module exists.
 
+[^1]: This is not strictly true, however, because [alloca exists](https://man7.org/linux/man-pages/man3/alloca.3.html) and can be used to create "stack-allocated dynamic arrays."

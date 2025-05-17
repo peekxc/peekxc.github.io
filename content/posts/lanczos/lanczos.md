@@ -21,10 +21,14 @@ background_image: /posts/lanczos/lanczos_krylov.gif
 abstract: >-
   An overview of the Lanczos method for tridiagonalizing symmetric linear
   operators
+execute:
+  freeze: auto
+  cache: true
 ---
 
 
 <!-- Whether for simplifying the representation of complicated systems, characterizing the asymptotic behavior of differential equations, or just fitting polynomials via least-squares, the decompositional approach to matrix computation remains the primary mode with which    -->
+
 <!-- in many areas of sciences and engineering.  -->
 
 Central to the theory of matrix factorization is the [spectral
@@ -49,6 +53,7 @@ not readily yield the eigensets of $A$, prompting questions of its
 utility.
 
 <!-- The algorithm by which one produces such a $T$ is now known as the *Lanczos method*.  -->
+
 <!-- Indeed, nearly all large-scale eigen-solvers are two phase algorithms which first transform their inputs into tridiagonal form.  -->
 
 Nonetheless, this decomposition ended up proving to be one of the most
@@ -61,7 +66,9 @@ places it among the **top 10 most influential algorithms of the 20th
 century**.
 
 <!-- represents no longer contains the eigenvectors of $A$ nor  -->
+
 <!-- The algorithm by which one produces such a $T$ is known as the *Lanczos method*. -->
+
 <!-- So what is the Lanczos method, how does it work, and why should you care? Well, here's a teaser of what the Lanczos method accomplishes:  -->
 
 <img src="lanczos_krylov.gif" style="margin: auto;;width:75.0%"
@@ -69,6 +76,7 @@ data-text-align="center"
 alt="Lanczos’ “method of minimized iterations” on a 100x100 matrix with eigenvalues (0, 0.01, 0.02, …, 2, 2.5, 3)" />
 
 <!-- To decipher the rest, read on! -->
+
 <!-- In fact, you may have learned the Lanczos method before without knowing it. 
 The Lanczos method naturally manifest: 
 &#10;- As the _conjugate gradient_ method
@@ -114,6 +122,7 @@ T = \mathrm{tridiag} \Bigg(
 $$
 
 <!-- That's pretty fortunate, because computing the eigen-sets of _any_ tridiagonal matrix $T$ takes just $O(n^2)$ time[^2]! -->
+
 <!-- $Q$ is $A$-invariant[^5] ( -->
 
 Since $Q$ spans $\mathcal{K}(A, v) = \mathrm{range}(A)$, the
@@ -250,6 +259,7 @@ Systems with Several Right-Hand Sides.” *Mathematics of Computation* 48
 </div>
 
 <h3>
+
 Footnotes
 </h3>
 

@@ -5,7 +5,7 @@ layout: partials/card_block.pug
 background_image: /resources/nasa_logo.png
 card_title: SCaN Intern
 card_subtitle: National Aeronautics and Space Administration
-card_extra: 'John H. Glenn Research Center at Lewis Field, OH'
+card_extra: John H. Glenn Research Center at Lewis Field, OH
 card_date: Summer 2022
 card_tags:
   - Space networking
@@ -23,6 +23,7 @@ date: 2022-01-01T00:00:00.000Z
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Job Description
 </h4>
 
@@ -43,6 +44,7 @@ regime.
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Publications
 </h4>
 
@@ -63,6 +65,7 @@ style="list-style-type: disc !important;">
 <div class="flex items-center px-2 py-1 bg-gray-100">
 
 <h4 class="font-bold bg-gray-100">
+
 Software
 </h4>
 

@@ -37,52 +37,51 @@ from landmark import landmarks
 from landmark.datasets import load_shape
 ```
 
-In many applications, finding a small yet representative subset of the data is a common yet necessary preprocessing step, i.e. we want to solve a problem $\mathcal{P}$ with respect to data $X$, but we can't---*the data are simply too large*---so we must work with a subset $S \subset X$ instead.
+There are many applications where one seeks to find a small yet representative subset of the data. Typically, we want to solve a problem $\mathcal{P}$ with respect to data $X$, but we can't---*the data are simply too large*---so we must work with a subset $S \subset X$ instead and *hope it suffices*.
 
-While basic sampling techniques (e.g. uniform) may suffice for some problems, solutions solved on the subset $\mathcal{P}(S)$ can sometimes deviate dramatically from their population values $\mathcal{P}(X)$. Ideally, we want a subset $S \subset X$ *small enough* to be feasibly computable on $\mathcal{P}$, but also *representative enough* such that the solution $\mathcal{P}(S)$ approximates $\mathcal{P}(X)$, e.g. solutions satisfying:
+Sometimes, this works. Sometimes, though, the solutions $\mathcal{P}(S)$ deviate dramatically from the real problem $\mathcal{P}(X)$. Ideally, we want a subset $S \subset X$ small enough to be *feasibly computable* on $\mathcal{P}$, but also representative enough such that the solution $\mathcal{P}(S)$ *approximates* $\mathcal{P}(X)$ under the appropriate notion, e.g. a $(1 \pm \epsilon)$ scheme:
 
 $$ (1 - \epsilon) \mathcal{P}(S) \leq \mathcal{P}(X) \leq (1 + \epsilon) \mathcal{P}(S)$$
 
-Of course, The exact definitions of "feasibly" and "approximate" often change based on the problem, but in general subsets which **provably** achieve such approximations guarantees are called [coresets](https://en.wikipedia.org/wiki/Coreset), and they are _everywhere_: whether for vector quantization, low rank matrix approximation, or surface simplification, coresets have proven ubiquitious for scientific computing.
+Of course, the exact definitions of "problem" and "feasibly" and "approximate" vary, but a general term for subsets which **provably** achieve such approximations guarantees on their associated problems of interest are called [coresets](https://en.wikipedia.org/wiki/Coreset).
+
+Coresets they are *everywhere*: whether for vector quantization, low rank matrix approximation, or surface simplification, coresets have proven ubiquitous in scientific computing.
 
 <!-- pop up in a variety of computational, geometric, or learning settings. -->
+
 <!-- Indeed, the [stochastic gradient descent](https://en.wikipedia.org/wiki/Stochastic_gradient_descent)---a cornerstone of deep learning---is a type of coreset. -->
+
 <!-- to computational problems like basic vector summation and to learning problems, like linear regression or principle component analysis.  -->
 
 <!-- it is slow and often ineffective to compute the full gradient each iteration of training, so we choose to approximate with "batches."  -->
+
 <!-- https://sarielhp.org/p/15/greedy_permutation/permutation.pdf -->
 
 ## One coreset to rule them all
 
-Though fascinating in their own right, the theory behind coresets can be quite complicated.
-Many coreset constructions are difficult to analyse, difficult to implement, and intrinsically problem-specific.
-For example, in the diameter problem, random uniform sampling is not likely to give a good approximation error.
+Fascinating though they are, coreset theory can be quite complicated---most coresets are difficult to analyse, difficult to implement, and/or intrinsically problem-specific.
 
-In spite of this, there is one particular coreset construction that seems to have an unending number of applications, being re-discovered again and again: the **greedy permutation** (or the [farthest-first traversal](https://en.wikipedia.org/wiki/Farthest-first_traversal)).
-<!-- ubiquitous in computational geometry -->
-<!-- Greedy permutations are effective permutations of an input set that keep points as far apart as possible while minimizing the maximum distance from any point to the sample. -->
-The idea of the greedy permutation is to construct a permutation $P$ of a set $X$ that keeps successive points as far apart as possible, i.e. minimizing the maximum distance to previously encountered points.
+Except one. <!-- For example, in the diameter problem, random uniform sampling is not likely to give a good approximation error. -->
 
-![Picture from _Approximate Greedy Clustering and Distance Selection for Graph Metrics_, by Eppstein et al](fft.png)
+There is one particular coreset construction that is easy to construct, easy to analyze, and easy to implement. Moreover, it seems to have an unending number of applications, having been re-discovered time and time again: the **greedy permutation** (a.k.a the [farthest-first traversal](https://en.wikipedia.org/wiki/Farthest-first_traversal)). <!-- ubiquitous in computational geometry --> <!-- Greedy permutations are effective permutations of an input set that keep points as far apart as possible while minimizing the maximum distance from any point to the sample. --> The idea of the greedy permutation is to construct a permutation $P$ of a set $X$ that keeps successive points as far apart as possible, i.e. minimizing the maximum distance to previously encountered points. Here's a picture demonstrating the process:
 
-To clarify, let $(X, d_X)$ denote a metric space of size $\lvert X \rvert = n$, and $P = (p_0, p_1, \dots, p_{n-1})$ a sequence of points from $X$. The sequence $P$ is called a <u> *greedy permutation* </u> if for all $i \in [n]$:
+![Picture from *Approximate Greedy Clustering and Distance Selection for Graph Metrics*, by Eppstein et al](fft.png)
+
+To clarify this construction, let $(X, d_X)$ denote a metric space of size $\lvert X \rvert = n$, and $P = (p_0, p_1, \dots, p_{n-1})$ a sequence of points from $X$. The sequence $P$ is called a <u>*greedy permutation*</u> if, for all $i \in [n]$, we have:
 
 $$d_X(p_i, P_i) = \max_{p \in P} d_X(p, P_i), \quad P_i = \{\, p_0, \dots, p_{i-1}\,\}$$
 
-where $d_X(x, S)$ represents the minimum distance between $x \in X$ to any point in the set $S$. The first point $p_0$ is called the *seed* of the sequence $P$, and $P_i$ is called the _i-th_ *prefix* of $P$.
+where $d_X(x, S)$ represents the minimum distance between $x \in X$ to any point in the set $S$. The first point $p_0$ is called the *seed* of the sequence $P$, and $P_i$ is called the *i-th* *prefix* of $P$.
 
-Greedy permutations are easy to construct: simply choose a seed point $p_0$, add it to the sequence $P = (p_0)$, then choose the next point $p_1$ _greedily_ by minimizing the above distance $d_X(p_0, P_1)$. Repeating this $k$-times constructs a subset $S \subset X$ of size $\lvert S \rvert = k$ that in many ways approximates the set $X$; when $k = n$, the resulting sequence is a permutation of $X$.
+Greedy permutations are easy to construct: given a seed point $p_0$ and thus initial sequence $P = (p_0)$, choose the next point $p_1$ *greedily* by minimizing $d_X(p_0, P_1)$. Repeating this $k$-times constructs a subset $S \subset X$ of size $\lvert S \rvert = k$ that in many ways approximates the set $X$; when $k = n$, the resulting sequence is a *permutation* of $X$.
 
 ## Properties: it has all of them.
+
+Aside form the fact that its representation is extremely simple---just a permutation of the set $X$---the greedy permutation comes equipped with a variety of 'nice' coverage and separation properties. To $$B(x, r) \triangleq \{ \, x' \in X : d_X(x, x') \leq r \, \}$$
 
 One of the principal interests in the greedy permutation is that it approximates the $k$-center clustering problem at all resolutions. Specifically, the $k$-prefix given by the first $k$ vertices of the permutations provides a $2$-approximation to the $k$-center clustering problem, for all $k \in \{ \, 2, \dots, n \, \}$.
 
 <!-- Assume we've constructed a greedy permutation $P$ of $X$. What are its properties, what problems can it approximate, and how does it relate to coresets? First, let's define a _ball_: -->
-
-$$B(x, r) \triangleq \{ \, x' \in X : d_X(x, x') \leq r \, \}$$
-
-
-
 
 <!-- Naive computation of the $k$-th prefix of the greedy permutation takes $O(nk)$ time, though  -->
 
@@ -96,10 +95,13 @@ $$B(x, r) \triangleq \{ \, x' \in X : d_X(x, x') \leq r \, \}$$
 
 <!-- We would like to produce a subset $S \subseteq X$ of $X$ such that the -->
 
+```{=html}
 <!-- <https://sarielhp.org/p/04/survey/survey.pdf>
 
 <https://en.wikipedia.org/wiki/Coreset> -->
+```
 
+```{=html}
 <!-- In machine learning, this challenge often manifests in tasks where pairwise distance computations are necessary, such as clustering, classification, anomaly detection.
 
 In many computational geometry and computer graphics applications, one often wants to compare detailed meshes identifiable point on an object that corresponds to matching points on similar objects.
@@ -107,6 +109,7 @@ In many computational geometry and computer graphics applications, one often wan
 $S \subseteq X$
 
 $X$ -->
+```
 
 <!-- The metric k-center problem is a combinatorial optimization problem studied in theoretical computer science. Given n cities with specified distances, one wants to build k warehouses in different cities and minimize the maximum distance of a city to a warehouse. In graph theory, this means finding a set of k vertices for which the largest distance of any point to its closest vertex in the k-set is minimum. The vertices must be in a metric space, providing a complete graph that satisfies the triangle inequality. -->
 
@@ -167,6 +170,112 @@ None
 </iframe>
 :::
 
+## Multiscale decomposition & quantization
+
+To illustrate the broad utility of the greedy permutation, consider the classical *vector quantization* problem.
+
+To see why this can be used for vector quantization, consider the problem of (lossily) compressing an $n \times m$ grayscale image $I$. As a grayscale image, its intensity values can take any of the 256 values representable by an unsigned 8-bit integer. Let's assume a simple Huffman encoding scheme, wherein the goal is simply to produce a smaller image by replacing all $nm$ intensity values with a 'codeword' of a smaller length, the idea being that more frequently occurring pixels map to smaller codewords, while rarely occurring codewords necessarily take up more bits.
+
+For example, in the parrot picture below
+
+```{python}
+#| echo: true
+import imageio
+parrot_mat = imageio.imread("/Users/mpiekenbrock/peekxc.github.io/content/posts/landmark/parrots/parrot.jpeg")
+parrot_mat = parrot_mat[:,:,0]
+```
+
+This is a $316 \times 474$ pixel image, each pixel value representing an unsigned 8-bit integer. Thus, the uncompressed storage size of this image ought to be \~146 KB.
+
+$$ 316 \times 464 \times 8 = $$
+
+Under the (lossless) huffman coding scheme, we get a symbol table that looks as follows:
+
+```{python}
+#| echo: false
+from collections import Counter
+from dahuffman import HuffmanCodec
+
+intensity_freq = Counter(np.ravel(parrot_mat))
+codec = HuffmanCodec.from_frequencies(intensity_freq)
+codec.print_code_table()
+```
+
+```{python}
+#| echo: true
+import io
+from contextlib import redirect_stdout
+std_out = io.StringIO()
+codec.print_code_table(std_out)
+print('\n'.join(std_out.getvalue().split('\n')[:15]))
+```
+
+We can get the number of bits of the huffman encoding by mapping the intensity values to their corresponding 'codeword', counting the number of bits of each such encoding.
+
+```{python}
+code_table = codec.get_code_table()
+num_bits = sum([code_table[val][0] for val in np.ravel(parrot_mat)])
+print(num_bits / 8 / 1024)
+```
+
+Thus, in the above parrot image, we get a pretty modest compression level of 94% (though it is lossless).
+
+Of course, the `greedypermutation` is not a compression algorithm per-se. But it's geometric coverage properties suggest it might be a valid way of approaching the encoding problem. If we arrange the pixel values of the image on the real line and simply run the greedy permutation, starting with black as our starting pint, we get the following set of intensity values:
+
+```{python}
+from landmark import landmarks
+
+parrot_values = np.ravel(parrot_mat)
+landmark_ind = landmarks(parrot_values[:,np.newaxis], 15, seed=np.flatnonzero(parrot_values == 128)[0])
+
+
+landmark_ind = landmarks(np.arange(256)[:,np.newaxis], seed=0)
+
+print(parrot_values[landmark_ind])
+```
+
+Predictably, starting with a 0 intensity value (black) as our seed, the furthest pixel away is full intensity (all white), followed by the middle intensity value (128). This makes sense, as the greedy permutation tends to choose extremal values.
+
+What happens after is a little surprising. The value should look familiar: each contiguous set of $2^k$ values for $k \geq 0$ are awfully close to $k$-levels of a bread-first search tree built on top the range $[0, \dots, 255]$.
+
+```         
+                                  128
+                            /          \
+                    64              192
+                /   \           /     \
+          32     96        160    224
+        /   \    /  \     /  \    /  \
+     16   48  80  112 144 176 208  240
+```
+
+This matches intuition: under uniform intensity values, the best way to "cover" the range \[0..255\] would naturally be to start with the middle value, partition the range into two \[0..127\] and \[129..255\], then choose the next two points to be the centers of those ranges (in any order). Continuing this process yields a set of pixel values that is guaranteed to halve the minimum distance $d_X(x, S)$ of each intensity value each level of the tree.
+
+```{python}
+landmark_ind = landmarks(parrot_values[:,np.newaxis], 256, seed=np.flatnonzero(parrot_values == 128)[0])
+
+enc_size = []
+for k in range(2, 256):
+	codeword_ind = landmark_ind[:k]
+	code_mapping = np.argmin(parrot_values[:,np.newaxis] - parrot_values[codeword_ind], axis=1)
+	parrot_enc = codeword_ind[code_mapping]
+	codec = HuffmanCodec.from_frequencies(Counter(parrot_enc))
+	code_table = codec.get_code_table()
+	num_bits = sum([code_table[val][0] for val in parrot_enc])
+	enc_size.append(num_bits)
+
+enc_size = np.array(enc_size)
+p = figure(width=300, height=250, title="Compression level")
+
+p.yaxis.axis_label = "Encoding size (KiB)"
+p.xaxis.axis_label = "Dictionary size (k)"
+p.line(np.arange(256), enc_size / 8 / 1024)
+show(p)
+```
+
+By converting to black-and-white ($k=2$), we achieve a pleasant compression level comparable to 15% of the original size. But this isn't all: we can *choose* the compression levels by a simple dictionary mapping of codewords. This is sometimes called *progressive compression*.
+
+Thus, using the `greedypermutation`, we've turned a classical lossless compression technique into a lossy, progressive compressive technique that recovers the lossless when $k$ is large enough, all without knowing almost anything about compression!
+
 ```{python}
 #| echo: false
 import numpy as np
@@ -176,7 +285,6 @@ from bokeh.plotting import figure, show
 from bokeh.models import SetValue, Slider, CustomJS
 from bokeh.layouts import column
 from bokeh.io import output_file
-
 
 # base_path = '/Users/mpiekenbrock/peekxc.github.io/content/posts/landmark/'
 base_path = '.'
@@ -202,6 +310,7 @@ cg_callback = CustomJS(args=dict(source=img_g.data_source), code=f"""
 k_slider.js_on_change('value', cg_callback)
 q = column(k_slider, p)
 save(q)
+None
 ```
 
 ::: {style="display: flex; justify-content: center; align-items: center;"}
@@ -209,3 +318,35 @@ save(q)
 
 </iframe>
 :::
+
+## Beyond the real line
+
+The astute read will recognize that, though this little technique is clever, it by not means can compete with the highly advanced, multi-decade in-the-works compressed algorithms (e.g. Lempel-Ziv, WebP). These compression techniques are much more complicated and successful, and industrial. Beyond tiny demonstrations above, there's not too many uses of the `greedypermutation` for 1-d compression.
+
+But the `greedypermutation` is not limited to the real line. Without changing the underlying algorithm *at all*, we can readily adapt the k-centering approach to higher dimensions. The biggest observation is that works with the metric k-center out-of-the-box:
+
+<!-- TODO: Show the metric k=center objective plot -->
+
+## Generalizing to proximity searching
+
+The greedy permutation *feels* like a natural, multiscale description of a metric space. Aside from the description given above with black and white pixels, it just seems like one ought to write an algorithm capable of hierarchically decomposing a metric space in a geometrically "nice" way for fun and for profit.
+
+One of my favorite uses of the greedypermutation is the `greedy tree`, an equally simple Ball-tree like construction which provides range searching capability, including radius searches, ANN searching, and KNN.
+
+This is a recent paper by Don Sheehy that does just this.
+
+## Sometimes the hammer is a good tool
+
+Ok, so the greedypermutation can used to solve:
+
+-   Metric k-center
+-   Metric k-cover
+-   Metric k-separation
+-   ANN searching
+-   Ball search
+-   KNN search
+-   Progressive encoding
+
+Can we elegantly extend its use to a
+
+dual tree
