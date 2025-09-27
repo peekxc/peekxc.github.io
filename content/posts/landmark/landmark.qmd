@@ -37,9 +37,9 @@ from landmark import landmarks
 from landmark.datasets import load_shape
 ```
 
-There are many applications where one seeks to find a small yet representative subset of the data. Typically, we want to solve a problem $\mathcal{P}$ with respect to data $X$, but we can't---*the data are simply too large*---so we must work with a subset $S \subset X$ instead and *hope it suffices*.
+Often, I want a small yet representative subset of my data. More exactly, I often want to solve a problem $\mathcal{P}$ with respect to data $X$, but I can't---*the data are simply too large*. Instead, I must work with a subset $S \subset X$ instead and *hope it suffices*.
 
-Sometimes, this works. Sometimes, though, the solutions $\mathcal{P}(S)$ deviate dramatically from the real problem $\mathcal{P}(X)$. Ideally, we want a subset $S \subset X$ small enough to be *feasibly computable* on $\mathcal{P}$, but also representative enough such that the solution $\mathcal{P}(S)$ *approximates* $\mathcal{P}(X)$ under the appropriate notion, e.g. a $(1 \pm \epsilon)$ scheme:
+Sometimes, this works. But sometimes, the solutions $\mathcal{P}(S)$ deviate dramatically from the real problem $\mathcal{P}(X)$. Ideally, we want a subset $S \subset X$ small enough to be *feasibly computable* on $\mathcal{P}$, but also representative enough such that the solution $\mathcal{P}(S)$ *approximates* $\mathcal{P}(X)$ under the appropriate notion, e.g. a $(1 \pm \epsilon)$ scheme:
 
 $$ (1 - \epsilon) \mathcal{P}(S) \leq \mathcal{P}(X) \leq (1 + \epsilon) \mathcal{P}(S)$$
 

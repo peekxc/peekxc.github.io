@@ -1,4 +1,4 @@
-const PRODUCTION = true;
+const PRODUCTION = process.env.CI === 'true';
 
 // Node-js imports
 import fs from "fs";

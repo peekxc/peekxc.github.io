@@ -4,6 +4,7 @@ project:
   # output-dir: content
   render:
     - "content/**/*.qmd"
+    - "content/*.qmd"
     # - "!content/jobs"
   preview:
     browser: false
@@ -11,7 +12,7 @@ project:
     navigate: false
     serve:
       cmd: "eleventy --config eleventy.config.js --watch --serve --incremental"
-      ready: "Server at"
+      ready: "11ty server at"
 
 format:
   gfm:

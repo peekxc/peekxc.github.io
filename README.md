@@ -12,8 +12,8 @@ For any given source file, the following workflow ([inspired from here](https://
 
 Canonically, the cascade is as follows:
 
-1. Write content files, stored in _plain text_, as quarto or markdown documents in `/content`
-2. Call _quarto_ to render _.qmd / _.md from (1) to Github flavored markdown (GFM) \*.md files
+1. Write content `*.qmd` or `*.md` documents in `/content`
+2. Call _quarto_ to render convert any `*.qmd` to pure `*.md` files (GFM)
 3. Write template `.pug` files for site generation in `/_includes`
 4. Call _eleventy_ to merge the content from (2) with the templates from (3), generating the final html site in `/docs`
 
