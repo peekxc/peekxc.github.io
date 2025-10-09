@@ -1,0 +1,37 @@
+---
+import "../styles/tw.css";
+const nav_pages = [
+  { title : "CV", url : "/cv" }, 
+  { title : "Projects", url : "/projects"}, 
+  { title : "Publications", url : "https://scholar.google.com/citations?hl=en&user=2lPQ3UQAAAAJ"}, 
+  { title : "Code", url : "/software" },
+  { title : "Blog", url : "/blog"},
+	{ title : "Debug", url : "/debug"}
+]
+---
+<nav class="navbar top-0 left-0 w-full bg-white border-b shadow-sm" id="navbar">
+  <div class="flex flex-row items-center p-3 justify-start md:justify-start">
+    <div class="flex align-middle" id="brand">
+      <a class="mr-4 text-lg font-semibold" href="/">
+        Home
+      </a>
+    </div>
+    <div>
+      { 
+        nav_pages.map((page) => 
+          <a href={page.url} class="text-lg text-gray-600 hover:text-gray-900">
+            {page.title}
+          </a>
+        )
+      }
+    </div>
+    <div class="flex items-center mr-2 align-middle md:hidden hover:cursor-pointer">
+      <div class="inline-flex justify-center items-center text-gray-400 rounded-md button place-end" id="menu-btn" style="hover:text-white hover:bg-gray-700 focus:outline-none">
+        <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="flex hidden flex-col px-2 pt-0 pb-2 space-y-1 border divide-y md:hidden" id="mobile-menu" style="sm:px-3"></div>
+</nav>

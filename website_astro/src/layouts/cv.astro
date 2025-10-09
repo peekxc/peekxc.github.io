@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import Head from "../components/head.astro";
+import Navbar from "../components/navbar.astro";
+import Footer from "../components/footer.astro";
+const { title, ...props  } = Astro.props;
+import ScriptMenu from "../components/script_menu.astro"
+---
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <Head title={title} />
+  </head>
+  <body>
+    <Navbar />
+		<div class="min-h-screen flex flex-row relative w-screen">
+				<aside class="hidden px-2 lg:flex lg:w-2/5">
+				</aside>
+				<main class="w-full flex-grow max-w-4xl px-4 my-4" style="min-width: 512px;">
+						<slot />
+						<section id="statement" class="md:flex md:visible hidden show-on-md-screen">
+						</section>
+						<br/>
+						<hr>
+				</main>
+				<aside class="hidden px-2 lg:flex lg:w-2/5">
+				</aside>
+		</div>
+	</body>
+</html>
