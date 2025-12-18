@@ -3,7 +3,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite" // v4
 // import tailwindcss from "@astrojs/tailwind"
 import mdx from '@astrojs/mdx';
-
+import icon from "astro-icon";
 // import smartypants from "remark-smartypants";
 // import remarkRehype from 'remark-rehype'
 // import remarkMath from 'remark-math' /* for latex math support */
@@ -14,6 +14,11 @@ import remarkDirectiveRehype from "remark-directive-rehype";
 // import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 import preact from '@astrojs/preact';
+
+
+import UnoCSS from 'unocss/astro'
+
+
 // remarkDirective, remarkDirectiveRehype, 
 // https://astro.build/config
 export default defineConfig({
@@ -23,9 +28,9 @@ export default defineConfig({
     locales: ["en"],
     defaultLocale: "en"
   },
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  // vite: {
+  //   plugins: [tailwindcss()],
+  // },
   markdown: {
     smartypants: true,
     // remarkPlugins: [remarkDirective, remarkFrontmatter],
@@ -37,6 +42,9 @@ export default defineConfig({
       rehypePlugins: [],
       gfm: true, 
     }), 
-    preact()
+    preact(),
+		UnoCSS(),
+		icon(), 
   ]
 });
+

@@ -1,0 +1,35 @@
+---
+interface Badge {
+  src: string
+  alt?: string
+  href?: string
+}
+
+interface Bullet {
+  name: string
+  href: string
+  badges?: Badge[]
+}
+
+const { bullets = [] } = Astro.props
+---
+
+<div class="overflow-auto py-2 bg-white-100">
+  <ul class="text-sm list-disc pl-4 not-prose">
+		{bullets.map((p) => (
+			<li class="list-item [display:list-item]">
+				<div class="flex justify-between items-center">
+					<a href={p.href} class="font-semibold underline">{p.name}</a>
+					<div class="flex gap-2">
+						{p.badges?.map((b) => (
+							<a href={b.href}>
+								<img src={b.src} alt={b.alt ?? ''} class="inline h-4" />
+							</a>
+						))}
+					</div>
+				</div>
+			</li>
+		))}
+	</ul>	
+	<slot/>
+</div>

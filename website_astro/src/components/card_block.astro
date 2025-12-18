@@ -1,6 +1,7 @@
 ---
 import "../styles/tw.css"
 const { title, subtitle, date, extra, description, tags } = Astro.props;
+import { Icon } from 'astro-icon/components'
 ---
 
 <div class="card shadow-xs bg-white leading-5">
@@ -17,17 +18,13 @@ const { title, subtitle, date, extra, description, tags } = Astro.props;
 			<hr class="col-span-full" style="margin-bottom: 0.20rem;" />
 			<div class="flex flex-row justify-between items-center">
 				<div class="flex flex-nowrap justify-between align-center">
-					{ tags.map((tag) =>
+					{ tags?.map((tag) =>
 						<span class="span bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0" style="white-space: nowrap; padding-top: 0.15em !important; padding-bottom: 0.15em !important"> { tag } </span>
 					) }
 				</div>
 				<span class="flex-none">
-					<svg class="stroke-3 h-4 w-4 mr-1 block align-middle justify-self-end" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-					</svg>
-					<svg class="stroke-3 h-4 w-4 mr-1 block align-middle hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-					</svg>
+					<Icon name="down_arrow">
+					<Icon name="up_arrow"/>
 				</span>
 			</div>
 			<!-- <span class="flex-grow truncate ..."> 
@@ -35,7 +32,7 @@ const { title, subtitle, date, extra, description, tags } = Astro.props;
 			</span> -->
 		</div>
 	</div>
-	<div class="accordion-body p-2 overflow-auto px-4 py-2 border-x-2 border-b-2 hidden">
+	<div class="accordion-body p-2 overflow-auto px-4 py-2 border-x-1 border-b-1 hidden">
 		<slot/>
 	</div>
 </div>

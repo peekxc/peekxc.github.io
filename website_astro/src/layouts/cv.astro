@@ -15,8 +15,7 @@ import ScriptMenu from "../components/script_menu.astro"
   <body>
     <Navbar />
 		<div class="min-h-screen flex flex-row relative w-screen">
-				<aside class="hidden px-2 lg:flex lg:w-2/5">
-				</aside>
+				<aside class="hidden px-2 lg:flex lg:w-2/5"/>
 				<main class="w-full flex-grow max-w-4xl px-4 my-4" style="min-width: 512px;">
 						<slot />
 						<section id="statement" class="md:flex md:visible hidden show-on-md-screen">
@@ -24,8 +23,24 @@ import ScriptMenu from "../components/script_menu.astro"
 						<br/>
 						<hr>
 				</main>
-				<aside class="hidden px-2 lg:flex lg:w-2/5">
-				</aside>
+				<aside class="hidden px-2 lg:flex lg:w-2/5"/>
 		</div>
+		<script is:inline>
+			document.addEventListener('DOMContentLoaded', function() {
+				const cards = document.querySelectorAll('.cursor-context-menu');
+				console.log(cards);
+				cards.forEach(function(card) {
+					card.addEventListener('click', function() {
+						console.log(card);
+						var parent = card.parentElement;
+						console.log(parent);
+						parent.querySelector(".accordion-header").classList.toggle("active");
+						// parent.querySelector(".text-ellipsis").classList.toggle("hidden");
+						parent.querySelector(".accordion-body").classList.toggle("hidden");
+						parent.querySelector('svg').classList.toggle("hidden");
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

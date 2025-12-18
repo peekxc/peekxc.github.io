@@ -1,5 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components'
 import ProfileImage from "../assets/images/profile_pic_blue.jpg"
 ---
 
@@ -9,8 +10,33 @@ import ProfileImage from "../assets/images/profile_pic_blue.jpg"
 			class="object-cover rounded-t-md align-middle aspect-square"
 			style="max-width: 14rem; width: 14rem; height: 14rem;"
 		/>
+		<!-- https://icones.js.org/collection/all -->
 		<div class="grid grid-cols-3">
-			<a class="py-1.5 flex-auto" style="white-space: nowrap; background-color: #5087ed;">
+			<a class="py-1.5 flex items-center rounded-bl-md" style="background-color: #000000;">
+				<span class="mx-auto">
+					<Icon name="github" width=24 height=24 />
+				</span>
+			</a>
+			<a class="py-1.5 flex items-center" style="background-color: #5087ed;">
+				<span class="mx-auto">
+					<Icon name="scholar" width=24 height=24 />
+				</span>
+			</a>
+			<a class="py-1.5 flex items-center rounded-br-md" style="background-color: #2a66bc;">
+				<span class="mx-auto">
+					<Icon name="linkedin" width=24 height=24 />
+				</span>
+			</a>
+			<style>
+				[data-icon] {
+						color: #ffffff;
+				}
+			</style>
+
+			<!-- <a class="py-0.5 grid" style="white-space: nowrap; background-color: #ffffff;">
+				<span class="i-mdi:github w-6 h-6 text-gray-800 inline-block align-middle place-self-center"/>
+			</a> -->
+			<!-- <a class="py-1.5 flex-auto" style="white-space: nowrap; background-color: #5087ed;">
 				<span class="scholar_logo align-middle bg-no-repeat bg-center h-4 w-4 mx-auto"/>
 			</a>
 			<a class="py-1.5 flex-auto" style="white-space: nowrap; background-color: #000000;">
@@ -18,7 +44,7 @@ import ProfileImage from "../assets/images/profile_pic_blue.jpg"
 			</a>
 			<a class="py-1.5 flex-auto" style="white-space: nowrap; background-color: #2a66bc;">
 				<span class="linkedin_logo place-self-center-safe bg-no-repeat bg-center h-8 w-8 mx-auto"/>
-			</a>
+			</a> -->
 		</div>
 	</div>
 	<div class="flex flex-col justify-between px-3 overflow-y-scroll text-left py-2 flex-1">

@@ -16,7 +16,7 @@ const nav_pages = [
         Home
       </a>
     </div>
-    <div>
+    <div class="flex gap-3">
       { 
         nav_pages.map((page) => 
           <a href={page.url} class="text-lg text-gray-600 hover:text-gray-900">
@@ -25,7 +25,7 @@ const nav_pages = [
         )
       }
     </div>
-    <div class="flex items-center mr-2 align-middle md:hidden hover:cursor-pointer">
+    <div class="flex items-center mx-2 align-middle md:hidden hover:cursor-pointer">
       <div class="inline-flex justify-center items-center text-gray-400 rounded-md button place-end" id="menu-btn" style="hover:text-white hover:bg-gray-700 focus:outline-none">
         <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
