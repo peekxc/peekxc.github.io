@@ -1,0 +1,96 @@
+---
+// Scrollspy.astro
+---
+
+<nav class="scrollspy">
+  <p class="title">On this page</p>
+  <div id="links"></div>
+</nav>
+
+<style>
+.scrollspy {
+  position: sticky;
+  top: 2.5rem;
+  align-self: start;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(148 163 184);
+  margin-bottom: 0.5rem;
+}
+
+#links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+	color: rgb(100 116 139);
+}
+
+a {
+  color: rgb(100 116 139);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: rgb(15 23 42);
+}
+
+a.h2 {
+  margin-left: 1rem;
+  font-size: 0.875rem;
+}
+
+a.active {
+  color: rgb(37 99 235);
+  border-left: 2px solid rgb(37 99 235);
+  padding-left: 0.75rem;
+  margin-left: -0.75rem;
+  font-weight: 500;
+}
+</style>
+
+<script>
+const init = () => {
+  const container = document.getElementById("links");
+  if (!container) return;
+
+  const headings = [...document.querySelectorAll("h1, h2")];
+  container.innerHTML = "";
+
+  const links = headings.map(h => {
+    h.id ||= h.textContent.toLowerCase().replace(/\s+/g, "-");
+    const a = document.createElement("a");
+    a.href = `#${h.id}`;
+    a.textContent = h.textContent;
+    a.className = h.tagName === "H2" ? "h2" : "";
+    container.appendChild(a);
+    return a;
+  });
+
+  const observer = new IntersectionObserver(
+    entries => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+
+      links.forEach(l => l.classList.remove("active"));
+      container
+        .querySelector(`a[href="#${visible.target.id}"]`)
+        ?.classList.add("active");
+    },
+    { rootMargin: "0px 0px -70% 0px" }
+  );
+
+  headings.forEach(h => observer.observe(h));
+};
+
+init();
+document.addEventListener("astro:page-load", init);
+</script>

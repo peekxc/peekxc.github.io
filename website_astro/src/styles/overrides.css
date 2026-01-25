@@ -4,31 +4,11 @@
   font-feature-settings: 'ss01' 0, 'salt' 0;
 } */
 /* "Vollkorn" */
-.arrow_up_circle {
-	display: inline-block;
-	background-image: url(/fonts/arrow_up_circle.svg);
+a {
+	font-weight: 400;
+	font-style: italic;
+	text-decoration: underline !important;
 }
-.github_logo {
-	display: inline-block;
-	background-image: url(/fonts/github_logo.svg);
-}
-.linkedin_logo {
-	display: inline-block;
-	background-image: url(/fonts/linkedin_logo.svg);
-}
-.scholar_logo {
-	display: inline-block;
-	background-image: url(/fonts/scholar_logo.svg);
-}
-.calendar_icon {
-	display: inline-block;
-	background-image: url(/fonts/calendar_icon.svg);
-}
-.tag_icon {
-	display: inline-block;
-	background-image: url(/fonts/tag_icon.svg);
-}
-
 .link_color {
 	/* color: #0000EE; */
 	color: rgb(39 39 42);

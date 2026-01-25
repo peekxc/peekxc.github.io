@@ -1,9 +1,15 @@
 ---
 title: MJP Website
-layout: ../layouts/index.astro
+layout: ../layouts/article.astro
 ---
+import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets';
+import TagList from '../components/TagList.astro'
 import profile_pic from '../assets/images/profile_pic_white.jpg';
+import CardSection from "../components/CardSection.astro"
+
+<h1 class="my-4"> Matt Piekenbrock </h1>
+<TagList/>
 
 <Picture 
     src={profile_pic} alt="mjp profile pic" width="750"

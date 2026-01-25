@@ -1,0 +1,43 @@
+---
+interface Props {
+	imagePath: string;
+	altText: string;
+	size: string;
+}
+const { imagePath, altText, size } = Astro.props;
+
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}')
+// console.log(images)
+const optimizedBackground = !images[imagePath] ? {src: null} : await getImage({ 
+	src: images[imagePath](), 
+	format: 'webp', 
+	loading: 'lazy', 
+	quality: 'low',
+	fetchpriority: "low"
+	// densities: [0.5, 1.0, 1.5, 2]
+	// width: 400
+});
+// throw new Error(`"${imagePath}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif}"`);
+---
+<!-- { console.log(optimizedBackground) } -->
+<!-- bg-neutral-200  -->
+<!-- `background-image: url(${optimizedBackground.src});  -->
+<div 
+	aria-label={altText}
+	class={`
+		overflow-hidden
+		transition-all duration-300 
+		bg-white/85 bg-backdrop-blur-sm 
+		bg-cover bg-clip-border bg-no-repeat bg-right bg-blend-overlay
+		px-4 py-2 m-0 
+		bg-backdrop-filter-xs
+		inset-0
+		w-full h-full
+		rounded-t-sm
+	`}
+	style={`background-image: url(${optimizedBackground.src}); background-size: ${size}% !important;`}
+>
+	<slot class="grayscale transition-transform duration-500 backdrop-blur-sm"/>
+</div>

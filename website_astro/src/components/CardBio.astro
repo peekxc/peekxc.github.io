@@ -1,0 +1,66 @@
+---
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components'
+import ProfileImage from "../assets/images/profile_pic_blue.jpg"
+---
+
+<div class="flex bg-white/70 rounded-lg border border-gray-400" style="mx-0 md:mx-8 lg:mx-16">
+	<div class="flex flex-col p-2 my-auto justify-items-center">
+		<Picture src={ProfileImage} 
+			alt="MJP profile pic",
+			class="object-cover rounded-t-md align-middle aspect-square",
+			style="max-width: 14rem; width: 14rem; height: 14rem;",
+			loading="eager",
+			fetchpriority="high",
+			quality="low",
+			format='webp'
+			width="672",
+			height="672"
+		/>
+		<!-- https://icones.js.org/collection/all -->
+		<div class="grid grid-cols-3">
+			<a class="py-1.5 flex items-center rounded-bl-md" style="background-color: #000000;" href="https://github.com/peekxc">
+				<span class="mx-auto">
+					<Icon name="github" width=24 height=24 />
+				</span>
+			</a>
+			<a class="py-1.5 flex items-center" style="background-color: #5087ed;" href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en">
+				<span class="mx-auto">
+					<Icon name="scholar" width=24 height=24 />
+				</span>
+			</a>
+			<a href="/" class="py-1.5 flex items-center rounded-br-md" style="background-color: #2a66bc;" href="https://www.linkedin.com/in/matthew-piekenbrock-1469777a/">
+				<span class="mx-auto">
+					<Icon name="linkedin" width=24 height=24 />
+				</span>
+			</a>
+			<style>
+				[data-icon] {
+					color: #ffffff;
+				}
+			</style>
+		</div>
+	</div>
+	<div class="flex flex-col justify-between px-3 overflow-y-scroll text-left py-2 flex-1">
+			<h4 class="font-bold text-2xl antialiased">Matt Piekenbrock</h4>
+			<div class="prose-md leading-5 inline m-auto">
+				<slot/>
+			</div>
+	</div>
+</div>
+
+<style>
+
+.github_logo {
+	display: inline-block;
+	background-image: url(../fonts/github_logo.svg);
+}
+.linkedin_logo {
+	display: inline-block;
+	background-image: url(../fonts/linkedin_logo.svg);
+}
+.scholar_logo {
+	display: inline-block;
+	background-image: url(../fonts/scholar_logo.svg);
+}
+</style>

@@ -93,3 +93,6 @@ On generation, all source css/js/font/img assets that are stored in `/content` a
 
 - The eleventy-img plugin is buggy, at least the universal transform
 - Dont use .container
+
+## Updated w/ Astro 
+

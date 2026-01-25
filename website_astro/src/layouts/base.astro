@@ -1,25 +1,20 @@
 ---
-import { Image } from 'astro:assets';
 import Head from "../components/head.astro";
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
-import ScriptMenu from "../components/script_menu.astro"
+import ScriptMenu from "../components/ScriptMenu.astro"
 const { title, ...props  } = Astro.props;
-import "../styles/tw.css";
+// import "../styles/tw.css";
+// import "../styles/overrides.css";
 ---
 <html>
-  <head>
-    <meta charset="utf-8">
-    <Head title={title} />
-  </head>
+  <Head title={title} />
   <body>
-    <Navbar />
-    <main class="items-center m-0 mx-auto max-w-none">
-      <slot />
-    </main>
+    <Navbar/>
+		<slot/>
     <Footer/>
 		<ScriptMenu/>
-		<!-- <script defer src="/_vercel/speed-insights/script.js"/> -->
-		<!-- <script defer src="/_vercel/insights/script.js"/> -->
+		<!-- <script defer src="/_vercel/speed-insights/script.js"/>
+		<script defer src="/_vercel/insights/script.js"/> -->
   </body>
 </html>

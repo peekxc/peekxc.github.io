@@ -6,7 +6,6 @@ const nav_pages = [
   { title : "Publications", url : "https://scholar.google.com/citations?hl=en&user=2lPQ3UQAAAAJ"}, 
   { title : "Code", url : "/software" },
   { title : "Blog", url : "/blog"},
-	{ title : "Debug", url : "/debug"}
 ]
 ---
 <nav class="navbar top-0 left-0 w-full bg-white border-b shadow-sm" id="navbar">
@@ -16,7 +15,7 @@ const nav_pages = [
         Home
       </a>
     </div>
-    <div class="flex gap-3">
+    <div class="flex gap-4">
       { 
         nav_pages.map((page) => 
           <a href={page.url} class="text-lg text-gray-600 hover:text-gray-900">

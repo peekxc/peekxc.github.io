@@ -7,7 +7,7 @@ card_extra: 'Air Force Research Laboratory, WPAFB'
 card_date: 'Fall 2017, Fall 2018 - Fall 2019'
 abstract: 'Motivated by my previous work on the foundations of density-based clustering, I focused on implementing and extending the Mapper algorithm, a popular and very general method which has been used successfully for data analysis.'
 background_image: /resources/afrl.png
-card_tags: ["Topology", "Mapper", "R package"]
+card_tags: [`"Topology", "Mapper", "R package"`]
 date: 2019-09-01
 ---
 

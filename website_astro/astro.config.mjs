@@ -14,9 +14,8 @@ import remarkDirectiveRehype from "remark-directive-rehype";
 // import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 import preact from '@astrojs/preact';
-
-
 import UnoCSS from 'unocss/astro'
+import vercel from "@astrojs/vercel";
 
 
 // remarkDirective, remarkDirectiveRehype, 
@@ -28,6 +27,7 @@ export default defineConfig({
     locales: ["en"],
     defaultLocale: "en"
   },
+
   // vite: {
   //   plugins: [tailwindcss()],
   // },
@@ -35,6 +35,7 @@ export default defineConfig({
     smartypants: true,
     // remarkPlugins: [remarkDirective, remarkFrontmatter],
   },
+
   integrations: [
     mdx({
       smartypants: true, 
@@ -45,6 +46,10 @@ export default defineConfig({
     preact(),
 		UnoCSS(),
 		icon(), 
-  ]
+  ],
+  adapter: vercel({
+		webAnalytics: {
+			enabled: true,
+		}
+	})
 });
-
