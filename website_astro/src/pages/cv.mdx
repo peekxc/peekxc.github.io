@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import { getImage } from "astro:assets";
 import ScriptMenu from "../components/ScriptMenu.astro"
 import CardBio from "../components/CardBio.astro"
+import CardBio2 from "../components/CardBio2.astro"
 import PublicationList from "../components/PublicationList.astro"
 import AccordionCard from "../components/AccordionCard.astro"
 import CardSection from "../components/CardSection.astro"
@@ -12,14 +13,18 @@ import BulletList from "../components/BulletList.astro"
 import { getCollection, getEntry, render } from 'astro:content';
 export const jobs = await getCollection('jobs');
 
-<CardBio image_src="../assets/images/profile_pic_blue.jpg">
+<CardBio2 image_src="../assets/images/profile_pic_blue.jpg">
 	<h2 id="biography" style="display: none;"> Bio </h2>
-	I'm a computer scientist with broad interests in geometric and topological data analysis, unsupervised learning, algorithm design, and open source software development.
-	<br /><br />
-	I'm currently a Senior Computer Scientist at [Tenet3](https://www.tenet3.com/).
-	<br /><br />
-	A PDF of my curriculum vitae is <a class="cursor-pointer underline" href="/resources/resume_10.pdf" style="color: #0000EE;">available here</a>
-</CardBio>
+	<h3 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
+		Matt Piekenbrock
+	</h3>
+	<a class="text-lg font-medium text-blue-600 hover:text-blue-900 mb-4" href="https://www.tenet3.com/">
+		Senior Computer Scientist @ Tenet3
+	</a>
+	<div class="text-slate-600 dark:text-slate-400 leading-relaxed my-4 text-justify">
+	I'm a computer scientist with broad interests in geometric and topological data analysis, unsupervised learning, algorithm design, and open source software.
+	</div>
+</CardBio2>
 
 
 <section id="employment" class="flex flex-col space-y-1 py-2 border-sm mx-auto">

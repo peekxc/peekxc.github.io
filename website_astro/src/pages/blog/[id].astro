@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content'
+import Base from '../../layouts/base.astro'
+import AuthorBlock from '../../components/AuthorBlock.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog_posts')
+	const blog_posts = posts.filter(p => !p.data.draft);
+	console.log("Number of posts: ", blog_posts.length)
+	// console.log(Object.keys(blog_posts[0]))
+	console.log(blog_posts[0].filePath)
+	return [
+		{ params: { id: blog_posts[0].id }, props: { post: blog_posts[0]} },
+	];
+}
+
+const { id } = Astro.params;
+const { post } = Astro.props;
+const { Content } = await render(post);
+// const post_content = await post.render();
+---
+
+<!-- <h1> {id} </h1> -->
+
+<Base>
+	<main class="grid grid-cols-12 w-full">
+		<aside class="col-span-3"/>
+		<article class="prose col-span-6 justify-center" style="max-width: 100% !important;">
+			<AuthorBlock
+				title="The Lanczos Method" 
+				date="2023-10-15"
+				categories={["math"]} />
+			<Content />
+		</article>
+		<aside class="col-span-3"/>
+	</main>
+</Base>
+
+<!-- // const { post } = Astro.props
+// const { Content } = await post.render()
+// ---
+// <Base>
+//   <article>
+//     <h1>{post.data.title}</h1>
+//     <Content />
+//   </article>
+// </Base> -->

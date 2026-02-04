@@ -1,11 +1,11 @@
 ---
-import "../styles/tw.css";
+import { Icon } from 'astro-icon/components'
 const nav_pages = [
   { title : "CV", url : "/cv" }, 
   { title : "Projects", url : "/projects"}, 
   { title : "Publications", url : "https://scholar.google.com/citations?hl=en&user=2lPQ3UQAAAAJ"}, 
   { title : "Code", url : "/software" },
-  { title : "Blog", url : "/blog"},
+  { title : "Blog", url : "/blog"}
 ]
 ---
 <nav class="navbar top-0 left-0 w-full bg-white border-b shadow-sm" id="navbar">
@@ -26,9 +26,7 @@ const nav_pages = [
     </div>
     <div class="flex items-center mx-2 align-middle md:hidden hover:cursor-pointer">
       <div class="inline-flex justify-center items-center text-gray-400 rounded-md button place-end" id="menu-btn" style="hover:text-white hover:bg-gray-700 focus:outline-none">
-        <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+        <Icon name="hamburger" width=24 height=24 />
       </div>
     </div>
   </div>

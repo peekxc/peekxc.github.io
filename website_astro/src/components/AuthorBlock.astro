@@ -1,0 +1,13 @@
+---
+const { title, date, categories = [] } = Astro.props;
+---
+<h1 class="my-1 text-center">{title}</h1>
+<p class="text-sm italic text-center m-2">
+	By: Matt Piekenbrock,&nbsp;&nbsp;&nbsp; Posted: {date}, &nbsp;&nbsp;&nbsp; ~{"5 minutes"}
+</p>
+<div class="text-center space-x-1 align-middle">
+	{categories.map(cat => (
+		<span class="px-1 py-0 text-sm rounded-sm border">{cat}</span>
+	))}
+</div>
+<hr class="m-1" />

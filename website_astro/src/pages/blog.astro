@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/base.astro'
+const blog_posts = await getCollection('blog_posts');
+const published_posts = blog_posts.filter(p => !p.data.draft)
+
+---
+
+{console.log("Published ids: ", published_posts.map(p => p.id))}
+
+<!-- https://docs.astro.build/en/guides/content-collections/ -->
+<Base>
+	<ul>
+		{published_posts.map(post => (
+			<li><a href={`/blog/${post.id}`}>{post.data.title}</a></li>
+		))}
+	</ul>
+</Base>
+
+
+<!-- <h1>My Astro Learning Blog</h1>
+<p>This is where I will post about my journey learning Astro.</p>
+<ul>
+	<li><a href="/posts/post-3/">Post 1</a></li>
+</ul> -->

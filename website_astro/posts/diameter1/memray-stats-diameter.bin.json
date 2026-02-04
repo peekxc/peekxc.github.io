@@ -1,0 +1,118 @@
+{
+  "total_num_allocations": 33,
+  "total_bytes_allocated": 120048,
+  "allocation_size_histogram": [
+    {
+      "min_bytes": 0,
+      "max_bytes": 59,
+      "count": 2
+    },
+    {
+      "min_bytes": 60,
+      "max_bytes": 112,
+      "count": 14
+    },
+    {
+      "min_bytes": 113,
+      "max_bytes": 213,
+      "count": 0
+    },
+    {
+      "min_bytes": 214,
+      "max_bytes": 403,
+      "count": 2
+    },
+    {
+      "min_bytes": 404,
+      "max_bytes": 761,
+      "count": 3
+    },
+    {
+      "min_bytes": 762,
+      "max_bytes": 1436,
+      "count": 5
+    },
+    {
+      "min_bytes": 1437,
+      "max_bytes": 2708,
+      "count": 0
+    },
+    {
+      "min_bytes": 2709,
+      "max_bytes": 5107,
+      "count": 0
+    },
+    {
+      "min_bytes": 5108,
+      "max_bytes": 9631,
+      "count": 0
+    },
+    {
+      "min_bytes": 9632,
+      "max_bytes": 18160,
+      "count": 7
+    }
+  ],
+  "allocator_type_distribution": {
+    "MALLOC": 30,
+    "REALLOC": 3
+  },
+  "top_allocations_by_size": [
+    {
+      "location": "<stack trace unavailable>",
+      "size": 110761
+    },
+    {
+      "location": "iterencode:/Users/mpiekenbrock/opt/miniconda3/envs/blog/lib/python3.12/json/encoder.py:258",
+      "size": 3124
+    },
+    {
+      "location": "json_packer:/Users/mpiekenbrock/opt/miniconda3/envs/blog/lib/python3.12/site-packages/jupyter_client/session.py:100",
+      "size": 2080
+    },
+    {
+      "location": "_flush_buffers:/Users/mpiekenbrock/opt/miniconda3/envs/blog/lib/python3.12/site-packages/ipykernel/iostream.py:714",
+      "size": 1502
+    },
+    {
+      "location": "send:/Users/mpiekenbrock/opt/miniconda3/envs/blog/lib/python3.12/site-packages/zmq/sugar/socket.py:701",
+      "size": 1301
+    }
+  ],
+  "top_allocations_by_count": [
+    {
+      "location": "hexdigest:/Users/mpiekenbrock/opt/miniconda3/envs/blog/lib/python3.12/hmac.py:165",
+      "count": 8
+    },
+    {
+      "location": "copy:/Users/mpiekenbrock/opt/miniconda3/envs/blog/lib/python3.12/hmac.py:131",
+      "count": 7
+    },
+    {
+      "location": "<stack trace unavailable>",
+      "count": 7
+    },
+    {
+      "location": "send:/Users/mpiekenbrock/opt/miniconda3/envs/blog/lib/python3.12/site-packages/zmq/sugar/socket.py:701",
+      "count": 4
+    },
+    {
+      "location": "iterencode:/Users/mpiekenbrock/opt/miniconda3/envs/blog/lib/python3.12/json/encoder.py:258",
+      "count": 3
+    }
+  ],
+  "metadata": {
+    "start_time": "2024-08-12 10:19:37.587000-04:00",
+    "end_time": "2024-08-12 10:19:47.877000-04:00",
+    "total_allocations": 61,
+    "total_frames": 34,
+    "peak_memory": 110761,
+    "command_line": "/Users/mpiekenbrock/opt/miniconda3/envs/blog/lib/python3.12/site-packages/ipykernel_launcher.py --f=/Users/mpiekenbrock/Library/Jupyter/runtime/kernel-v2-25478lg3icyXSuq5.json",
+    "pid": 9266,
+    "main_thread_id": 1,
+    "python_allocator": "pymalloc",
+    "has_native_traces": false,
+    "trace_python_allocators": false,
+    "file_format": 0
+  }
+}
