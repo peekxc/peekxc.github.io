@@ -9,12 +9,14 @@ const { title, ...props  } = Astro.props;
 ---
 <html>
   <Head title={title} />
-  <body>
-    <Navbar/>
-		<slot/>
-    <Footer/>
-		<ScriptMenu/>
-		<!-- <script defer src="/_vercel/speed-insights/script.js"/>
-		<script defer src="/_vercel/insights/script.js"/> -->
+  <body class="min-h-screen flex flex-col">
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <ScriptMenu />
+    <!-- <script defer src="/_vercel/speed-insights/script.js"/>
+    <script defer src="/_vercel/insights/script.js"/> -->
   </body>
 </html>
