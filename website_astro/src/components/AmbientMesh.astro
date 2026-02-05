@@ -3,7 +3,7 @@ const canvasId = 'ambient-canvas';
 ---
 
 <div class="pointer-events-none fixed inset-0 -z-10">
-<canvas id={canvasId} class="h-full w-full" aria-hidden="true" data-noise="true"></canvas>
+  <canvas id={canvasId} class="h-full w-full" aria-hidden="true" data-noise="true" data-radius-connections="true"></canvas>
 </div>
 
 <script is:inline type="module">
@@ -21,7 +21,12 @@ const canvasId = 'ambient-canvas';
   const columns = 12;
   const rows = 8;
   const maxJitter = 45;
+  let connectionRadius = 220;
   const useNoise = canvas.dataset.noise !== 'false';
+  const useRadiusConnections = canvas.dataset.radiusConnections !== 'false';
+  const lightTheme = true; // canvas.dataset.lightTheme === 'true';
+  const rgbChannel = lightTheme ? '0,0,0' : '255,255,255';
+  const backgroundColor = lightTheme ? '#fdfdfd' : '#020202';
   const gridPoints = [];
   let width = 0;
   let height = 0;
@@ -48,7 +53,7 @@ const canvasId = 'ambient-canvas';
           phase: Math.random() * Math.PI * 2,
           offsetX: (0.4 + Math.random() * 0.6) * maxJitter,
           offsetY: (0.3 + Math.random() * 0.7) * maxJitter,
-          speed: 0.4 + Math.random() * 0.6,
+          speed: 0.10 + Math.random() * 0.10,
         });
       }
       gridPoints.push(rowPoints);
@@ -63,6 +68,7 @@ const canvasId = 'ambient-canvas';
     canvas.height = height * scale;
     ctx.setTransform(scale, 0, 0, scale, 0, 0);
     createGrid();
+    // connectionRadius = Math.max(90, Math.min(width, height) * 0.28);
   };
 
   const updatePoints = (time) => {
@@ -77,10 +83,10 @@ const canvasId = 'ambient-canvas';
   };
 
   const draw = () => {
-    ctx.fillStyle = '#020202';
+    ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, width, height);
     ctx.lineWidth = 0.8;
-    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+    ctx.strokeStyle = `rgba(${rgbChannel},0.18)`;
 
     for (let row = 0; row < rows - 1; row += 1) {
       for (let column = 0; column < columns - 1; column += 1) {
@@ -89,54 +95,100 @@ const canvasId = 'ambient-canvas';
         const pC = gridPoints[row + 1][column];
         const pD = gridPoints[row + 1][column + 1];
 
-        ctx.beginPath();
-        ctx.moveTo(pA.x, pA.y);
-        ctx.lineTo(pB.x, pB.y);
-        ctx.lineTo(pD.x, pD.y);
-        ctx.closePath();
-        ctx.fillStyle = 'rgba(255,255,255,0.04)';
-        ctx.fill();
-        ctx.stroke();
+        // ctx.beginPath();
+        // ctx.moveTo(pA.x, pA.y);
+        // ctx.lineTo(pB.x, pB.y);
+        // ctx.lineTo(pD.x, pD.y);
+        // ctx.closePath();
+        // ctx.fillStyle = 'rgba(255,255,255,0.04)';
+        // ctx.fill();
+        // ctx.stroke();
 
-        ctx.beginPath();
-        ctx.moveTo(pA.x, pA.y);
-        ctx.lineTo(pD.x, pD.y);
-        ctx.lineTo(pC.x, pC.y);
-        ctx.closePath();
-        ctx.fillStyle = 'rgba(255,255,255,0.03)';
-        ctx.fill();
-        ctx.stroke();
+        // ctx.beginPath();
+        // ctx.moveTo(pA.x, pA.y);
+        // ctx.lineTo(pD.x, pD.y);
+        // ctx.lineTo(pC.x, pC.y);
+        // ctx.closePath();
+        // ctx.fillStyle = 'rgba(255,255,255,0.03)';
+        // ctx.fill();
+        // ctx.stroke();
       }
     }
 
-    ctx.beginPath();
-    gridPoints.forEach((rowPoints) => {
-      rowPoints.forEach((point, index) => {
-        const next = rowPoints[index + 1];
-        if (next) {
-          ctx.moveTo(point.x, point.y);
-          ctx.lineTo(next.x, next.y);
-        }
-      });
-    });
-    ctx.strokeStyle = 'rgba(255,255,255,0.26)';
-    ctx.stroke();
+    // ctx.beginPath();
+    // gridPoints.forEach((rowPoints) => {
+    //   rowPoints.forEach((point, index) => {
+    //     const next = rowPoints[index + 1];
+    //     if (next) {
+    //       ctx.moveTo(point.x, point.y);
+    //       ctx.lineTo(next.x, next.y);
+    //     }
+    //   });
+    // });
+    // ctx.strokeStyle = 'rgba(255,255,255,0.26)';
+    // ctx.stroke();
 
-    ctx.beginPath();
-    for (let column = 0; column < columns; column += 1) {
-      for (let row = 0; row < rows - 1; row += 1) {
-        const point = gridPoints[row][column];
-        const nextRow = gridPoints[row + 1][column];
-        if (nextRow) {
-          ctx.moveTo(point.x, point.y);
-          ctx.lineTo(nextRow.x, nextRow.y);
+    if (useRadiusConnections) {
+      const flattened = gridPoints.flat();
+      const radiusSquared = connectionRadius * connectionRadius;
+      const neighborsList = flattened.map(() => []);
+
+      const clamp = (value) => Math.min(1, Math.max(0, value));
+      const edgeMin = 0.004;
+      const edgeMax = 0.42;
+      const fillMin = 0.002;
+      const fillMax = 0.1;
+
+      for (let i = 0; i < flattened.length; i += 1) {
+        const a = flattened[i];
+        for (let j = i + 1; j < flattened.length; j += 1) {
+          const b = flattened[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const distanceSq = dx * dx + dy * dy;
+          if (distanceSq <= radiusSquared) {
+            const normalized = clamp(1 - Math.sqrt(distanceSq) / connectionRadius);
+            const edgeAlpha = edgeMin + normalized * (edgeMax - edgeMin);
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(${rgbChannel},${edgeAlpha})`;
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+            neighborsList[i].push({ index: j, weight: normalized });
+            neighborsList[j].push({ index: i, weight: normalized });
+          }
+        }
+      }
+
+      for (let i = 0; i < flattened.length; i += 1) {
+        const origin = flattened[i];
+        const neighbors = neighborsList[i];
+        for (let m = 0; m < neighbors.length; m += 1) {
+          for (let n = m + 1; n < neighbors.length; n += 1) {
+            const first = flattened[neighbors[m].index];
+            const second = flattened[neighbors[n].index];
+            if (!first || !second) continue;
+            const dx = first.x - second.x;
+            const dy = first.y - second.y;
+            const distanceSq = dx * dx + dy * dy;
+            if (distanceSq > radiusSquared) continue;
+            const thirdWeight = clamp(1 - Math.sqrt(distanceSq) / connectionRadius);
+            const triangleWeight = (neighbors[m].weight + neighbors[n].weight + thirdWeight) / 3;
+            const fillAlpha = fillMin + triangleWeight * (fillMax - fillMin);
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(${rgbChannel},${fillAlpha})`;
+            ctx.moveTo(origin.x, origin.y);
+            ctx.lineTo(first.x, first.y);
+            ctx.lineTo(second.x, second.y);
+            ctx.closePath();
+            ctx.fill();
+          }
         }
       }
     }
-    ctx.strokeStyle = 'rgba(255,255,255,0.24)';
-    ctx.stroke();
 
-    ctx.fillStyle = 'rgba(255,255,255,0.65)';
+    const nodeAlpha = lightTheme ? 0.38 : 0.65;
+    ctx.fillStyle = `rgba(${rgbChannel},${nodeAlpha})`;
     gridPoints.flat().forEach((point) => {
       ctx.beginPath();
       ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);

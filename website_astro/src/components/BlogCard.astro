@@ -7,16 +7,9 @@ interface Props {
 const { post } = Astro.props as Props;
 const frontmatter = post.data;
 const hasImage = Boolean(frontmatter.background_image);
-const imageSrc = hasImage
-  ? frontmatter.background_image
-  : undefined;
+const imageSrc = hasImage ? frontmatter.background_image : undefined;
 const publishedDate = frontmatter.date
-  ? new Date(frontmatter.date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })
-  : '';
+  ? new Date(frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', }) : '';
 const summary = frontmatter.abstract ?? frontmatter.description ?? '';
 const labels = frontmatter.categories?.length
   ? frontmatter.categories
@@ -25,8 +18,8 @@ const fallbackGradient = 'linear-gradient(135deg, #e2e8f0, #fecdd3)';
 ---
 
 <a
-  href={post.url}
-  class="group block overflow-hidden rounded-3xl border border-slate-200 bg-white/80 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+  href={`/blog/${post.data.slug}`}
+  class="group block overflow-hidden rounded-xl border border-slate-200 bg-white/80 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary hover:cursor-pointer"
   aria-label={`Read ${frontmatter.title}`}
 >
   <article class="grid gap-6 p-6 md:grid-cols-[3fr_2fr]">
@@ -46,7 +39,7 @@ const fallbackGradient = 'linear-gradient(135deg, #e2e8f0, #fecdd3)';
         </p>
       )}
 
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-1">
         {labels.map((label) => (
           <span class="tag bg-slate-100 text-slate-600" aria-label={label}>
             {label}
