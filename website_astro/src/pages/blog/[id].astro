@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import { getCollection, render } from 'astro:content'
 import Base from '../../layouts/base.astro'
 import AuthorBlock from '../../components/AuthorBlock.astro';
+import Scrollspy from '../../components/Scrollspy.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog_posts')
@@ -21,6 +22,7 @@ const { Content } = await render(post);
 // const post_content = await post.render();
 ---
 
+{console.log(post.data)}
 <!-- <h1> {id} </h1> -->
 
 <astro:head>
@@ -34,15 +36,17 @@ const { Content } = await render(post);
 
 <Base>
   <main class="grid grid-cols-12 w-full">
-		<aside class="col-span-3"/>
-		<article class="prose col-span-6 justify-center" style="max-width: 100% !important;">
+		<aside class="three-col-side"/>
+		<article class="prose three-col-main justify-center pb-4 px-2" style="max-width: 100% !important;">
 			<AuthorBlock
-				title="The Lanczos Method" 
-				date="2023-10-15"
-				categories={["math"]} />
+				title={post.data.title}
+				date={post.data.date}
+				categories={post.data.tags} />
 			<Content />
 		</article>
-		<aside class="col-span-3"/>
+		<aside class="three-col-side flex">
+			<Scrollspy class="hidden lg:inline-block truncate"/>
+		</aside>
 	</main>
 	<!-- The loading of KaTeX is deferred to speed up page rendering -->
 	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js" integrity="sha384-+W9OcrYK2/bD7BmUAk+xeFAyKp0QjyRQUCxeU31dfyTt/FrPsUgaBTLLkVf33qWt" crossorigin="anonymous"></script>
@@ -50,7 +54,6 @@ const { Content } = await render(post);
 	<!-- To automatically render math in text elements, include the auto-render extension: -->
 	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
 	onload="renderMathInElement(document.body);"></script>
-
 </Base>
 
 <!-- // const { post } = Astro.props

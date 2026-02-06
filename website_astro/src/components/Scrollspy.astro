@@ -1,8 +1,9 @@
 ---
 // Scrollspy.astro
+const { class: className  } = Astro.props
 ---
 
-<nav class="scrollspy">
+<nav class="scrollspy" class:list={[className]}>
   <p class="title">On this page</p>
   <div id="links"></div>
 </nav>
