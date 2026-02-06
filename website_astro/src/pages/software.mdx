@@ -1,0 +1,21 @@
+---
+layout: ../layouts/article.astro
+title: Software
+---
+
+import SoftwareCard from '../components/SoftwareCard.astro';
+import libraries from '../data/software.json';
+
+<section class="space-y-3 text-center">
+  <p class="text-xs uppercase tracking-[0.5em] text-slate-500">Software</p>
+  <h1 class="text-4xl font-semibold text-slate-900">Code & Libraries</h1>
+  <p class="mx-auto max-w-2xl text-sm text-slate-600">
+    Select packages and toolkits that accompany my geometric and clustering research.
+  </p>
+</section>
+
+<div class="mt-10 flex flex-col gap-5">
+  {libraries.map((lib) => (
+    <SoftwareCard {...lib} />
+  ))}
+</div>

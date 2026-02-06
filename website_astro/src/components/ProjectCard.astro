@@ -1,0 +1,99 @@
+---
+interface SectionItem {
+  label: string;
+  href?: string;
+  meta?: string;
+}
+
+interface Section {
+  title: string;
+  items: SectionItem[];
+}
+
+interface Publication {
+  title: string;
+  href?: string;
+  meta?: string;
+}
+
+interface SoftwareHighlight {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  abstract: string;
+  tags: string[];
+  image?: string;
+  highlightDate?: string;
+  sections?: Section[];
+  publications?: Publication[];
+  software?: SoftwareHighlight[];
+}
+
+const {
+  title,
+  subtitle,
+  abstract,
+  tags,
+  image,
+  highlightDate,
+  sections = [],
+  publications = [],
+  software = []
+} = Astro.props as Props;
+const hasMedia = Boolean(image);
+const accentGradient = 'bg-gradient-to-br from-slate-900/70 via-slate-900/40 to-slate-900/70';
+---
+
+<article class="group w-full rounded-2xl border border-slate-200 bg-white/90 shadow-sm transition hover:shadow-md">
+  {hasMedia && (
+    <div class="relative h-40 overflow-hidden rounded-t-2xl">
+      <img src={image} alt={title} class="h-full w-full object-cover" loading="lazy" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+      <p class="absolute bottom-2 right-3 text-[0.6rem] font-semibold uppercase tracking-[0.4em] text-white/80">{highlightDate ?? 'ongoing'}</p>
+    </div>
+  )}
+  <div class="flex flex-col gap-3 px-4 py-4 text-slate-900">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <h3 class="text-xl font-semibold leading-snug">{title}</h3>
+        <p class="text-xs uppercase tracking-[0.45em] text-slate-500">{subtitle}</p>
+      </div>
+      <div class="flex flex-wrap gap-1 text-[0.55rem] uppercase tracking-[0.35em] text-slate-500">
+        {highlightDate && <span>{highlightDate}</span>}
+        <span class="px-2 py-0.5 rounded-full border border-slate-300 bg-slate-50 text-xs font-semibold text-slate-500">Projects</span>
+      </div>
+    </div>
+    <p class="text-sm text-slate-600 leading-relaxed">{abstract}</p>
+    <div class="flex flex-wrap gap-2 text-[0.65rem] text-slate-600">
+      {tags.map((tag) => (
+        <span class="rounded-full border border-slate-200 px-2 py-0.5 text-xs font-semibold tracking-[0.2em]">{tag}</span>
+      ))}
+    </div>
+
+    <div class="space-y-2 pt-2">
+      {sections.map((section) => (
+        <section class="rounded-2xl border border-slate-200 bg-slate-50/60 p-3 text-sm text-slate-700">
+          <div class="mb-1 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">{section.title}</div>
+          <div class="grid gap-2 text-xs leading-tight">
+            {section.items.map((item) => (
+              <div class="flex items-center justify-between gap-2">
+                {item.href ? (
+                  <a class="font-semibold text-slate-900 transition hover:text-primary" href={item.href} target="_blank" rel="noreferrer">
+                    {item.label}
+                  </a>
+                ) : (
+                  <span class="font-semibold text-slate-900">{item.label}</span>
+                )}
+                {item.meta && <span class="text-[0.55rem] text-slate-500">{item.meta}</span>}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</article>

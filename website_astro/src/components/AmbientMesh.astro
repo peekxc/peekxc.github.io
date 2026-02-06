@@ -2,7 +2,7 @@
 const canvasId = 'ambient-canvas';
 ---
 
-<div class="pointer-events-none fixed inset-0 -z-10">
+<div class="pointer-events-none fixed inset-0 -z-10 hidden md:block">
   <canvas id={canvasId} class="h-full w-full" aria-hidden="true" data-noise="true" data-radius-connections="true"></canvas>
 </div>
 
@@ -18,12 +18,13 @@ const canvasId = 'ambient-canvas';
   }
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const columns = 12;
-  const rows = 8;
+  const mdMedia = window.matchMedia('(min-width: 768px)');
+  const columnsBase = 14;
+  const rowsBase = 12;
   const maxJitter = 45;
-  let connectionRadius = 220;
+  let connectionRadius = 170;
   const useNoise = canvas.dataset.noise !== 'false';
-  const useRadiusConnections = canvas.dataset.radiusConnections !== 'false';
+  const useRadiusConnections = true; // canvas.dataset.radiusConnections !== 'false';
   const lightTheme = true; // canvas.dataset.lightTheme === 'true';
   const rgbChannel = lightTheme ? '0,0,0' : '255,255,255';
   const backgroundColor = lightTheme ? '#fdfdfd' : '#020202';
@@ -31,6 +32,9 @@ const canvasId = 'ambient-canvas';
   let width = 0;
   let height = 0;
   let animationId;
+  let columns = columnsBase;
+  let rows = rowsBase;
+  let isActive = mdMedia.matches;
 
   const createGrid = () => {
     gridPoints.length = 0;
@@ -60,6 +64,11 @@ const canvasId = 'ambient-canvas';
     }
   };
 
+  const determineGrid = () => {
+    columns = Math.max(6, Math.min(18, Math.floor(width / 140)));
+    rows = Math.max(4, Math.min(12, Math.floor(height / 140)));
+  };
+
   const resize = () => {
     const scale = window.devicePixelRatio || 1;
     width = Math.max(canvas.clientWidth, window.innerWidth);
@@ -67,6 +76,7 @@ const canvasId = 'ambient-canvas';
     canvas.width = width * scale;
     canvas.height = height * scale;
     ctx.setTransform(scale, 0, 0, scale, 0, 0);
+    determineGrid();
     createGrid();
     // connectionRadius = Math.max(90, Math.min(width, height) * 0.28);
   };
@@ -83,62 +93,25 @@ const canvasId = 'ambient-canvas';
   };
 
   const draw = () => {
+    if (!isActive) return;
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, width, height);
     ctx.lineWidth = 0.8;
     ctx.strokeStyle = `rgba(${rgbChannel},0.18)`;
 
-    for (let row = 0; row < rows - 1; row += 1) {
-      for (let column = 0; column < columns - 1; column += 1) {
-        const pA = gridPoints[row][column];
-        const pB = gridPoints[row][column + 1];
-        const pC = gridPoints[row + 1][column];
-        const pD = gridPoints[row + 1][column + 1];
-
-        // ctx.beginPath();
-        // ctx.moveTo(pA.x, pA.y);
-        // ctx.lineTo(pB.x, pB.y);
-        // ctx.lineTo(pD.x, pD.y);
-        // ctx.closePath();
-        // ctx.fillStyle = 'rgba(255,255,255,0.04)';
-        // ctx.fill();
-        // ctx.stroke();
-
-        // ctx.beginPath();
-        // ctx.moveTo(pA.x, pA.y);
-        // ctx.lineTo(pD.x, pD.y);
-        // ctx.lineTo(pC.x, pC.y);
-        // ctx.closePath();
-        // ctx.fillStyle = 'rgba(255,255,255,0.03)';
-        // ctx.fill();
-        // ctx.stroke();
-      }
-    }
-
-    // ctx.beginPath();
-    // gridPoints.forEach((rowPoints) => {
-    //   rowPoints.forEach((point, index) => {
-    //     const next = rowPoints[index + 1];
-    //     if (next) {
-    //       ctx.moveTo(point.x, point.y);
-    //       ctx.lineTo(next.x, next.y);
-    //     }
-    //   });
-    // });
-    // ctx.strokeStyle = 'rgba(255,255,255,0.26)';
-    // ctx.stroke();
-
     if (useRadiusConnections) {
       const flattened = gridPoints.flat();
       const radiusSquared = connectionRadius * connectionRadius;
+      const diameterSq = 2 * radiusSquared; 
       const neighborsList = flattened.map(() => []);
 
       const clamp = (value) => Math.min(1, Math.max(0, value));
-      const edgeMin = 0.004;
+      const edgeMin = 0.02;
       const edgeMax = 0.42;
-      const fillMin = 0.002;
-      const fillMax = 0.1;
+      const fillMin = 0.0;
+      const fillMax = 0.08;
 
+      // Edges
       for (let i = 0; i < flattened.length; i += 1) {
         const a = flattened[i];
         for (let j = i + 1; j < flattened.length; j += 1) {
@@ -146,8 +119,8 @@ const canvasId = 'ambient-canvas';
           const dx = a.x - b.x;
           const dy = a.y - b.y;
           const distanceSq = dx * dx + dy * dy;
-          if (distanceSq <= radiusSquared) {
-            const normalized = clamp(1 - Math.sqrt(distanceSq) / connectionRadius);
+          if (distanceSq <= diameterSq) {
+            const normalized = clamp(1 - (distanceSq / diameterSq)); // between [0,1]
             const edgeAlpha = edgeMin + normalized * (edgeMax - edgeMin);
             ctx.beginPath();
             ctx.strokeStyle = `rgba(${rgbChannel},${edgeAlpha})`;
@@ -160,21 +133,26 @@ const canvasId = 'ambient-canvas';
         }
       }
 
+      // Triangles (i,m,n)
       for (let i = 0; i < flattened.length; i += 1) {
         const origin = flattened[i];
         const neighbors = neighborsList[i];
         for (let m = 0; m < neighbors.length; m += 1) {
           for (let n = m + 1; n < neighbors.length; n += 1) {
-            const first = flattened[neighbors[m].index];
-            const second = flattened[neighbors[n].index];
+            const firstIdx = neighbors[m].index;
+            const secondIdx = neighbors[n].index;
+            if (!(i < firstIdx && i < secondIdx && firstIdx < secondIdx)) continue;
+            const first = flattened[firstIdx];
+            const second = flattened[secondIdx];
             if (!first || !second) continue;
             const dx = first.x - second.x;
             const dy = first.y - second.y;
             const distanceSq = dx * dx + dy * dy;
-            if (distanceSq > radiusSquared) continue;
-            const thirdWeight = clamp(1 - Math.sqrt(distanceSq) / connectionRadius);
+            if (distanceSq > diameterSq) continue;
+            const thirdWeight = clamp(1 - (distanceSq / diameterSq));
             const triangleWeight = (neighbors[m].weight + neighbors[n].weight + thirdWeight) / 3;
-            const fillAlpha = fillMin + triangleWeight * (fillMax - fillMin);
+            const smooth = triangleWeight * triangleWeight * (3 - 2 * triangleWeight);
+            const fillAlpha = fillMin + smooth * (fillMax - fillMin);
             ctx.beginPath();
             ctx.fillStyle = `rgba(${rgbChannel},${fillAlpha})`;
             ctx.moveTo(origin.x, origin.y);
@@ -197,9 +175,23 @@ const canvasId = 'ambient-canvas';
   };
 
   const animate = (time) => {
+    if (!isActive) return;
     updatePoints(time);
     draw();
     animationId = window.requestAnimationFrame(animate);
+  };
+
+  const handleMediaChange = () => {
+    isActive = mdMedia.matches;
+    if (!isActive) {
+      if (animationId) {
+        window.cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+      ctx.clearRect(0, 0, width, height);
+    } else if (!prefersReducedMotion && !animationId) {
+      animationId = window.requestAnimationFrame(animate);
+    }
   };
 
   const init = () => {
@@ -209,19 +201,27 @@ const canvasId = 'ambient-canvas';
       draw();
       return;
     }
-    animationId = window.requestAnimationFrame(animate);
+    handleMediaChange();
   };
 
   window.addEventListener('resize', () => {
     if (animationId) {
       window.cancelAnimationFrame(animationId);
+      animationId = null;
     }
     resize();
-    if (!prefersReducedMotion) {
-      animationId = window.requestAnimationFrame(animate);
-    } else {
+    if (prefersReducedMotion) {
       updatePoints(0);
       draw();
+      return;
+    }
+    handleMediaChange();
+  });
+
+  mdMedia.addEventListener('change', () => {
+    handleMediaChange();
+    if (isActive) {
+      resize();
     }
   });
 

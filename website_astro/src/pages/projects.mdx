@@ -1,27 +1,21 @@
 ---
 layout: ../layouts/article.astro
+title: Research Projects
 ---
 
-import AccordionCard from "../components/AccordionCard.astro"
-import CardSection from "../components/CardSection.astro"
-import BulletList from "../components/BulletList.astro"
+import ProjectCard from '../components/ProjectCard.astro';
+import projects from '../data/projects.json';
 
-<AccordionCard
-	title="Bringing High Performance Density-based Clustering to R"
-	subtitle="Funding: Air Force Research Labs"
-	description="Density-based clustering techniques have become extremely popular in the past decade. It's often conjectured that the reason for the success of these methods is due to their ability to identify natural groups in data. These groups are often non-convex, deviate from minimal-variance assumptions, and commonly arise in very large data sets."
-	tags={["Clustering", "R Package", "High performance computing"]}
->
-	<CardSection title="Publications">
-		<div class="p-2 overflow-auto px-4 py-2 bg-white-100">
-		- M. Hahsler, M. Piekenbrock, D. Doran. “dbscan: Fast Density Based Clustering in R”, Journal of Statistical Software, 2018. doi:10.18637/jss.v091.i01
-		</div>
-	</CardSection>
+<section class="space-y-3 text-center">
+  <p class="text-xs uppercase tracking-[0.5em] text-slate-500">Research</p>
+  <h1 class="text-4xl font-semibold text-slate-900">Highlighted Projects</h1>
+  <p class="mx-auto max-w-2xl text-sm text-slate-600">
+    A curated selection of long-form research programs, oriented around geometry, topology, and scalable learning.
+  </p>
+</section>
 
-	<CardSection title="Software">
-		<div class="p-2 overflow-auto px-4 py-2 bg-white-100">
-		- [dbscan](https://github.com/mhahsler/dbscan) (R package)  
-		- [Vignette on using HDBSCAN](https://cran.r-project.org/web/packages/dbscan/vignettes/hdbscan.html)
-		</div>
-	</CardSection>
-</AccordionCard>
+<div class="mt-10 grid gap-6 md:grid-cols-2">
+  {projects.map((project) => (
+    <ProjectCard {...project} />
+  ))}
+</div>
