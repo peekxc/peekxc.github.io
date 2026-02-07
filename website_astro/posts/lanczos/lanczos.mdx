@@ -18,7 +18,7 @@ $$
 
 When $A$ is symmetric, the eigen-decomposition is not only guaranteed to exist, but its [canonical form](https://en.wikipedia.org/wiki/Canonical_form) may be obtained via *orthogonal diagonalization*. Such matrices are among the most commonly encountered matrices in applications.
 
-In 1950, Cornelius Lanczos proposed an algorithm for obtaining by different kind of factorization of $A \in \mathrm{Sym}_n$ by means of *tri-diagonalization*:
+In 1950, [Cornelius Lanczos](https://en.wikipedia.org/wiki/Cornelius_Lanczos) proposed an algorithm for obtaining by different kind of factorization of $A \in \mathrm{Sym}_n$ by means of *tri-diagonalization*:
 
 $$
 AQ = Q T \quad \Leftrightarrow \quad Q^T A Q = T
@@ -28,7 +28,7 @@ Like the eigen-decomposition, the “outer” term(s) $Q$ orthogonally project $
 
 Nonetheless, this decomposition ended up proving to be one of the most revealing spectral decompositions of all time. Despite its age, Lanczos' method of tridiagonalization remains the standard algorithm<sup>1</sup> for both computing eigensets and solving linear systems in the large-scale regime. An [IEEE guest editorial](https://www.computer.org/csdl/magazine/cs/2000/01/c1022/13rRUxBJhBm) places it among the **top 10 most influential algorithms of the 20th century**.
 
-<img src="/posts/lanczos/lanczos_krylov.gif" style="margin: auto; width:100.0%"
+<img src="/posts/lanczos/lanczos_krylov.gif" style="margin: auto; width:100.0%; max-width: 700px;"
 data-text-align="center"
 alt="Lanczos' “method of minimized iterations” on a 100x100 matrix with eigenvalues (0, 0.01, 0.02, …, 2, 2.5, 3)" />
 
@@ -68,7 +68,7 @@ $$
 T = Y \Lambda Y^T
 $$
 
-As $T$ is quite structured, it is easy to diagonalize, and in doing so we have effectively solved the eigenvalue problem for $A$.
+As $T$ is quite structured, it's easy to diagonalize, and in doing so we have effectively solved the eigenvalue problem for $A$.
 
 To quote the [Lanczos introduction from Parlett](https://apps.dtic.mil/sti/tr/pdf/ADA289614.pdf), *could anything be more simple?*
 
@@ -101,7 +101,7 @@ $$
 \text{where  } r_j = (A - \alpha_j I)q_j - \beta_{j - 1} q_j
 $$
 
-In other words, if ($q_{j\text{-}1}, \beta_j, q_j$) are known, then ($\alpha_j$, $\beta_{j+1}, q_{j+1}$) are completely determined. In theory, this means we can *iteratively* generate both $Q$ and $T$ using just a couple vectors at a time—no explicit QR call needed. Pretty nifty, eh!
+In other words, if ($q_{j\text{-}1}, \beta_j, q_j$) are known, then ($\alpha_j$, $\beta_{j+1}, q_{j+1}$) are completely determined. In theory, this means we can *iteratively* generate both $Q$ and $T$ using just a couple vectors at a time—no explicit QR call needed. Pretty nifty!
 
 ## Wait, isn't $T$ arbitrary?
 

@@ -14,7 +14,7 @@ import projects from '../data/projects.json';
   </p>
 </section>
 
-<div class="mt-10 grid gap-6 md:grid-cols-2">
+<div class="mt-10 gap-6 flex flex-col">
   {projects.map((project) => (
     <ProjectCard {...project} />
   ))}

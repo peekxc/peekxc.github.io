@@ -5,7 +5,7 @@
     "abstract": "The primary result of the Mapper framework is the geometric realization of a simplicial complex, depicting topological relationships and structures suitable for visualizing, analyzing, and comparing high dimensional data. As an unsupervised tool, Mapper naturally relies on parameters that control the relational component of the output complex; this project introduces new algorithms to efficiently march through successive Mapper realizations and make them stable and tractable.",
     "tags": ["Clustering", "Topology", "R Package"],
     "image": "/src/assets/images/msu_logo.png",
-    "highlightDate": "2018 – 2022",
+    "highlightDate": "2018 - 2022",
     "sections": [
       {
         "title": "Publications",
@@ -40,7 +40,7 @@
     "abstract": "Density-based clustering techniques are popular because they can recover non-convex, natural groups, but scalable implementations are scarce. This project delivers fast, state-of-the-art density-based algorithms in R, along with companion tools that make these methods accessible for computationally difficult problems.",
     "tags": ["Clustering", "R Package", "High performance"],
     "image": "/src/assets/images/wsu_banner.png",
-    "highlightDate": "2016 – 2018",
+    "highlightDate": "2016 - 2018",
     "sections": [
       {
         "title": "Publications",
@@ -70,8 +70,8 @@
     "subtitle": "Semi-supervised density level set estimation",
     "abstract": "A semi-supervised framework for automating point-of-interest discovery that balances heuristic detection methods with density-based estimation guarantees, enabling flexible incorporation of labeled information while scaling to large geospatial data sets.",
     "tags": ["Clustering", "Geospatial analysis", "Network modeling"],
-    "image": "/src/assets/images/geonet.png",
-    "highlightDate": "2017 – 2018",
+    "image": "/src/assets/images/projects/geonet.png",
+    "highlightDate": "2017 - 2018",
     "sections": [
       {
         "title": "Publications",
@@ -130,7 +130,7 @@
     "abstract": "Coarsening the maintenance of boundary decompositions across filtrations allows sublinear storage and faster persistence computations for dynamic data by reducing the number of state transitions when the filtration ordering shifts.",
     "tags": ["Topology", "Algorithms", "Persistence"],
     "image": "/src/assets/images/patch_manifold.png",
-    "highlightDate": "2021 – 2022",
+    "highlightDate": "2021 - 2022",
     "sections": [
       {
         "title": "Publications",
@@ -155,7 +155,7 @@
     "abstract": "We expose the intrinsic parallelism of iterative closest point by combining a logarithmic approximate search with a rapid Delaunay Traversal, delivering vectorized searches that beat brute-force and branch-and-bound baselines for real-time autonomy.",
     "tags": ["Geometry", "Point registration", "High performance computing"],
     "image": "/src/assets/images/icp.png",
-    "highlightDate": "2014 – 2016",
+    "highlightDate": "2014 - 2016",
     "sections": [
       {
         "title": "Publications",
