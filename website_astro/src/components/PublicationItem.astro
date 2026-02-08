@@ -1,0 +1,42 @@
+---
+interface Props {
+  authors: string;
+  title: string;
+  journal?: string;
+  year?: string | number;
+  doi?: string;
+  href?: string;
+}
+
+const { authors, title, journal, year, doi, href } = Astro.props as Props;
+const doiHref = doi
+  ? (doi.startsWith('http://') || doi.startsWith('https://') ? doi : `https://doi.org/${doi}`)
+  : undefined;
+const doiLabel = doi ? doi.replace(/^https?:\/\/doi\.org\//, '') : undefined;
+---
+
+<article class="rounded-md bg-white/70 py-2 px-4 text-sm text-slate-700 border border-slate-200">
+  {href ? (
+    <a class="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-slate-900 underline decoration-slate-300 underline-offset-2 transition hover:text-slate-950 hover:decoration-slate-800" href={href} target="_blank" rel="noreferrer">
+      {title}
+    </a>
+  ) : (
+    <p class="mt-1 text-sm font-semibold text-slate-900">{title}</p>
+  )}
+	<p class="text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-slate-500">{authors}</p>
+  <div class="mt-1 flex items-end justify-between gap-2">
+    <p class="text-xs italic text-slate-600">
+      {journal}{journal && year ? ', ' : ''}{year}
+    </p>
+    {doiHref && (
+      <a
+        class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-slate-600 underline decoration-slate-300 underline-offset-2 transition hover:text-slate-900 hover:decoration-slate-700"
+        href={doiHref}
+        target="_blank"
+        rel="noreferrer"
+      >
+        DOI {doiLabel}
+      </a>
+    )}
+  </div>
+</article>

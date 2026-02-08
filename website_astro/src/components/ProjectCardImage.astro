@@ -19,16 +19,31 @@ const {
 } = Astro.props as Props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/images/*.{png,jpg,jpeg,webp,avif}',
+  '/src/assets/images/**/*.{png,jpg,jpeg,webp,avif}',
   { eager: true }
+);
+
+const gifImages = import.meta.glob<string>(
+  '/src/assets/images/**/*.gif',
+  { eager: true, import: 'default', query: '?url' }
 );
 
 const imageEntry = imagePath ? images[imagePath] : undefined;
 const imageMeta = imageEntry?.default;
+const isGif = Boolean(imagePath && imagePath.toLowerCase().endsWith('.gif'));
+const gifSrc = isGif && imagePath ? gifImages[imagePath] ?? imagePath : undefined;
 ---
 
 {
-  imageMeta ? (
+  isGif && gifSrc ? (
+    <img
+      src={gifSrc}
+      alt={alt}
+      loading={loading}
+      class={className}
+      decoding="async"
+    />
+  ) : imageMeta ? (
     <Picture
       src={imageMeta}
       alt={alt}

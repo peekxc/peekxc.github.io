@@ -2,99 +2,71 @@
 import { Icon } from 'astro-icon/components';
 import ProjectCardImage from './ProjectCardImage.astro';
 
-interface SectionItem {
-  label: string;
-  href?: string;
-  meta?: string;
-}
-
-interface Section {
-  title: string;
-  items: SectionItem[];
-}
-
-interface Publication {
-  title: string;
-  href?: string;
-  meta?: string;
-}
-
-interface SoftwareHighlight {
-  label: string;
-  href?: string;
-}
-
 interface Props {
   title: string;
   subtitle: string;
-  abstract: string;
   tags: string[];
   image?: string;
   highlightDate?: string;
-  sections?: Section[];
-  publications?: Publication[];
-  software?: SoftwareHighlight[];
 }
 
 const {
   title,
   subtitle,
-  abstract,
   tags,
   image,
-  highlightDate,
-  sections = [],
-  publications = [],
-  software = []
+  highlightDate
 } = Astro.props as Props;
 const hasMedia = Boolean(image);
 const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
 ---
 
-<article data-project-card class="group w-full rounded-2xl border border-slate-200 bg-white/90 shadow-sm transition hover:shadow-md">
-  {hasMedia && (
-    <div class="relative h-40 overflow-hidden rounded-t-2xl">
-      <ProjectCardImage
-        imagePath={image}
-        alt={title}
-        className="m-0 h-full w-full object-cover"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-      <p class="absolute bottom-2 right-3 text-[0.6rem] font-semibold uppercase tracking-[0.4em] text-white/80">{highlightDate ?? 'ongoing'}</p>
-    </div>
-  )}
-  <div class="flex flex-col gap-2 px-4 py-4 text-slate-900">
+<article data-project-card class="not-prose group w-full cursor-pointer rounded-lg border border-slate-200 bg-white/90 shadow-sm transition hover:shadow-md">
+  <div class="flex flex-col text-slate-900">
     <button
       type="button"
-      class="w-full text-left"
+      class="w-full border-b border-slate-200 bg-white/95 px-4 py-3 text-left transition-colors hover:bg-slate-50"
       data-accordion-trigger
       aria-controls={panelId}
       aria-expanded="false"
     >
-      <div class="flex flex-wrap items-start justify-between gap-2">
-        <div>
-          <h3 class="text-xl font-semibold leading-snug mb-2 mt-0">{title}</h3>
-          <p class="text-xs uppercase text-slate-500 leading-tight my-1">{subtitle}</p>
+      <div class="grid grid-cols-1 gap-3 md:grid-cols-5 md:items-stretch">
+        <div class="md:col-span-3">
+          <h3 class="mb-2 mt-0 text-xl font-semibold leading-snug">{title}</h3>
+          <p class="my-1 text-xs uppercase leading-tight text-slate-500">{subtitle}</p>
         </div>
+
+        {hasMedia && (
+          <div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-200 ease-out md:col-span-2">
+            <div class="overflow-hidden">
+              <div class="relative h-44 overflow-hidden rounded-lg">
+                <ProjectCardImage
+                  imagePath={image}
+                  alt={title}
+                  className="m-0 h-full w-full object-scale-down"
+                />
+                <div class="absolute inset-0" />
+                <p class="absolute bottom-2 right-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/80">{highlightDate ?? 'ongoing'}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
-      <p
-        class="mt-2 text-sm leading-relaxed text-slate-600"
-        style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"
-      >
-        {abstract}
-      </p>
-
-			<div class="mt-2 grid grid-cols-[1fr_auto] items-end gap-2">
-				<div class="flex flex-wrap gap-1 text-slate-600">
-					{tags.map((tag) => (
-						<span class="rounded-md border border-slate-200 px-2 py-0.5 text-xs font-semibold tracking-[0.1em]">
-							{tag}
-						</span>
-					))}
+			<div class="mt-2 grid grid-cols-[1fr_auto] items-center gap-2">
+				<div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-200 ease-out">
+					<div class="overflow-hidden">
+						<div class="flex flex-wrap gap-1 text-slate-600">
+							{tags.map((tag) => (
+								<span class="rounded-md border border-slate-200 px-2 py-0.5 text-xs font-semibold tracking-[0.1em]">
+									{tag}
+								</span>
+							))}
+						</div>
+					</div>
 				</div>
-				<span class="chevron-icon inline-flex justify-self-end self-end transition-transform duration-300 ease-in-out">
-					<Icon name="chevron" width=18 height=18/>
+				<span class="chevron-icon inline-flex transition-transform duration-200 ease-out">
+					<Icon name="chevron" width="18" height="18" />
 				</span>
 			</div>
 			
@@ -104,40 +76,11 @@ const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
       id={panelId}
       data-accordion-content
       data-open="false"
-      class="accordion-content grid grid-rows-[0fr] transition-all duration-300 ease-in-out"
+      class="accordion-content grid grid-rows-[0fr] bg-slate-50/40 transition-all duration-200 ease-out"
     >
       <div class="overflow-hidden">
-        <div class="space-y-2 border-t border-slate-200 pt-3">
-          {hasMedia && (
-            <ProjectCardImage
-              imagePath={image}
-              alt={`${title} detail image`}
-              className="h-48 w-full rounded-xl border border-slate-200 object-cover"
-            />
-          )}
-          <p class="text-sm leading-relaxed text-slate-700">{abstract}</p>
-
-          <div class="space-y-2 pt-1">
-            {sections.map((section) => (
-              <section class="rounded-2xl border border-slate-200 bg-slate-50/60 p-3 text-sm text-slate-700">
-                <div class="mb-1 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">{section.title}</div>
-                <div class="grid gap-2 text-xs leading-tight">
-                  {section.items.map((item) => (
-                    <div class="flex items-center justify-between gap-2">
-                      {item.href ? (
-                        <a class="font-semibold text-slate-900 transition hover:text-primary" href={item.href} target="_blank" rel="noreferrer">
-                          {item.label}
-                        </a>
-                      ) : (
-                        <span class="font-semibold text-slate-900">{item.label}</span>
-                      )}
-                      {item.meta && <span class="text-[0.55rem] text-slate-500">{item.meta}</span>}
-                    </div>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
+        <div class="space-y-2 px-4 py-4">
+          <slot />
         </div>
       </div>
     </div>
@@ -154,13 +97,30 @@ const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
       const icon = card.querySelector('.chevron-icon');
       if (!trigger || !content) return;
 
-      trigger.addEventListener('click', () => {
+      const toggleAccordion = () => {
         const isOpen = content.getAttribute('data-open') === 'true';
+        const headerCollapsibles = card.querySelectorAll('[data-header-collapsible]');
         content.setAttribute('data-open', isOpen ? 'false' : 'true');
         content.classList.toggle('grid-rows-[1fr]', !isOpen);
         content.classList.toggle('grid-rows-[0fr]', isOpen);
+        headerCollapsibles.forEach((section) => {
+          section.classList.toggle('grid-rows-[0fr]', !isOpen);
+          section.classList.toggle('grid-rows-[1fr]', isOpen);
+        });
         icon?.classList.toggle('rotate-180', !isOpen);
         trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      };
+
+      trigger.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleAccordion();
+      });
+
+      card.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        if (target.closest('a')) return;
+        toggleAccordion();
       });
 
       card.setAttribute('data-accordion-bound', 'true');

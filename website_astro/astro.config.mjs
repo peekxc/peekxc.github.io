@@ -10,6 +10,8 @@ import remarkDirective from 'remark-directive';
 import remarkDirectiveRehype from "remark-directive-rehype";
 // import remarkFrontmatter from 'remark-frontmatter'
 // import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+// import toml from "astro-toml";
+import compressor from "astro-compressor";
 
 import preact from '@astrojs/preact';
 import UnoCSS from 'unocss/astro'
@@ -28,18 +30,24 @@ export default defineConfig({
     remarkPlugins: [remarkDirective, remarkMath], // for content collections
 		rehypePlugins: [rehypeKatex]
   },
-
   integrations: [
+		preact(),
     mdx({
       smartypants: true, 
       remarkPlugins: [remarkDirective, remarkDirectiveRehype, remarkMath],
       rehypePlugins: [rehypeKatex],
       gfm: true, 
-    }), 
-    preact(),
+    }),
 		UnoCSS(),
 		icon(), 
+		compressor({ brotli: true, gzip: false, zstd: false })
+		// toml()
   ],
+	vite: {
+		css: {
+      transformer: "lightningcss",
+    },
+	},
   adapter: vercel({
 		webAnalytics: {
 			enabled: true,
