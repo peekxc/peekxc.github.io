@@ -16,6 +16,9 @@ import compressor from "astro-compressor";
 import preact from '@astrojs/preact';
 import UnoCSS from 'unocss/astro'
 import vercel from "@astrojs/vercel";
+import { visualizer } from "rollup-plugin-visualizer";
+
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -41,16 +44,23 @@ export default defineConfig({
 		UnoCSS(),
 		icon(), 
 		compressor({ brotli: true, gzip: false, zstd: false })
-		// toml()
   ],
 	vite: {
 		css: {
       transformer: "lightningcss",
     },
+    // plugins: [visualizer({
+    //     emitFile: true,
+    //     filename: "stats.html",
+    // })]
 	},
   adapter: vercel({
 		webAnalytics: {
 			enabled: true,
-		}
-	})
+		}, 
+    imageService: false
+	}), 
+   devToolbar: {
+    enabled: false // It's not that useful tbh 
+  }
 });
