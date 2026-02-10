@@ -1,4 +1,5 @@
 // @ts-check
+import zlib from "zlib";
 import { defineConfig } from "astro/config";
 import mdx from '@astrojs/mdx';
 import icon from "astro-icon";
@@ -16,6 +17,7 @@ import compressor from "astro-compressor";
 import preact from '@astrojs/preact';
 import UnoCSS from 'unocss/astro'
 import vercel from "@astrojs/vercel";
+import { zstd } from "astro-compressor/dist/compress";
 
 // https://astro.build/config
 export default defineConfig({
@@ -40,7 +42,14 @@ export default defineConfig({
     }),
 		UnoCSS(),
 		icon(), 
-		compressor({ brotli: true, gzip: false, zstd: false })
+		// https://nodejs.org/api/zlib.html#class-brotlioptions
+		compressor({ 
+			brotli: { 
+				params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 5 } 
+			}, 
+			gzip: false, 
+			zstd: false 
+		}) 
 		// toml()
   ],
 	vite: {
