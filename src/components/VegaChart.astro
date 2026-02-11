@@ -1,0 +1,36 @@
+---
+// VegaChart.astro
+export interface Props {
+  spec: object;
+  width?: number;
+  height?: number;
+}
+
+const { spec, width = 400, height = 300 } = Astro.props;
+const chartId = `vega-chart-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div id={chartId} class="vega-chart"></div>
+
+<script define:vars={{ spec, chartId, width, height }}>
+  // Load Vega from CDN
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/vega@5';
+  script.onload = () => {
+    const view = new window.vega.View(window.vega.parse(spec), {
+      renderer: 'canvas',
+      container: `#${chartId}`,
+      hover: true,
+      width: width,
+      height: height
+    });
+    view.run();
+  };
+  document.head.appendChild(script);
+</script>
+
+<style>
+  .vega-chart {
+    margin: 1rem 0;
+  }
+</style>

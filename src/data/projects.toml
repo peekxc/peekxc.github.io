@@ -1,0 +1,148 @@
+# cards.toml
+
+[[card]]
+id = "mapper-multiscale"
+title = "Efficient Multiscale Simplicial Complex Generation for Mapper"
+subtitle = "Funding: Air Force Research Labs"
+abstract = """The primary result of the Mapper framework is the geometric realization of a simplicial complex, depicting topological relationships and structures suitable for visualizing, analyzing, and comparing high dimensional data. As an unsupervised tool, Mapper naturally relies on parameters that control the relational component of the output complex; this project introduces new algorithms to efficiently march through successive Mapper realizations and make them stable and tractable."""
+tags = ["Clustering", "Topology", "R Package"]
+image = "/src/assets/images/msu_logo.png"
+highlight_date = "2018 - 2022"
+
+# flattened, post-process however you like
+section_titles = ["Publications", "Software"]
+item_section = ["Publications", "Software", "Software", "Software"]
+item_label = [
+  "M. Hahsler, M. Piekenbrock, D. Doran. “dbscan: Fast Density Based Clustering in R.” Journal of Statistical Software, 2018. doi:10.18637/jss.v091.i01",
+  "Mapper (R package)",
+  "simplextree (R package)",
+  "Vignette on using Mapper for shape recognition",
+]
+item_href = [
+  "",
+  "https://peekxc.github.io/Mapper/",
+  "https://github.com/peekxc/simplextree",
+  "https://peekxc.github.io/Mapper/articles/ShapeRecognition.html",
+]
+item_meta = ["", "", "", ""]
+
+
+# [[card]]
+# id = "dbscan-r"
+# title = "Bringing High Performance Density-based Clustering to R"
+# subtitle = "Funding: Air Force Research Labs"
+# abstract = """Density-based clustering techniques are popular because they can recover non-convex, natural groups, but scalable implementations are scarce. This project delivers fast, state-of-the-art density-based algorithms in R, along with companion tools that make these methods accessible for computationally difficult problems."""
+# tags = ["Clustering", "R Package", "High performance"]
+# image = "/src/assets/images/wsu_banner.png"
+# highlight_date = "2016 - 2018"
+
+# section_titles = ["Publications", "Software"]
+# item_section = ["Publications", "Software", "Software"]
+# item_label = [
+#   "Hahsler, Michael; Piekenbrock, Matt; Doran, Derek. “dbscan: Fast Density Based Clustering in R.” Journal of Statistical Software, 2018. (doi:10.18637/jss.v091.i01)",
+#   "dbscan (R package)",
+#   "HDBSCAN vignette",
+# ]
+# item_href = [
+#   "",
+#   "https://github.com/mhahsler/dbscan",
+#   "https://cran.r-project.org/web/packages/dbscan/vignettes/hdbscan.html",
+# ]
+# item_meta = ["", "", ""]
+
+
+# [[card]]
+# id = "poi-discovery"
+# title = "Automating Point of Interest Discovery in Geospatial Contexts"
+# subtitle = "Semi-supervised density level set estimation"
+# abstract = """A semi-supervised framework for automating point-of-interest discovery that balances heuristic detection methods with density-based estimation guarantees, enabling flexible incorporation of labeled information while scaling to large geospatial data sets."""
+# tags = ["Clustering", "Geospatial analysis", "Network modeling"]
+# image = "/src/assets/images/geonet.png"
+# highlight_date = "2017 - 2018"
+
+# section_titles = ["Publications"]
+# item_section = ["Publications", "Publications", "Publications"]
+# item_label = [
+#   "Piekenbrock, Matthew J. Discovering Intrinsic Points of Interest from Spatial Trajectory Data Sources. Masters thesis, Wright State University, 2018.",
+#   "Piekenbrock, Matthew; Doran, Derek. “Intrinsic point of interest discovery from trajectory data.” arXiv:1712.05247 (2017).",
+#   "Maurice, Matthew; Piekenbrock, Matt; Doran, Derek. “Waminet: open source dynamic geospace analysis.” IEEE International Symposium on Multimedia, 2015.",
+# ]
+# item_href = [
+#   "https://etd.ohiolink.edu/acprod/odb_etd/etd/r/1501/10?clear=10&p10_accession_num=wright1527160689990512",
+#   "https://doi.org/10.48550/arXiv.1712.05247",
+#   "",
+# ]
+# item_meta = ["", "", ""]
+
+
+# [[card]]
+# id = "spectral-rank-invariants"
+# title = "Spectral Relaxations of Persistent Rank Invariants"
+# subtitle = "Spectral families and efficient approximation"
+# abstract = """A framework for continuous relaxations of the persistent rank invariant that retain stability, incorporate Laplacian structure, and admit randomized algorithms for efficient approximation. We explore applications in parameter optimization and shape classification."""
+# tags = ["Topology", "Persistence", "Linear Algebra"]
+# image = "/src/assets/images/size_function_relax.png"
+# highlight_date = "2023"
+
+# section_titles = ["Publications", "Software", "Related materials"]
+# item_section = ["Publications", "Software", "Software", "Software", "Related materials"]
+# item_label = [
+#   "Piekenbrock, Matthew; Perea, Jose A. “Spectral families of persistent rank invariants.” Computational Persistence Workshop (2023).",
+#   "pbsig (experimental code)",
+#   "primate (package for trace estimation)",
+#   "simplextree (python package)",
+#   "CompPers23 talk (YouTube)",
+# ]
+# item_href = [
+#   "../../resources/extended_abstract_CompPers23.pdf",
+#   "https://github.com/peekxc/pbsig",
+#   "https://github.com/peekxc/primate",
+#   "https://github.com/peekxc/simplextree",
+#   "https://www.youtube.com/watch?v=EGP4GlcLNYU&t=505s",
+# ]
+# item_meta = ["", "", "", "", ""]
+
+
+# [[card]]
+# id = "move-schedules"
+# title = "Move Schedules: Fast persistence computations in coarse dynamic settings"
+# subtitle = "Funding: Ginther Fellowship & NSF CCF-2006661"
+# abstract = """Coarsening the maintenance of boundary decompositions across filtrations allows sublinear storage and faster persistence computations for dynamic data by reducing the number of state transitions when the filtration ordering shifts."""
+# tags = ["Topology", "Algorithms", "Persistence"]
+# image = "/src/assets/images/patch_manifold.png"
+# highlight_date = "2021 - 2022"
+# section_titles = ["Publications", "Software"]
+# items = {
+# 	section = ["Publications", "Software", "Software"],
+# 	label = [
+# 		"Piekenbrock, Matthew; Perea, Jose A. “Move Schedules: Fast persistence computations in coarse dynamic settings.” arXiv:2104.12285 (2021).",
+# 		"Move scheduling code",
+# 		"simplextree (python package)"
+# 	], 
+# 	href = [
+#   	"",
+#   	"https://github.com/peekxc/move_schedules",
+#   	"https://github.com/peekxc/simplextree",
+# 	], 
+# 	meta = ["", "", ""]
+# }
+
+# [[card]]
+# id = "mp-icp"
+# title = "Towards Autonomous Aerial Refueling: Massive Parallel Iterative Closest Point"
+# subtitle = "Funding: Oak Ridge Institute for Science and Education"
+# abstract = """
+# We expose the intrinsic parallelism of iterative closest point by combining a logarithmic approximate search with a rapid Delaunay Traversal, delivering vectorized searches that beat brute-force and branch-and-bound baselines for real-time autonomy.
+# """
+# tags = ["Geometry", "Point registration", "High performance computing"]
+# image = "/src/assets/images/icp.png"
+# highlight_date = "2014 - 2016"
+
+# section_titles = ["Publications"]
+# item_section = ["Publications", "Publications"]
+# item_label = [
+#   "Robinson, J.; Piekenbrock, M.; Burchett, L.; et al. “Parallelized Iterative Closest Point for Autonomous Aerial Refueling.” ISVC, 2016. doi:10.1007/978-3-319-50835-1_53",
+#   "Piekenbrock, M.; Robinson, J.; Burchett, L.; Nykl, S.; Woolley, B.; Terzuoli, A. (2016). “Automated aerial refueling: Parallelized 3D iterative closest point.” IEEE Aerospace and Electronics Conference.",
+# ]
+# item_href = ["", ""]
+# item_meta = ["", "doi:10.1109/NAECON.2016.7856791"]

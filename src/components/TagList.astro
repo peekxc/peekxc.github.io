@@ -1,0 +1,22 @@
+---
+import { Icon } from 'astro-icon/components'
+const { title = "" } = Astro.props
+---
+
+
+<div class="w-full">
+	<div class="flex my-2 gap-2">
+		<a class="icon-round" style="white-space: nowrap;" href="https://github.com/peekxc"> 
+			<Icon name="github" width="16" height="16" />
+			peekxc
+		</a>
+		<a class="icon-round" style="white-space: nowrap;" href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en"> 
+			<Icon name="scholar" width="16" height="16" style="color: #000000;"/>
+			scholar
+		</a>
+		<button class="icon-round" style="white-space: nowrap; cursor: copy;"> 
+			<Icon name="email" width="16" height="16" />
+			matt.piekenbrock@gmail.com
+		</button>
+	</div>
+</div>

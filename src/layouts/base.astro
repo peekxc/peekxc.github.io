@@ -1,0 +1,22 @@
+---
+import Head from "../components/head.astro";
+import Navbar from "../components/navbar.astro";
+import Footer from "../components/footer.astro";
+import ScriptMenu from "../components/ScriptMenu.astro"
+const { title, ...props  } = Astro.props;
+// import "../styles/tw.css";
+// import "../styles/overrides.css";
+---
+<html>
+  <Head title={title} />
+  <body class="min-h-screen flex flex-col">
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <ScriptMenu />
+    <!-- <script defer src="/_vercel/speed-insights/script.js"/>
+    <script defer src="/_vercel/insights/script.js"/> -->
+  </body>
+</html>

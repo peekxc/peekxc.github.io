@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* @layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+ */
+
+/* span bg-neutral-300 text-black text-xs px-1 rounded-xs mr-1 min-w-0
+*/

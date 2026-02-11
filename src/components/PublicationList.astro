@@ -1,0 +1,23 @@
+---
+// PublicationList.astro
+---
+<div class="md-list">
+  <slot />
+</div>
+
+<style>
+  .md-list :global(ul) {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: rgb(248 250 252);
+    border: 1px solid rgb(241 245 249);
+    list-style-type: disc;
+  }
+
+  .md-list :global(li) {
+    font-size: 0.75rem;
+    color: rgb(71 85 105);
+    font-style: italic;
+    margin-left: 0.5rem;
+  }
+</style>

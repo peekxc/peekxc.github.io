@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getCollection, render } from 'astro:content'
+import Base from '../../layouts/base.astro'
+import AuthorBlock from '../../components/AuthorBlock.astro';
+import Scrollspy from '../../components/Scrollspy.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog_posts')
+	const blog_posts = posts.filter((p): p is CollectionEntry<'blog_posts'> => !p.data.draft);
+	console.log("Number of posts: ", blog_posts.length)
+	// console.log(Object.keys(blog_posts[0]))
+	console.log(blog_posts[0].filePath)
+	return [
+		{ params: { id: blog_posts[0].id }, props: { post: blog_posts[0]} },
+	];
+}
+
+const { id } = Astro.params;
+const { post } = Astro.props;
+const { Content } = await render(post);
+// const post_content = await post.render();
+---
+
+{console.log(post.data)}
+<!-- <h1> {id} </h1> -->
+
+<astro:head>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css"
+    integrity="sha384-Wsr4Nh3yrvMf2KCebJchRJoVo1gTU6kcP05uRSh5NV3sj9+a8IomuJoQzf3sMq4T"
+    crossorigin="anonymous"
+  />
+</astro:head>
+
+<Base>
+  <main class="grid grid-cols-12 w-full">
+		<aside class="three-col-side"/>
+		<article class="prose three-col-main justify-center pb-4 px-2" style="max-width: 100% !important;">
+			<AuthorBlock
+				title={post.data.title}
+				date={post.data.date}
+				categories={post.data.tags} />
+			<Content />
+		</article>
+		<aside class="three-col-side flex">
+			<Scrollspy class="hidden lg:inline-block truncate"/>
+		</aside>
+	</main>
+	<!-- The loading of KaTeX is deferred to speed up page rendering -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js" integrity="sha384-+W9OcrYK2/bD7BmUAk+xeFAyKp0QjyRQUCxeU31dfyTt/FrPsUgaBTLLkVf33qWt" crossorigin="anonymous"></script>
+
+	<!-- To automatically render math in text elements, include the auto-render extension: -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+</Base>
+
+<!-- // const { post } = Astro.props
+// const { Content } = await post.render()
+// ---
+// <Base>
+//   <article>
+//     <h1>{post.data.title}</h1>
+//     <Content />
+//   </article>
+// </Base> -->
