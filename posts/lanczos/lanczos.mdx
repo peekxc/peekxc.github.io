@@ -8,7 +8,7 @@ draft: false
 background_image: /posts/lanczos/lanczos_krylov.gif
 abstract: An overview of the Lanczos method for tridiagonalizing symmetric linear operators
 ---
-
+import KrylovGif from "../../src/assets/images/posts/lanczos/lanczos_krylov.gif";
 
 Central to the theory of matrix factorization is the [spectral theorem](https://en.wikipedia.org/wiki/Spectral_theorem), which provides conditions under which a linear operator $A : \mathbb{R}^n \to \mathbb{R}^n$ can be *diagonalized* in terms of its eigenvectors:
 
@@ -28,7 +28,7 @@ Like the eigen-decomposition, the “outer” term(s) $Q$ orthogonally project $
 
 Nonetheless, this decomposition ended up proving to be one of the most revealing spectral decompositions of all time. Despite its age, Lanczos' method of tridiagonalization remains the standard algorithm<sup>1</sup> for both computing eigensets and solving linear systems in the large-scale regime. An [IEEE guest editorial](https://www.computer.org/csdl/magazine/cs/2000/01/c1022/13rRUxBJhBm) places it among the **top 10 most influential algorithms of the 20th century**.
 
-<img src="/posts/lanczos/lanczos_krylov.gif" style="margin: auto; width:100.0%; max-width: 700px;"
+<img src={KrylovGif.src} style="margin: auto; width:100.0%; max-width: 700px;"
 data-text-align="center"
 alt="Lanczos' “method of minimized iterations” on a 100x100 matrix with eigenvalues (0, 0.01, 0.02, …, 2, 2.5, 3)" />
 

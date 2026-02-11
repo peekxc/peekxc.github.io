@@ -8,27 +8,34 @@ const nav_pages = [
   { title : "Blog", url : "/blog"},
 ]
 ---
-<nav class="navbar top-0 left-0 w-full bg-white border-slate-300 border-b shadow-sm" id="navbar">
-  <div class="flex flex-row items-center p-3 justify-start md:justify-start">
-    <div class="flex align-middle" id="brand">
-      <a class="mr-4 text-lg font-semibold" href="/">
+<nav class="navbar top-0 left-0 w-full bg-white border-slate-300 border-b shadow-sm min-w-lg" id="navbar">
+  <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3">
+    <div class="flex items-center gap-4" id="brand">
+      <a class="text-lg font-semibold" href="/">
         Home
       </a>
     </div>
-    <div class="flex gap-4">
+    <div class="hidden pl-4 flex-1 items-center justify-start gap-4 text-lg text-gray-600 md:flex">
       { 
         nav_pages.map((page) => 
-          <a href={page.url} class="text-lg text-gray-600 hover:text-gray-900">
+          <a href={page.url} class="truncate hover:text-gray-900">
             {page.title}
           </a>
         )
       }
     </div>
-    <div class="flex items-center mx-2 align-middle md:hidden hover:cursor-pointer">
-      <div class="inline-flex justify-center items-center text-gray-400 rounded-md button place-end" id="menu-btn" style="hover:text-white hover:bg-gray-700 focus:outline-none">
-        <Icon name="hamburger" width=24 height=24 />
-      </div>
-    </div>
+    <button class="md:hidden ml-auto inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-600 transition hover:text-gray-900" id="menu-btn" type="button" aria-label="Toggle navigation">
+      <Icon name="hamburger" width=24 height=24 />
+    </button>
   </div>
-  <div class="flex hidden flex-col px-2 pt-0 pb-2 space-y-1 border divide-y md:hidden" id="mobile-menu" style="sm:px-3"></div>
+  <div class="hidden mx-auto flex max-w-6xl flex-col overflow-hidden rounded-b-md border border-t-0 border-slate-200 px-4 pt-0 pb-2 md:hidden" id="mobile-menu">
+    {nav_pages.map((page) =>
+      <a
+        class="block py-2 text-base text-gray-600 hover:text-gray-900"
+        href={page.url}
+      >
+        {page.title}
+      </a>
+    )}
+  </div>
 </nav>

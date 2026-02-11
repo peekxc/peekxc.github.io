@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 interface Props {
   post: CollectionEntry<'blog_posts'>;
@@ -7,7 +8,11 @@ interface Props {
 const { post } = Astro.props as Props;
 const frontmatter = post.data;
 const hasImage = Boolean(frontmatter.background_image);
-const imageSrc = hasImage ? frontmatter.background_image : undefined;
+const imageSrc = hasImage ? (
+  frontmatter.background_image?.startsWith('/posts/')
+    ? `/src/assets/images${frontmatter.background_image}`
+    : frontmatter.background_image
+) : undefined;
 const publishedDate = frontmatter.date
   ? new Date(frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', }) : '';
 const summary = frontmatter.abstract ?? frontmatter.description ?? '';
@@ -15,8 +20,17 @@ const labels: string[] = frontmatter.categories?.length
   ? frontmatter.categories
   : frontmatter.tags ?? [];
 const fallbackGradient = 'linear-gradient(135deg, #e2e8f0, #fecdd3)';
----
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/**/*.{png,jpg,jpeg,webp,avif,gif}',
+  { eager: true }
+);
 
+const imageEntry = imageSrc ? images[imageSrc] : undefined;
+const imageMeta = imageEntry?.default;
+---
+<!-- {console.log(imageSrc)} -->
+<!-- {console.log(Object.keys(images))} -->
+{console.log(imageEntry)}
 <a
   href={`/blog/${post.data.slug}`}
   class="group block overflow-hidden rounded-xl border border-slate-200 bg-white/80 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary hover:cursor-pointer"
@@ -50,10 +64,10 @@ const fallbackGradient = 'linear-gradient(135deg, #e2e8f0, #fecdd3)';
 
     <div class="relative -m-2 h-48 overflow-hidden rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-100 via-white to-slate-100 shadow-inner">
       {hasImage ? (
-        <img
-          src={imageSrc!}
+        <Image
           alt={`Preview for ${frontmatter.title}`}
-          loading="lazy"
+          src={imageMeta}
+          formats={['avif', 'webp']}
           class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
         />
       ) : (

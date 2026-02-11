@@ -25,17 +25,26 @@ const {
 <!-- imagePath="/src/assets/images/afrl.png" -->
 
 <div class="accordion-item card shadow-sm backdrop-blur-md bg-white leading-5 rounded-sm">
-	<div class="
+	<button
+		type="button"
+		class="
 		accordion-header flex flex-col gap-1
 		border border-slate-200/60
-		hover:border-slate-500 hover:cursor-pointer
+		hover:border-slate-500
 		rounded-t-sm
-		p-0 m-0"
+		p-0 m-0
+		text-left
+		bg-transparent
+		focus-visible:ring-2 focus-visible:ring-slate-300
+		w-full
+		block
+		"
+		style="touch-action: manipulation;"
 	>
-        <BackgroundImage imagePath={background_image ?? ''} altText="string">
-            <div class="flex flex-row justify-between" style="white-space: nowrap;">
-                <h4 class="text-xl font-semibold text-slate-900 tracking-tight">{title}</h4>
-                <h4 class="text-lg font-medium text-slate-600 tracking-tight truncate">{subtitle}</h4>
+		<BackgroundImage imagePath={background_image ?? ''} altText="string">
+			<div class="flex flex-row justify-between" style="white-space: nowrap;">
+				<h4 class="text-xl font-semibold text-slate-900 tracking-tight">{title}</h4>
+				<h4 class="text-lg font-medium text-slate-600 tracking-tight truncate">{subtitle}</h4>
 			</div>
 			
 			<div class="flex flex-row justify-between">
@@ -61,7 +70,7 @@ const {
 				</div>
 			)}
 		</BackgroundImage>
-	</div>
+	</button>
 
 	<article class="accordion-content grid grid-rows-[0fr] transition-all duration-300 ease-in-out" data-open="false">
 		<div class="overflow-hidden">
@@ -73,23 +82,43 @@ const {
 </div>
 
 <script>
+// @ts-nocheck
 	function setupAccordion() {
 		const accordions = document.querySelectorAll('.accordion-item');
-		// console.log(accordions);
-		accordions.forEach(accordion => {
+		accordions.forEach((accordion) => {
 			const header = accordion.querySelector('.accordion-header');
 			const content = accordion.querySelector('.accordion-content');
 			const icon = accordion.querySelector('.chevron-icon');
+			let lastTouchToggle = 0;
 
-			header?.addEventListener('click', () => {
-				const isOpen = content?.getAttribute('data-open') === 'true';
-				content?.setAttribute('data-open', isOpen ? 'false' : 'true');
-				content?.classList.toggle('grid-rows-[1fr]', !isOpen);
-				content?.classList.toggle('grid-rows-[0fr]', isOpen);
+			const toggle = () => {
+				if (!content) return;
+				const isOpen = content.getAttribute('data-open') === 'true';
+				content.setAttribute('data-open', isOpen ? 'false' : 'true');
+				content.classList.toggle('grid-rows-[1fr]', !isOpen);
+				content.classList.toggle('grid-rows-[0fr]', isOpen);
 				icon?.classList.toggle('rotate-180', !isOpen);
-			});
+			};
+
+			const pointerHandler = (event) => {
+				if (event.pointerType === 'mouse') return;
+				lastTouchToggle = Date.now();
+				toggle();
+			};
+
+			const clickHandler = (event) => {
+				if (Date.now() - lastTouchToggle < 500) {
+					event.preventDefault();
+					return;
+				}
+				toggle();
+			};
+
+			header?.addEventListener('pointerdown', pointerHandler);
+			header?.addEventListener('click', clickHandler);
 		});
 	}
+
 	// This ensures it runs even if you use Astro View Transitions
 	setupAccordion();
 	document.addEventListener('astro:page-load', setupAccordion);
