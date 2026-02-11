@@ -1,12 +1,38 @@
 import { defineConfig, presetTypography,  presetWind3, presetWind4, presetIcons, presetWebFonts, presetMini } from 'unocss'
 
+// TODO: https://unocss.dev/presets/web-fonts
 export default defineConfig({
 	presets: [
 		presetWind4(),
-		// presetMini({preflight: true}),
-		presetTypography(),
-		// presetWind3(),
-		presetIcons()
+		presetTypography()
+	],
+	preflights: [
+		{
+			getCSS: () => `
+				article a[href]  {
+					color: #000000;
+					font-weight: 500;
+					text-decoration: underline;
+					text-decoration-thickness: 1px;
+					text-underline-offset: 3px;
+					text-decoration-skip-ink: auto;
+					transition: color 150ms ease;
+				}
+
+				article a[href]:hover,
+				article a[href]:focus-visible {
+					color: #ff7d13;
+				}
+
+				article a[href]:focus-visible {
+					outline: 2px solid #ff7d13;
+					outline-offset: 4px;
+				}
+				article ul {
+					list-style: inside;
+				}
+			`,
+		},
 	],
 	shortcuts: {
 		'card-base': 'rounded-2xl shadow p-4 bg-white',

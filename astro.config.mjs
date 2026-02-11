@@ -13,14 +13,13 @@ import remarkDirectiveRehype from "remark-directive-rehype";
 // import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 // import toml from "astro-toml";
 import compressor from "astro-compressor";
+// import criticalCSS from "astro-critical-css";
 
 import preact from '@astrojs/preact';
 import UnoCSS from 'unocss/astro'
 import vercel from "@astrojs/vercel";
-import { visualizer } from "rollup-plugin-visualizer";
-
-
-import { zstd } from "astro-compressor/dist/compress";
+// import { visualizer } from "rollup-plugin-visualizer";
+// import { zstd } from "astro-compressor/dist/compress";
 
 // https://astro.build/config
 export default defineConfig({
@@ -45,6 +44,7 @@ export default defineConfig({
     }),
 		UnoCSS(),
 		icon(), 
+    // criticalCSS(), 
 		// compressor({ brotli: true, gzip: false, zstd: false })
 		// https://nodejs.org/api/zlib.html#class-brotlioptions
 		compressor({ 

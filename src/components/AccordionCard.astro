@@ -1,36 +1,53 @@
 ---
 import { Icon } from 'astro-icon/components'
 import BackgroundImage from "../components/BackgroundImage.astro"
-const { title, subtitle, date, extra, description, tags, background_image } = Astro.props;
+interface Props {
+	title: string
+	subtitle?: string
+	date?: string
+	extra?: string
+	description?: string
+	tags?: string[]
+	background_image?: string
+}
+const {
+	title,
+	subtitle = '',
+	date = '',
+	extra = '',
+	description = '',
+	tags = [],
+	background_image = ''
+} = Astro.props as Props;
 ---
 <!-- {console.log("Background image: ", background_image)} -->
 <!--How to do backgrund image with astro??? -->
 <!-- imagePath="/src/assets/images/afrl.png" -->
 
-<div class="accordion-item card shadow-sm backdrop-blur-md bg-white leading-5 cursor-context-menu rounded-sm">
+<div class="accordion-item card shadow-sm backdrop-blur-md bg-white leading-5 rounded-sm">
 	<div class="
 		accordion-header flex flex-col gap-1
 		border border-slate-200/60
-		hover:border-slate-500
+		hover:border-slate-500 hover:cursor-pointer
 		rounded-t-sm
 		p-0 m-0"
 	>
-		<BackgroundImage imagePath={background_image} altText="string">
-			<div class="flex flex-row justify-between" style="white-space: nowrap;">
-				<h4 class="text-lg font-bold tracking-tight">{title}</h4>
-				<h4 class="text-lg font-medium tracking-tight truncate">{subtitle}</h4>
+        <BackgroundImage imagePath={background_image ?? ''} altText="string">
+            <div class="flex flex-row justify-between" style="white-space: nowrap;">
+                <h4 class="text-xl font-semibold text-slate-900 tracking-tight">{title}</h4>
+                <h4 class="text-lg font-medium text-slate-600 tracking-tight truncate">{subtitle}</h4>
 			</div>
 			
 			<div class="flex flex-row justify-between">
-				<h4 class="font-medium text-sm text-slate-500">{date}</h4>
-				<h4 class="font-600 text-sm text-slate-500 italic">{extra}</h4>
+				<h4 class="font-medium text-sm text-slate-600">{date}</h4>
+				<h4 class="font-600 text-sm text-slate-600 italic">{extra}</h4>
 			</div>
 
 			<div class="col-span-full my-3" />
 
 			<div style={`display: ${tags ? 'flex' : 'none'};`} class="flex flex-row justify-between items-center">
 				<div class="flex flex-nowrap gap-1">
-					{tags?.map((tag) => <span class="tag">{tag}</span>)}
+					{tags?.map((tag: string) => <span class="tag">{tag}</span>)}
 				</div>
 				<span class="flex-none">
 					<div class="chevron-icon transition-transform duration-300 ease-in-out">
@@ -40,25 +57,25 @@ const { title, subtitle, date, extra, description, tags, background_image } = As
 
 			{description && (
 				<div class="flex flex-row justify-between items-center">
-					<span class="text-xs flex-grow truncate">{description}</span>
+					<span class="text-sm font-semibold flex-grow truncate text-slate-700">{description}</span>
 				</div>
 			)}
 		</BackgroundImage>
 	</div>
 
-	<div class="accordion-content grid grid-rows-[0fr] transition-all duration-300 ease-in-out" data-open="false">
+	<article class="accordion-content grid grid-rows-[0fr] transition-all duration-300 ease-in-out" data-open="false">
 		<div class="overflow-hidden">
 			<div class="accordion-body px-4 py-2 border-x border-b border-slate-100">
 				<slot />
 			</div>
 		</div>
-	</div>
+	</article>
 </div>
 
 <script>
 	function setupAccordion() {
 		const accordions = document.querySelectorAll('.accordion-item');
-		console.log(accordions);
+		// console.log(accordions);
 		accordions.forEach(accordion => {
 			const header = accordion.querySelector('.accordion-header');
 			const content = accordion.querySelector('.accordion-content');

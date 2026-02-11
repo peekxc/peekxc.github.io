@@ -14,11 +14,10 @@ import ProfileImage from "../assets/images/profile_pic_blue.jpg"
       formats={['avif', 'webp']} 
       class="h-full w-full object-cover aspect-square md:aspect-auto transform transition-transform duration-500 group-hover:scale-105"
       loading="eager"
-	    priority="true"
     />
   </div>
 
-  <div class="p-8 md:p-4 flex-1 flex flex-col">
+<div class="p-8 md:p-4 flex-1 flex flex-col">
     <div class="flex-1">
       <slot/>
     </div>
@@ -26,23 +25,46 @@ import ProfileImage from "../assets/images/profile_pic_blue.jpg"
     <div class="flex flex-row justify-between items-stretch mt-auto pt-2 border-t border-slate-100 dark:border-slate-800">
       <a 
         href="/public/cv_7.pdf" 
-        class="px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md font-semibold text-sm transition-all hover:bg-blue-600 dark:hover:bg-blue-500 hover:scale-105 active:scale-95 flex items-center gap-2"
+        class="px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md font-semibold text-sm transition-all hover:bg-[#ff7d13] dark:hover:bg-[#ff7d13] hover:scale-105 active:scale-95 flex items-center gap-2"
       >
         <!-- <Icon name="mdi:file-document-outline" class="text-lg" /> -->
         View CV
       </a>
 
-      <div class="flex items-center gap-4 text-slate-400 dark:text-slate-500">
-        <a href="https://github.com/peekxc" class="hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="git-ref">
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/peekxc" class="cv-bio-icon" aria-label="git-ref">
           <Icon name="github" class="text-2xl"/>
         </a>
-        <a href="https://www.linkedin.com/in/matthew-piekenbrock-1469777a/" class="hover:text-blue-600 transition-colors" aria-label="linkedin-ref">
+        <a href="https://www.linkedin.com/in/matthew-piekenbrock-1469777a/" class="cv-bio-icon" aria-label="linkedin-ref">
           <Icon name="linkedin" class="text-2xl" />
         </a>
-        <a href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en" class="hover:text-blue-400 transition-colors" aria-label="scholar-ref">
+        <a href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en" class="cv-bio-icon" aria-label="scholar-ref">
           <Icon name="scholar" class="text-2xl" />
         </a>
       </div>
     </div>
   </div>
 </div>
+
+<style scoped>
+.cv-bio-link {
+	color: #ea581c;
+	font-weight: 600;
+	transition: color 150ms ease;
+}
+
+.cv-bio-link:hover,
+.cv-bio-link:focus-visible {
+	color: #ff7d13;
+}
+
+.cv-bio-icon {
+	color: #94a3b8;
+	transition: color 150ms ease;
+}
+
+.cv-bio-icon:hover,
+.cv-bio-icon:focus-visible {
+	color: #ff7d13;
+}
+</style>

@@ -3,12 +3,13 @@ import Head from "../components/head.astro";
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
 import ScriptMenu from "../components/ScriptMenu.astro"
-const { title, ...props  } = Astro.props;
+// const { title, ...props  } = Astro.props;
 // import "../styles/tw.css";
 // import "../styles/overrides.css";
 ---
-<html>
-  <Head title={title} />
+<html lang="en">
+  <Head title="Matt Piekenbrock website" />
+  <title>Matt Piekenbrock personal website</title>
   <body class="min-h-screen flex flex-col">
     <Navbar />
     <main class="flex-1">
