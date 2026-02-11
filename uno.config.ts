@@ -1,4 +1,4 @@
-import { defineConfig, presetTypography,  presetWind3, presetWind4, presetIcons, presetWebFonts, presetMini } from 'unocss'
+import { defineConfig, presetTypography, presetWind4 } from 'unocss'
 
 // TODO: https://unocss.dev/presets/web-fonts
 export default defineConfig({
