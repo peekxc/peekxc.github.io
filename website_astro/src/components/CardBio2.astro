@@ -9,9 +9,12 @@ import ProfileImage from "../assets/images/profile_pic_blue.jpg"
   <div class="w-full md:w-1/3 relative overflow-hidden group">
     <Picture 
       src={ProfileImage} 
+      alt="Matt Piekenbrock"
+      width="512"
       formats={['avif', 'webp']} 
-      alt="Matt Piekenbrock" 
       class="h-full w-full object-cover aspect-square md:aspect-auto transform transition-transform duration-500 group-hover:scale-105"
+      loading="eager"
+	    priority="true"
     />
   </div>
 
@@ -30,13 +33,13 @@ import ProfileImage from "../assets/images/profile_pic_blue.jpg"
       </a>
 
       <div class="flex items-center gap-4 text-slate-400 dark:text-slate-500">
-        <a href="https://github.com/peekxc" class="hover:text-slate-900 dark:hover:text-white transition-colors">
-          <Icon name="github" class="text-2xl" />
+        <a href="https://github.com/peekxc" class="hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="git-ref">
+          <Icon name="github" class="text-2xl"/>
         </a>
-        <a href="https://www.linkedin.com/in/matthew-piekenbrock-1469777a/" class="hover:text-blue-600 transition-colors">
+        <a href="https://www.linkedin.com/in/matthew-piekenbrock-1469777a/" class="hover:text-blue-600 transition-colors" aria-label="linkedin-ref">
           <Icon name="linkedin" class="text-2xl" />
         </a>
-        <a href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en" class="hover:text-blue-400 transition-colors">
+        <a href="https://scholar.google.com/citations?user=2lPQ3UQAAAAJ&hl=en" class="hover:text-blue-400 transition-colors" aria-label="scholar-ref">
           <Icon name="scholar" class="text-2xl" />
         </a>
       </div>

@@ -1,45 +1,41 @@
 ---
-interface Props {
-	imagePath: string;
-	altText: string;
-	size: string;
-}
-const { imagePath, altText, size } = Astro.props;
+import { Image } from 'astro:assets';
 
-const images = import.meta.glob<string>(
-	'/src/assets/images/**/*.{jpeg,jpg,png,gif,webp,avif,svg}',
-	{ eager: true, import: 'default', query: '?url' }
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/**/*.{png,jpg,jpeg,webp,avif}',
+  { eager: true }
 );
 
-const requestedPath = imagePath?.trim();
-const exactMatch = requestedPath ? images[requestedPath] : undefined;
-const basename = requestedPath?.split('/').pop();
-const fallbackKey = basename
-	? Object.keys(images).find((key) => key.endsWith(`/${basename}`))
-	: undefined;
+interface Props {
+  imagePath: string;
+  altText: string;
+  size?: string;
+}
 
-const resolvedImage = exactMatch ?? (fallbackKey ? images[fallbackKey] : undefined) ?? requestedPath;
-const backgroundStyle = resolvedImage
-	? `background-image: url(${resolvedImage}); background-size: ${size}% !important;`
-	: `background-size: ${size}% !important;`;
+const { imagePath, altText, size = '100' } = Astro.props as Props;
+const imageEntry = imagePath ? images[imagePath] : undefined;
+const imageMeta = imageEntry?.default;
 ---
-<!-- { console.log(optimizedBackground) } -->
-<!-- bg-neutral-200  -->
-<!-- `background-image: url(${optimizedBackground.src});  -->
-<div 
-	aria-label={altText}
-	class={`
-		overflow-hidden
-		transition-all duration-300 
-		bg-white/85 bg-backdrop-blur-sm 
-		bg-cover bg-clip-border bg-no-repeat bg-right bg-blend-overlay
-		px-4 py-2 m-0 
-		bg-backdrop-filter-xs
-		inset-0
-		w-full h-full
-		rounded-t-sm
-	`}
-	style={backgroundStyle}
+
+{console.log(imageMeta)}
+<div
+  aria-label={altText}
+  class="relative overflow-hidden rounded-t-sm bg-transparent bg-clip-border px-4 py-2"
 >
-	<slot class="grayscale transition-transform duration-500 backdrop-blur-sm"/>
+  {imagePath && (
+    <Image
+      alt={altText}
+      src={imageMeta}
+      formats={['avif', 'webp']}
+      class="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      style="opacity: 0.35;"
+      width="682"
+      quality="5"
+    />
+  )}
+  <div class="absolute inset-0 bg-gradient-to-br from-white/90 via-white/30 to-transparent" />
+  <div class="relative z-10 h-full w-full">
+    <slot class="grayscale transition-transform duration-500" />
+  </div>
 </div>
+<!-- layout="constrained" -->

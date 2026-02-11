@@ -48,9 +48,10 @@ const gifSrc = isGif && imagePath ? gifImages[imagePath] ?? imagePath : undefine
       src={imageMeta}
       alt={alt}
       formats={['avif', 'webp']}
-      sizes={sizes}
+      densities={[0.00005]}
       loading={loading}
       class={className}
+      quality=20
     />
   ) : (
     <div class={`flex items-center justify-center bg-slate-100 text-xs uppercase tracking-[0.3em] text-slate-500 ${className}`}>

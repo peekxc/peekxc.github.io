@@ -11,11 +11,11 @@ const { title, subtitle, date, extra, description, tags, background_image } = As
 	<div class="
 		accordion-header flex flex-col gap-1
 		border border-slate-200/60
-	hover:border-slate-500
+		hover:border-slate-500
 		rounded-t-sm
 		p-0 m-0"
 	>
-		<BackgroundImage imagePath={background_image} altText="string" size="60">
+		<BackgroundImage imagePath={background_image} altText="string">
 			<div class="flex flex-row justify-between" style="white-space: nowrap;">
 				<h4 class="text-lg font-bold tracking-tight">{title}</h4>
 				<h4 class="text-lg font-medium tracking-tight truncate">{subtitle}</h4>
@@ -23,7 +23,7 @@ const { title, subtitle, date, extra, description, tags, background_image } = As
 			
 			<div class="flex flex-row justify-between">
 				<h4 class="font-medium text-sm text-slate-500">{date}</h4>
-				<h4 class="font-300 text-sm text-slate-500 italic">{extra}</h4>
+				<h4 class="font-600 text-sm text-slate-500 italic">{extra}</h4>
 			</div>
 
 			<div class="col-span-full my-3" />

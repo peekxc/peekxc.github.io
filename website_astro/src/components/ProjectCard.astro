@@ -9,14 +9,7 @@ interface Props {
   image?: string;
   highlightDate?: string;
 }
-
-const {
-  title,
-  subtitle,
-  tags,
-  image,
-  highlightDate
-} = Astro.props as Props;
+const { title, subtitle, tags, image, highlightDate } = Astro.props as Props;
 const hasMedia = Boolean(image);
 const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
 ---
@@ -30,48 +23,46 @@ const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
       aria-controls={panelId}
       aria-expanded="false"
     >
-      <div class="grid grid-cols-1 gap-3 md:grid-cols-5 md:items-stretch">
-        <div class="md:col-span-3">
-          <h3 class="mb-2 mt-0 text-xl font-semibold leading-snug">{title}</h3>
-          <p class="my-1 text-xs uppercase leading-tight text-slate-500">{subtitle}</p>
-        </div>
-
-        {hasMedia && (
-          <div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-200 ease-out md:col-span-2">
-            <div class="overflow-hidden">
-              <div class="relative h-44 overflow-hidden rounded-lg">
-                <ProjectCardImage
-                  imagePath={image}
-                  alt={title}
-                  className="m-0 h-full w-full object-scale-down"
-                />
-                <div class="absolute inset-0" />
-                <p class="absolute bottom-2 right-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/80">{highlightDate ?? 'ongoing'}</p>
-              </div>
-            </div>
-          </div>
-        )}
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-5 md:items-stretch">
+      <div class="md:col-span-3">
+        <h3 class="mb-2 mt-0 text-xl font-semibold leading-snug">{title}</h3>
+        <p class="my-1 text-small uppercase leading-tight text-slate-500">{subtitle})</p>
+        <p class="bottom-2 right-2 text-[0.85rem] font-semibold uppercase tracking-[0.2em] text-slate-800/80">{highlightDate ?? 'ongoing'}</p>
       </div>
 
-			<div class="mt-2 grid grid-cols-[1fr_auto] items-center gap-2">
-				<div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-200 ease-out">
-					<div class="overflow-hidden">
-						<div class="flex flex-wrap gap-1 text-slate-600">
-							{tags.map((tag) => (
-								<span class="rounded-md border border-slate-200 px-2 py-0.5 text-xs font-semibold tracking-[0.1em]">
-									{tag}
-								</span>
-							))}
-						</div>
-					</div>
-				</div>
-				<span class="chevron-icon inline-flex transition-transform duration-200 ease-out">
-					<Icon name="chevron" width="18" height="18" />
-				</span>
-			</div>
-			
-    </button>
+      {hasMedia && (
+        <div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-200 ease-out md:col-span-2">
+          <div class="overflow-hidden">
+            <div class="relative h-44 overflow-hidden rounded-lg">
+              <ProjectCardImage
+                imagePath={image}
+                alt={title}
+                className="m-0 h-full w-full object-scale-down"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
 
+    <div class="mt-2 grid grid-cols-[1fr_auto] items-center gap-2">
+      <div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-200 ease-out">
+        <div class="overflow-hidden">
+          <div class="flex flex-wrap gap-1 text-slate-600">
+            {tags.map((tag) => (
+              <span class="rounded-md border border-slate-200 px-2 py-0.5 text-xs font-semibold tracking-[0.1em]">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <span class="chevron-icon inline-flex transition-transform duration-200 ease-out">
+        <Icon name="chevron" width="18" height="18" />
+      </span>
+    </div>
+			
+  </button>
     <div
       id={panelId}
       data-accordion-content
