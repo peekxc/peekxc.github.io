@@ -6,10 +6,11 @@ import { getImage } from "astro:assets";
 import ScriptMenu from "../components/ScriptMenu.astro"
 import CardBio from "../components/CardBio.astro"
 import CardBio2 from "../components/CardBio2.astro"
-import PublicationList from "../components/PublicationList.astro"
+import PublicationItem from "../components/PublicationItem.astro"
 import AccordionCard from "../components/AccordionCard.astro"
 import CardSection from "../components/CardSection.astro"
 import BulletList from "../components/BulletList.astro"
+import CvSectionHeader from "../components/CvSectionHeader.astro"
 import { getCollection, getEntry, render } from 'astro:content';
 
 <CardBio2 image_src="../assets/images/jobs/profile_pic_blue.jpg">
@@ -17,7 +18,7 @@ import { getCollection, getEntry, render } from 'astro:content';
 	<h3 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
 		Matt Piekenbrock
 	</h3>
-	<a class="text-lg font-medium text-blue-600 hover:text-blue-900 mb-4" href="https://www.tenet3.com/">
+	<a class="cv-bio-link text-lg font-medium mb-4 hover:text-orange-500" href="https://www.tenet3.com/">
 		Senior Computer Scientist @ Tenet3
 	</a>
 	<div class="text-slate-600 dark:text-slate-400 leading-relaxed my-4 text-justify">
@@ -26,11 +27,28 @@ import { getCollection, getEntry, render } from 'astro:content';
 </CardBio2>
 
 
-<section id="employment" class="flex flex-col space-y-1 py-2 border-sm mx-auto">
-	<h2 class="font-bold text-red-400 text-2xl">Employment</h2>
+<section id="employment" data-section="employment" class="cv-section flex flex-col space-y-1 py-2 border-sm mx-auto">
+	<CvSectionHeader label="Employment" />
 	<div class="flex flex-col gap-y-3">
 		
-		{/*  MSU19 */}
+		<AccordionCard
+			title="Senior Computer Scientist"
+			subtitle="Tenet3"
+			date="Spring 2025 - Present"
+			extra="Dayton, OH"
+			description=""
+			tags={["Software Engineering", "Machine Learning", "Graph Analytics"]}
+			background_image="/src/assets/images/jobs/T3Logo.png"
+		>
+			<CardSection title="Job Description"> 
+			After finishing my doctoral degree at Northeastern University (Boston, MA), I accepted a position as a Senior Computer Scientist at [Tenet3](https://www.tenet3.com/), a research and development company that provides software solutions for various clients in the defense and intelligence communities.
+			<br/> 
+
+			My work has focused on developing, scaling, deploying, and maintaining a variety of graph- or machine learning (ML) related solutions in the Advanced Capabilities group. This has involved a mixture of research, software development, and client-facing work, with a focus on pioneering scalable solutions for analyzing large-scale graph data.
+			</CardSection>
+		</AccordionCard>
+
+		{/*  MSU / NEU  */}
 		<AccordionCard
 			title="Graduate Research Assistant"
 			subtitle="Perea Lab"
@@ -63,11 +81,17 @@ import { getCollection, getEntry, render } from 'astro:content';
 			Towards enabling delay-tolerant satellite communications in uncertain space environments, I was re-hired back at NASA as part of the Space Communications and Navigation (SCaN) program to expand the algorithmic theory on time-dependent routing. My research focused on incorporating additional geometric assumptions into routing models built for delay- and disruption-tolerant networks, particularly in the low Earth orbit regime.
 			</CardSection>
 
-			<CardSection title="Publications"> 
-			<div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
-				<p class="text-xs text-slate-600 italic">Piekenbrock, Matt. "Geometry helps in routing scalability." arXiv preprint arXiv:2412.07964 (2024).</p>
-	  </div>
-			</CardSection>
+		<CardSection title="Publications">
+			<div class="grid gap-2">
+				<PublicationItem
+					authors="Matt Piekenbrock"
+					title="Geometry helps in routing scalability"
+					journal="arXiv preprint arXiv:2412.07964"
+					year="2024"
+					href="https://arxiv.org/abs/2412.07964"
+				/>
+			</div>
+		</CardSection>
 
 			<CardSection title="Software"> 
 			- [Source code of satellite experiments](https://github.com/peekxc/geom_dtn/)
@@ -87,6 +111,8 @@ import { getCollection, getEntry, render } from 'astro:content';
 		<CardSection title="Job Description">
 
 		In 2017, I joined with a local research group under [Dr. Ryan Kramer](https://www.linkedin.com/in/ryan-kramer-8b42a35a/) as part of [AFRL](https://www.afrl.af.mil/)'s Human Performance Wing to explore and expand the intersection between algorithms in TDA and machine learning. My time there was focused on implementing and extending the *Mapper* algorithm, a topological method that reframes common data analysis tasks as problems of analyzing [level sets](https://en.wikipedia.org/wiki/Level_set) on topological spaces (introduction available [here](https://www.quantmetry.com/blog/topological-data-analysis-with-mapper/)).
+	 
+	 	<br/>
 
 		My research was centered around enabling the efficient construction of mappers in multiscale settings and on understanding connections the Mapper algorithm has to other existing constructions, such as [Reeb graphs](https://en.wikipedia.org/wiki/Reeb_graph), [nerve complexes](https://en.wikipedia.org/wiki/Nerve_complex), and hierarchical clustering. Beyond learning the theory and developing the software, I also applied *Mapper* to various geospatial and image analysis tasks, such as video segmentation, object recognition, and clustering.
 
@@ -114,12 +140,22 @@ import { getCollection, getEntry, render } from 'astro:content';
 			I was hired by [Dr. Steven Arnold](https://www.linkedin.com/in/steve-arnold-72545416/) under NASAs 10-week [LERCIP program](https://ntrs.nasa.gov/citations/20050185532) to use machine learning to accelerate the simulation-based design of materials and structures through multiscale modeling, in line with [NASA's 2040 vision](https://ntrs.nasa.gov/citations/20180002010). 
 			</CardSection>
 
-			<CardSection title="Publications"> 
-				<PublicationList>
-					- Stuckner, J., Piekenbrock, M., Arnold, S. M., & Ricks, T. M. (2021). Optimal experimental design with fast neural network surrogate models. Computational Materials Science, 200, 110747.
-					- Arnold, S. M., Piekenbrock, M., Ricks, T. M., & Stuckner, J. (2020). Multiscale analysis of composites using surrogate modeling and information optimal designs. In AIAA Scitech 2020 Forum (p. 1863).
-				</PublicationList>		
-			</CardSection>
+		<CardSection title="Publications">
+			<div class="grid gap-2">
+				<PublicationItem
+					authors="J. Stuckner, M. Piekenbrock, S. M. Arnold, T. M. Ricks"
+					title="Optimal experimental design with fast neural network surrogate models"
+					journal="Computational Materials Science, 200"
+					year="2021"
+				/>
+				<PublicationItem
+					authors="S. M. Arnold, M. Piekenbrock, T. M. Ricks, J. Stuckner"
+					title="Multiscale analysis of composites using surrogate modeling and information optimal designs"
+					journal="AIAA Scitech 2020 Forum (p. 1863)"
+					year="2020"
+				/>
+			</div>
+		</CardSection>
 
 			<CardSection title="Software"> 
 			- [Experimental optimal design code](https://github.com/nasa/OED-with-NN-surrogates)
@@ -180,17 +216,30 @@ import { getCollection, getEntry, render } from 'astro:content';
 		</CardSection>
 
 		<CardSection title="Publications">
-			- J. Robinson, M. Piekenbrock, L. Burchett, et. al. Parallelized Iterative Closest Point for Autonomous Aerial Refueling. In International Symposium on Visual Computing (pp. 593-602). Springer International Publishing. (2016, December) (doi: 10.1007/978-3-319-50835-1_53)
-			- Piekenbrock, M., Robinson, J., Burchett, L., Nykl, S., Woolley, B., & Terzuoli, A. (2016, July). Automated aerial refueling: Parallelized 3D iterative closest point: Subject area: Guidance and control. In Aerospace and Electronics Conference (NAECON) and Ohio Innovation Summit (OIS), 2016 IEEE National (pp. 188-192). IEEE. (doi: 10.1109/NAECON.2016.7856797)
+			<div class="grid gap-2">
+				<PublicationItem
+					authors="J. Robinson, M. Piekenbrock, L. Burchett, et al."
+					title="Parallelized Iterative Closest Point for Autonomous Aerial Refueling"
+					journal="International Symposium on Visual Computing (Springer International Publishing)"
+					year="2016"
+					doi="10.1007/978-3-319-50835-1_53"
+				/>
+				<PublicationItem
+					authors="M. Piekenbrock, J. Robinson, L. Burchett, S. Nykl, B. Woolley, A. Terzuoli"
+					title="Automated aerial refueling: Parallelized 3D iterative closest point"
+					journal="Aerospace and Electronics Conference (NAECON) and Ohio Innovation Summit (OIS), 2016 IEEE National"
+					year="2016"
+					doi="10.1109/NAECON.2016.7856797"
+				/>
+			</div>
 		</CardSection>
 
 		<CardSection title="Projects">
 			Example projects included, but were not limited too:
-			<BulletList> 
-				- Researching hierarchical markov model for predicting web navigation patterns
-				- Parallelizing existing atmospheric absorption routines with OpenCL
-				- Coding a nonlinear optimization algorithm in ANSI-C, and making it callable from MATLAB via MEX
-			</BulletList>
+			
+			- Researching hierarchical markov model for predicting web navigation patterns
+			- Parallelizing existing atmospheric absorption routines with OpenCL
+			- Coding a nonlinear optimization algorithm in ANSI-C, and making it callable from MATLAB via MEX
 		</CardSection>
 		</AccordionCard>
 
@@ -220,8 +269,8 @@ import { getCollection, getEntry, render } from 'astro:content';
 	</div>
 </section>
 
-<section id="education" class="flex flex-col gap-y-3 p-0 border-sm mx-auto">
-	<h2 class="font-bold text-blue-400 text-2xl">Education</h2>
+<section id="education" data-section="education" class="cv-section flex flex-col gap-y-3 p-0 border-sm mx-auto">
+	<CvSectionHeader label="Education" />
 
 	<AccordionCard
 		title="Doctorate in CS"

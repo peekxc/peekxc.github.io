@@ -1,0 +1,15 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label  } = Astro.props as Props;
+const accentColor = '#ea581c';
+const backgroundColor =  'rgba(234,88,28	,0.08)';
+const shadowColor = '0 20px 40px rgba(234,88,28,0.15)';
+const dividerColor =  'rgba(15,23,42,0.25)';
+---
+
+<h2 class="font-bold text-neutral-900 text-2xl tracking-wider mx-auto drop-shadow-2xl flex items-center py-4">
+  {label}
+</h2>
