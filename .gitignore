@@ -1,10 +1,36 @@
-/.quarto/
+# dependencies (bun install)
+node_modules
+.vercel
+
+
+# output
+out
+dist
+*.tgz
+
+# code coverage
+coverage
+*.lcov
+
+# logs
+logs
+_.log
+report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
+
+# IntelliJ based IDEs
 .idea
-**/.idea/**
-**/node_modules/**
-**/**/.idea
-/_vercel/**/*.js
-/docs/_vercel/**/*.js
-/content/_vercel/**/*.js
-**/_vercel/**/*.js
-package-lock.json
+
+# Finder (MacOS) folder config
+.DS_Store

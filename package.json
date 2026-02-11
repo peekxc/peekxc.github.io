@@ -1,48 +1,50 @@
 {
-	"name": "peekxc.github.io",
-	"module": "eleventy.config.js",
-	"type": "module",
-	"devDependencies": {
-		"@types/bun": "latest"
-	},
-	"peerDependencies": {
-		"typescript": "^5.5.4"
-	},
-	"dependencies": {
-		"@11ty/eleventy": "^3.1.0",
-		"@11ty/eleventy-img": "^6.0.4",
-		"@11ty/eleventy-plugin-pug": "^1.0.0",
-		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
-		"@11tyrocks/eleventy-plugin-lightningcss": "^1.4.0",
-		"@aquabx/markdown-it-katex": "^4.0.5",
-		"@fec/eleventy-plugin-remark": "^4.0.0",
-		"@iarna/toml": "^2.2.5",
-		"@minify-html/node": "^0.16.4",
-		"@tailwindcss/typography": "^0.5.16",
-		"@uncenter/eleventy-plugin-toc": "^1.0.3",
-		"autoprefixer": "^10.4.21",
-		"browserslist": "^4.24.5",
-		"concurrently": "^9.1.2",
-		"eleventy-plugin-compress": "^1.0.5",
-		"eleventy-plugin-lazyimages": "^2.1.2",
-		"eleventy-plugin-nesting-toc": "^1.3.0",
-		"eleventy-plugin-toc": "^1.1.5",
-		"luxon": "^3.6.1",
-		"markdown-it": "^14.1.0",
-		"markdown-it-anchor": "^9.2.0",
-		"markdown-it-attrs": "^4.3.1",
-		"markdown-it-header-sections": "^1.0.0",
-		"micromatch": "^4.0.8",
-		"node-html-parser": "^7.0.1",
-		"postcss": "^8.5.3",
-		"postcss-cli": "^11.0.1",
-		"reading-time": "^1.5.0",
-		"tailwindcss": "^4.1.7"
-	},
-	"scripts": {
-		"postcss:build": "npx postcss styles.css --o content/css/tw_styles.css --verbose",
-		"11ty:build": "npx eleventy --serve --watch",
-		"serve": "npx eleventy --serve",
-		"watch": "concurrently \"bun run postcss:build\" \"npm run serve\""
-	}
+  "name": "website_astro",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3",
+    "@types/bun": "^1.3.8",
+    "@unocss/preset-mini": "^66.6.0",
+    "baseline-browser-mapping": "^2.9.19",
+    "unocss": "^66.6.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/markdoc": "^0.15.10",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/preact": "^4.1.3",
+    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/vercel": "^9.0.4",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.17.1",
+    "astro-compressor": "^1.2.0",
+    "astro-icon": "^1.1.5",
+    "astro-mdx-directive": "^1.0.0",
+    "katex": "^0.16.28",
+    "lightningcss": "^1.31.1",
+    "mdx": "^0.3.1",
+    "next": "^16.1.6",
+    "rehype-katex": "^7.0.1",
+    "remark": "^15.0.1",
+    "remark-directive": "^4.0.0",
+    "remark-directive-rehype": "^0.4.2",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-mdx-frontmatter": "^5.2.0",
+    "remark-smartypants": "^3.0.2",
+    "rollup-plugin-visualizer": "^6.0.5",
+    "tailwindcss": "^4.1.18",
+    "unified": "^11.0.5"
+  }
 }
