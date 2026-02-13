@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g fill="none"
+     stroke="currentColor"
+     stroke-width="1.75"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- visible outer edges -->
+    <path d="M10 46 L30 14 L58 30 L40 54 Z"/>
+    <path d="M30 14 L40 54"/>
+    <path d="M58 30 L40 54"/>
+
+    <!-- hidden edge -->
+    <path d="M10 46 L58 30"
+          stroke-dasharray="4 4"
+          opacity="0.4"/>
+  </g>
+
+  <!-- vertices -->
+  <g fill="currentColor">
+    <circle cx="30" cy="14" r="4.5"/>
+    <circle cx="10" cy="46" r="4.5"/>
+    <circle cx="58" cy="30" r="4.5"/>
+    <circle cx="40" cy="54" r="4.5"/>
+  </g>
+</svg>
