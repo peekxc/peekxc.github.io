@@ -13,6 +13,7 @@ const sorted_posts = [...published_posts].sort((a, b) => {
   const bDate = Date.parse(b.data.date ?? '');
   return (bDate || 0) - (aDate || 0);
 });
+// console.log(posts)
 ---
 
 <Base>

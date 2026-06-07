@@ -8,8 +8,6 @@ abstract = """The primary result of the Mapper framework is the geometric realiz
 tags = ["Clustering", "Topology", "R Package"]
 image = "/src/assets/images/msu_logo.png"
 highlight_date = "2018 - 2022"
-
-# flattened, post-process however you like
 section_titles = ["Publications", "Software"]
 item_section = ["Publications", "Software", "Software", "Software"]
 item_label = [

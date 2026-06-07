@@ -1,13 +1,21 @@
 ---
 const { title, date, categories = [] } = Astro.props;
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 ---
-<h1 class="my-1 text-center">{title}</h1>
-<p class="text-md text-center m-2 leading-tight text-slate-500 font-semibold">
-	By: Matt Piekenbrock &nbsp;({date})
-</p>
-<div class="text-center space-x-1 align-middle">
-	{categories.map(cat => (
-		<span class="px-1 py-0 text-sm rounded-sm border">{cat}</span>
-	))}
-</div>
-<hr class="my-2" />
+<header class="text-center my-2">
+  <h1 class="text-4xl font-bold tracking-tight mt-4 mb-3 italic">
+    {title}
+  </h1>
+  <p class="text-md font-normal text-slate-600 my-2">
+    Matt Piekenbrock&nbsp;&nbsp;·&nbsp;&nbsp;{date.toLocaleDateString("en-US", options)}
+  </p>
+  <div class="mt-0 space-x-1">
+    {categories.map(cat => (
+      <span class="px-2 py-0.5 text-xs rounded border border-slate-300">
+        {cat}
+      </span>
+    ))}
+  </div>
+
+  <div class="mt-2 border-b border-slate-200"></div>
+</header>
