@@ -25,7 +25,7 @@ const buttonId = `accordion-trigger-${slug}`;
 const panelId = `accordion-panel-${slug}`;
 ---
 
-<div class="accordion-item card relative overflow-hidden backdrop-blur-md bg-white/95 leading-5 border border-slate-200 shadow-[0_1px_3px_rgba(15,23,42,0.06)] rounded-sm ring-1 ring-black/[0.02] transition-all duration-200 hover:border-slate-400 hover:shadow-[0_8px_24px_rgba(15,23,42,0.10)] hover:cursor-pointer">
+<div class="accordion-item accent-card card relative overflow-hidden backdrop-blur-md leading-5 surface-card-interactive">
 	<button
 		id={buttonId}
 		type="button"
@@ -37,21 +37,21 @@ const panelId = `accordion-panel-${slug}`;
 		p-0 m-0
 		text-left
 		bg-transparent
-		focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2
+		focus-ring
 		w-full block
-		transition-colors duration-200
+		transition-colors duration-300 ease-in-out
 		"
 		style="touch-action: manipulation;"
 	>
 		<BackgroundImage imagePath={background_image ?? ''} altText={title}>
 			<div class="flex flex-row justify-between" style="white-space: nowrap;">
-				<h4 class="text-xl font-semibold text-slate-900 tracking-tight">{title}</h4>
-				<h4 class="text-lg font-medium text-slate-600 tracking-tight truncate">{subtitle}</h4>
+				<h4 class="text-lg font-semibold text-ink-strong tracking-tight sm:text-xl">{title}</h4>
+				<h4 class="truncate text-sm font-medium text-ink-muted tracking-tight sm:text-base">{subtitle}</h4>
 			</div>
 			
 			<div class="flex flex-row justify-between">
-				<h4 class="font-medium text-sm text-slate-600">{date}</h4>
-				<h4 class="font-600 text-sm text-slate-600 italic">{extra}</h4>
+				<h4 class="text-xs font-medium text-ink-muted sm:text-sm">{date}</h4>
+				<h4 class="text-xs font-semibold text-ink-muted italic sm:text-sm">{extra}</h4>
 			</div>
 
 			<div class="col-span-full my-3" />
@@ -68,7 +68,7 @@ const panelId = `accordion-panel-${slug}`;
 
 			{description && (
 				<div class="flex flex-row justify-between items-center">
-					<span class="text-sm font-semibold flex-grow truncate text-slate-700">{description}</span>
+					<span class="flex-grow truncate text-sm font-medium text-ink">{description}</span>
 				</div>
 			)}
 		</BackgroundImage>
@@ -82,39 +82,12 @@ const panelId = `accordion-panel-${slug}`;
 		aria-labelledby={buttonId}
 	>
 		<div class="overflow-hidden">
-			<div class="accordion-body px-4 py-2 border-t border-slate-200/70 bg-white/80">
+			<div class="accordion-body px-4 py-2 border-t border-line-soft bg-surface-raised">
 				<slot />
 			</div>
 		</div>
 	</article>
 </div>
-
-<style>
-	.accordion-item::before {
-		content: '';
-		position: absolute;
-		inset: 0 auto 0 0;
-		width: 3px;
-		background: #ea581c;
-		opacity: 0;
-		pointer-events: none;
-		transition: opacity 200ms ease;
-		z-index: 20;
-	}
-
-	.accordion-item:hover::before {
-		opacity: 0.55;
-	}
-
-	.accordion-item.is-open {
-		border-color: rgb(148 163 184);
-		box-shadow: 0 10px 28px rgba(15, 23, 42, 0.11), 0 0 0 1px rgba(234, 88, 28, 0.10);
-	}
-
-	.accordion-item.is-open::before {
-		opacity: 1;
-	}
-</style>
 
 <script>
 	function setupAccordion() {
@@ -129,6 +102,7 @@ const panelId = `accordion-panel-${slug}`;
 			const toggle = () => {
 				const isOpen = content.getAttribute('data-open') === 'true';
 				accordion.classList.toggle('is-open', !isOpen);
+				accordion.classList.toggle('surface-card-open', !isOpen);
 				content.setAttribute('data-open', isOpen ? 'false' : 'true');
 				content.classList.toggle('grid-rows-[1fr]', !isOpen);
 				content.classList.toggle('grid-rows-[0fr]', isOpen);

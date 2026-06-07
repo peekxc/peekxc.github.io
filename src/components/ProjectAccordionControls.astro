@@ -2,14 +2,14 @@
   <button
     id="projects-expand-all"
     type="button"
-    class="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+    class="inline-flex items-center gap-1 rounded-card border border-line bg-surface-card px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted transition hover:border-line-strong hover:text-ink-strong focus-ring"
   >
     Expand all
   </button>
   <button
     id="projects-collapse-all"
     type="button"
-    class="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+    class="inline-flex items-center gap-1 rounded-card border border-line bg-surface-card px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted transition hover:border-line-strong hover:text-ink-strong focus-ring"
   >
     Collapse all
   </button>
@@ -23,6 +23,8 @@
     const headerCollapsibles = card.querySelectorAll('[data-header-collapsible]');
     if (!content || !trigger) return;
 
+    card.classList.toggle('is-open', open);
+    card.classList.toggle('surface-card-open', open);
     content.setAttribute('data-open', open ? 'true' : 'false');
     content.classList.toggle('grid-rows-[1fr]', open);
     content.classList.toggle('grid-rows-[0fr]', !open);

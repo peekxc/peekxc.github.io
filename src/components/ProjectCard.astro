@@ -11,29 +11,32 @@ interface Props {
 }
 const { title, subtitle, tags, image, highlightDate } = Astro.props as Props;
 const hasMedia = Boolean(image);
-const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
+const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const buttonId = `project-trigger-${slug}`;
+const panelId = `project-panel-${slug}`;
 ---
 
-<article data-project-card class="not-prose group w-full cursor-pointer rounded-lg border border-slate-200 bg-white/90 shadow-sm transition hover:shadow-md">
-  <div class="flex flex-col text-slate-900">
+<article data-project-card class="accent-card not-prose group relative w-full cursor-pointer overflow-hidden surface-card-interactive">
+  <div class="flex flex-col text-ink-strong">
     <button
+      id={buttonId}
       type="button"
-      class="w-full border-b border-slate-200 bg-white/95 px-4 py-3 text-left transition-colors hover:bg-slate-50 hover:cursor-pointer"
+      class="w-full border-b border-line bg-surface-card px-4 py-3 text-left transition-colors duration-300 ease-in-out hover:bg-surface-muted hover:cursor-pointer focus-ring"
       data-accordion-trigger
       aria-controls={panelId}
       aria-expanded="false"
     >
     <div class="grid grid-cols-1 gap-3 md:grid-cols-5 md:items-stretch">
       <div class="md:col-span-3">
-        <h3 class="mb-2 mt-0 text-xl font-semibold leading-snug">{title}</h3>
-        <p class="my-1 text-small uppercase leading-tight text-slate-500">{subtitle})</p>
-        <p class="bottom-2 right-2 text-[0.85rem] font-semibold uppercase tracking-[0.2em] text-slate-800/80">{highlightDate ?? 'ongoing'}</p>
+        <h3 class="mb-2 mt-0 text-lg font-semibold leading-snug tracking-tight text-ink-strong sm:text-xl">{title}</h3>
+        <p class="my-1 text-sm font-medium leading-tight text-ink-muted sm:text-base">{subtitle}</p>
+        <p class="bottom-2 right-2 text-xs font-semibold text-ink-muted sm:text-sm">{highlightDate ?? 'ongoing'}</p>
       </div>
 
       {hasMedia && (
-        <div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-200 ease-out md:col-span-2">
+        <div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-300 ease-in-out md:col-span-2">
           <div class="overflow-hidden">
-            <div class="relative h-44 overflow-hidden rounded-lg">
+            <div class="relative h-44 media-frame">
               <ProjectCardImage
                 imagePath={image}
                 alt={title}
@@ -46,18 +49,18 @@ const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
     </div>
 
     <div class="mt-2 grid grid-cols-[1fr_auto] items-center gap-2">
-      <div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-200 ease-out">
+      <div data-header-collapsible class="grid grid-rows-[1fr] transition-all duration-300 ease-in-out">
         <div class="overflow-hidden">
-          <div class="flex flex-wrap gap-1 text-slate-600">
+          <div class="flex flex-wrap gap-1 text-ink-muted">
             {tags.map((tag) => (
-              <span class="rounded-md border border-slate-200 px-2 py-0.5 text-xs font-semibold tracking-[0.1em]">
+              <span class="tag">
                 {tag}
               </span>
             ))}
           </div>
         </div>
       </div>
-      <span class="chevron-icon inline-flex transition-transform duration-200 ease-out">
+      <span class="chevron-icon inline-flex transition-transform duration-300 ease-in-out">
         <Icon name="chevron" width="18" height="18" />
       </span>
     </div>
@@ -67,7 +70,9 @@ const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
       id={panelId}
       data-accordion-content
       data-open="false"
-      class="accordion-content grid grid-rows-[0fr] bg-slate-50/40 transition-all duration-200 ease-out"
+      class="accordion-content grid grid-rows-[0fr] bg-surface-muted transition-all duration-300 ease-in-out"
+      role="region"
+      aria-labelledby={buttonId}
     >
       <div class="overflow-hidden">
         <div class="space-y-2 px-4 py-4">
@@ -91,6 +96,8 @@ const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
       const toggleAccordion = () => {
         const isOpen = content.getAttribute('data-open') === 'true';
         const headerCollapsibles = card.querySelectorAll('[data-header-collapsible]');
+        card.classList.toggle('is-open', !isOpen);
+        card.classList.toggle('surface-card-open', !isOpen);
         content.setAttribute('data-open', isOpen ? 'false' : 'true');
         content.classList.toggle('grid-rows-[1fr]', !isOpen);
         content.classList.toggle('grid-rows-[0fr]', isOpen);
@@ -109,8 +116,11 @@ const panelId = `project-panel-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
 
       card.addEventListener('click', (event) => {
         const target = event.target;
+        const selection = window.getSelection()?.toString().trim();
+        if (selection) return;
         if (!(target instanceof HTMLElement)) return;
-        if (target.closest('a')) return;
+        if (target.closest('a, input, textarea, select, summary, [contenteditable="true"]')) return;
+        if (target.closest('button') && !target.closest('[data-accordion-trigger]')) return;
         toggleAccordion();
       });
 

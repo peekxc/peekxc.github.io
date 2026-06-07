@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import ProfileImage from "../assets/images/profile_pic_blue.jpg"
 ---
 
-<div class="max-w-2xl mx-auto overflow-hidden bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col md:flex-row items-center md:items-stretch transition-all hover:shadow-2xl">
+<div class="max-w-2xl mx-auto overflow-hidden surface-card-interactive flex flex-col md:flex-row items-center md:items-stretch">
   
   <div class="w-full md:w-1/3 relative overflow-hidden group">
     <Picture 
@@ -22,10 +22,10 @@ import ProfileImage from "../assets/images/profile_pic_blue.jpg"
       <slot/>
     </div>
 
-    <div class="flex flex-row justify-between items-stretch mt-auto pt-2 border-t border-slate-100 dark:border-slate-800">
+    <div class="flex flex-row justify-between items-stretch mt-auto pt-2 border-t border-line-soft">
       <a 
         href="/cv_7.pdf" 
-        class="px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-md font-semibold text-sm transition-all hover:bg-[#ff7d13] dark:hover:bg-[#ff7d13] hover:scale-105 active:scale-95 flex items-center gap-2"
+        class="px-5 py-2.5 bg-ink-strong text-white rounded-card font-semibold text-sm transition-all hover:bg-brand-hover hover:scale-105 active:scale-95 flex items-center gap-2 focus-ring"
       >
         <!-- <Icon name="mdi:file-document-outline" class="text-lg" /> -->
         View CV
@@ -48,14 +48,14 @@ import ProfileImage from "../assets/images/profile_pic_blue.jpg"
 
 <style scoped>
 .cv-bio-link {
-	color: #ea581c;
+	color: var(--color-ink-strong);
 	font-weight: 600;
 	transition: color 150ms ease;
 }
 
 .cv-bio-link:hover,
 .cv-bio-link:focus-visible {
-	color: #ff7d13;
+	color: var(--color-brand);
 }
 
 .cv-bio-icon {
@@ -65,6 +65,6 @@ import ProfileImage from "../assets/images/profile_pic_blue.jpg"
 
 .cv-bio-icon:hover,
 .cv-bio-icon:focus-visible {
-	color: #ff7d13;
+	color: var(--color-brand-hover);
 }
 </style>

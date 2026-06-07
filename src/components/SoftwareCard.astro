@@ -47,20 +47,19 @@ const {
   codeLinks = [],
   sections = []
 } = Astro.props as Props;
-const rgbStroke = 'rgba(255,255,255,0.35)';
 ---
 
-<article class="w-full rounded-2xl border border-slate-200 bg-white shadow-sm">
-  <div class="flex flex-col gap-2 px-4 py-4 text-slate-900">
+<article class="w-full surface-card">
+  <div class="flex flex-col gap-2 px-4 py-4 text-ink-strong">
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div>
-        <p class="text-[0.6rem] uppercase tracking-[0.4em] text-slate-500">Code</p>
-        <h3 class="text-lg font-semibold text-slate-900">{title}</h3>
+        <p class="text-[0.6rem] uppercase tracking-[0.4em] text-ink-muted">Code</p>
+        <h3 class="text-lg font-semibold text-ink-strong">{title}</h3>
       </div>
       <div class="flex flex-wrap gap-2">
         {docLink && (
           <a
-            class="rounded-full border border-slate-400 px-3 py-1 text-[0.55rem] font-bold uppercase tracking-[0.3em] text-slate-600 transition hover:bg-slate-900 hover:text-white"
+            class="rounded-full border border-line-strong px-3 py-1 text-[0.55rem] font-bold uppercase tracking-[0.3em] text-ink-muted transition hover:bg-ink-strong hover:text-white focus-ring"
             href={docLink}
             target="_blank"
             rel="noreferrer"
@@ -70,7 +69,7 @@ const rgbStroke = 'rgba(255,255,255,0.35)';
         )}
         {repoLink && (
           <a
-            class="rounded-full border border-slate-400 px-3 py-1 text-[0.55rem] font-bold uppercase tracking-[0.3em] text-slate-600 transition hover:bg-slate-900 hover:text-white"
+            class="rounded-full border border-line-strong px-3 py-1 text-[0.55rem] font-bold uppercase tracking-[0.3em] text-ink-muted transition hover:bg-ink-strong hover:text-white focus-ring"
             href={repoLink}
             target="_blank"
             rel="noreferrer"
@@ -81,18 +80,18 @@ const rgbStroke = 'rgba(255,255,255,0.35)';
       </div>
     </div>
 
-    <p class="text-sm leading-relaxed text-slate-700">{summary}</p>
-    {description && <p class="text-sm leading-relaxed text-slate-700">{description}</p>}
+    <p class="text-sm leading-relaxed text-ink">{summary}</p>
+    {description && <p class="text-sm leading-relaxed text-ink">{description}</p>}
 
     <div class="flex flex-wrap gap-2">
       {categories.map((category) => (
-        <span class="tag bg-white/10 text-white">{category}</span>
+        <span class="tag">{category}</span>
       ))}
     </div>
 
     <div class="flex flex-wrap gap-2">
       {badges.map((badge) => (
-        <a href={badge.href ?? '#'} target="_blank" rel="noreferrer" class="rounded-full border border-slate-200 px-2 py-1 text-[0.55rem] font-semibold tracking-[0.3em] text-slate-500 transition hover:border-slate-400">
+        <a href={badge.href ?? '#'} target="_blank" rel="noreferrer" class="rounded-full border border-line px-2 py-1 text-[0.55rem] font-semibold tracking-[0.3em] text-ink-muted transition hover:border-line-strong focus-ring">
           <img src={badge.src} alt={badge.alt ?? badge.href} height={badge.height ?? 16} class="inline-block" />
         </a>
       ))}
@@ -104,7 +103,7 @@ const rgbStroke = 'rgba(255,255,255,0.35)';
           href={link.href}
           target="_blank"
           rel="noreferrer"
-          class="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-slate-700 transition hover:border-slate-400 hover:bg-slate-100"
+          class="surface-panel px-3 py-2 text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-ink transition hover:border-line-strong hover:bg-surface-muted focus-ring"
         >
           {link.label}
         </a>
@@ -112,28 +111,28 @@ const rgbStroke = 'rgba(255,255,255,0.35)';
     </div>
 
     {sections.map((section) => (
-      <section class="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
-        <div class="mb-2 text-xs uppercase tracking-[0.3em] text-slate-200">{section.title}</div>
+      <section class="surface-panel p-4 text-sm text-ink">
+        <div class="mb-2 text-xs uppercase tracking-[0.3em] text-ink-subtle">{section.title}</div>
         <ul class="space-y-1">
           {section.items.map((item) => (
             <li>
               {item.href ? (
-                <a class="font-semibold text-slate-900 transition hover:text-primary" href={item.href} target="_blank" rel="noreferrer">
+                <a class="font-semibold text-ink-strong transition hover:text-brand focus-ring" href={item.href} target="_blank" rel="noreferrer">
                   {item.label}
                 </a>
               ) : (
-                <span class="font-semibold text-slate-900">{item.label}</span>
+                <span class="font-semibold text-ink-strong">{item.label}</span>
               )}
-              {item.meta && <span class="ml-2 text-xs uppercase tracking-[0.3em] text-slate-500">{item.meta}</span>}
+              {item.meta && <span class="ml-2 text-xs uppercase tracking-[0.3em] text-ink-muted">{item.meta}</span>}
             </li>
           ))}
         </ul>
       </section>
     ))}
 
-    <div class="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-slate-500">
+    <div class="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-ink-muted">
       {tags.map((tag) => (
-        <span class="rounded-full border border-slate-200 px-2 py-1 text-slate-600">{tag}</span>
+        <span class="rounded-full border border-line px-2 py-1 text-ink-muted">{tag}</span>
       ))}
     </div>
   </div>

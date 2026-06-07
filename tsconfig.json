@@ -30,9 +30,9 @@
   }, 
   "mdx": {
     "plugins": [
-      "remark",
-      "remark-gfm", 
-      "remark-directive"
+      // "remark",
+      // "remark-gfm", 
+      // "remark-directive"
     ]
   }
 }

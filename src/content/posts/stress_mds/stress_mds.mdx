@@ -1,32 +1,200 @@
 ---
-title: "From distances to coordinates"
+title: "Metric Scaling"
 author: "Matt Piekenbrock"
 date: '2026-03-08'
 slug: stress_mds
 tags: ["algorithms", "linear algebra", "geometry"]
 abstract: "A look at stress majorization for dimensionality reduction and graph drawing"
-draft: false 
+draft: true 
 ---
 import { Image } from 'astro:assets';
 import { getImage } from "astro:assets";
 import GraphPath from "../../../components/graph/GraphPath.astro"
 
-Let  $D \in \mathbb{R}^{n \times n}$ denote a distance matrix representing a prescribed set of pairwise distances between $n$ objects and $W\in \mathbb{R}^{n \times n}$ similarly a set matrix of weights representing the relative 'importance' of each pair. 
+Let  $D \in \mathbb{R}^{n \times n}$ denote a pairwise distance matrix between $n$ objects $\mathcal{X}$ and $W\in \mathbb{R}^{n \times n}$ a weight matrix representing the relative 'importance' of each pair.
 
-A natural goal to produce a set of coordinates $X \in \mathbb{R}^{n \times d}$, or an _embedding_, in $\mathbb{R}^d$ minimizing: 
+Suppose you had a tool at your disposal that could generate coordinates $X \in \mathbb{R}^{n \times d}$ satisfying: 
 
-$$ 
-\sigma(X) = \sum\limits_{i < j} w_{ij} (\lVert x_i - x_j \rVert - d_{ij})^2 
+$$
+X^\ast = \argmin_{X \in \mathbb{R}^{n \times d}} \  \sum\limits_{i < j} \; w_{ij} (\lVert x_i - x_j \rVert - d_{ij})^2
 $$
 
-Intuitively, the coordinates $X$ minimizing this stress function represent a kind of "best-fitted" Euclidean metric space $(X, d_X)$ to the given distances. Though $W$ may be set arbitrarily in theory, in practice its typical to set $w_{ij} = d_{ij}^{-\alpha}$ for some choice of $\alpha \geq 0$. Setting $\alpha = 0$ corresponding to  $W = \mathbf{1}\mathbf{1}^T$ (the "unweighted" case), in which (1) then corresponds to the "stress" function studied in metric multidimensional scaling; in graph layout communities, its more common to set $\alpha = 1$ or $\alpha = 2$.
+In other words, you have a means of producing Euclidean coordinates $X$ that “best-fit" the given distances $D$—the optional weights $W$ provide a means for scaling the strength of pairwise contributions[^1].
+
+When I first read about this technique circa 2016, I thought it was interesting albeit niche. Little did I know that for the next _decade_, it would keep coming up: in dimensionality reduction, in Procrustes analysis, in graph drawing & visualization, in manifold learning, in sensor localization, and in constrained optimization.
+
+So, I gotta talk about it. 
+
+Adjectives are frequently the greatest enemy of the substantive
+
+## City distance example 
+
+A standard motivational example for metric scaling is geographical reconstruction. Imagine your given a set of pairwise distances, in miles, between a bunch of cities:
+
+$$
+\begin{bmatrix}
+1 & 0 \\
+0 & 1 
+\end{bmatrix}
+$$
+
+Actualizing latitude/longitude coordinates—up to [rigid transformation](https://en.wikipedia.org/wiki/Rigid_transformation)—with Euclidean distances matching these pairwise distances corresponds to “classical” metric scaling—a special case of metric scaling. See [here for more details](https://www.bristol.ac.uk/media-library/sites/cmm/migrated/documents/chapter3.pdf)
+
+[IMAGE PLACEHOLDER: A small map of several U.S. cities with arcs or distance labels between them. Caption: “Given only pairwise city distances, metric scaling asks for planar coordinates that reproduce those distances as well as possible.”]
+
+…except, even in the geographical example, the recovery isn’t perfect: if the miles between the city locations are accurate, the corresponding coordinates $X$ will exhibit some _distortion_. The reason for this is that the cities and their corresponding pairwise distances do not come from a Euclidean metric space: since the Earth is essentially a sphere[^2], the length of geodesic between city-centers is measured by the _Haversine_ or _Great Circle_ distance, which is notably *not* Euclidean. 
+
+When the input distances come from an ambient Euclidean space, classical scaling yields an optimal coordinatization. And in the Euclidean case, indeed classical scaling should be preferred. 
+
+For all other metrics, though, we look towards the more general objective (1) of metric scaling. 
+
+~~It’s my opinion that abstract goals are only as useful as the visions their syntax inspires.~~
+
+## Graph Layout 
+
+To expand on the generality of (1), here’s another example: suppose you’re given a graph $G = (V, E)$ and you are asked to produce a _layout_ of the graph, i.e. a set of coordinates $X \in \mathbb{R}^{n \times 2}$  indicating where to place the nodes. 
+
+In general, the [graph layout](https://en.wikipedia.org/wiki/Graph_drawing) problem is a difficult one, plagued with many (sometimes contradictory) notions of what constitutes “better”;
+
+Sometimes, you know *exactly* what you want the layout to look like, because of some preconceived notions of what “better” _should_ look like—notions rooted in specific application use-cases or domain-specific constraints, like circuit design or system modeling. 
+
+Common examples include: 
+- minimize crossings, 
+- preserving clusters, 
+- respecting hierarchical or “flow” relationships,
+- using area efficiently, 
+- routing edges orthogonally, 
+- preventing labels from overlapping
+	
+…and so on and so forth. In those cases, the right tool is often a specialized layout algorithm.
+
+When the more exploratory setting, a natural solution to the layout problem is to draw the graph in such a way that geometry reflects the graph’s intrinsic structure. In the absence of domain-specific constraints, if all we have is a graph $G = (V, E)$, the most natural way to obtain a distance matrix $D$ from it is via the shortest path metric[^3] $d_G(i,j)$:
+
+$$\min_{X\in\mathbb{R^{n\times 2}}}
+\sum_{i<j} w_{ij} \left( 
+\lVert x_i-x_j\rVert - d_G(i,j)
+\right)^2$$
+
+To me, this is a 
 
 ## Majorization minimization 
 
-A function $g(x; x^{(t)}) : \mathcal{X} \to \mathbb{R}$ is said to _majorize_ the function $f: \mathcal{X} \to \mathbb{R} $ at $x^{(t)}$ if: 
+A function $g(x; x^{(t)}) : \mathcal{X} \to \mathbb{R}$ is said to _majorize_ the function $f: \mathcal{X} \to \mathbb{R} $ at $x^{(t)}$ if:
 
-1. $f(x^{(t)}) = g(x^{(t)}; x^{(t)}) $
-2. $f(x) \leq g(x; x^{(t)})$ for all $x$
+$$
+
+## Constraint projection 
+
+Time Dwyer and his Lab have tackled some pretty interesting problems over the years on the graph layout. Their library, WeBCOLA, has some convincing example.  
+
+One such problem is that of resolving the _node overlap problem_: in this setting, you’re given a set of geometric entities on the plane that may or may overlap, and the goal is to _move_ the entities around to remove said overlap. \
+
+Metric scaling gives a clean objective, but raw stress alone does not encode every layout requirement. In practice, one often wants additional constraints.
+
+For example, suppose each node is not a point but a rectangle with width \(a_i\) and height \(b_i\). A stress layout may place the centers nicely while allowing the rectangles themselves to overlap.
+
+The node overlap problem asks us to move the rectangles so that they become disjoint while changing the layout as little as possible.
+
+Given current centers \(X_i\), one natural projection problem is
+
+$$\min_{Y\in\mathbb R^{n\times 2}}
+\sum_i \lVert Y_i-X_i\rVert^2$$
+
+subject to non-overlap constraints.
+
+For a pair of axis-aligned rectangles \(i,j\), non-overlap means at least one of the following must hold:
+
+$$Y_i^x + \frac{a_i}{2}
+\leq
+Y_j^x - \frac{a_j}{2}$$
+
+$$Y_j^x + \frac{a_j}{2} \leq Y_i^x - \frac{a_i}{2}$$
+
+$$Y_i^y + \frac{b_i}{2} \leq Y_j^y - \frac{b_j}{2}$$
+
+or
+
+$$Y_j^y + \frac{b_j}{2}
+\leq
+Y_i^y - \frac{b_i}{2}$$
+
+The disjunction makes the exact problem combinatorial. But once a separation direction is chosen for each overlapping pair, the remaining problem becomes a convex quadratic program with linear inequalities.
+
+For example, if rectangle \(i\) should be placed to the left of rectangle \(j\), we impose
+
+\[
+Y_j^x - Y_i^x
+\geq
+\frac{a_i+a_j}{2} + \epsilon.
+\]
+
+Then the projection is simply
+
+\[
+\min_Y \sum_i \lVert Y_i-X_i\rVert^2
+\quad
+\text{subject to chosen separation constraints.}
+\tag{4}
+\]
+
+This gives a useful pattern:
+
+First, optimize stress to get a good unconstrained layout. Then project onto a constraint set. Then re-optimize stress. Then project again.
+
+Schematically,
+
+\[
+X^{(t+\frac12)}
+=
+\operatorname{StressStep}(X^{(t)}),
+\]
+
+\[
+X^{(t+1)}
+=
+\operatorname{ProjectConstraints}(X^{(t+\frac12)}).
+\]
+
+[IMAGE PLACEHOLDER: Three panels showing overlapping rectangles, chosen separation constraints, and resolved rectangles. Caption: “Overlap removal can be viewed as a projection step: move objects minimally while satisfying separation constraints.”]
+
+This is not the same as globally solving stress with hard constraints. It is more pragmatic. But it captures a powerful idea: metric scaling gives the layout a global geometry, while projection steps enforce local geometric feasibility.
+
+Tim Dwyer and collaborators explored this design space extensively in constrained graph layout systems such as WebCoLa. The key insight is that many layout requirements can be expressed as simple geometric constraints, then alternated with stress optimization.
+
+## Why this is useful
+
+Though often introduced as a dimensionality-reduction method or an [ordination](https://en.wikipedia.org/wiki/Ordination_(statistics)) tool, metric scaling to me appears as a much general-purpose mechanism for turning pairwise relational data into coordinates: it lets me translated it pairs extremely well with [metric learning](https://en.wikipedia.org/wiki/Similarity_learning#Metric_learning).
+
+Given a distance matrix, it gives you geometry.
+
+Given a graph metric, it gives you a graph layout.
+
+Given weights, it lets you decide which distances matter.
+
+Given constraints, it can be combined with projection methods.
+
+That makes it a surprisingly flexible abstraction. It lets you treat layout not as a bag of unrelated heuristics, but as a sequence of geometric optimization problems:
+
+\[
+\text{choose distances}
+\quad\to\quad
+\text{choose weights}
+\quad\to\quad
+\text{minimize stress}
+\quad\to\quad
+\text{project constraints}.
+\]
+
+Among these, I keep returning to metric scaling. It is one of the rare tools that is mathematically clean, computationally practical, and visually useful.
+
+## References
+
+1. Majorization minimization slides: https://palomar.home.ece.ust.hk/ELEC5470_lectures/slides_MM_algorithms.pdf
+
+
+[^1]: Although $W \in \mathbb{R}_{+}^{n \times n}$ may be set arbitrarily in theory, its common to set in practice parameterize $w_{ij} = d_{ij}^{-\alpha}$ for some fixed $\alpha \geq 0$. When $\alpha = 2$, nearby pairs are emphasized by scaling the relative error in the optimization, while setting $\alpha = 0$ corresponds to $W = \mathbf{1}\mathbf{1}^T$, i.e. the “unweighted" case.
+
+[^3]: It can be shown this is indeed a true distance metric. 
 
 <GraphPath/>
 

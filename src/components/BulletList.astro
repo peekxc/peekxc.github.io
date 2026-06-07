@@ -14,15 +14,15 @@ interface Bullet {
 const { bullets = [] } = Astro.props
 ---
 
-<div class="overflow-auto py-2 bg-white-100">
-  <ul class="text-sm list-disc pl-4 not-prose">
+<div class="overflow-auto py-2 text-sm leading-snug text-ink">
+	<ul class="list-disc pl-4 not-prose">
 		{bullets.map((p) => (
-			<li class="list-item [display:list-item]">
+			<li class="list-item py-0.5 [display:list-item]">
 				<div class="flex justify-between items-center">
-					<a href={p.href} class="font-semibold underline">{p.name}</a>
+					<a href={p.href} class="font-semibold text-ink-strong underline decoration-line-strong underline-offset-3 transition hover:text-brand hover:decoration-brand">{p.name}</a>
 					<div class="flex gap-2">
 						{p.badges?.map((b) => (
-							<a href={b.href}>
+							<a href={b.href} class="focus-ring">
 								<img src={b.src} alt={b.alt ?? ''} class="inline h-4" />
 							</a>
 						))}
@@ -33,5 +33,3 @@ const { bullets = [] } = Astro.props
 	</ul>	
 	<slot/>
 </div>
-
-

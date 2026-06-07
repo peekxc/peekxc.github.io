@@ -33,20 +33,218 @@ const { Content } = await render(post);
 </astro:head>
 
 <Base>
-  <main class="grid grid-cols-12 w-full">
-		<aside class="three-col-side"/>
-		<article class="prose three-col-main justify-center pb-4 px-2" style="max-width: 100% !important;">
+	<main class="blog-page w-full px-5 py-10 sm:px-6 lg:px-10">
+		<article class="blog-post mx-auto w-full max-w-[75ch] prose">
 			<AuthorBlock
 				title={post.data.title}
 				date={post.data.date}
 				categories={post.data.tags} />
 			<Content />
 		</article>
-		<aside class="three-col-side flex">
-			<Scrollspy class="hidden lg:inline-block truncate"/>
+		<aside class="blog-outline fixed bottom-4 right-4 z-40 hidden max-w-[min(22rem,calc(100vw-2rem))] lg:block">
+			<details class="rounded-card border border-line bg-surface-card shadow-card backdrop-blur-md">
+				<summary class="cursor-pointer select-none px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted transition hover:text-brand">
+					Outline
+				</summary>
+				<div class="max-h-[70vh] overflow-y-auto border-t border-line-soft">
+					<Scrollspy class="truncate"/>
+				</div>
+			</details>
 		</aside>
 	</main>
 </Base>
+
+<style>
+	@font-face {
+		font-family: 'iA Writer Quattro';
+		src: url('https://cdn.jsdelivr.net/gh/iaolo/iA-Fonts@master/iA%20Writer%20Quattro/Variable/iAWriterQuattroV.ttf') format('truetype');
+		font-display: swap;
+		font-style: normal;
+		font-weight: 450 700;
+	}
+
+	@font-face {
+		font-family: 'iA Writer Quattro';
+		src: url('https://cdn.jsdelivr.net/gh/iaolo/iA-Fonts@master/iA%20Writer%20Quattro/Variable/iAWriterQuattroV-Italic.ttf') format('truetype');
+		font-display: swap;
+		font-style: italic;
+		font-weight: 450 700;
+	}
+
+	@font-face {
+		font-family: 'iA Writer Mono';
+		src: url('https://cdn.jsdelivr.net/gh/iaolo/iA-Fonts@master/iA%20Writer%20Mono/Variable/iAWriterMonoV.ttf') format('truetype');
+		font-display: swap;
+		font-style: normal;
+		font-weight: 450 700;
+	}
+
+	@font-face {
+		font-family: 'iA Writer Mono';
+		src: url('https://cdn.jsdelivr.net/gh/iaolo/iA-Fonts@master/iA%20Writer%20Mono/Variable/iAWriterMonoV-Italic.ttf') format('truetype');
+		font-display: swap;
+		font-style: italic;
+		font-weight: 450 700;
+	}
+
+	.blog-page {
+		background: linear-gradient(180deg, rgba(248, 250, 252, 0.85), rgba(255, 255, 255, 0.95));
+	}
+
+	.blog-post {
+		color: var(--color-ink-strong);
+		font-family: 'iA Writer Quattro', Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-size: clamp(1.04rem, 1rem + 0.28vw, 1.16rem);
+		font-variant-ligatures: normal;
+		line-height: 1.62;
+		text-rendering: optimizeLegibility;
+		hanging-punctuation: first allow-end;
+		-webkit-font-smoothing: antialiased;
+	}
+
+
+	.blog-post :global(p),
+	.blog-post :global(ul),
+	.blog-post :global(ol),
+	.blog-post :global(blockquote),
+	.blog-post :global(table),
+	.blog-post :global(pre) {
+		margin-block: 1.05em;
+		writing-mode: horizontal-tb;
+	}
+
+	.blog-post :global(h1),
+	.blog-post :global(h2),
+	.blog-post :global(h3),
+	.blog-post :global(h4) {
+		color: var(--color-ink-strong);
+		font-family: inherit;
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		line-height: 1.12;
+	}
+
+	.blog-post :global(h1) {
+		font-size: clamp(2.35rem, 1.5rem + 4.2vw, 3.2rem);
+		margin: 0 auto 0.25em;
+		text-align: center;
+	}
+
+	.blog-post :global(h2) {
+		font-size: clamp(1.55rem, 1.25rem + 1.5vw, 2.3rem);
+		margin-top: 1.75em;
+		text-align: center;
+	}
+
+	.blog-post :global(h3) {
+		font-size: 1.25em;
+		margin-top: 2em;
+	}
+
+	.blog-post :global(a) {
+		color: var(--color-ink-strong);
+		font-weight: 600;
+		text-decoration: underline;
+		text-decoration-color: var(--color-line-strong, #94a3b8);
+		text-decoration-thickness: 0.06em;
+		text-underline-offset: 0.18em;
+		transition: color 150ms ease, text-decoration-color 150ms ease;
+	}
+
+	.blog-post :global(a:hover),
+	.blog-post :global(a:focus-visible) {
+		color: var(--color-brand);
+		text-decoration-color: var(--color-brand);
+	}
+
+	.blog-post :global(ul),
+	.blog-post :global(ol) {
+		list-style-position: outside;
+		padding-left: 1.4em;
+	}
+
+	.blog-post :global(li + li) {
+		margin-top: 0.28em;
+	}
+
+	.blog-post :global(blockquote) {
+		border-left: 0.14em solid var(--color-line-strong, #94a3b8);
+		color: var(--color-ink, #334155);
+		font-style: italic;
+		padding-left: 1.15em;
+	}
+
+	.blog-post :global(code),
+	.blog-post :global(pre),
+	.blog-post :global(kbd),
+	.blog-post :global(samp) {
+		font-family: 'iA Writer Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	}
+
+	.blog-post :global(:not(pre) > code) {
+		border: 1px solid var(--color-line-soft, rgba(226, 232, 240, 0.7));
+		border-radius: 0.25em;
+		background: rgba(248, 250, 252, 0.85);
+		font-size: 0.88em;
+		padding: 0.1em 0.32em;
+	}
+
+	.blog-post :global(pre) {
+		border: 1px solid var(--color-line-soft, rgba(226, 232, 240, 0.7));
+		border-radius: 0.35rem;
+		background: rgba(248, 250, 252, 0.86);
+		overflow-x: auto;
+		padding: 1rem;
+	}
+
+	.blog-post :global(img) {
+		display: block;
+		height: auto;
+		margin: 2.25em auto;
+		max-width: min(100%, 880px);
+	}
+
+	.blog-post :global(table) {
+		border-collapse: collapse;
+		font-size: 0.92em;
+		line-height: 1.42;
+		width: 100%;
+	}
+
+	.blog-post :global(th),
+	.blog-post :global(td) {
+		border-bottom: 1px solid var(--color-line-soft, rgba(226, 232, 240, 0.7));
+		padding: 0.55em 0.7em 0.55em 0;
+		text-align: left;
+		vertical-align: top;
+	}
+
+	.blog-post :global(.katex-display) {
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding-block: 0.25em;
+	}
+
+	.blog-outline :global(.scrollspy) {
+		max-width: 20rem;
+		padding: 0.85rem 1rem 1rem;
+	}
+
+	.blog-outline :global(.scrollspy .title) {
+		display: none;
+	}
+
+	.blog-outline :global(.scrollspy a) {
+		color: var(--color-ink, #334155);
+		text-decoration: none;
+	}
+
+	.blog-outline :global(.scrollspy a:hover),
+	.blog-outline :global(.scrollspy a.active) {
+		border-color: var(--color-brand);
+		color: var(--color-brand);
+	}
+</style>
 
 <!-- // const { post } = Astro.props
 // const { Content } = await post.render()

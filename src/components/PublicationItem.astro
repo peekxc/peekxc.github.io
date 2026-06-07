@@ -15,22 +15,22 @@ const doiHref = doi
 const doiLabel = doi ? doi.replace(/^https?:\/\/doi\.org\//, '') : undefined;
 ---
 
-<article class="rounded-md bg-white/70 py-2 px-4 text-sm text-slate-700 border border-slate-200">
+<article class="surface-panel px-4 py-2 text-sm leading-snug text-ink">
   {href ? (
-    <a class="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-slate-900 underline decoration-slate-300 underline-offset-2 transition hover:text-slate-950 hover:decoration-slate-800" href={href} target="_blank" rel="noreferrer">
+    <a class="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-ink-strong underline decoration-line-strong underline-offset-2 transition hover:text-brand hover:decoration-brand" href={href} target="_blank" rel="noreferrer">
       {title}
     </a>
   ) : (
-    <p class="mt-1 text-sm font-semibold text-slate-900">{title}</p>
+    <p class="mt-1 text-sm font-semibold text-ink-strong">{title}</p>
   )}
-	<p class="text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-slate-500">{authors}</p>
+	<p class="text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">{authors}</p>
   <div class="mt-1 flex items-end justify-between gap-2">
-    <p class="text-xs italic text-slate-600">
+    <p class="text-xs italic text-ink-muted">
       {journal}{journal && year ? ', ' : ''}{year}
     </p>
     {doiHref && (
       <a
-        class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-slate-600 underline decoration-slate-300 underline-offset-2 transition hover:text-slate-900 hover:decoration-slate-700"
+        class="text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted underline decoration-line-strong underline-offset-2 transition hover:text-brand hover:decoration-brand"
         href={doiHref}
         target="_blank"
         rel="noreferrer"

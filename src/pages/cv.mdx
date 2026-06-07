@@ -1,27 +1,22 @@
 ---
 layout: ../layouts/vitae.astro
 ---
-import { Image } from 'astro:assets';
-import { getImage } from "astro:assets";
-import ScriptMenu from "../components/ScriptMenu.astro"
-import CardBio from "../components/CardBio.astro"
 import CardBio2 from "../components/CardBio2.astro"
 import PublicationItem from "../components/PublicationItem.astro"
 import AccordionCard from "../components/AccordionCard.astro"
 import CardSection from "../components/CardSection.astro"
 import BulletList from "../components/BulletList.astro"
 import CvSectionHeader from "../components/CvSectionHeader.astro"
-import { getCollection, getEntry, render } from 'astro:content';
 
 <CardBio2 image_src="../assets/images/jobs/profile_pic_blue.jpg">
 	<h2 id="biography" style="display: none;"> Bio </h2>
-	<h3 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
+	<h3 class="mb-2 text-3xl font-semibold tracking-tight text-ink-strong sm:text-4xl">
 		Matt Piekenbrock
 	</h3>
-	<a class="cv-bio-link text-lg font-medium mb-4 hover:text-orange-500" href="https://www.tenet3.com/">
+	<a class="cv-bio-link mb-4 text-base font-semibold sm:text-lg" href="https://www.tenet3.com/">
 		Senior Computer Scientist @ Tenet3
 	</a>
-	<div class="text-slate-600 dark:text-slate-400 leading-relaxed my-4 text-justify">
+	<div class="my-4 text-sm leading-relaxed text-ink sm:text-base">
 	I'm a computer scientist with broad interests in geometric and topological data analysis, unsupervised learning, algorithm design, and open source software.
 	</div>
 </CardBio2>

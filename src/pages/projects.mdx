@@ -6,12 +6,13 @@ title: Research Projects
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectCardBodyIntro from '../components/ProjectCardBodyIntro.astro';
 import PublicationItem from '../components/PublicationItem.astro';
+import CardSection from '../components/CardSection.astro';
 import ProjectAccordionControls from '../components/ProjectAccordionControls.astro';
 
 <section class="space-y-3 text-center">
-  <p class="text-xs uppercase tracking-[0.5em] text-slate-500">Research</p>
-  <h1 class="text-4xl font-semibold text-slate-900">Highlighted Projects</h1>
-  <p class="mx-auto max-w-2xl text-sm text-slate-600">
+  <p class="text-xs uppercase tracking-[0.5em] text-ink-muted">Research</p>
+  <h1 class="text-4xl font-semibold text-ink-strong">Highlighted Projects</h1>
+  <p class="mx-auto max-w-2xl text-sm text-ink-muted">
     Curated selection of my research in unsupervised learning, geometry, topology, and computing.
   </p>
 </section>
@@ -34,8 +35,7 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
       abstract="Using the fact that the persistent rank invariant determines the persistence diagram and vice versa, we introduce a framework for constructing families of continuous relaxations of the persistent rank invariant for persistence modules indexed over the real line. Like the rank invariant, these families obey inclusion-exclusion, are derived from simplicial boundary operators, and encode all the information needed to construct a persistence diagram. Unlike the rank invariant, these spectrally-derived families enjoy a number of stability and continuity properties typically reserved for persistence diagrams, such as smoothness and differentiability over the positive semi-definite cone. By leveraging its relationship with combinatorial Laplacian operators, we find the non-harmonic spectra of our proposed relaxation encode valuable geometric information about the underlying space, prompting several avenues for geometric data analysis. As these Laplacian operators are trace-class operators, we also find the corresponding relaxation can be efficiently approximated with a randomized algorithm based on the stochastic Lanczos quadrature method. We investigate the utility of our relaxation with applications in topological data analysis and machine learning, such as parameter optimization and shape classification."
     />
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-2 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Publications</div>
+    <CardSection title="Publications">
       <PublicationItem
         authors="M. Piekenbrock, J. A. Perea"
         title="Spectral families of persistent rank invariants"
@@ -43,27 +43,25 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
         year="2023"
         href="../../resources/extended_abstract_CompPers23.pdf"
       />
-    </section>
+    </CardSection>
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-1 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Software</div>
-      <div class="grid gap-0  text-xs leading-tight">
+    <CardSection title="Software">
+      <div class="grid gap-0">
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://github.com/peekxc/pbsig" target="_blank" rel="noreferrer">pbsig</a>
+          <a href="https://github.com/peekxc/pbsig" target="_blank" rel="noreferrer">pbsig</a>
         </div>
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://github.com/peekxc/primate" target="_blank" rel="noreferrer">primate (package for trace estimation)</a>
+          <a href="https://github.com/peekxc/primate" target="_blank" rel="noreferrer">primate (package for trace estimation)</a>
         </div>
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://github.com/peekxc/simplextree" target="_blank" rel="noreferrer">simplextree (python package)</a>
+          <a href="https://github.com/peekxc/simplextree" target="_blank" rel="noreferrer">simplextree (python package)</a>
         </div>
       </div>
-    </section>
+    </CardSection>
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-1 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Related materials</div>
-      <a class="inline-flex items-center gap-1 text-xs font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://www.youtube.com/watch?v=EGP4GlcLNYU&t=505s" target="_blank" rel="noreferrer">CompPers23 talk (YouTube)</a>
-    </section>
+    <CardSection title="Related materials">
+      <a href="https://www.youtube.com/watch?v=EGP4GlcLNYU&t=505s" target="_blank" rel="noreferrer">CompPers23 talk (YouTube)</a>
+    </CardSection>
   </ProjectCard>
 
   {/* Move scheduling */}
@@ -80,8 +78,7 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
       abstract="Matrix reduction is the standard procedure for computing the persistent homology of filtered simplicial complices. Its output is a particular decomposition of the total boundary matrix, from which the persistence diagrams and generating cycles are derived. Persistence diagrams are known to vary continuously with respect to their input, motivating the study of their computation for time-varying filtered complexes. Computationally, simulating persistence dynamically can be reduced to maintaining a valid decomposition under adjacent transpositions in the filtration order. Since there are quadratically such transpositions, this maintenance procedure exhibits limited scalability and often is too fine for many applications. We propose a coarser strategy for maintaining the decomposition over a 1-parameter family of filtrations that requires only superlinear time and linear space to construct. By reduction to a particular longest common subsequence problem, we show the storage needed to employ this strategy is actually sublinear in expectation. Exploiting this connection, we show experimentally that the decrease in operations to compute diagrams across a family of filtrations, is proportional to the difference between the expected quadratic number of states and the proposed sublinear coarsening. Applications to video data, dynamic metric space data, and multi-parameter persistence are also presented."
     />
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-2 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Publications</div>
+    <CardSection title="Publications">
       <PublicationItem
         authors="M. Piekenbrock, J. A. Perea"
         title="Move Schedules: Fast persistence computations in coarse dynamic settings"
@@ -90,19 +87,18 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
         href="https://arxiv.org/abs/2104.12285"
 				doi="10.1007/s41468-023-00156-3"
       />
-    </section>
+    </CardSection>
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-1 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Software</div>
-      <div class="grid gap-0  text-xs leading-tight">
+    <CardSection title="Software">
+      <div class="grid gap-0">
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://github.com/peekxc/move_schedules" target="_blank" rel="noreferrer">Move scheduling code</a>
+          <a href="https://github.com/peekxc/move_schedules" target="_blank" rel="noreferrer">Move scheduling code</a>
         </div>
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://github.com/peekxc/simplextree" target="_blank" rel="noreferrer">simplextree (python package)</a>
+          <a href="https://github.com/peekxc/simplextree" target="_blank" rel="noreferrer">simplextree (python package)</a>
         </div>
       </div>
-    </section>
+    </CardSection>
   </ProjectCard>
 
   {/* multiscale mapper */}
@@ -119,20 +115,19 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
       abstract="The primary result of the Mapper framework is the geometric realization of a simplicial complex, depicting topological relationships and structures suitable for visualizing, analyzing, and comparing high dimensional data. As an unsupervised tool that may be used for exploring or modeling heterogeneous types of data, Mapper naturally relies on a number of parameters which explicitly control the quality of the resulting construction; one such critical parameter controls the entire relational component of the output complex. In practice, there is little guidance on what values may provide 'better' or more 'stable' sets of simplices. In this effort, we provide a new algorithm that enables efficient computation of successive mapper realizations with respect to this crucial parameter. Our results not only enhances the exploratory/confirmatory aspect of Mapper, but also give tractability to recent theoretical extensions to Mapper related to persistence and stability."
     />
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-1 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Software</div>
-      <div class="grid gap-0 text-xs leading-tight">
+    <CardSection title="Software">
+      <div class="grid gap-0">
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://peekxc.github.io/Mapper/" target="_blank" rel="noreferrer">Mapper (R package)</a>
+          <a href="https://peekxc.github.io/Mapper/" target="_blank" rel="noreferrer">Mapper (R package)</a>
         </div>
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://github.com/peekxc/simplextree" target="_blank" rel="noreferrer">simplextree (R package)</a>
+          <a href="https://github.com/peekxc/simplextree" target="_blank" rel="noreferrer">simplextree (R package)</a>
         </div>
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://peekxc.github.io/Mapper/articles/ShapeRecognition.html" target="_blank" rel="noreferrer">Vignette on using Mapper for shape recognition</a>
+          <a href="https://peekxc.github.io/Mapper/articles/ShapeRecognition.html" target="_blank" rel="noreferrer">Vignette on using Mapper for shape recognition</a>
         </div>
       </div>
-    </section>
+    </CardSection>
   </ProjectCard>
 
   {/* PICP */}
@@ -149,8 +144,7 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
       abstract="With the rapid development and widespread deployment of sensors dedicated to location-acquisition, new types of models have emerged to predict macroscopic patterns that manifest in large data sets representing 'significant' group behavior. Partially due to the immense scale of geospatial data, current approaches to discover these macroscopic patterns are primarily driven by inherently heuristic detection methods. Although useful in practice, the inductive bias adopted by such mainstream detection schemes is often unstated or simply unknown. Inspired by recent theoretical advances in efficient non-parametric density level set estimation techniques, in this research effort we describe a semi-supervised framework for automating point of interest discovery in geospatial contexts. We outline the flexibility and utility of our approach through numerous examples, and give a systematic framework for incorporating semisupervised information while retaining finite-sample estimation guarantees."
     />
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-2 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Publications</div>
+    <CardSection title="Publications">
       <div class="grid gap-2 ">
         <div class="pt-2 first:pt-0">
           <PublicationItem
@@ -180,7 +174,7 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
           />
         </div>
       </div>
-    </section>
+    </CardSection>
   </ProjectCard>
 
   {/* DBSCAN */}
@@ -197,8 +191,7 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
       abstract="Density-based clustering techniques have become extremely popular in the past decade. It's often conjectured that the reason for the success of these methods is due to their ability of identify 'natural groups' in data. These groups are often non-convex (in terms of shape), deviating the typical premise of 'minimal variance' that underlies parametric, model-based approaches, and often appear in very large data sets. As the era of 'Big Data' continues to rise in popularity, it seems that typical notions having access to scalable, easy-to-use, and scalable implementations of these density-based methods is paramount. In this research effort, we provide fast, state-of-the-art density-based algorithms in the form of an open-source package in R. We also provide several related density-based clustering tools to help bring make state of the art density-based clustering accessible to people with large, computationally difficult problems."
     />
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-2 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Publications</div>
+    <CardSection title="Publications">
       <PublicationItem
         authors="M. Hahsler, M. Piekenbrock, D. Doran"
         title="dbscan: Fast Density Based Clustering in R"
@@ -206,19 +199,18 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
         year="2018"
         doi="10.18637/jss.v091.i01"
       />
-    </section>
+    </CardSection>
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-1 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Software</div>
-      <div class="grid gap-0  text-xs leading-tight">
+    <CardSection title="Software">
+      <div class="grid gap-0">
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://github.com/mhahsler/dbscan" target="_blank" rel="noreferrer">dbscan (R package)</a>
+          <a href="https://github.com/mhahsler/dbscan" target="_blank" rel="noreferrer">dbscan (R package)</a>
         </div>
         <div class="py-2 first:pt-0 last:pb-0">
-          <a class="inline-flex items-center gap-1 font-semibold text-slate-800  decoration-slate-300  transition hover:text-slate-950 hover:decoration-slate-800" href="https://cran.r-project.org/web/packages/dbscan/vignettes/hdbscan.html" target="_blank" rel="noreferrer">HDBSCAN vignette</a>
+          <a href="https://cran.r-project.org/web/packages/dbscan/vignettes/hdbscan.html" target="_blank" rel="noreferrer">HDBSCAN vignette</a>
         </div>
       </div>
-    </section>
+    </CardSection>
   </ProjectCard>
 
   <ProjectCard
@@ -234,8 +226,7 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
       abstract="The Iterative Closest Point (ICP) problem is now a well-studied problem that seeks to align a given query point cloud to a fixed reference point cloud. The ICP problem computationally is dominated by the first phase, a pairwise distance minimization. The 'brute-force' approach, an embarrassingly parallel problem amenable to GPU-acceleration, involves calculating the pairwise distance from every point in the query set to every point in the reference set. This however still requires linear runtime complexity per thread, rendering the trivial solution unsuitable for e.g. real-time applications. Alternative spatial indexing data structures utilizing branch-and-bound (B&B) properties have been proposed as a means of reducing the algorithmic complexity of the ICP problem, however they were originally developed for serial applications: it is well known that direct conversion to their parallel equivalents often results in slower runtime performance than GPU-employed brute-force approaches due to frequent suboptimal memory access patterns and conditional computations. In this application-motivated effort, we propose a novel two-step method which exposes the intrinsic parallelism of the ICP problem, yet retains a number of the B&B properties. Our solution involves an O(log n) approximate search, followed by fast vectorized search we call the Delaunay Traversal, which we show empirically finishes in O(k) time on average, where k << n, and is demonstrated to generally exhibit extremely small growth factors on average. We demonstrate the superiority of our method compared to the traditional B&B and brute-force implementations using a variety of benchmark data sets, and demonstrate its usefulness in the context of Autonomous Aerial Refueling"
     />
 
-    <section class="rounded-lg bg-slate-50/70 p-3 text-sm text-slate-700">
-      <div class="mb-2 text-[0.55rem] uppercase tracking-[0.4em] text-slate-500">Publications</div>
+    <CardSection title="Publications">
       <div class="grid gap-2 ">
         <div class="pt-2 first:pt-0">
           <PublicationItem
@@ -256,6 +247,6 @@ import ProjectAccordionControls from '../components/ProjectAccordionControls.ast
           />
         </div>
       </div>
-    </section>
+    </CardSection>
   </ProjectCard>
 </div>

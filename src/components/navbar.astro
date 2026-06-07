@@ -8,30 +8,30 @@ const nav_pages = [
   { title : "Blog", url : "/blog"},
 ]
 ---
-<nav class="navbar top-0 left-0 w-full bg-white border-slate-300 border-b shadow-sm" id="navbar">
+<nav class="navbar top-0 left-0 w-full border-b border-line bg-white shadow-sm" id="navbar">
   <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3">
     <div class="flex items-center gap-4" id="brand">
-      <a class="text-lg font-semibold" href="/">
+      <a class="text-lg font-semibold text-ink-strong transition hover:text-brand" href="/">
         Home
       </a>
     </div>
-    <div class="hidden pl-4 flex-1 items-center justify-start gap-4 text-lg text-gray-600 md:flex">
+    <div class="hidden pl-4 flex-1 items-center justify-start gap-4 text-lg text-ink md:flex">
       { 
         nav_pages.map((page) => 
-          <a href={page.url} class="truncate hover:text-gray-900">
+          <a href={page.url} class="truncate transition hover:text-brand">
             {page.title}
           </a>
         )
       }
     </div>
-    <button class="md:hidden ml-auto inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-600 transition hover:text-gray-900" id="menu-btn" type="button" aria-label="Toggle navigation">
+    <button class="md:hidden ml-auto inline-flex h-10 w-10 items-center justify-center rounded-card text-ink transition hover:text-brand" id="menu-btn" type="button" aria-label="Toggle navigation">
       <Icon name="hamburger" width=24 height=24 />
     </button>
   </div>
-  <div class="hidden mx-auto flex max-w-6xl flex-col overflow-hidden rounded-b-md border border-t-0 border-slate-200 px-4 pt-0 pb-2 md:hidden" id="mobile-menu">
+  <div class="hidden mx-auto flex max-w-6xl flex-col overflow-hidden rounded-b-md border border-t-0 border-line px-4 pt-0 pb-2 md:hidden" id="mobile-menu">
     {nav_pages.map((page) =>
       <a
-        class="block py-2 text-base text-gray-600 hover:text-gray-900"
+        class="block py-2 text-base text-ink transition hover:text-brand"
         href={page.url}
       >
         {page.title}

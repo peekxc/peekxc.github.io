@@ -21,29 +21,25 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 	'/src/content/posts/**/*.{png,jpg,jpeg,webp,avif,gif}',
   { eager: true }
 );
-console.log(frontmatter.title, " has image src: ", imageSrc )
 const imageEntry = imageSrc ? images[imageSrc] : undefined;
 const imageMeta = imageEntry?.default;
 ---
-<!-- {console.log(imageSrc)} -->
-<!-- {console.log(Object.keys(images))} -->
-{console.log(imageEntry)}
 <a
   href={`/blog/${post.data.slug}`}
-  class="group block overflow-hidden rounded-xl border border-slate-200 bg-white/80 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary hover:cursor-pointer"
+  class="group block overflow-hidden surface-card-interactive transition duration-200 hover:-translate-y-0.5 focus-ring"
   aria-label={`Read ${frontmatter.title}`}
 >
   <article class="grid gap-6 p-5 md:grid-cols-[3fr_2fr]">
     <div class="flex flex-col gap-3 h-full">
-      <p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">
+      <p class="eyebrow">
         {publishedDate || 'Blog'}
       </p>
-      <h3 class="text-2xl font-semibold leading-snug text-slate-900 transition-colors group-hover:text-primary">
+      <h3 class="text-2xl font-semibold leading-snug text-ink-strong transition-colors group-hover:text-brand">
         {frontmatter.title}
       </h3>
       {summary && (
         <p
-          class="text-sm text-slate-600"
+          class="text-sm text-ink-muted"
           style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"
         >
           {summary}
@@ -52,14 +48,14 @@ const imageMeta = imageEntry?.default;
 
       <div class="mt-auto flex flex-wrap gap-1">
         {labels.map((label: string) => (
-          <span class="tag bg-slate-100 text-slate-600" aria-label={label}>
+          <span class="tag" aria-label={label}>
             {label}
           </span>
         ))}
       </div>
     </div>
 
-    <div class="relative -m-2 h-48 overflow-hidden rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-100 via-white to-slate-100 shadow-inner">
+    <div class="relative -m-2 h-48 media-frame bg-gradient-to-br from-slate-100 via-white to-slate-100 shadow-inner">
       {hasImage ? (
         <Image
           alt={`Preview for ${frontmatter.title}`}
@@ -69,7 +65,7 @@ const imageMeta = imageEntry?.default;
         />
       ) : (
         <div
-          class="flex h-full w-full items-center justify-center text-xs font-semibold uppercase tracking-[0.35em] text-slate-500"
+          class="flex h-full w-full items-center justify-center eyebrow"
           style={`background-image: ${fallbackGradient}`}
         >
           {labels[0] ?? 'Insight'}
