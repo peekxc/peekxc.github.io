@@ -101,13 +101,15 @@ $$
 \text{where  } r_j = (A - \alpha_j I)q_j - \beta_{j - 1} q_j
 $$
 
-In other words, if ($q_{j\text{-}1}, \beta_j, q_j$) are known, then ($\alpha_j$, $\beta_{j+1}, q_{j+1}$) are completely determined. In theory, this means we can *iteratively* generate both $Q$ and $T$ using just a couple vectors at a time—no explicit QR call needed. Pretty nifty!
+In other words, if ($q_{j\text{-}1}, \beta_j, q_j$) are known, then ($\alpha_j$, $\beta_{j+1}, q_{j+1}$) are completely determined. In theory, this means we can *iteratively* generate both $Q$ and $T$ using just a couple vectors at a time—no explicit QR call needed. 
 
-## Wait, isn't $T$ arbitrary?
+To some, this may seem like just natural consequence of the recurrence relation...
+
+## ... but isn't $T$ arbitrary?
 
 Unlike the spectral decomposition<sup>2</sup>, there is no canonical choice of $T$. Indeed, as $T$ is a family with $n - 1$ degrees of freedom and $v \in \mathbb{R}^n$ was chosen arbitrarily, there are infinitely many *essentially distinct* such decompositions.
 
-*Not all hope is lost though*. It turns out that $T$ is actually fully characterized by the pair $(A, v)$. To see this, notice that since $Q$ is an orthogonal matrix, we have:
+However, it turns out that $T$ is actually fully characterized by the pair $(A, v)$. To see this, notice that since $Q$ is an orthogonal matrix, we have:
 
 $$
 Q Q^T = I_n = [e_1, e_2, \dots, e_n]
@@ -119,7 +121,7 @@ $$
 K_n(A, q_1) = Q Q^T K_n(A, q_1) = Q[ \, e_1 \mid T e_1 \mid T^2 e_1 \mid \dots \mid T^{n-1} e_1 \, ]
 $$
 
-…this *is* a QR factorization, which is [essentially unique](https://www.math.purdue.edu/~kkloste/cs515fa14/qr-uniqueness.pdf)! Indeed, the Implicit Q Theorem asserts that if an upper Hessenburg matrix $T \in \mathbb{R}^{n \times n}$ has only positive elements on its first subdiagonal and there exists an orthogonal matrix $Q$ such that $Q^T A Q = T$, then $Q$ and $T$ are *uniquely determined* by $(A, q_1)$.
+…this *is* a QR factorization, which is [essentially unique](https://www.math.purdue.edu/~kkloste/cs515fa14/qr-uniqueness.pdf)! Indeed, the [Implicit Q Theorem](https://www.cs.utexas.edu/~flame/laff/alaff/chapter10-implicit-q-theorem.html) asserts that if an upper Hessenburg matrix $T \in \mathbb{R}^{n \times n}$ has only positive elements on its first subdiagonal and there exists an orthogonal matrix $Q$ such that $Q^T A Q = T$, then $Q$ and $T$ are *uniquely determined* by $(A, q_1)$.
 
 ## The end of the beginning
 

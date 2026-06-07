@@ -16,13 +16,19 @@ const summary = frontmatter.abstract ?? frontmatter.description ?? '';
 const labels: string[] = frontmatter.categories?.length
   ? frontmatter.categories
   : frontmatter.tags ?? [];
-const images = import.meta.glob<{ default: ImageMetadata }>(
+
+	const images = import.meta.glob<{ default: ImageMetadata }>(
   // '/src/assets/images/**/*.{png,jpg,jpeg,webp,avif,gif}',
 	'/src/content/posts/**/*.{png,jpg,jpeg,webp,avif,gif}',
   { eager: true }
 );
 const imageEntry = imageSrc ? images[imageSrc] : undefined;
-const imageMeta = imageEntry?.default;
+// const imageMeta = imageEntry?.default;
+const imageKey = frontmatter.background_image?.startsWith('/')
+  ? frontmatter.background_image
+  : `/src/content/posts/${frontmatter.background_image}`;
+
+const imageMeta = imageKey ? images[imageKey]?.default : undefined;
 ---
 <a
   href={`/blog/${post.data.slug}`}
@@ -56,7 +62,7 @@ const imageMeta = imageEntry?.default;
     </div>
 
     <div class="relative -m-2 h-48 media-frame bg-gradient-to-br from-slate-100 via-white to-slate-100 shadow-inner">
-      {hasImage ? (
+      {imageMeta ? (
         <Image
           alt={`Preview for ${frontmatter.title}`}
           src={imageMeta}

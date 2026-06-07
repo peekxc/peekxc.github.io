@@ -12,7 +12,7 @@
     "unocss": "^66.7.0"
   },
   "peerDependencies": {
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "scripts": {
     "dev": "astro dev",
@@ -21,8 +21,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/markdoc": "^1.0.6",
-    "@astrojs/mdx": "^5.0.6",
+    "@astrojs/mdx": "^6.0.2",
     "@astrojs/preact": "^5.1.5",
     "@astrojs/tailwind": "^6.0.2",
     "@astrojs/vercel": "^10.0.8",
@@ -36,7 +35,7 @@
     "bun": "^1.3.14",
     "bunx": "^0.1.0",
     "cytoscape": "^3.34.0",
-    "katex": "^0.16.47",
+    "katex": "^0.17.0",
     "lightningcss": "^1.32.0",
     "mattpiekenrock": ".",
     "mdx": "^0.3.1",
@@ -46,15 +45,14 @@
     "rehype-katex": "^7.0.1",
     "remark": "^15.0.1",
     "remark-directive": "^4.0.0",
-    "remark-directive-rehype": "^0.4.2",
+    "remark-directive-rehype": "^1.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
     "remark-mdx-frontmatter": "^5.2.0",
     "remark-smartypants": "^3.0.2",
-    "rollup-plugin-visualizer": "^6.0.11",
+    "rollup-plugin-visualizer": "^7.0.1",
     "tailwindcss": "^4.3.0",
-    "unified": "^11.0.5",
-    "website_astro": "."
+    "unified": "^11.0.5"
   }
 }
