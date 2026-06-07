@@ -40,7 +40,7 @@
     "lightningcss": "^1.32.0",
     "mattpiekenrock": ".",
     "mdx": "^0.3.1",
-    "next": "^16.1.6",
+    "next": "^16.2.6",
     "npx": "^10.2.2",
     "preact": "^10.29.1",
     "rehype-katex": "^7.0.1",
