@@ -8,185 +8,241 @@ const canvasId = 'ambient-canvas';
 
 <script is:inline type="module">
   const canvas = document.getElementById('ambient-canvas');
-  const ctx = canvas.getContext('2d');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const mdMedia = window.matchMedia('(min-width: 768px)');
-  
-  const config = {
-    maxJitter: 45,
-    connectionRadius: 170,
-    rgb: '0,0,0',
-    bgColor: '#fdfdfd',
-    edgeRange: [0.02, 0.42],
-    fillRange: [0.0, 0.08],
-    nodeAlpha: 0.38
-  };
-  
-  let gridPoints = [];
-  let width, height, animationId;
-  let isActive = mdMedia.matches;
-  const radiusSq = config.connectionRadius ** 2;
-  const diameterSq = 2 * radiusSq;
 
-  const createGrid = (cols, rows) => {
-    gridPoints = [];
-    const [colSpace, rowSpace] = [cols - 1 || 1, rows - 1 || 1];
-    
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const baseX = (c / colSpace) * width + (Math.random() - 0.5) * width / cols * 0.45;
-        const baseY = (r / rowSpace) * height + (Math.random() - 0.5) * height / rows * 0.45;
-        gridPoints.push({
-          baseX, baseY, x: baseX, y: baseY,
-          phase: Math.random() * Math.PI * 2,
-          offsetX: (0.4 + Math.random() * 0.6) * config.maxJitter,
-          offsetY: (0.3 + Math.random() * 0.7) * config.maxJitter,
-          speed: 0.14 + Math.random() * 0.10
-        });
-      }
-    }
-  };
+  if (canvas instanceof HTMLCanvasElement) {
+    const activeMedia = window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)');
+    const config = {
+      maxJitter: 45,
+      connectionRadius: 170,
+      rgb: '0,0,0',
+      bgColor: '#fdfdfd',
+      edgeRange: [0.02, 0.42],
+      fillRange: [0.0, 0.08],
+      nodeAlpha: 0.38,
+      frameInterval: 50
+    };
 
-  const resize = () => {
-    const scale = window.devicePixelRatio || 1;
-    width = Math.max(canvas.clientWidth, window.innerWidth);
-    height = Math.max(canvas.clientHeight, window.innerHeight);
-    canvas.width = width * scale;
-    canvas.height = height * scale;
-    ctx.setTransform(scale, 0, 0, scale, 0, 0);
-    
-    const cols = Math.max(6, Math.min(18, Math.floor(width / 140)));
-    const rows = Math.max(4, Math.min(12, Math.floor(height / 140)));
-    createGrid(cols, rows);
-  };
-
-  const updatePoints = (t) => {
-    gridPoints.forEach(p => {
-      const phase = t * p.speed + p.phase;
-      p.x = p.baseX + Math.sin(phase) * p.offsetX;
-      p.y = p.baseY + Math.cos(phase) * p.offsetY;
-    });
-  };
-
-  const draw = () => {
-    if (!isActive) return;
-    
-    ctx.fillStyle = config.bgColor;
-    ctx.fillRect(0, 0, width, height);
-    ctx.lineWidth = 0.8;
-    
-    const neighbors = gridPoints.map(() => []);
-    const clamp = v => Math.min(1, Math.max(0, v));
+    const radiusSq = config.connectionRadius ** 2;
+    const diameterSq = 2 * radiusSq;
+    const clamp = value => Math.min(1, Math.max(0, value));
     const lerp = (min, max, t) => min + t * (max - min);
-    
-    // Draw edges and build neighbor lists
-    for (let i = 0; i < gridPoints.length; i++) {
-      const a = gridPoints[i];
-      for (let j = i + 1; j < gridPoints.length; j++) {
-        const b = gridPoints[j];
-        const distSq = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
-        
-        if (distSq <= diameterSq) {
-          const weight = clamp(1 - distSq / diameterSq);
-          const alpha = lerp(...config.edgeRange, weight);
-          
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(${config.rgb},${alpha})`;
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-          
-          neighbors[i].push({ i: j, w: weight });
-          neighbors[j].push({ i, w: weight });
+
+    let gridPoints = [];
+    let neighbors = [];
+    let width = 0;
+    let height = 0;
+    let animationId = null;
+    let ctx = null;
+    let elapsedTime = 0;
+    let lastFrameTime;
+    let lastDrawTime = 0;
+    let resizeId = null;
+    let isInitialized = false;
+    let isDestroyed = false;
+
+    const shouldRun = () => !isDestroyed && activeMedia.matches && !document.hidden;
+    const getContext = () => ctx ?? (ctx = canvas.getContext('2d'));
+
+    const createGrid = (cols, rows) => {
+      gridPoints = [];
+      neighbors = [];
+      const colSpace = cols - 1 || 1;
+      const rowSpace = rows - 1 || 1;
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const baseX = (c / colSpace) * width + (Math.random() - 0.5) * width / cols * 0.45;
+          const baseY = (r / rowSpace) * height + (Math.random() - 0.5) * height / rows * 0.45;
+          gridPoints.push({
+            baseX, baseY, x: baseX, y: baseY,
+            phase: Math.random() * Math.PI * 2,
+            offsetX: (0.4 + Math.random() * 0.6) * config.maxJitter,
+            offsetY: (0.3 + Math.random() * 0.7) * config.maxJitter,
+            speed: 0.14 + Math.random() * 0.10
+          });
+          neighbors.push([]);
         }
       }
-    }
-    
-    // Draw triangles
-    for (let i = 0; i < gridPoints.length; i++) {
-      const origin = gridPoints[i];
-      const ns = neighbors[i];
-      
-      for (let m = 0; m < ns.length; m++) {
-        for (let n = m + 1; n < ns.length; n++) {
-          const [mi, ni] = [ns[m].i, ns[n].i];
-          if (!(i < mi && i < ni && mi < ni)) continue;
-          
-          const [first, second] = [gridPoints[mi], gridPoints[ni]];
-          const distSq = (first.x - second.x) ** 2 + (first.y - second.y) ** 2;
-          
+    };
+
+    const releaseCanvas = () => {
+      ctx?.clearRect(0, 0, width, height);
+      canvas.width = 0;
+      canvas.height = 0;
+      width = 0;
+      height = 0;
+      gridPoints = [];
+      neighbors = [];
+      isInitialized = false;
+    };
+
+    const resize = () => {
+      if (!activeMedia.matches) return;
+      const context = getContext();
+      if (!context) return;
+      const scale = Math.min(window.devicePixelRatio || 1, 2);
+      width = Math.max(canvas.clientWidth, window.innerWidth);
+      height = Math.max(canvas.clientHeight, window.innerHeight);
+      canvas.width = Math.round(width * scale);
+      canvas.height = Math.round(height * scale);
+      context.setTransform(scale, 0, 0, scale, 0, 0);
+
+      const cols = Math.max(6, Math.min(18, Math.floor(width / 140)));
+      const rows = Math.max(4, Math.min(12, Math.floor(height / 140)));
+      createGrid(cols, rows);
+      isInitialized = true;
+    };
+
+    const updatePoints = (t) => {
+      for (let i = 0; i < gridPoints.length; i++) {
+        const p = gridPoints[i];
+        const phase = t * p.speed + p.phase;
+        p.x = p.baseX + Math.sin(phase) * p.offsetX;
+        p.y = p.baseY + Math.cos(phase) * p.offsetY;
+      }
+    };
+
+    const draw = () => {
+      const context = getContext();
+      if (!context) return;
+      context.fillStyle = config.bgColor;
+      context.fillRect(0, 0, width, height);
+      context.lineWidth = 0.8;
+
+      for (let i = 0; i < neighbors.length; i++) neighbors[i].length = 0;
+
+      for (let i = 0; i < gridPoints.length; i++) {
+        const a = gridPoints[i];
+        const aNeighbors = neighbors[i];
+        for (let j = i + 1; j < gridPoints.length; j++) {
+          const b = gridPoints[j];
+          const distSq = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
+
           if (distSq <= diameterSq) {
-            const w3 = clamp(1 - distSq / diameterSq);
-            const avg = (ns[m].w + ns[n].w + w3) / 3;
-            const smooth = avg * avg * (3 - 2 * avg);
-            const alpha = lerp(...config.fillRange, smooth);
-            
-            ctx.fillStyle = `rgba(${config.rgb},${alpha})`;
-            ctx.beginPath();
-            ctx.moveTo(origin.x, origin.y);
-            ctx.lineTo(first.x, first.y);
-            ctx.lineTo(second.x, second.y);
-            ctx.fill();
+            const weight = clamp(1 - distSq / diameterSq);
+            const alpha = lerp(config.edgeRange[0], config.edgeRange[1], weight);
+
+            context.beginPath();
+            context.strokeStyle = `rgba(${config.rgb},${alpha})`;
+            context.moveTo(a.x, a.y);
+            context.lineTo(b.x, b.y);
+            context.stroke();
+
+            aNeighbors.push(j, weight);
+            neighbors[j].push(i, weight);
           }
         }
       }
-    }
-    
-    // Draw nodes
-    ctx.fillStyle = `rgba(${config.rgb},${config.nodeAlpha})`;
-    gridPoints.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-      ctx.fill();
-    });
-  };
 
-  const animate = (time) => {
-    if (!isActive) return;
-    updatePoints(time * 0.001);
-    draw();
-    animationId = requestAnimationFrame(animate);
-  };
+      for (let i = 0; i < gridPoints.length; i++) {
+        const origin = gridPoints[i];
+        const ns = neighbors[i];
 
-  const handleMediaChange = () => {
-    isActive = mdMedia.matches;
-    if (!isActive) {
+        for (let m = 0; m < ns.length; m += 2) {
+          for (let n = m + 2; n < ns.length; n += 2) {
+            const mi = ns[m];
+            const ni = ns[n];
+            if (!(i < mi && i < ni && mi < ni)) continue;
+
+            const first = gridPoints[mi];
+            const second = gridPoints[ni];
+            const distSq = (first.x - second.x) ** 2 + (first.y - second.y) ** 2;
+
+            if (distSq <= diameterSq) {
+              const w3 = clamp(1 - distSq / diameterSq);
+              const avg = (ns[m + 1] + ns[n + 1] + w3) / 3;
+              const smooth = avg * avg * (3 - 2 * avg);
+              const alpha = lerp(config.fillRange[0], config.fillRange[1], smooth);
+
+              context.fillStyle = `rgba(${config.rgb},${alpha})`;
+              context.beginPath();
+              context.moveTo(origin.x, origin.y);
+              context.lineTo(first.x, first.y);
+              context.lineTo(second.x, second.y);
+              context.fill();
+            }
+          }
+        }
+      }
+
+      context.fillStyle = `rgba(${config.rgb},${config.nodeAlpha})`;
+      for (let i = 0; i < gridPoints.length; i++) {
+        const p = gridPoints[i];
+        context.beginPath();
+        context.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        context.fill();
+      }
+    };
+
+    const stopAnimation = () => {
       if (animationId) cancelAnimationFrame(animationId);
       animationId = null;
-      ctx.clearRect(0, 0, width, height);
-    } else if (!prefersReducedMotion && !animationId) {
+      lastFrameTime = undefined;
+      lastDrawTime = 0;
+    };
+
+    const animate = (time) => {
+      if (!shouldRun()) {
+        stopAnimation();
+        return;
+      }
+
+      if (lastFrameTime === undefined) lastFrameTime = time;
+      elapsedTime += (time - lastFrameTime) * 0.001;
+      lastFrameTime = time;
+
+      if (time - lastDrawTime >= config.frameInterval) {
+        updatePoints(elapsedTime);
+        draw();
+        lastDrawTime = time;
+      }
+
       animationId = requestAnimationFrame(animate);
-    }
-  };
+    };
 
-  const init = () => {
-    resize();
-    if (prefersReducedMotion) {
-      updatePoints(0);
-      draw();
-    } else {
-      handleMediaChange();
-    }
-  };
+    const startAnimation = () => {
+      if (!isInitialized) resize();
+      if (!animationId && shouldRun()) animationId = requestAnimationFrame(animate);
+    };
 
-  window.addEventListener('resize', () => {
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-      animationId = null;
-    }
-    resize();
-    if (prefersReducedMotion) {
-      updatePoints(0);
-      draw();
-    } else {
-      handleMediaChange();
-    }
-  });
+    const syncState = () => {
+      if (shouldRun()) {
+        startAnimation();
+        return;
+      }
 
-  mdMedia.addEventListener('change', () => {
-    handleMediaChange();
-    if (isActive) resize();
-  });
+      stopAnimation();
+      if (!activeMedia.matches) releaseCanvas();
+      else if (isInitialized) ctx?.clearRect(0, 0, width, height);
+    };
 
-  init();
+    const handleResize = () => {
+      if (resizeId) cancelAnimationFrame(resizeId);
+      resizeId = requestAnimationFrame(() => {
+        resizeId = null;
+        stopAnimation();
+        if (activeMedia.matches) resize();
+        syncState();
+      });
+    };
+
+    const cleanup = () => {
+      isDestroyed = true;
+      stopAnimation();
+      if (resizeId) cancelAnimationFrame(resizeId);
+      resizeId = null;
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', syncState);
+      document.removeEventListener('astro:before-swap', cleanup);
+      activeMedia.removeEventListener('change', syncState);
+      releaseCanvas();
+    };
+
+    window.addEventListener('resize', handleResize, { passive: true });
+    document.addEventListener('visibilitychange', syncState);
+    document.addEventListener('astro:before-swap', cleanup, { once: true });
+    activeMedia.addEventListener('change', syncState);
+
+    syncState();
+  }
 </script>

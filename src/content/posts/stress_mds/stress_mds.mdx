@@ -1,0 +1,33 @@
+---
+title: "From distances to coordinates"
+author: "Matt Piekenbrock"
+date: '2026-03-08'
+slug: stress_mds
+tags: ["algorithms", "linear algebra", "geometry"]
+abstract: "A look at stress majorization for dimensionality reduction and graph drawing"
+draft: false 
+---
+import { Image } from 'astro:assets';
+import { getImage } from "astro:assets";
+import GraphPath from "../../../components/graph/GraphPath.astro"
+
+Let  $D \in \mathbb{R}^{n \times n}$ denote a distance matrix representing a prescribed set of pairwise distances between $n$ objects and $W\in \mathbb{R}^{n \times n}$ similarly a set matrix of weights representing the relative 'importance' of each pair. 
+
+A natural goal to produce a set of coordinates $X \in \mathbb{R}^{n \times d}$, or an _embedding_, in $\mathbb{R}^d$ minimizing: 
+
+$$ 
+\sigma(X) = \sum\limits_{i < j} w_{ij} (\lVert x_i - x_j \rVert - d_{ij})^2 
+$$
+
+Intuitively, the coordinates $X$ minimizing this stress function represent a kind of "best-fitted" Euclidean metric space $(X, d_X)$ to the given distances. Though $W$ may be set arbitrarily in theory, in practice its typical to set $w_{ij} = d_{ij}^{-\alpha}$ for some choice of $\alpha \geq 0$. Setting $\alpha = 0$ corresponding to  $W = \mathbf{1}\mathbf{1}^T$ (the "unweighted" case), in which (1) then corresponds to the "stress" function studied in metric multidimensional scaling; in graph layout communities, its more common to set $\alpha = 1$ or $\alpha = 2$.
+
+## Majorization minimization 
+
+A function $g(x; x^{(t)}) : \mathcal{X} \to \mathbb{R}$ is said to _majorize_ the function $f: \mathcal{X} \to \mathbb{R} $ at $x^{(t)}$ if: 
+
+1. $f(x^{(t)}) = g(x^{(t)}; x^{(t)}) $
+2. $f(x) \leq g(x; x^{(t)})$ for all $x$
+
+<GraphPath/>
+
+

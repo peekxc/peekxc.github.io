@@ -19,29 +19,31 @@ const {
 	tags = [],
 	background_image = ''
 } = Astro.props as Props;
----
-<!-- {console.log("Background image: ", background_image)} -->
-<!--How to do backgrund image with astro??? -->
-<!-- imagePath="/src/assets/images/afrl.png" -->
 
-<div class="accordion-item card shadow-sm backdrop-blur-md bg-white leading-5 rounded-sm">
+const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const buttonId = `accordion-trigger-${slug}`;
+const panelId = `accordion-panel-${slug}`;
+---
+
+<div class="accordion-item card relative overflow-hidden backdrop-blur-md bg-white/95 leading-5 border border-slate-200 shadow-[0_1px_3px_rgba(15,23,42,0.06)] rounded-sm ring-1 ring-black/[0.02] transition-all duration-200 hover:border-slate-400 hover:shadow-[0_8px_24px_rgba(15,23,42,0.10)] hover:cursor-pointer">
 	<button
+		id={buttonId}
 		type="button"
+		aria-controls={panelId}
+		aria-expanded="false"
 		class="
 		accordion-header flex flex-col gap-1
-		border border-slate-200/60
-		hover:border-slate-500
 		rounded-t-sm
 		p-0 m-0
 		text-left
 		bg-transparent
-		focus-visible:ring-2 focus-visible:ring-slate-300
-		w-full
-		block
+		focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2
+		w-full block
+		transition-colors duration-200
 		"
 		style="touch-action: manipulation;"
 	>
-		<BackgroundImage imagePath={background_image ?? ''} altText="string">
+		<BackgroundImage imagePath={background_image ?? ''} altText={title}>
 			<div class="flex flex-row justify-between" style="white-space: nowrap;">
 				<h4 class="text-xl font-semibold text-slate-900 tracking-tight">{title}</h4>
 				<h4 class="text-lg font-medium text-slate-600 tracking-tight truncate">{subtitle}</h4>
@@ -72,50 +74,82 @@ const {
 		</BackgroundImage>
 	</button>
 
-	<article class="accordion-content grid grid-rows-[0fr] transition-all duration-300 ease-in-out" data-open="false">
+	<article
+		id={panelId}
+		class="accordion-content grid grid-rows-[0fr] transition-all duration-300 ease-in-out"
+		data-open="false"
+		role="region"
+		aria-labelledby={buttonId}
+	>
 		<div class="overflow-hidden">
-			<div class="accordion-body px-4 py-2 border-x border-b border-slate-100">
+			<div class="accordion-body px-4 py-2 border-t border-slate-200/70 bg-white/80">
 				<slot />
 			</div>
 		</div>
 	</article>
 </div>
 
+<style>
+	.accordion-item::before {
+		content: '';
+		position: absolute;
+		inset: 0 auto 0 0;
+		width: 3px;
+		background: #ea581c;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 200ms ease;
+		z-index: 20;
+	}
+
+	.accordion-item:hover::before {
+		opacity: 0.55;
+	}
+
+	.accordion-item.is-open {
+		border-color: rgb(148 163 184);
+		box-shadow: 0 10px 28px rgba(15, 23, 42, 0.11), 0 0 0 1px rgba(234, 88, 28, 0.10);
+	}
+
+	.accordion-item.is-open::before {
+		opacity: 1;
+	}
+</style>
+
 <script>
-// @ts-nocheck
 	function setupAccordion() {
 		const accordions = document.querySelectorAll('.accordion-item');
 		accordions.forEach((accordion) => {
+			if (accordion.getAttribute('data-accordion-bound') === 'true') return;
 			const header = accordion.querySelector('.accordion-header');
 			const content = accordion.querySelector('.accordion-content');
 			const icon = accordion.querySelector('.chevron-icon');
-			let lastTouchToggle = 0;
+			if (!(header instanceof HTMLButtonElement) || !(content instanceof HTMLElement)) return;
 
 			const toggle = () => {
-				if (!content) return;
 				const isOpen = content.getAttribute('data-open') === 'true';
+				accordion.classList.toggle('is-open', !isOpen);
 				content.setAttribute('data-open', isOpen ? 'false' : 'true');
 				content.classList.toggle('grid-rows-[1fr]', !isOpen);
 				content.classList.toggle('grid-rows-[0fr]', isOpen);
 				icon?.classList.toggle('rotate-180', !isOpen);
-			};
-
-			const pointerHandler = (event) => {
-				if (event.pointerType === 'mouse') return;
-				lastTouchToggle = Date.now();
-				toggle();
+				header.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
 			};
 
 			const clickHandler = (event) => {
-				if (Date.now() - lastTouchToggle < 500) {
-					event.preventDefault();
+				const target = event.target;
+				const selection = window.getSelection()?.toString().trim();
+				if (selection) return;
+				if (!(target instanceof HTMLElement)) return;
+				if (target.closest('a, input, textarea, select, summary, [contenteditable="true"]')) return;
+				if (target.closest('button') && !target.closest('.accordion-header')) {
 					return;
 				}
 				toggle();
 			};
 
-			header?.addEventListener('pointerdown', pointerHandler);
-			header?.addEventListener('click', clickHandler);
+			accordion.addEventListener('click', clickHandler);
+			accordion.setAttribute('data-accordion-bound', 'true');
 		});
 	}
 
