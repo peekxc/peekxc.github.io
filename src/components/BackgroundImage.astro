@@ -12,7 +12,7 @@ interface Props {
   size?: string;
 }
 
-const { imagePath, altText, size = '100' } = Astro.props as Props;
+const { imagePath, altText } = Astro.props as Props;
 const imageEntry = imagePath ? images[imagePath] : undefined;
 const imageMeta = imageEntry?.default;
 ---
@@ -22,7 +22,7 @@ const imageMeta = imageEntry?.default;
   aria-label={altText}
   class="relative overflow-hidden rounded-t-sm bg-transparent bg-clip-border px-4 py-2 hover:cursor-pointer"
 >
-  {imagePath && (
+  {imageMeta ? (
     <Image
       alt={altText}
       src={imageMeta}
@@ -32,7 +32,7 @@ const imageMeta = imageEntry?.default;
       width="682"
       quality="5"
     />
-  )}
+  ) : null}
   <div class="absolute inset-0 bg-gradient-to-br from-white/90 via-white/30 to-transparent" />
   <div class="relative z-10 h-full w-full">
     <slot class="grayscale transition-transform duration-500" />

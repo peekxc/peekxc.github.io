@@ -7,17 +7,20 @@ import Scrollspy from '../../components/Scrollspy.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog_posts')
-	const blog_posts = posts.filter((p): p is CollectionEntry<'blog_posts'> => !p.data.draft);
-	return blog_posts.map((post) => ({
+	const blog_posts = posts.filter((p: Post) => !p.data.draft);
+	return blog_posts.map((post: Post) => ({
 		params: { id: post.data.slug },
 		props: { post },
 	}));
 }
+type Post = CollectionEntry<'blog_posts'>
 
-const { id } = Astro.params;
+interface Props {
+  post: Post
+}
+
 const { post } = Astro.props;
 const { Content } = await render(post);
-// const post_content = await post.render();
 ---
 
 <!-- {console.log(post.data)} -->

@@ -24,7 +24,7 @@ const { posts } = Astro.props;
 
     <ul class="list-desc relative overflow-auto space-y-2 prose-lg">
       <div id="cardView" class="w-full">
-        {posts.map(post =>
+        {posts.map((post: { data: { draft: any; title: unknown; abstract: unknown; date: unknown; categories: any[]; background_image: string | null | undefined; }; url: string | URL | null | undefined; }) =>
           !post.data.draft && (
             <li class="px-2 md:px-0">
               <a href={post.url} class="duration-250 flex overflow-hidden rounded-lg border bg-white shadow-sm transition hover:cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700" style="min-height:150px;max-height:220px">
