@@ -17,7 +17,9 @@ const { title, description, canonical } = Astro.props;
 		title={title}
 		description={description}
 		canonical={canonical}
-	/>
+	>
+		<slot name="head" />
+	</Head>
   <!-- NOTE: don't use w-screen to avoid viewport changes reflows  -->
   <body class="min-h-screen flex flex-col w-full" style="-webkit-text-size-adjust: 100%;">
     <Navbar />

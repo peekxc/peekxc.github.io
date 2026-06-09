@@ -80,6 +80,7 @@ const panelId = `accordion-panel-${slug}`;
 		data-open="false"
 		role="region"
 		aria-labelledby={buttonId}
+		aria-hidden="true"
 	>
 		<div class="overflow-hidden">
 			<div class="accordion-body px-4 py-2 border-t border-line-soft bg-surface-raised">
@@ -104,6 +105,7 @@ const panelId = `accordion-panel-${slug}`;
 				accordion.classList.toggle('is-open', !isOpen);
 				accordion.classList.toggle('surface-card-open', !isOpen);
 				content.setAttribute('data-open', isOpen ? 'false' : 'true');
+				content.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
 				content.classList.toggle('grid-rows-[1fr]', !isOpen);
 				content.classList.toggle('grid-rows-[0fr]', isOpen);
 				icon?.classList.toggle('rotate-180', !isOpen);

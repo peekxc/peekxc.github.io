@@ -73,6 +73,7 @@ const panelId = `project-panel-${slug}`;
       class="accordion-content grid grid-rows-[0fr] bg-surface-muted transition-all duration-300 ease-in-out"
       role="region"
       aria-labelledby={buttonId}
+      aria-hidden="true"
     >
       <div class="overflow-hidden">
         <div class="space-y-2 px-4 py-4">
@@ -99,6 +100,7 @@ const panelId = `project-panel-${slug}`;
         card.classList.toggle('is-open', !isOpen);
         card.classList.toggle('surface-card-open', !isOpen);
         content.setAttribute('data-open', isOpen ? 'false' : 'true');
+        content.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
         content.classList.toggle('grid-rows-[1fr]', !isOpen);
         content.classList.toggle('grid-rows-[0fr]', isOpen);
         headerCollapsibles.forEach((section) => {

@@ -1,11 +1,16 @@
 ---
-const { title, date, categories = [] } = Astro.props;
-const options = { year: 'numeric', month: 'long', day: 'numeric' };
+const { title, subtitle = '', date, categories = [] } = Astro.props;
+const options = { year: 'numeric', month: 'short', day: 'numeric' };
 ---
-<header class="mb-12 text-center">
+<header class="mb-10 text-center sm:mb-12">
   <h1>
     {title}
   </h1>
+  {subtitle && (
+    <p class="mx-auto mt-3 max-w-[42ch] text-sm leading-6 text-ink-muted sm:text-base">
+      {subtitle}
+    </p>
+  )}
   <p class="my-3 text-sm font-medium uppercase tracking-[0.18em] text-ink-muted">
     Matt Piekenbrock&nbsp;&nbsp;·&nbsp;&nbsp;{date.toLocaleDateString("en-US", options)}
   </p>

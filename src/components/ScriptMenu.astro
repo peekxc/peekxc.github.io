@@ -1,9 +1,19 @@
 <script>
 	const menuBtn = document.getElementById('menu-btn');
 	const mobileMenu = document.getElementById('mobile-menu');
+	const setMenuState = (open) => {
+		if (!menuBtn || !mobileMenu) return;
+		menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+		mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+		mobileMenu.hidden = !open;
+		mobileMenu.classList.toggle('hidden', !open);
+		mobileMenu.classList.toggle('block', open);
+	};
+
+	setMenuState(false);
 	menuBtn?.addEventListener('click', () => {
-		mobileMenu?.classList.toggle('hidden');
-		mobileMenu?.classList.toggle('block');
+		const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+		setMenuState(!isOpen);
 	});
 	// document.addEventListener('DOMContentLoaded', function() {
 	// 	const cards = document.querySelectorAll('.cursor-context-menu');

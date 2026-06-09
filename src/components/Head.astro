@@ -20,6 +20,7 @@ const canonical_url = new URL(canonical, Astro.site).toString();
 	<meta name="description" content={description}/>
   <link rel="canonical" href={canonical_url}/>
   <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml"/>
+  <slot />
   <!-- <link rel="stylesheet" type="text/css" href="/styles/tw_styles.css"/> -->
   <!-- <link rel="stylesheet" type="text/css" href="/styles/overrides.css"/> -->
 </head>
