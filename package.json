@@ -27,7 +27,7 @@
     "@astrojs/vercel": "^10.0.8",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.4.4",
+    "astro": "^6.1.10",
     "astro-compressor": "^1.3.0",
     "astro-critical-css": "^0.0.7",
     "astro-icon": "^1.1.5",
