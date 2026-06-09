@@ -24,11 +24,11 @@ const nav_pages = [
         )
       }
     </div>
-    <button class="md:hidden ml-auto inline-flex h-10 w-10 items-center justify-center rounded-card text-ink transition hover:text-brand" id="menu-btn" type="button" aria-label="Toggle navigation">
+    <button class="md:hidden ml-auto inline-flex h-10 w-10 items-center justify-center rounded-card text-ink transition hover:text-brand" id="menu-btn" type="button" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false">
       <Icon name="hamburger" width=24 height=24 />
     </button>
   </div>
-  <div class="hidden mx-auto flex max-w-6xl flex-col overflow-hidden rounded-b-md border border-t-0 border-line px-4 pt-0 pb-2 md:hidden" id="mobile-menu">
+  <div class="hidden mx-auto flex max-w-6xl flex-col overflow-hidden rounded-b-md border border-t-0 border-line px-4 pt-0 pb-2 md:hidden" id="mobile-menu" aria-hidden="true">
     {nav_pages.map((page) =>
       <a
         class="block py-2 text-base text-ink transition hover:text-brand"
