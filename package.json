@@ -33,7 +33,7 @@
     "astro-icon": "^1.1.5",
     "astro-mdx-directive": "^1.0.0",
     "cytoscape": "^3.34.0",
-    "katex": "^0.17.0",
+    "katex": "^0.18.2",
     "lightningcss": "^1.32.0",
     "preact": "^10.29.2",
     "rehype-katex": "^7.0.1",
